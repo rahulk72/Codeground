@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Log in | CodeGround</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#080d18;color:#edf4ff;font-family:'Inter',sans-serif}
+h1{font-family:'Space Grotesk',sans-serif}
+input{width:100%;background:#0b1220;border:1px solid #2a3a50;border-radius:12px;padding:13px 14px;color:#edf4ff;margin-top:6px}
+input:focus{outline:2px solid #22d3ee;border-color:transparent}
+.btn{width:100%;border-radius:12px;padding:14px;font-weight:800;background:linear-gradient(120deg,#06b6d4,#3b82f6);color:#06111f;cursor:pointer}
+.btn:disabled{opacity:.6}
+.tab{flex:1;padding:10px;border-radius:10px;font-weight:600;color:#94a3b8;cursor:pointer}
+.tab.on{background:#1e293b;color:#67e8f9}
+[hidden]{display:none!important}
+</style>
+</head>
+<body class="min-h-screen flex items-center justify-center p-5">
+<div class="w-full max-w-md">
+  <a href="index.html" class="text-sm text-slate-400 hover:text-cyan-300">← Back to home</a>
+  <div class="rounded-3xl border border-slate-700 p-7 mt-4" style="background:rgba(16,24,39,.9)">
+    <h1 id="title" class="text-2xl"></h1>
+    <p id="sub" class="text-slate-400 text-sm mt-1"></p>
+
+    <div id="tabs" class="flex gap-2 mt-5 p-1 rounded-xl bg-slate-900">
+      <button type="button" class="tab" data-go="login">Log in</button>
+      <button type="button" class="tab" data-go="signup">Sign up</button>
+    </div>
+
+    <form id="f" class="mt-5 space-y-4">
+      <label data-m="login" class="block text-sm">Username or email<input name="username" autocomplete="username"></label>
+      <label data-m="signup" class="block text-sm">Username<input name="username" autocomplete="username"></label>
+      <label data-m="signup forgot" class="block text-sm">Email<input name="email" type="email" autocomplete="email"></label>
+      <label data-m="login signup reset" class="block text-sm">Password<input name="password" type="password" autocomplete="current-password"></label>
+      <div class="text-right" id="forgotLink"><button type="button" class="text-sm text-cyan-300 hover:underline" data-go="forgot">Forgot password?</button></div>
+      <button id="go" class="btn"></button>
+      <button type="button" id="back" class="text-sm text-slate-400 hover:text-cyan-300 w-full" data-go="login" hidden>← Back to log in</button>
+    </form>
+    <p id="msg" class="text-sm mt-4" role="status"></p>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+const T = {
+  login:  ["Welcome back", "Log in to continue your Java journey."],
+  signup: ["Create your account", "Join CodeGround. It's free."],
+  forgot: ["Forgot password?", "Enter your email and we'll send you a reset link."],
+  reset:  ["Set a new password", "Use at least 6 characters."]
+};
+const BTN = {login: "Log in", signup: "Create account", forgot: "Send reset link", reset: "Save new password"};
+const URLS = {login: "/api/login", signup: "/api/signup", forgot: "/api/forgot", reset: "/api/reset"};
+const token = new URLSearchParams(location.search).get("reset");
+let mode = "login";
+
+function show(m) {
+  mode = m;
+  $("title").textContent = T[m][0];
+  $("sub").textContent = T[m][1];
+  $("go").textContent = BTN[m];
+  document.querySelectorAll("[data-m]").forEach(el => {
+    const on = el.dataset.m.split(" ").includes(m);
+    el.hidden = !on;
+    const i = el.querySelector("input");
+    if (i) i.required = on;
+  });
+  $("tabs").hidden = !(m === "login" || m === "signup");
+  $("forgotLink").hidden = m !== "login";
+  $("back").hidden = m !== "forgot";
+  $("msg").textContent = "";
+  document.querySelectorAll(".tab").forEach(t => t.classList.toggle("on", t.dataset.go === m));
+}
+
+document.querySelectorAll("[data-go]").forEach(b => b.addEventListener("click", () => show(b.dataset.go)));
+
+$("f").addEventListener("submit", async e => {
+  e.preventDefault();
+  const d = new URLSearchParams();
+  $("f").querySelectorAll("input").forEach(i => { if (!i.closest("[hidden]")) d.append(i.name, i.value); });
+  if (mode === "reset") d.append("token", token);
+  $("go").disabled = true;
+  try {
+    const r = await (await fetch(URLS[mode], {method: "POST", body: d})).json();
+    $("msg").className = "text-sm mt-4 " + (r.ok ? "text-green-400" : "text-rose-400");
+    $("msg").textContent = r.msg || "";
+    if (r.ok && (mode === "login" || mode === "signup")) location.href = "index.html";
+    if (r.ok && mode === "reset") setTimeout(() => { history.replaceState(null, "", "login.html"); show("login"); }, 1500);
+  } catch (err) {
+    $("msg").className = "text-sm mt-4 text-rose-400";
+    $("msg").textContent = "Can't reach the server. Run Server.java and open http://localhost:8080";
+  }
+  $("go").disabled = false;
+});
+
+show(token ? "reset" : location.hash === "#signup" ? "signup" : "login");
+
+if (!token) fetch("/api/me").then(r => r.json()).then(r => { if (r.ok) location.href = "index.html"; }).catch(() => {});
+</script>
+</body>
+</html>

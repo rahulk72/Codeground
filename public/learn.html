@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Java Roadmap | CodeGround</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080d18;--card:#101827;--bd:#26364b;--tx:#edf4ff;--mu:#94a3b8;--ac:#22d3ee;--on:#06111f;--fs:16px}
+[data-theme=light]{--bg:#f4f7fb;--card:#fff;--bd:#d3dce8;--tx:#0f172a;--mu:#475569;--ac:#0e7490;--on:#fff}
+[hidden]{display:none!important}
+html{font-size:var(--fs)}
+body{margin:0;font-family:'Inter',sans-serif;background:var(--bg);color:var(--tx)}
+h1,h2{font-family:'Space Grotesk',sans-serif;margin:0}
+a{text-decoration:none;color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.muted{color:var(--mu)}
+.hdr{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--bd);background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(14px)}
+.hdr>div{max-width:56rem;margin:0 auto;padding:0 1.25rem;height:4rem;display:flex;align-items:center;justify-content:space-between}
+.mbtn{border:1px solid var(--bd);border-radius:.75rem;padding:.5rem .9rem;background:var(--card)}
+.menu{position:absolute;top:3.2rem;left:0;width:16rem;padding:.6rem;border:1px solid var(--bd);border-radius:1rem;background:var(--card);box-shadow:0 20px 50px rgba(0,0,0,.3)}
+.menu a,.menu button{display:block;width:100%;text-align:left;padding:.65rem .75rem;border:0;border-radius:.6rem;background:none;color:var(--tx)}
+.menu a:hover,.menu button:hover{background:color-mix(in srgb,var(--ac) 15%,transparent)}
+.menu hr{border:0;border-top:1px solid var(--bd);margin:.4rem 0}
+main{max-width:56rem;margin:0 auto;padding:3rem 1.25rem}
+.seg{display:inline-flex;gap:.25rem;padding:.25rem;border:1px solid var(--bd);border-radius:.75rem;background:var(--card)}
+.seg button{padding:.4rem .9rem;border:0;border-radius:.5rem;background:none;font-size:.85rem;font-weight:600;color:var(--mu)}
+.seg button.on{background:var(--ac);color:var(--on)}
+.bar{height:6px;border-radius:99px;background:var(--bd);overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#06b6d4,#a78bfa);transition:width .3s}
+.tabs{display:flex;gap:.5rem;overflow-x:auto;margin-top:2rem;padding-bottom:.25rem}
+.tabs a{border:1px solid var(--bd);border-radius:99px;padding:.45rem .9rem;font-size:.85rem;white-space:nowrap;color:var(--mu)}
+.tabs a:hover{border-color:var(--ac);color:var(--tx)}
+.ph{display:flex;align-items:center;gap:.7rem;font-size:1.6rem}
+.dot{width:.9rem;height:.9rem;border-radius:50%;background:var(--c)}
+.topic{border:1px solid var(--bd);border-radius:.9rem;background:var(--card);overflow:hidden;margin-bottom:.5rem}
+.topic.open{border-color:var(--c)}
+.thead{display:flex;align-items:center;gap:.9rem;width:100%;padding:.8rem 1rem;border:0;background:none;text-align:left}
+.num{flex:none;width:2.4rem;height:2.4rem;border-radius:.6rem;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.8rem;background:var(--c);color:#06111f}
+.dbtn{margin-left:auto;flex:none;font-size:.78rem;font-weight:600;padding:.35rem .8rem;border-radius:99px;border:1px solid var(--bd);color:var(--mu)}
+.topic.open .dbtn{border-color:var(--c);color:var(--tx)}
+.body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s}
+.topic.open .body{grid-template-rows:1fr}
+.body>div{overflow:hidden}
+.det{margin:0;padding:0 1rem .5rem 4.3rem;font-size:.92rem;line-height:1.7;color:var(--mu)}
+.acts{display:flex;flex-wrap:wrap;gap:1rem;align-items:center;padding:.3rem 1rem 1rem 4.3rem;font-size:.85rem}
+.g{border:1px solid var(--bd);border-radius:99px;padding:.4rem .9rem;font-weight:600}
+.g:hover{border-color:var(--c)}
+.ms{margin-top:1rem;padding:.9rem 1.2rem;border-left:3px solid var(--c);background:color-mix(in srgb,var(--c) 9%,transparent);border-radius:0 .8rem .8rem 0;font-size:.9rem}
+.ov{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:1rem}
+.md{width:100%;max-width:30rem;max-height:90vh;overflow:auto;border:1px solid var(--bd);border-radius:1.2rem;background:var(--card);padding:1.4rem}
+.row{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin-top:1.1rem;flex-wrap:wrap}
+.cls{margin-top:1.2rem;padding:.6rem 1.2rem;border:0;border-radius:.7rem;background:var(--ac);color:var(--on);font-weight:700}
+textarea{width:100%;min-height:14rem;margin-top:1rem;padding:.8rem;border:1px solid var(--bd);border-radius:.8rem;background:var(--bg);color:var(--tx);font:inherit;resize:vertical}
+@media(max-width:600px){.det,.acts{padding-left:1rem}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="hdr"><div>
+  <div style="position:relative">
+    <button id="mBtn" class="mbtn" aria-expanded="false">☰ <span data-t="menu">Menu</span></button>
+    <nav id="menu" class="menu" hidden>
+      <a href="index.html" data-t="home">Home</a>
+      <a href="learn.html" data-t="learn">Learn Java</a>
+      <a href="practice.html" data-t="practice">Practice Coding</a>
+      <a href="quiz.html" data-t="quiz">Quizzes</a>
+      <a href="dashboard.html" data-t="dash">Dashboard</a>
+      <hr>
+      <button id="notesBtn" type="button" data-t="notes">My Notes</button>
+      <button id="setBtn" type="button" data-t="settings">Settings</button>
+      <hr>
+      <a href="login.html" data-t="login">Login / Sign up</a>
+    </nav>
+  </div>
+  <a href="index.html" style="font-family:'Space Grotesk';font-weight:700"><span style="color:var(--ac)">Rise</span> &amp; <span style="color:#a78bfa">Grow</span></a>
+  <div id="authSlot"><a href="login.html#signup" style="font-size:.85rem;font-weight:700;border-radius:.6rem;padding:.5rem 1rem;background:linear-gradient(120deg,#06b6d4,#3b82f6);color:#06111f">Get Started</a></div>
+</div></header>
+
+<main>
+  <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem;flex-wrap:wrap">
+    <h1 style="font-size:2.6rem;line-height:1.1" data-t="ttl">Java Roadmap</h1>
+    <div class="seg" data-k="lang"><button data-v="en">English</button><button data-v="hi">Hinglish</button></div>
+  </div>
+  <p class="muted" style="margin-top:1rem;max-width:34rem;line-height:1.7" data-t="intro"></p>
+  <div style="margin-top:1.5rem;max-width:28rem">
+    <div class="muted" style="display:flex;justify-content:space-between;font-size:.8rem;margin-bottom:.4rem"><span data-t="plabel"></span><span id="pct"></span></div>
+    <div class="bar"><i id="fill"></i></div>
+  </div>
+  <nav id="tabs" class="tabs"></nav>
+  <div id="phases"></div>
+</main>
+
+<div id="notesM" class="ov" hidden><div class="md">
+  <h2 data-t="notes">My Notes</h2>
+  <p class="muted" style="font-size:.85rem;margin:.4rem 0 0" data-t="hint"></p>
+  <textarea id="notesTxt"></textarea>
+  <button class="cls" data-close data-t="close">Close</button>
+</div></div>
+
+<div id="setM" class="ov" hidden><div class="md">
+  <h2 data-t="settings">Settings</h2>
+  <p style="margin:1rem 0 0;font-weight:700" data-t="appearance">Appearance</p>
+  <div class="row"><span data-t="theme">Theme</span>
+    <div class="seg" data-k="theme"><button data-v="dark" data-t="dark"></button><button data-v="light" data-t="light"></button></div></div>
+  <div class="row"><span data-t="size">Text size</span>
+    <div class="seg" data-k="size"><button data-v="s" data-t="small"></button><button data-v="m" data-t="medium"></button><button data-v="l" data-t="large"></button></div></div>
+  <div class="row"><span data-t="lang">Language</span>
+    <div class="seg" data-k="lang"><button data-v="en">English</button><button data-v="hi">Hinglish</button></div></div>
+  <button class="cls" data-close data-t="close">Close</button>
+</div></div>
+
+<script>
+const $ = id => document.getElementById(id);
+const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+const UI = {
+ en:{ttl:"Java Roadmap",intro:"4 phases, 56 steps. Open any topic with Details, search it on Google, and mark it done when you learn it.",plabel:"Your progress",goal:"Goal",ms:"Milestone",details:"Details",hide:"Hide",google:"Search on Google",done:"Mark as done",menu:"Menu",home:"Home",learn:"Learn Java",practice:"Practice Coding",quiz:"Quizzes",dash:"Dashboard",notes:"My Notes",settings:"Settings",login:"Login / Sign up",appearance:"Appearance",theme:"Theme",dark:"Dark",light:"Light",size:"Text size",small:"Small",medium:"Medium",large:"Large",lang:"Language",close:"Close",hint:"Notes save automatically in this browser."},
+ hi:{ttl:"Java Roadmap",intro:"4 phases, 56 steps. Kisi bhi topic ko Details se kholo, Google par search karo, aur seekhne ke baad done mark karo.",plabel:"Tumhara progress",goal:"Goal",ms:"Milestone",details:"Details",hide:"Band karo",google:"Google par dekho",done:"Done mark karo",menu:"Menu",home:"Home",learn:"Learn Java",practice:"Practice Coding",quiz:"Quizzes",dash:"Dashboard",notes:"My Notes",settings:"Settings",login:"Login / Sign up",appearance:"Appearance",theme:"Theme",dark:"Dark",light:"Light",size:"Text size",small:"Chhota",medium:"Medium",large:"Bada",lang:"Language",close:"Band karo",hint:"Notes is browser me apne aap save hote hain."}
+};
+
+// topic = [name, English detail, Hinglish detail]
+const P = [
+{id:"p1",c:"#22d3ee",tab:"Phase 1 · Fundamentals",title:"Phase 1: Java Fundamentals",s:1,
+ goal:["Build a strong Java foundation.","Java ki foundation strong karna."],
+ ms:["You can write basic Java programs on your own.","Apne basic Java programs khud likh paoge."],t:[
+ ["Introduction to Java","What Java is, its features and uses. Java is an object-oriented, platform-independent language used for apps, banking and web backends.","Java kya hai, features aur uses. Java ek object-oriented, platform-independent language hai jo apps, banking aur web backend me use hoti hai."],
+ ["JDK, JRE & JVM","How Java works. The JDK compiles code, the JRE runs it, the JVM executes bytecode. Flow: .java, compiler, .class, JVM.","Java kaise work karti hai. JDK code compile karta hai, JRE chalata hai, JVM bytecode run karta hai. Flow: .java, compiler, .class, JVM."],
+ ["First Java Program","Hello World and execution. Programs start at public static void main. Compile with javac, run with java.","Hello World aur execution. Program public static void main se shuru hota hai. javac se compile, java se run karo."],
+ ["Variables","Variables and constants. A variable stores data, e.g. int age = 20; use final for constants.","Variables aur constants. Variable data store karta hai, jaise int age = 20; constant ke liye final use karo."],
+ ["Data Types","Primitive (int, double, char, boolean...) and non-primitive (String, arrays, classes) types.","Primitive (int, double, char, boolean...) aur non-primitive (String, arrays, classes) types."],
+ ["Type Casting","Implicit casting widens automatically; explicit casting narrows manually, e.g. (int) 9.7.","Implicit casting apne aap hoti hai (chhota se bada); explicit manually, jaise (int) 9.7."],
+ ["Operators","Arithmetic, relational and logical operators, plus assignment and increment.","Arithmetic, relational aur logical operators, saath me assignment aur increment."],
+ ["User Input","Read input with the Scanner class: nextInt(), nextLine().","Scanner class se input lo: nextInt(), nextLine()."],
+ ["If-Else","Decision making with if, else if, else and the ternary operator.","Decision making: if, else if, else aur ternary operator."],
+ ["Switch","Compare one value against many cases. Use break and default.","Ek value ko kai cases se compare karo. break aur default use karo."],
+ ["Loops","Repeat code with for, while and do-while. Learn break and continue.","for, while aur do-while se code repeat karo. break aur continue bhi seekho."],
+ ["Pattern Printing","Stars, numbers and patterns with nested loops: outer loop rows, inner loop columns.","Nested loops se stars, numbers aur patterns: outer loop rows, inner loop columns."],
+ ["Methods","Reusable code blocks with parameters, return values and overloading.","Reusable code blocks: parameters, return values aur overloading."],
+ ["Basic Practice","Build a calculator, prime check, factorial, Fibonacci and palindrome programs.","Calculator, prime check, factorial, Fibonacci, palindrome jaise programs banao."]]},
+{id:"p2",c:"#38bdf8",tab:"Phase 2 · Arrays & Strings",title:"Phase 2: Arrays & Strings",s:15,
+ goal:["Work with data collections and text.","Arrays aur strings ke saath kaam karna."],
+ ms:["You can solve coding problems on arrays and strings.","Arrays aur strings par coding problems solve karna."],t:[
+ ["One-Dimensional Arrays","Store many values of one type: int[] a = new int[5]; indexes start at 0.","Ek type ki kai values store karo: int[] a = new int[5]; index 0 se shuru."],
+ ["Two-Dimensional Arrays","Tables of rows and columns, used for matrices and grids.","Rows aur columns ki table, matrices aur grids ke liye."],
+ ["Array Traversal & Searching","Loop through arrays; learn linear and binary search.","Arrays par loop chalao; linear aur binary search seekho."],
+ ["Basic Array Sorting","Bubble, selection and insertion sort; then Arrays.sort().","Bubble, selection aur insertion sort; phir Arrays.sort()."],
+ ["String Class","Strings are immutable. Learn the string pool and == vs equals().","String immutable hota hai. String pool aur == vs equals() samjho."],
+ ["String Methods","length(), charAt(), substring(), indexOf(), split(), replace(), equals().","length(), charAt(), substring(), indexOf(), split(), replace(), equals() seekho."],
+ ["StringBuilder & StringBuffer","Mutable strings: StringBuilder is faster, StringBuffer is thread-safe.","Mutable strings: StringBuilder fast hai, StringBuffer thread-safe hai."],
+ ["Array and String Problems","Practice reverse, palindrome, anagram, duplicates and max/min problems.","Reverse, palindrome, anagram, duplicates aur max/min problems practice karo."]]},
+{id:"p3",c:"#a78bfa",tab:"Phase 3 · OOPs",title:"Phase 3: Object-Oriented Programming (OOPs)",s:23,
+ goal:["Model real-world things in code.","Real-world cheezon ko code me model karna."],
+ ms:["You can build a small app using OOPs concepts.","OOPs concepts se ek chhota Java application banana."],t:[
+ ["Classes & Objects","A class is a blueprint; an object is its instance.","Class blueprint hai; object uska instance."],
+ ["Constructors","Special method run at object creation: default, parameterized, copy.","Object banate waqt chalne wala special method: default, parameterized, copy."],
+ ["this Keyword","Refers to the current object, e.g. this.name = name;","Current object ko refer karta hai, jaise this.name = name;"],
+ ["Encapsulation","Keep fields private and expose them via getters and setters.","Fields private rakho aur getters/setters se access do."],
+ ["Inheritance","Reuse another class with extends: single, multilevel, hierarchical.","extends se dusri class reuse karo: single, multilevel, hierarchical."],
+ ["super Keyword","Access the parent's fields, methods and constructor.","Parent ke fields, methods aur constructor access karo."],
+ ["Method Overloading","Same name, different parameters (compile-time polymorphism).","Same naam, alag parameters (compile-time polymorphism)."],
+ ["Method Overriding","A child class redefines a parent method; use @Override.","Child class parent ka method dobara likhti hai; @Override use karo."],
+ ["Polymorphism","One interface, many forms: Animal a = new Dog();","Ek interface, kai roop: Animal a = new Dog();"],
+ ["Abstraction","Show essentials, hide details, using abstract classes and interfaces.","Zaroori cheezein dikhao, detail chhupao: abstract classes aur interfaces se."],
+ ["Abstract Classes","Cannot be instantiated; can mix abstract and normal methods.","Object nahi ban sakta; abstract aur normal methods dono ho sakte hain."],
+ ["Interfaces","A contract of methods a class implements; many are allowed.","Methods ka contract jo class implement karti hai; kai interfaces allowed."],
+ ["Access Modifiers","public, private, protected and default visibility.","public, private, protected aur default visibility."],
+ ["Static & Final","static belongs to the class; final blocks changes, overriding and inheriting.","static class ka hota hai; final change, override aur inherit rokta hai."],
+ ["Packages","Organize classes with package and import.","package aur import se classes organize karo."],
+ ["OOPs Mini Project","Build a small Library or Bank app using all OOPs concepts.","Saare OOPs concepts se chhota Library ya Bank app banao."]]},
+{id:"p4",c:"#fbbf24",tab:"Phase 4 · Core Advanced",title:"Phase 4: Core Java Advanced",s:39,
+ goal:["Learn professional-level Java.","Professional level Java concepts seekhna."],
+ ms:["You can build real apps with collections, files and threads.","Collections, files aur threads ke saath real apps banana."],t:[
+ ["Exception Handling","Handle errors without crashing: checked vs unchecked, throw, throws.","Crash ke bina errors handle karo: checked vs unchecked, throw, throws."],
+ ["Try, Catch & Finally","Risky code in try, handling in catch, cleanup in finally.","Risky code try me, handling catch me, cleanup finally me."],
+ ["Custom Exceptions","Create your own exception by extending Exception.","Exception extend karke apni exception banao."],
+ ["Wrapper Classes","Object forms of primitives; autoboxing and unboxing.","Primitives ke object forms; autoboxing aur unboxing."],
+ ["Generics","Type-safe code such as ArrayList<String>.","Type-safe code, jaise ArrayList<String>."],
+ ["Collections Framework","Ready-made data structures: List, Set, Queue and Map.","Ready-made data structures: List, Set, Queue aur Map."],
+ ["ArrayList & LinkedList","ArrayList is fast to read; LinkedList is fast to insert and delete.","ArrayList read me fast; LinkedList insert/delete me fast."],
+ ["HashSet & TreeSet","Sets reject duplicates; HashSet is unordered, TreeSet is sorted.","Set duplicates nahi leta; HashSet unordered, TreeSet sorted."],
+ ["HashMap & TreeMap","Key-value storage; TreeMap keeps keys sorted.","Key-value storage; TreeMap keys sorted rakhta hai."],
+ ["Iterator","Walk through a collection with hasNext(), next(), remove().","hasNext(), next(), remove() se collection me chalo."],
+ ["Comparable & Comparator","Sort custom objects by default order or custom rules.","Custom objects ko default order ya custom rules se sort karo."],
+ ["File Handling","Read and write files with File, FileReader, FileWriter, BufferedReader.","File, FileReader, FileWriter, BufferedReader se files padho aur likho."],
+ ["Serialization","Save objects as bytes and restore them; implement Serializable.","Objects ko bytes me save karo aur wapas lo; Serializable implement karo."],
+ ["Multithreading","Run tasks concurrently with Thread and Runnable.","Thread aur Runnable se tasks ek saath chalao."],
+ ["Synchronization","Prevent conflicts between threads with synchronized and locks.","synchronized aur locks se threads ke conflicts roko."],
+ ["Lambda Expressions","Short anonymous functions like (a, b) -> a + b.","Chhote anonymous functions, jaise (a, b) -> a + b."],
+ ["Stream API","Process collections with filter, map, sorted and collect.","filter, map, sorted aur collect se collections process karo."],
+ ["Date & Time API","LocalDate, LocalTime, LocalDateTime, Period, Duration, DateTimeFormatter.","LocalDate, LocalTime, LocalDateTime, Period, Duration, DateTimeFormatter ka use."]]}
+];
+
+const SZ = {s:"14px", m:"16px", l:"18px"};
+const TOTAL = P.reduce((s, p) => s + p.t.length, 0);
+let S = {theme:"dark", size:"m", lang:"en"}, done = {};
+const opened = new Set();
+try {
+  Object.assign(S, JSON.parse(localStorage.getItem("cgSettings") || "{}"));
+  done = JSON.parse(localStorage.getItem("javaDone") || "{}");
+} catch (e) {}
+const saveS = () => { try { localStorage.setItem("cgSettings", JSON.stringify(S)); } catch (e) {} };
+
+function apply() {
+  const R = document.documentElement;
+  R.dataset.theme = S.theme;
+  R.style.setProperty("--fs", SZ[S.size] || "16px");
+  const U = UI[S.lang];
+  document.querySelectorAll("[data-t]").forEach(e => { e.textContent = U[e.dataset.t]; });
+  document.querySelectorAll(".seg").forEach(g => g.querySelectorAll("button").forEach(b =>
+    b.classList.toggle("on", S[g.dataset.k] === b.dataset.v)));
+  render();
+}
+
+function render() {
+  const U = UI[S.lang], hi = S.lang === "hi", di = hi ? 2 : 1, li = hi ? 1 : 0;
+  $("tabs").innerHTML = P.map(p => `<a href="#${p.id}">${p.tab}</a>`).join("");
+  $("phases").innerHTML = P.map(p => `
+    <section id="${p.id}" style="--c:${p.c};padding-top:2.5rem">
+      <h2 class="ph"><i class="dot"></i>${p.title}</h2>
+      <p class="muted" style="margin:.5rem 0 1.2rem"><b>${U.goal}:</b> ${p.goal[li]}</p>
+      ${p.t.map((t, i) => {
+        const n = p.s + i, o = opened.has(n);
+        return `<div class="topic${o ? " open" : ""}" data-n="${n}">
+          <button class="thead" aria-expanded="${o}">
+            <span class="num">${String(n).padStart(2, "0")}</span>
+            <b>${esc(t[0])}</b>
+            <span class="dbtn">${o ? U.hide : U.details}</span>
+          </button>
+          <div class="body"><div>
+            <p class="det">${esc(t[di])}</p>
+            <div class="acts">
+              <a class="g" href="topic.html?n=${n}">📖 Full lesson →</a>
+              <a class="g" target="_blank" rel="noopener" href="https://www.google.com/search?q=${encodeURIComponent("Java " + t[0] + " tutorial")}">🔍 ${U.google} ↗</a>
+              <label><input type="checkbox" class="done"${done[n] ? " checked" : ""}> ${U.done}</label>
+            </div>
+          </div></div></div>`;
+      }).join("")}
+      <div class="ms"><b>${U.ms}:</b> ${p.ms[li]}</div>
+    </section>`).join("");
+  progress();
+}
+
+function progress() {
+  const c = Object.keys(done).length;
+  $("pct").textContent = c + " / " + TOTAL;
+  $("fill").style.width = (c / TOTAL * 100) + "%";
+}
+
+$("phases").addEventListener("click", e => {
+  if (e.target.classList.contains("done")) {
+    const n = e.target.closest(".topic").dataset.n;
+    if (e.target.checked) done[n] = 1; else delete done[n];
+    try { localStorage.setItem("javaDone", JSON.stringify(done)); } catch (err) {}
+    progress();
+    return;
+  }
+  const h = e.target.closest(".thead");
+  if (!h) return;
+  const topic = h.parentElement, n = +topic.dataset.n;
+  const o = topic.classList.toggle("open");
+  o ? opened.add(n) : opened.delete(n);
+  h.setAttribute("aria-expanded", o);
+  h.querySelector(".dbtn").textContent = o ? UI[S.lang].hide : UI[S.lang].details;
+});
+
+document.addEventListener("click", e => {
+  const b = e.target.closest(".seg button");
+  if (b) { S[b.parentElement.dataset.k] = b.dataset.v; saveS(); apply(); return; }
+  if (!$("menu").contains(e.target) && !$("mBtn").contains(e.target)) $("menu").hidden = true;
+  if (e.target.classList.contains("ov") || e.target.hasAttribute("data-close")) closeAll();
+});
+
+$("mBtn").onclick = () => { $("menu").hidden = !$("menu").hidden; $("mBtn").setAttribute("aria-expanded", !$("menu").hidden); };
+$("notesBtn").onclick = () => { $("menu").hidden = true; $("notesM").hidden = false; $("notesTxt").focus(); };
+$("setBtn").onclick = () => { $("menu").hidden = true; $("setM").hidden = false; };
+function closeAll() { $("notesM").hidden = true; $("setM").hidden = true; }
+document.addEventListener("keydown", e => { if (e.key === "Escape") { closeAll(); $("menu").hidden = true; } });
+
+try { $("notesTxt").value = localStorage.getItem("javaNotes") || ""; } catch (e) {}
+$("notesTxt").oninput = () => { try { localStorage.setItem("javaNotes", $("notesTxt").value); } catch (e) {} };
+
+apply();
+</script>
+<script src="auth.js"></script>
+</body>
+</html>

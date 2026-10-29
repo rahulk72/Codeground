@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CodeGround | Rise & Grow</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #080d18;
+            --card: #101827;
+            --border: #243248;
+            --text: #edf4ff;
+            --muted: #94a3b8;
+            --cyan: #22d3ee;
+            --purple: #a78bfa;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .ambient {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .ambient::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            top: -200px;
+            left: 10%;
+            background: #0e7490;
+            filter: blur(170px);
+            opacity: 0.20;
+        }
+
+        .ambient::after {
+            content: "";
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            top: 300px;
+            right: -200px;
+            background: #6d28d9;
+            filter: blur(180px);
+            opacity: 0.16;
+        }
+
+        .navbar {
+            background: rgba(8, 13, 24, 0.82);
+            backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(148, 163, 184, 0.13);
+        }
+
+        .glass {
+            background: rgba(16, 24, 39, 0.84);
+            border: 1px solid var(--border);
+            backdrop-filter: blur(12px);
+        }
+
+        .nav-link {
+            color: #a7b5c9;
+            transition: color 0.25s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--cyan);
+        }
+
+        .primary-btn {
+            background: linear-gradient(120deg, #06b6d4, #3b82f6);
+            color: #06111f;
+            font-weight: 800;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .primary-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 35px rgba(34, 211, 238, 0.25);
+        }
+
+        .outline-btn {
+            border: 1px solid #334155;
+            color: #e2e8f0;
+            transition: 0.25s;
+        }
+
+        .outline-btn:hover {
+            border-color: var(--cyan);
+            color: var(--cyan);
+            background: rgba(34, 211, 238, 0.05);
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            border: 1px solid rgba(34, 211, 238, 0.3);
+            background: rgba(34, 211, 238, 0.07);
+            color: #67e8f9;
+            border-radius: 999px;
+            padding: 8px 13px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: #4ade80;
+            border-radius: 50%;
+            box-shadow: 0 0 12px #4ade80;
+        }
+
+        .feature-card {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-height: 295px;
+            padding: 26px;
+            overflow: hidden;
+            border-radius: 22px;
+            background: linear-gradient(
+                145deg,
+                rgba(19, 31, 49, 0.98),
+                rgba(11, 18, 31, 0.98)
+            );
+            border: 1px solid #26364b;
+            transition:
+                transform 0.3s ease,
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .feature-card::before {
+            content: "";
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            background: var(--glow, #22d3ee);
+            filter: blur(100px);
+            opacity: 0.10;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent, #22d3ee);
+            box-shadow: 0 18px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .feature-card:hover::before {
+            opacity: 0.24;
+        }
+
+        .card-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: var(--icon-bg);
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 25px;
+            margin-bottom: 23px;
+        }
+
+        .card-arrow {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: 1px solid #334155;
+            transition: 0.25s;
+        }
+
+        .feature-card:hover .card-arrow {
+            color: #06111f;
+            background: var(--accent);
+            border-color: var(--accent);
+            transform: translateX(4px);
+        }
+
+        .mini-stat {
+            background: rgba(15, 23, 42, 0.7);
+            border: 1px solid #273449;
+            border-radius: 14px;
+            padding: 17px;
+        }
+
+        .code-window {
+            border: 1px solid #2a3a50;
+            background: rgba(9, 15, 27, 0.92);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.25);
+        }
+
+        .code-topbar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 13px 16px;
+            border-bottom: 1px solid #243248;
+        }
+
+        .code-dot {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+        }
+
+        .code-content {
+            padding: 22px;
+            color: #cbd5e1;
+            font-family: monospace;
+            font-size: 13px;
+            line-height: 2;
+            overflow-x: auto;
+        }
+
+        .keyword {
+            color: #c4b5fd;
+        }
+
+        .string {
+            color: #86efac;
+        }
+
+        .method {
+            color: #67e8f9;
+        }
+
+        .reveal {
+            animation: riseIn 0.65s ease both;
+        }
+
+        @keyframes riseIn {
+            from {
+                opacity: 0;
+                transform: translateY(18px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .menu-panel {
+            display: none;
+        }
+
+        .menu-panel.open {
+            display: block;
+            animation: riseIn 0.2s ease;
+        }
+
+        .menu-item {
+            display: block;
+            width: 100%;
+            padding: 11px 12px;
+            border-radius: 10px;
+            text-align: left;
+            color: #cbd5e1;
+            transition: 0.2s;
+        }
+
+        .menu-item:hover {
+            background: #1e293b;
+            color: #67e8f9;
+        }
+
+        .mobile-nav {
+            display: none;
+        }
+
+        @media (max-width: 700px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .mobile-nav.open {
+                display: flex;
+            }
+
+            .feature-card {
+                min-height: 270px;
+            }
+
+            .hero-title {
+                font-size: 43px !important;
+                line-height: 1.1 !important;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="ambient"></div>
+
+<!-- NAVBAR -->
+<header class="navbar sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-5 lg:px-8">
+
+        <div class="h-[78px] flex items-center justify-between gap-5">
+
+            <!-- LEFT MENU -->
+            <div class="relative">
+                <button id="menuButton"
+                        class="outline-btn rounded-xl px-4 py-2.5 flex items-center gap-2">
+                    <span>☰</span>
+                    <span class="hidden sm:inline text-sm">Menu</span>
+                </button>
+
+                <div id="menuPanel"
+                     class="menu-panel glass absolute top-14 left-0 w-64 p-3 rounded-2xl shadow-2xl">
+
+                    <p class="text-xs uppercase tracking-widest text-slate-500 px-3 py-2">
+                        Navigation
+                    </p>
+
+                    <a href="index.html" class="menu-item">⌂ &nbsp; Home</a>
+                    <a href="learn.html" class="menu-item">◈ &nbsp; Learn Java</a>
+                    <a href="practice.html" class="menu-item">⌘ &nbsp; Practice Coding</a>
+                    <a href="quiz.html" class="menu-item">◎ &nbsp; Quizzes</a>
+                    <a href="dashboard.html" class="menu-item">▦ &nbsp; Dashboard</a>
+
+                    <div class="border-t border-slate-700 my-2"></div>
+
+                    <a href="login.html" class="menu-item">⇥ &nbsp; Login / Sign up</a>
+                </div>
+            </div>
+
+            <!-- CENTER BRAND -->
+            <a href="index.html" class="text-center absolute left-1/2 -translate-x-1/2">
+                <div class="brand text-lg sm:text-xl font-bold tracking-wide">
+                    <span class="text-cyan-300">Rise</span>
+                    <span class="text-white">&</span>
+                    <span class="text-violet-300">Grow</span>
+                </div>
+
+                <p class="hidden sm:block text-[9px] tracking-[1.6px] text-slate-500 mt-1">
+                    LEARN · BUILD · LEVEL UP
+                </p>
+            </a>
+
+            <!-- RIGHT (login buttons / profile icon) -->
+            <div id="authSlot" class="flex items-center gap-2 sm:gap-3">
+                <a href="login.html"
+                   class="nav-link text-sm font-semibold hidden sm:block">
+                    Log in
+                </a>
+
+                <a href="login.html#signup"
+                   class="primary-btn rounded-xl px-4 sm:px-5 py-3 text-sm">
+                    Get Started <span class="ml-1">↗</span>
+                </a>
+            </div>
+
+        </div>
+
+        <!-- MOBILE NAV -->
+        <nav id="mobileNav" class="mobile-nav flex-col gap-1 pb-4">
+            <a href="learn.html" class="menu-item">Learn Java</a>
+            <a href="practice.html" class="menu-item">Practice Coding</a>
+            <a href="quiz.html" class="menu-item">Quizzes</a>
+            <a href="dashboard.html" class="menu-item">Dashboard</a>
+        </nav>
+
+    </div>
+</header>
+
+
+<main class="max-w-7xl mx-auto px-5 lg:px-8">
+
+    <!-- HERO SECTION -->
+    <section class="grid lg:grid-cols-2 gap-12 items-center pt-16 md:pt-24 pb-16">
+
+        <div class="reveal">
+
+            <div class="eyebrow mb-7">
+                <span class="status-dot"></span>
+                YOUR CODING JOURNEY STARTS HERE
+            </div>
+
+            <h1 class="hero-title text-5xl md:text-6xl xl:text-7xl font-bold leading-[1.08] tracking-tight">
+                Don't just learn.<br>
+                <span class="text-cyan-300">Build your</span><br>
+                <span class="text-violet-300">future.</span>
+            </h1>
+
+            <p class="text-slate-400 text-base md:text-lg leading-8 max-w-xl mt-7">
+                Learn Java from zero, sharpen your problem-solving skills,
+                challenge yourself with quizzes, and track every step of your growth.
+            </p>
+
+            <div class="flex flex-wrap gap-4 mt-8">
+                <a href="learn.html"
+                   class="primary-btn rounded-xl px-6 py-4 text-sm">
+                    Start Learning <span class="ml-2">→</span>
+                </a>
+
+                <a href="practice.html"
+                   class="outline-btn rounded-xl px-6 py-4 text-sm">
+                    Explore Practice
+                </a>
+            </div>
+
+            <div class="flex flex-wrap gap-7 mt-10 text-sm text-slate-400">
+                <span>✓ Beginner friendly</span>
+                <span>✓ Step-by-step roadmap</span>
+                <span>✓ Learn at your pace</span>
+            </div>
+
+        </div>
+
+
+        <!-- CODE PREVIEW -->
+        <div class="reveal" style="animation-delay: 0.15s;">
+
+            <div class="code-window">
+
+                <div class="code-topbar">
+                    <span class="code-dot bg-red-400"></span>
+                    <span class="code-dot bg-yellow-400"></span>
+                    <span class="code-dot bg-green-400"></span>
+
+                    <span class="text-xs text-slate-500 ml-3">
+                        HelloWorld.java
+                    </span>
+
+                    <span class="ml-auto text-xs text-cyan-300">
+                        JAVA
+                    </span>
+                </div>
+
+                <div class="code-content">
+                    <div><span class="keyword">public class</span> HelloWorld {</div>
+
+                    <div class="pl-5">
+                        <span class="keyword">public static void</span>
+                        <span class="method">main</span>(String[] args) {
+                    </div>
+
+                    <div class="pl-10">
+                        System.out.println(
+                    </div>
+
+                    <div class="pl-14">
+                        <span class="string">"Hello, CodeGround!"</span>
+                    </div>
+
+                    <div class="pl-10">);</div>
+                    <div class="pl-5">}</div>
+                    <div>}</div>
+
+                    <div class="border-t border-slate-800 mt-5 pt-4 text-green-300">
+                        ✓ Ready to build something amazing.
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- MINI STATS -->
+            <div class="grid grid-cols-3 gap-3 mt-4">
+
+                <div class="mini-stat">
+                    <p class="text-xs text-slate-500">LEARN</p>
+                    <p class="text-lg font-bold mt-1">Java</p>
+                </div>
+
+                <div class="mini-stat">
+                    <p class="text-xs text-slate-500">PRACTICE</p>
+                    <p class="text-lg font-bold mt-1">Daily</p>
+                </div>
+
+                <div class="mini-stat">
+                    <p class="text-xs text-slate-500">GROW</p>
+                    <p class="text-lg font-bold mt-1">Always</p>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- LEARNING HUB -->
+    <section id="learning-hub" class="py-14">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-9">
+
+            <div>
+                <p class="text-cyan-300 text-xs tracking-[3px] font-bold mb-3">
+                    YOUR LEARNING SPACE
+                </p>
+
+                <h2 class="text-3xl md:text-4xl font-bold">
+                    Choose your next move<span class="text-cyan-300">.</span>
+                </h2>
+
+                <p class="text-slate-400 mt-3">
+                    Four spaces. One goal: become a better developer.
+                </p>
+            </div>
+
+            <span class="text-sm text-slate-500">
+                LEARN AT YOUR OWN PACE
+            </span>
+
+        </div>
+
+
+        <!-- FOUR MAIN CARDS -->
+        <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-5">
+
+            <!-- LEARN CARD -->
+            <a href="learn.html"
+               class="feature-card"
+               style="--accent:#22d3ee; --glow:#06b6d4; --icon-bg:rgba(34,211,238,0.09);">
+
+                <div class="card-icon">⌘</div>
+
+                <div class="text-xs text-cyan-300 font-bold tracking-widest mb-3">
+                    01 / LEARN
+                </div>
+
+                <h3 class="text-2xl font-bold mb-3">
+                    Learn Java
+                </h3>
+
+                <p class="text-sm leading-6 text-slate-400">
+                    Follow a structured roadmap from your first Java program
+                    to object-oriented programming.
+                </p>
+
+                <div class="mt-5 text-xs text-slate-500">
+                    Basics · OOPs · Advanced
+                </div>
+
+                <div class="mt-auto pt-7 flex justify-between items-center">
+                    <span class="text-sm font-semibold">Explore roadmap</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+
+            </a>
+
+
+            <!-- PRACTICE CARD -->
+            <a href="practice.html"
+               class="feature-card"
+               style="--accent:#a78bfa; --glow:#7c3aed; --icon-bg:rgba(167,139,250,0.09);">
+
+                <div class="card-icon">⌨</div>
+
+                <div class="text-xs text-violet-300 font-bold tracking-widest mb-3">
+                    02 / PRACTICE
+                </div>
+
+                <h3 class="text-2xl font-bold mb-3">
+                    Coding Arena
+                </h3>
+
+                <p class="text-sm leading-6 text-slate-400">
+                    Solve coding challenges, improve logic, and move from
+                    beginner problems to harder ones.
+                </p>
+
+                <div class="mt-5 text-xs text-slate-500">
+                    Logic · Arrays · Algorithms
+                </div>
+
+                <div class="mt-auto pt-7 flex justify-between items-center">
+                    <span class="text-sm font-semibold">Enter the arena</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+
+            </a>
+
+
+            <!-- QUIZ CARD -->
+            <a href="quiz.html"
+               class="feature-card"
+               style="--accent:#fbbf24; --glow:#d97706; --icon-bg:rgba(251,191,36,0.09);">
+
+                <div class="card-icon">◎</div>
+
+                <div class="text-xs text-amber-300 font-bold tracking-widest mb-3">
+                    03 / QUIZZES
+                </div>
+
+                <h3 class="text-2xl font-bold mb-3">
+                    Quiz Zone
+                </h3>
+
+                <p class="text-sm leading-6 text-slate-400">
+                    Test your Java knowledge with topic-wise quizzes,
+                    output questions, and OOPs challenges.
+                </p>
+
+                <div class="mt-5 text-xs text-slate-500">
+                    MCQs · Output · OOPs
+                </div>
+
+                <div class="mt-auto pt-7 flex justify-between items-center">
+                    <span class="text-sm font-semibold">Test your skills</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+
+            </a>
+
+
+            <!-- DASHBOARD CARD -->
+            <a href="dashboard.html"
+               class="feature-card"
+               style="--accent:#fb7185; --glow:#e11d48; --icon-bg:rgba(251,113,133,0.09);">
+
+                <div class="card-icon">▦</div>
+
+                <div class="text-xs text-rose-300 font-bold tracking-widest mb-3">
+                    04 / DASHBOARD
+                </div>
+
+                <h3 class="text-2xl font-bold mb-3">
+                    My Progress
+                </h3>
+
+                <p class="text-sm leading-6 text-slate-400">
+                    Keep track of your learning, completed lessons,
+                    quiz results, and coding achievements.
+                </p>
+
+                <div class="mt-5 text-xs text-slate-500">
+                    Progress · Goals · History
+                </div>
+
+                <div class="mt-auto pt-7 flex justify-between items-center">
+                    <span class="text-sm font-semibold">View dashboard</span>
+                    <span class="card-arrow">↗</span>
+                </div>
+
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ROADMAP PREVIEW -->
+    <section class="py-16">
+
+        <div class="glass rounded-3xl p-7 md:p-10">
+
+            <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+                <div>
+                    <p class="text-violet-300 text-xs tracking-[3px] font-bold mb-3">
+                        YOUR NEXT CHAPTER
+                    </p>
+
+                    <h2 class="text-3xl md:text-4xl font-bold leading-tight">
+                        One concept at a time.<br>
+                        <span class="text-cyan-300">One level at a time.</span>
+                    </h2>
+
+                    <p class="text-slate-400 leading-7 mt-5">
+                        No random learning. Start with the fundamentals,
+                        build a strong OOPs foundation, and then explore
+                        collections, databases, and projects.
+                    </p>
+
+                    <a href="learn.html"
+                       class="primary-btn inline-flex rounded-xl px-6 py-4 text-sm mt-7">
+                        View Java Roadmap →
+                    </a>
+                </div>
+
+
+                <div class="space-y-3">
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-900/70 border border-slate-700">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-cyan-400/10 text-cyan-300 font-bold">
+                            01
+                        </div>
+
+                        <div class="flex-1">
+                            <h3 class="font-semibold">Foundation</h3>
+                            <p class="text-xs text-slate-500 mt-1">
+                                Syntax, variables, conditions, loops
+                            </p>
+                        </div>
+
+                        <span class="text-cyan-300">→</span>
+                    </div>
+
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-900/70 border border-slate-700">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-violet-400/10 text-violet-300 font-bold">
+                            02
+                        </div>
+
+                        <div class="flex-1">
+                            <h3 class="font-semibold">OOPs Mastery</h3>
+                            <p class="text-xs text-slate-500 mt-1">
+                                Classes, objects, inheritance, polymorphism
+                            </p>
+                        </div>
+
+                        <span class="text-violet-300">→</span>
+                    </div>
+
+
+                    <div class="flex items-center gap-4 p-4 rounded-xl bg-slate-900/70 border border-slate-700">
+                        <div class="w-10 h-10 rounded-xl flex items-center justify-center bg-amber-400/10 text-amber-300 font-bold">
+                            03
+                        </div>
+
+                        <div class="flex-1">
+                            <h3 class="font-semibold">Build & Apply</h3>
+                            <p class="text-xs text-slate-500 mt-1">
+                                Collections, JDBC, projects
+                            </p>
+                        </div>
+
+                        <span class="text-amber-300">→</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- CALL TO ACTION -->
+    <section class="py-14 text-center">
+
+        <div class="max-w-3xl mx-auto">
+
+            <p class="text-cyan-300 text-xs tracking-[3px] font-bold mb-4">
+                RISE WITH AMBITION
+            </p>
+
+            <h2 class="text-3xl md:text-5xl font-bold leading-tight">
+                Your future is built<br>
+                <span class="text-cyan-300">one line of code at a time.</span>
+            </h2>
+
+            <p class="text-slate-400 mt-5 leading-7">
+                Start your journey today. Learn something new,
+                practice what you know, and keep growing.
+            </p>
+
+            <a href="login.html#signup"
+               class="primary-btn inline-flex rounded-xl px-7 py-4 mt-7">
+                Join CodeGround ↗
+            </a>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+<!-- FOOTER -->
+<footer class="border-t border-slate-800 mt-10">
+
+    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-8 flex flex-col sm:flex-row justify-between gap-4">
+
+        <div>
+            <p class="font-bold text-lg">
+                <span class="text-cyan-300">Code</span>Ground
+            </p>
+
+            <p class="text-xs text-slate-500 mt-2">
+                Rise with Ambition. Grow Through Code.
+            </p>
+        </div>
+
+        <div class="flex flex-wrap gap-5 text-sm text-slate-400">
+            <a href="learn.html" class="nav-link">Learn</a>
+            <a href="practice.html" class="nav-link">Practice</a>
+            <a href="quiz.html" class="nav-link">Quiz</a>
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+        </div>
+
+    </div>
+
+    <div class="text-center text-xs text-slate-600 pb-6">
+        © <span id="year"></span> CodeGround. Built to help you grow.
+    </div>
+
+</footer>
+
+
+<script>
+    const menuButton = document.getElementById("menuButton");
+    const menuPanel = document.getElementById("menuPanel");
+    const mobileNav = document.getElementById("mobileNav");
+
+    menuButton.addEventListener("click", function (event) {
+        event.stopPropagation();
+
+        menuPanel.classList.toggle("open");
+
+        if (window.innerWidth <= 700) {
+            mobileNav.classList.toggle("open");
+        }
+    });
+
+    document.addEventListener("click", function (event) {
+        if (
+            !menuPanel.contains(event.target) &&
+            !menuButton.contains(event.target)
+        ) {
+            menuPanel.classList.remove("open");
+        }
+    });
+
+    document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape") {
+            menuPanel.classList.remove("open");
+            mobileNav.classList.remove("open");
+        }
+    });
+
+    document.getElementById("year").textContent =
+        new Date().getFullYear();
+</script>
+
+<script src="auth.js"></script>
+
+</body>
+</html>

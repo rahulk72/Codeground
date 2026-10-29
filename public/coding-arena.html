@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coding Arena | CodeGround</title>
+
+<style>
+:root {
+    --bg: #080d18;
+    --panel: #111827;
+    --panel2: #172235;
+    --border: #29364b;
+    --text: #e5edf8;
+    --muted: #94a3b8;
+    --cyan: #22d3ee;
+    --green: #4ade80;
+    --red: #fb7185;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    min-height: 100vh;
+}
+
+button, select {
+    cursor: pointer;
+    font: inherit;
+}
+
+button:focus-visible, select:focus-visible, textarea:focus-visible {
+    outline: 2px solid var(--cyan);
+    outline-offset: 2px;
+}
+
+.topbar {
+    height: 66px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 24px;
+    background: var(--panel);
+    border-bottom: 1px solid var(--border);
+}
+
+.brand {
+    color: var(--cyan);
+    font-size: 23px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+.top-links {
+    display: flex;
+    gap: 20px;
+}
+
+.top-links a {
+    color: var(--muted);
+    text-decoration: none;
+}
+
+.top-links a:hover {
+    color: var(--cyan);
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 290px minmax(0, 1fr);
+    min-height: calc(100vh - 66px);
+}
+
+.sidebar {
+    background: #0d1422;
+    padding: 20px 14px;
+    border-right: 1px solid var(--border);
+}
+
+.sidebar h3 {
+    margin: 8px 10px 16px;
+}
+
+.filter {
+    width: 100%;
+    padding: 10px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--text);
+    margin-bottom: 14px;
+}
+
+.question-list {
+    display: grid;
+    gap: 7px;
+}
+
+.question-item {
+    text-align: left;
+    padding: 12px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    background: transparent;
+    color: var(--muted);
+}
+
+.question-item:hover,
+.question-item.active {
+    background: var(--panel2);
+    color: var(--cyan);
+    border-color: var(--border);
+}
+
+.question-item small {
+    display: block;
+    margin-top: 6px;
+    color: var(--muted);
+}
+
+.workspace {
+    padding: 22px;
+    min-width: 0;
+}
+
+.question-header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.question-header h1 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.question-header p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+.badge {
+    display: inline-block;
+    padding: 5px 9px;
+    background: #163329;
+    color: var(--green);
+    border-radius: 6px;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+.card {
+    border: 1px solid var(--border);
+    background: var(--panel);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 18px;
+}
+
+.card-title {
+    padding: 13px 16px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-title select {
+    padding: 7px 10px;
+    border: 1px solid var(--border);
+    background: var(--panel2);
+    color: var(--text);
+    border-radius: 6px;
+}
+
+.editor {
+    display: grid;
+    grid-template-columns: 48px minmax(0, 1fr);
+    min-height: 330px;
+    background: #080d18;
+}
+
+.line-numbers {
+    padding: 16px 10px;
+    color: #64748b;
+    text-align: right;
+    white-space: pre-line;
+    line-height: 1.65;
+    font-family: Consolas, monospace;
+    user-select: none;
+    overflow: hidden;
+}
+
+#codeEditor {
+    width: 100%;
+    min-height: 330px;
+    resize: vertical;
+    padding: 16px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #dbeafe;
+    font: 14px/1.65 Consolas, monospace;
+    tab-size: 4;
+    white-space: pre;
+    overflow: auto;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 13px 16px;
+    border-top: 1px solid var(--border);
+}
+
+.btn {
+    padding: 10px 15px;
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    background: var(--panel2);
+    color: var(--text);
+}
+
+.btn:hover {
+    filter: brightness(1.15);
+}
+
+.btn-primary {
+    background: var(--cyan);
+    color: #07111f;
+    border-color: var(--cyan);
+    font-weight: bold;
+}
+
+.btn-success {
+    background: #14532d;
+    border-color: #166534;
+    color: #bbf7d0;
+}
+
+.output {
+    padding: 16px;
+    min-height: 90px;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    font: 13px/1.7 Consolas, monospace;
+    color: var(--muted);
+}
+
+.status {
+    color: var(--cyan);
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.explanation {
+    padding: 17px;
+    line-height: 1.8;
+}
+
+.explanation h3 {
+    margin: 10px 0;
+}
+
+.explanation p {
+    color: var(--muted);
+    margin-bottom: 12px;
+}
+
+.explanation pre {
+    background: #080d18;
+    padding: 12px;
+    border-radius: 8px;
+    overflow-x: auto;
+    color: var(--green);
+    margin: 10px 0;
+}
+
+.hidden {
+    display: none;
+}
+
+@media (max-width: 850px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .question-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .workspace {
+        padding: 14px;
+    }
+
+    .top-links {
+        gap: 10px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .topbar {
+        padding: 0 12px;
+    }
+
+    .brand {
+        font-size: 19px;
+    }
+
+    .top-links a:first-child {
+        display: none;
+    }
+
+    .question-list {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+    <a class="brand" href="index.html">CodeGround</a>
+
+    <nav class="top-links">
+        <a href="index.html">Home</a>
+        <a href="learn.html">Learn Java</a>
+        <a href="practice.html">Practice</a>
+    </nav>
+</header>
+
+<div class="layout">
+
+    <aside class="sidebar">
+        <h3>🧩 Practice Questions</h3>
+
+        <select id="difficultyFilter" class="filter">
+            <option value="All">All Difficulties</option>
+            <option value="Easy">Easy</option>
+            <option value="Medium">Medium</option>
+            <option value="Hard">Hard</option>
+        </select>
+
+        <div class="question-list" id="questionList"></div>
+    </aside>
+
+    <main class="workspace">
+
+        <section class="question-header">
+            <div>
+                <span class="badge" id="difficultyBadge">Easy</span>
+                <h1 id="questionTitle">Sum of Two Numbers</h1>
+                <p id="questionDescription">
+                    Write a Java program to print the sum of two integers.
+                </p>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-title">
+                <strong>💻 Code Editor</strong>
+
+                <select id="languageSelect" aria-label="Programming language">
+                    <option value="java">Java</option>
+                </select>
+            </div>
+
+            <div class="editor">
+                <div class="line-numbers" id="lineNumbers">1</div>
+
+                <textarea
+                    id="codeEditor"
+                    spellcheck="false"
+                    autocapitalize="off"
+                    autocomplete="off"
+                    aria-label="Java code editor"
+                ></textarea>
+            </div>
+
+            <div class="actions">
+                <button class="btn btn-primary" id="runBtn">
+                    ▶ Run Code
+                </button>
+
+                <button class="btn btn-success" id="submitBtn">
+                    ✓ Submit
+                </button>
+
+                <button class="btn" id="analyzeBtn">
+                    🔍 Analyze Code
+                </button>
+
+                <button class="btn" id="hintBtn">
+                    💡 Hint
+                </button>
+
+                <button class="btn" id="resetBtn">
+                    ↺ Reset
+                </button>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-title">
+                <strong>📟 Output & Results</strong>
+            </div>
+
+            <div class="output" id="output">
+                Your output and analysis will appear here.
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-title">
+                <strong>🧠 Code Assistant</strong>
+
+                <select id="explanationLanguage" aria-label="Explanation language">
+                    <option value="both">Hindi + English</option>
+                    <option value="en">English</option>
+                    <option value="hi">Hindi</option>
+                </select>
+            </div>
+
+            <div class="explanation" id="explanation">
+                <p>Select a question and click Analyze Code to inspect your code.</p>
+            </div>
+        </section>
+
+    </main>
+</div>
+
+<script>
+"use strict";
+
+const questions = [
+    {
+        id: 1,
+        title: "Sum of Two Numbers",
+        difficulty: "Easy",
+        description: "Write a Java program to print the sum of two integers.",
+        hint: "Declare two integer variables and add them using the + operator.",
+        starter: `public class Main {
+    public static void main(String[] args) {
+        int a = 10;
+        int b = 20;
+
+        System.out.println(a + b);
+    }
+}`
+    },
+    {
+        id: 2,
+        title: "Even or Odd",
+        difficulty: "Easy",
+        description: "Check whether an integer is even or odd.",
+        hint: "Use the modulo operator %. If n % 2 equals 0, the number is even.",
+        starter: `public class Main {
+    public static void main(String[] args) {
+        int n = 7;
+
+        if (n % 2 == 0) {
+            System.out.println("Even");
+        } else {
+            System.out.println("Odd");
+        }
+    }
+}`
+    },
+    {
+        id: 3,
+        title: "Largest of Two Numbers",
+        difficulty: "Easy",
+        description: "Print the larger of two integers.",
+        hint: "Compare the numbers using an if-else statement.",
+        starter: `public class Main {
+    public static void main(String[] args) {
+        int a = 15;
+        int b = 25;
+
+        if (a > b) {
+            System.out.println(a);
+        } else {
+            System.out.println(b);
+        }
+    }
+}`
+    },
+    {
+        id: 4,
+        title: "Factorial",
+        difficulty: "Medium",
+        description: "Calculate the factorial of a positive integer.",
+        hint: "Start the result at 1 and multiply it by every integer from 1 to n.",
+        starter: `public class Main {
+    public static void main(String[] args) {
+        int n = 5;
+        long factorial = 1;
+
+        for (int i = 1; i <= n; i++) {
+            factorial *= i;
+        }
+
+        System.out.println(factorial);
+    }
+}`
+    },
+    {
+        id: 5,
+        title: "Reverse a Number",
+        difficulty: "Medium",
+        description: "Reverse the digits of an integer.",
+        hint: "Use n % 10 to get the last digit and n / 10 to remove it.",
+        starter: `public class Main {
+    public static void main(String[] args) {
+        int n = 1234;
+        int reversed = 0;
+
+        while (n > 0) {
+            int digit = n % 10;
+            reversed = reversed * 10 + digit;
+            n /= 10;
+        }
+
+        System.out.println(reversed);
+    }
+}`
+    },
+    {
+        id: 6,
+        title: "Sum of Array Elements",
+        difficulty: "Hard",
+        description: "Calculate the sum of all elements in an integer array.",
+        hint: "Use a loop to visit each array element and add it to a sum variable.",
+        starter: `public class Main {
+    public static void main(String[] args) {
+        int[] numbers = {2, 4, 6, 8};
+        int sum = 0;
+
+        for (int number : numbers) {
+            sum += number;
+        }
+
+        System.out.println(sum);
+    }
+}`
+    }
+];
+
+const editor = document.getElementById("codeEditor");
+const lineNumbers = document.getElementById("lineNumbers");
+const output = document.getElementById("output");
+const explanation = document.getElementById("explanation");
+const questionList = document.getElementById("questionList");
+
+let currentQuestion = questions[0];
+
+function renderQuestions() {
+    const filter = document.getElementById("difficultyFilter").value;
+    questionList.replaceChildren();
+
+    questions
+        .filter(q => filter === "All" || q.difficulty === filter)
+        .forEach(q => {
+            const button = document.createElement("button");
+            button.className =
+                "question-item" +
+                (q.id === currentQuestion.id ? " active" : "");
+
+            const title = document.createElement("span");
+            title.textContent = q.id + ". " + q.title;
+
+            const detail = document.createElement("small");
+            detail.textContent = q.difficulty;
+
+            button.append(title, detail);
+            button.addEventListener("click", () => selectQuestion(q.id));
+            questionList.appendChild(button);
+        });
+}
+
+function selectQuestion(id) {
+    currentQuestion = questions.find(q => q.id === id);
+
+    document.getElementById("questionTitle").textContent =
+        currentQuestion.title;
+
+    document.getElementById("questionDescription").textContent =
+        currentQuestion.description;
+
+    document.getElementById("difficultyBadge").textContent =
+        currentQuestion.difficulty;
+
+    editor.value = currentQuestion.starter;
+    updateLineNumbers();
+    output.textContent = "Question selected. Analyze or run your code.";
+    explanation.innerHTML =
+        "<p>Click Analyze Code to check for common coding mistakes.</p>";
+
+    renderQuestions();
+}
+
+function updateLineNumbers() {
+    const count = editor.value.split("\n").length;
+    lineNumbers.textContent = Array.from(
+        { length: count },
+        (_, i) => i + 1
+    ).join("\n");
+}
+
+editor.addEventListener("input", updateLineNumbers);
+
+editor.addEventListener("scroll", () => {
+    lineNumbers.scrollTop = editor.scrollTop;
+});
+
+editor.addEventListener("keydown", event => {
+    if (event.key === "Tab") {
+        event.preventDefault();
+
+        const start = editor.selectionStart;
+        const end = editor.selectionEnd;
+
+        editor.setRangeText("    ", start, end, "end");
+        updateLineNumbers();
+    }
+});
+
+function showExplanation(title, english, hindi) {
+    const language = document.getElementById("explanationLanguage").value;
+    explanation.replaceChildren();
+
+    const heading = document.createElement("h3");
+    heading.textContent = title;
+    explanation.appendChild(heading);
+
+    if (language === "en" || language === "both") {
+        const en = document.createElement("p");
+        en.textContent = "🇬🇧 English: " + english;
+        explanation.appendChild(en);
+    }
+
+    if (language === "hi" || language === "both") {
+        const hi = document.createElement("p");
+        hi.textContent = "🇮🇳 Hindi: " + hindi;
+        explanation.appendChild(hi);
+    }
+}
+
+function analyzeCode() {
+    const code = editor.value;
+    const lines = code.split("\n");
+
+    // This is a basic static check, not a complete Java compiler.
+    const undeclaredPrint = code.match(/System\.out\.println\s*\(\s*([a-zA-Z_$][\w$]*)\s*\)/);
+
+    if (
+        undeclaredPrint &&
+        !new RegExp("\\b(int|long|double|float|boolean|char|String)\\s+" +
+        undeclaredPrint[1] + "\\b").test(code)
+    ) {
+        const name = undeclaredPrint[1];
+
+        output.textContent =
+            "Possible issue detected: variable '" + name +
+            "' may not have been declared.";
+
+        showExplanation(
+            "🔴 Possible Variable Error",
+            "The variable '" + name +
+            "' may be undefined. Check whether it has been declared and is in scope.",
+            "'" + name +
+            "' naam ka variable declare nahi hua ho sakta. Check karo ki variable declare kiya gaya hai aur sahi scope mein hai."
+        );
+
+        return;
+    }
+
+    if (!code.includes("class Main")) {
+        output.textContent = "Could not find 'class Main'.";
+        showExplanation(
+            "🔴 Class Declaration",
+            "This practice editor expects a class named Main.",
+            "Is practice editor mein class ka naam Main hona chahiye."
+        );
+        return;
+    }
+
+    if (!code.includes("main(")) {
+        output.textContent = "Main method was not detected.";
+        showExplanation(
+            "🔴 Main Method",
+            "Java programs normally start from the main method.",
+            "Java program aam taur par main method se start hota hai."
+        );
+        return;
+    }
+
+    const openBraces = (code.match(/{/g) || []).length;
+    const closeBraces = (code.match(/}/g) || []).length;
+    const openParens = (code.match(/\(/g) || []).length;
+    const closeParens = (code.match(/\)/g) || []).length;
+
+    if (openBraces !== closeBraces || openParens !== closeParens) {
+        output.textContent = "Possible unmatched braces or parentheses.";
+        showExplanation(
+            "🔴 Brackets Check",
+            "Opening and closing braces or parentheses do not match.",
+            "Opening aur closing braces ya parentheses ki ginti match nahi kar rahi."
+        );
+        return;
+    }
+
+    output.textContent =
+        "Basic checks passed. This does NOT guarantee that the code compiles or produces the correct output.";
+
+    showExplanation(
+        "✅ Basic Analysis Complete",
+        "The basic structure looks reasonable. Use a real Java compiler to detect compilation errors and run tests to verify the output.",
+        "Code ka basic structure theek lag raha hai. Compilation errors check karne ke liye actual Java compiler aur output verify karne ke liye test cases chahiye."
+    );
+}
+
+document.getElementById("analyzeBtn").addEventListener("click", analyzeCode);
+
+document.getElementById("hintBtn").addEventListener("click", () => {
+    showExplanation(
+        "💡 Hint",
+        currentQuestion.hint,
+        currentQuestion.hint
+    );
+});
+
+document.getElementById("resetBtn").addEventListener("click", () => {
+    editor.value = currentQuestion.starter;
+    updateLineNumbers();
+    output.textContent = "Code reset to the starter template.";
+    explanation.innerHTML = "<p>Your original starter code has been restored.</p>";
+});
+
+document.getElementById("runBtn").addEventListener("click", () => {
+    output.textContent =
+        "Java execution is not connected yet.\n\n" +
+        "To run real Java code, this page needs a secure code-execution backend or sandbox. " +
+        "The browser alone cannot compile and execute Java source code.";
+
+    showExplanation(
+        "⚙️ Java Runner Setup Required",
+        "The editor UI is ready, but actual Java compilation and execution require a backend runner.",
+        "Editor ka interface ready hai, lekin Java code ko sach mein compile aur run karne ke liye backend runner chahiye."
+    );
+});
+
+document.getElementById("submitBtn").addEventListener("click", () => {
+    output.textContent =
+        "Submission is not connected yet.\n\n" +
+        "A real submission system needs a Java runner, test cases and server-side validation.";
+
+    showExplanation(
+        "📋 Submission Setup Required",
+        "Connect a secure Java runner and test-case checker to evaluate submitted solutions.",
+        "Submitted solution check karne ke liye secure Java runner aur test-case checker connect karna hoga."
+    );
+});
+
+document.getElementById("difficultyFilter").addEventListener(
+    "change",
+    renderQuestions
+);
+
+renderQuestions();
+selectQuestion(1);
+</script>
+
+</body>
+</html>

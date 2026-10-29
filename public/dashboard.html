@@ -1,0 +1,112 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Progress | CodeGround</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="common.css">
+</head>
+<body>
+<div id="nav"></div><script src="nav.js"></script>
+<main class="wrap" id="app"></main>
+<script>
+const g = k => { try { return JSON.parse(localStorage.getItem(k)) || {}; } catch (e) { return {}; } };
+const D = g("javaDone"), Q = g("cgQuiz"), A = g("cgArena");
+const dn = Object.keys(D).length, as = Object.keys(A).length, qs = Object.entries(Q);
+const bs = qs.reduce((s, [, r]) => s + r.best, 0), bt = qs.reduce((s, [, r]) => s + r.total, 0);
+const avg = bt ? Math.round(bs / bt * 100) : 0;
+const PH = [["Phase 1: Fundamentals",1,14],["Phase 2: Arrays & Strings",15,22],["Phase 3: OOPs",23,38],["Phase 4: Core Advanced",39,56]];
+const bar = p => `<div class="bar" style="margin-top:.6rem"><i style="width:${p}%"></i></div>`;
+const stat = (l, v, s, p) => `<div class="card"><div class="muted">${l}</div><div style="font-size:1.8rem;font-weight:700">${v}</div><div class="muted">${s}</div>${bar(p)}</div>`;
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+document.getElementById("app").innerHTML = `
+<h1>My Progress</h1>
+<p class="muted">Your learning, quiz marks and coding practice in one place. Progress is saved in this browser.</p>
+<div class="grid" style="margin-top:1.2rem">
+  ${stat("Roadmap", dn + " / 56", "topics marked done", dn / 56 * 100)}
+  ${stat("Quiz average", avg + "%", qs.length + " topic(s) attempted", avg)}
+  ${stat("Coding Arena", as + " / 12", "problems solved", as / 12 * 100)}
+</div>
+<h2>Roadmap by phase</h2>
+<div class="grid">${PH.map(([n, a, b]) => {
+  const c = Object.keys(D).filter(k => +k >= a && +k <= b).length, t = b - a + 1;
+  return `<div class="card"><b>${n}</b><div class="muted">${c} / ${t} done</div>${bar(c / t * 100)}</div>`;
+}).join("")}</div>
+<h2>Quiz results</h2>
+${qs.length ? qs.map(([n, r]) => {
+  const p = Math.round(r.best / r.total * 100);
+  return `<div class="card" style="margin-top:.6rem"><div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+    <b>${esc(n)}</b><span>Best ${r.best}/${r.total} (${p}%) · Last ${r.last}/${r.total} · Attempts ${r.attempts}</span></div>${bar(p)}</div>`;
+}).join("") : '<p class="muted">No quizzes attempted yet.</p>'}
+<p style="margin-top:1.5rem"><a class="btn" href="quiz.html">Take a quiz →</a> <a class="ghost" href="practice.html">Coding Arena</a> <a class="ghost" href="learn.html">Roadmap</a></p>`;
+</script>
+<script src="auth.js"></script>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Progress | CodeGround</title>
+<style>
+:root{--bg:#080d18;--card:#101827;--bd:#26364b;--tx:#edf4ff;--mu:#94a3b8;--ac:#22d3ee;--on:#06111f}
+[data-theme=light]{--bg:#f4f7fb;--card:#fff;--bd:#d3dce8;--tx:#0f172a;--mu:#475569;--ac:#0e7490;--on:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+a{color:inherit;text-decoration:none}
+.nav{display:flex;gap:.3rem;align-items:center;padding:.7rem 1.2rem;border-bottom:1px solid var(--bd);overflow-x:auto}
+.nav a{padding:.4rem .8rem;border-radius:.6rem;color:var(--mu);white-space:nowrap;font-size:.9rem}
+.nav a:hover,.nav a.on{background:var(--card);color:var(--tx)}
+.wrap{max-width:56rem;margin:0 auto;padding:2rem 1.2rem}
+h1{margin:0 0 .5rem}h2{margin:1.8rem 0 .6rem;font-size:1.2rem}
+.card{border:1px solid var(--bd);border-radius:1rem;background:var(--card);padding:1rem 1.2rem;margin-top:.7rem}
+.grid{display:grid;gap:.7rem;grid-template-columns:repeat(auto-fill,minmax(15rem,1fr))}
+.grid .card{margin-top:0}
+.btn{display:inline-block;border-radius:.7rem;padding:.6rem 1.1rem;background:var(--ac);color:var(--on);font-weight:700}
+.gh{display:inline-block;border:1px solid var(--bd);border-radius:.7rem;padding:.55rem 1rem}
+.mu{color:var(--mu)}
+.bar{height:8px;border-radius:99px;background:var(--bd);overflow:hidden;margin-top:.6rem}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#06b6d4,#a78bfa)}
+</style>
+</head>
+<body>
+<div class="nav"><a href="index.html"><b>Rise &amp; Grow</b></a><a href="learn.html">Learn Java</a><a href="practice.html">Coding Arena</a><a href="quiz.html">Quiz Zone</a><a href="dashboard.html" class="on">My Progress</a></div>
+<main class="wrap" id="app"></main>
+
+<script>
+try{document.documentElement.dataset.theme=JSON.parse(localStorage.cgSettings||"{}").theme||"dark"}catch(e){}
+
+const g = k => { try { return JSON.parse(localStorage.getItem(k)) || {}; } catch (e) { return {}; } };
+const D = g("javaDone"), Q = g("cgQuiz"), A = g("cgArena");
+const dn = Object.keys(D).length, as = Object.keys(A).length, qs = Object.entries(Q);
+const bs = qs.reduce((s, x) => s + x[1].best, 0), bt = qs.reduce((s, x) => s + x[1].total, 0);
+const avg = bt ? Math.round(bs / bt * 100) : 0;
+const PH = [["Phase 1: Fundamentals",1,14],["Phase 2: Arrays & Strings",15,22],["Phase 3: OOPs",23,38],["Phase 4: Core Advanced",39,56]];
+const bar = p => '<div class="bar"><i style="width:' + p + '%"></i></div>';
+const stat = (l, v, s, p) => '<div class="card"><div class="mu">' + l + '</div><div style="font-size:1.8rem;font-weight:700">' + v + '</div><div class="mu">' + s + '</div>' + bar(p) + '</div>';
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+document.getElementById("app").innerHTML =
+'<h1>My Progress</h1><p class="mu">Your learning, quiz marks and coding practice in one place. Progress is saved in this browser.</p>' +
+'<div class="grid" style="margin-top:1.2rem">' +
+  stat("Roadmap", dn + " / 56", "topics marked done", dn / 56 * 100) +
+  stat("Quiz average", avg + "%", qs.length + " topic(s) attempted", avg) +
+  stat("Coding Arena", as + " / 12", "problems solved", as / 12 * 100) +
+'</div><h2>Roadmap by phase</h2><div class="grid">' +
+PH.map(x => {
+  const c = Object.keys(D).filter(k => +k >= x[1] && +k <= x[2]).length, t = x[2] - x[1] + 1;
+  return '<div class="card"><b>' + x[0] + '</b><div class="mu">' + c + ' / ' + t + ' done</div>' + bar(c / t * 100) + '</div>';
+}).join("") + '</div><h2>Quiz results</h2>' +
+(qs.length ? qs.map(x => {
+  const n = x[0], r = x[1], p = Math.round(r.best / r.total * 100);
+  return '<div class="card"><div style="display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap"><b>' + esc(n) + '</b>' +
+    '<span>Best ' + r.best + '/' + r.total + ' (' + p + '%) · Last ' + r.last + '/' + r.total + ' · Attempts ' + r.attempts + '</span></div>' + bar(p) + '</div>';
+}).join("") : '<p class="mu">No quizzes attempted yet.</p>') +
+'<p style="margin-top:1.5rem"><a class="btn" href="quiz.html">Take a quiz →</a> <a class="gh" href="practice.html">Coding Arena</a> <a class="gh" href="learn.html">Roadmap</a></p>';
+</script>
+</body>
+</html>

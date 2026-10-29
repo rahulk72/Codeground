@@ -1,0 +1,8 @@
+*.class
+sessions.txt
+users.txt
+.env
+.env.*
+!.env.example
+.vscode/
+.idea/

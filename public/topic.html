@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lesson | CodeGround</title>
+<style>
+:root{--bg:#080d18;--card:#101827;--bd:#26364b;--tx:#edf4ff;--mu:#94a3b8;--ac:#22d3ee;--ed:#0a111e;--fs:16px}
+[data-theme=light]{--bg:#f4f7fb;--card:#fff;--bd:#d3dce8;--tx:#0f172a;--mu:#475569;--ac:#0e7490;--ed:#f1f5f9}
+*{box-sizing:border-box}
+html{font-size:var(--fs);scroll-behavior:smooth}
+body{margin:0;font-family:system-ui,'Segoe UI',sans-serif;background:var(--bg);color:var(--tx)}
+a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}
+.hdr{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--bd);background:var(--bg)}
+.hdr>div{max-width:52rem;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
+.wrap{max-width:52rem;margin:0 auto;padding:2rem 1.25rem 4rem}
+.top{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;justify-content:center;width:2.8rem;height:2.8rem;border-radius:.8rem;background:var(--c);color:#06111f;font-weight:800}
+h1{font-size:2.2rem;margin:1rem 0 0;line-height:1.15}
+h2{font-size:1.3rem;margin:2.5rem 0 .7rem;color:var(--c);scroll-margin-top:5rem}
+p,li{line-height:1.85}
+ul{padding-left:1.3rem;margin:.8rem 0}li{margin-bottom:.55rem}
+.seg{display:inline-flex;gap:.25rem;padding:.25rem;border:1px solid var(--bd);border-radius:.75rem;background:var(--card)}
+.seg button{padding:.4rem .9rem;border:0;border-radius:.5rem;background:none;font-size:.85rem;font-weight:600;color:var(--mu)}
+.seg button.on{background:var(--c);color:#06111f}
+.def{margin-top:1.4rem;padding:1.1rem 1.3rem;border:1px solid var(--c);border-radius:1rem;background:color-mix(in srgb,var(--c) 9%,transparent)}
+.def b{display:block;font-size:.75rem;letter-spacing:.1em;color:var(--c);margin-bottom:.4rem}
+.toc{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1.4rem}
+.toc a{border:1px solid var(--bd);border-radius:99px;padding:.35rem .8rem;font-size:.82rem;color:var(--mu)}
+.toc a:hover{border-color:var(--c);color:var(--tx)}
+.cw{position:relative;margin:1rem 0}
+pre{margin:0;padding:1.1rem;border:1px solid var(--bd);border-radius:.9rem;background:var(--ed);overflow-x:auto;font:13.5px/1.7 Consolas,'Courier New',monospace}
+.cp{position:absolute;top:.6rem;right:.6rem}
+.gh{border:1px solid var(--bd);border-radius:.7rem;padding:.45rem .9rem;background:var(--card);font-size:.85rem}
+.gh:hover{border-color:var(--c)}
+.tip{margin:1rem 0;padding:1rem 1.2rem;border-left:3px solid var(--c);border-radius:0 .8rem .8rem 0;background:color-mix(in srgb,var(--c) 10%,transparent)}
+.bar{display:flex;gap:.7rem;flex-wrap:wrap;align-items:center;margin-top:2.5rem;padding-top:1.5rem;border-top:1px solid var(--bd)}
+.nv{display:flex;justify-content:space-between;gap:.7rem;margin-top:1.5rem}
+</style>
+</head>
+<body>
+<header class="hdr"><div>
+  <a href="learn.html" class="gh">← Roadmap</a>
+  <a href="index.html" style="font-weight:700"><span style="color:var(--ac)">Rise</span> &amp; <span style="color:#a78bfa">Grow</span></a>
+  <div id="authSlot"><a href="login.html" class="gh">Log in</a></div>
+</div></header>
+<main class="wrap" id="app"></main>
+
+<script src="topics.js"></script>
+<script>
+const N = ["Introduction to Java","JDK, JRE & JVM","First Java Program","Variables","Data Types","Type Casting","Operators","User Input","If-Else","Switch","Loops","Pattern Printing","Methods","Basic Practice",
+"One-Dimensional Arrays","Two-Dimensional Arrays","Array Traversal & Searching","Basic Array Sorting","String Class","String Methods","StringBuilder & StringBuffer","Array and String Problems",
+"Classes & Objects","Constructors","this Keyword","Encapsulation","Inheritance","super Keyword","Method Overloading","Method Overriding","Polymorphism","Abstraction","Abstract Classes","Interfaces","Access Modifiers","Static & Final","Packages","OOPs Mini Project",
+"Exception Handling","Try, Catch & Finally","Custom Exceptions","Wrapper Classes","Generics","Collections Framework","ArrayList & LinkedList","HashSet & TreeSet","HashMap & TreeMap","Iterator","Comparable & Comparator","File Handling","Serialization","Multithreading","Synchronization","Lambda Expressions","Stream API","Date & Time API"];
+const UI = {
+ en: {def: "DEFINITION", cp: "Copy", done: "Mark as done", g: "Search on Google", soon: "The full lesson for this topic is coming soon.", prev: "← Previous", next: "Next →", ex: "Example"},
+ hi: {def: "DEFINITION", cp: "Copy karo", done: "Done mark karo", g: "Google par dekho", soon: "Is topic ka poora lesson jaldi aayega.", prev: "← Pichla", next: "Agla →", ex: "Example"}
+};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+let S = {theme: "dark", size: "m", lang: "en"}, done = {}, codes = [];
+try { Object.assign(S, JSON.parse(localStorage.cgSettings || "{}")); done = JSON.parse(localStorage.javaDone || "{}"); } catch (e) {}
+const n = Math.min(56, Math.max(1, parseInt(new URLSearchParams(location.search).get("n")) || 1));
+const col = n <= 14 ? "#22d3ee" : n <= 22 ? "#38bdf8" : n <= 38 ? "#a78bfa" : "#fbbf24";
+document.documentElement.dataset.theme = S.theme;
+document.documentElement.style.setProperty("--fs", {s: "14px", m: "16px", l: "18px"}[S.size] || "16px");
+document.title = N[n - 1] + " | CodeGround";
+
+function codeBox(c) { codes.push(c); return '<div class="cw"><button class="gh cp" data-c="' + (codes.length - 1) + '">' + UI[S.lang].cp + '</button><pre>' + esc(c) + '</pre></div>'; }
+
+function body(t, l, U) {
+  if (!t) return '<div class="tip">' + U.soon + '</div>';
+  if (t.secs) {                                   // new format
+    const i = l === "en" ? 0 : 1;
+    return '<div class="def"><b>' + U.def + '</b>' + esc(t.def[i]) + '</div>' +
+      '<nav class="toc">' + t.secs.map((s, k) => '<a href="#s' + k + '">' + esc(s.h[i]) + '</a>').join("") + '</nav>' +
+      t.secs.map((s, k) => '<h2 id="s' + k + '">' + esc(s.h[i]) + '</h2>' +
+        (s.p ? '<p>' + esc(s.p[i]) + '</p>' : "") +
+        (s.pts ? '<ul>' + s.pts[i].map(x => '<li>' + esc(x) + '</li>').join("") + '</ul>' : "") +
+        (s.code ? codeBox(s.code) : "") +
+        (s.tip ? '<div class="tip">💡 ' + esc(s.tip[i]) + '</div>' : "")).join("");
+  }
+  return '<p>' + esc(t[l].intro) + '</p><ul>' + t[l].pts.map(x => '<li>' + esc(x) + '</li>').join("") + '</ul>' + codeBox(t.code) + (t[l].tip ? '<div class="tip">💡 ' + esc(t[l].tip) + '</div>' : "");  // old format
+}
+
+function draw() {
+  const l = S.lang, U = UI[l]; codes = [];
+  const t = typeof TOPICS !== "undefined" && TOPICS[n];
+  $("app").style.setProperty("--c", col);
+  $("app").innerHTML =
+    '<div class="top"><span class="badge">' + String(n).padStart(2, "0") + '</span>' +
+    '<div class="seg"><button data-l="en" class="' + (l === "en" ? "on" : "") + '">English</button><button data-l="hi" class="' + (l === "hi" ? "on" : "") + '">Hinglish</button></div></div>' +
+    '<h1>' + esc(N[n - 1]) + '</h1>' + body(t, l, U) +
+    '<div class="bar"><a class="gh" target="_blank" rel="noopener" href="https://www.google.com/search?q=' + encodeURIComponent("Java " + N[n - 1] + " tutorial") + '">🔍 ' + U.g + ' ↗</a>' +
+    '<label style="margin-left:auto"><input type="checkbox" id="dn"' + (done[n] ? " checked" : "") + '> ' + U.done + '</label></div>' +
+    '<div class="nv">' + (n > 1 ? '<a class="gh" href="topic.html?n=' + (n - 1) + '">' + U.prev + '</a>' : "<span></span>") +
+    (n < 56 ? '<a class="gh" href="topic.html?n=' + (n + 1) + '">' + U.next + '</a>' : "") + '</div>';
+  document.querySelectorAll(".seg button").forEach(b => b.onclick = () => {
+    S.lang = b.dataset.l;
+    try { const o = JSON.parse(localStorage.cgSettings || "{}"); o.lang = S.lang; localStorage.cgSettings = JSON.stringify(o); } catch (e) {}
+    draw();
+  });
+  document.querySelectorAll(".cp").forEach(b => b.onclick = () => { navigator.clipboard.writeText(codes[+b.dataset.c]); b.textContent = "✓"; });
+  $("dn").onchange = e => {
+    if (e.target.checked) done[n] = 1; else delete done[n];
+    try { localStorage.javaDone = JSON.stringify(done); } catch (err) {}
+  };
+}
+draw();
+</script>
+<script src="auth.js"></script>
+</body>
+</html>
