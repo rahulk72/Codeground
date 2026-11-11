@@ -4,158 +4,254 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Coding Arena | CodeGround</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#080d18;--card:#101827;--bd:#26364b;--tx:#edf4ff;--mu:#94a3b8;--ac:#22d3ee;--on:#06111f}
-[data-theme=light]{--bg:#f4f7fb;--card:#fff;--bd:#d3dce8;--tx:#0f172a;--mu:#475569;--ac:#0e7490;--on:#fff}
+:root{--bg:#080d18;--card:#101827;--bd:#26364b;--tx:#edf4ff;--mu:#94a3b8;--ac:#22d3ee;--on:#06111f;--ed:#0a111e;--E:#4ade80;--M:#fbbf24;--H:#fb7185}
+[data-theme=light]{--bg:#f4f7fb;--card:#fff;--bd:#d3dce8;--tx:#0f172a;--mu:#475569;--ac:#0e7490;--on:#fff;--ed:#f8fafc;--E:#16a34a;--M:#d97706;--H:#e11d48}
 *{box-sizing:border-box}
-body{margin:0;font-family:system-ui,sans-serif;background:var(--bg);color:var(--tx)}
-a{color:inherit;text-decoration:none}button{font:inherit;color:inherit;cursor:pointer}
-.nav{display:flex;gap:.3rem;align-items:center;padding:.7rem 1.2rem;border-bottom:1px solid var(--bd);overflow-x:auto}
-.nav a{padding:.4rem .8rem;border-radius:.6rem;color:var(--mu);white-space:nowrap;font-size:.9rem}
-.nav a:hover,.nav a.on{background:var(--card);color:var(--tx)}
-.wrap{max-width:56rem;margin:0 auto;padding:2rem 1.2rem}
-h1{margin:0 0 .5rem;font-size:1.8rem}
-.card{display:block;width:100%;text-align:left;border:1px solid var(--bd);border-radius:1rem;background:var(--card);padding:.9rem 1.2rem;margin-top:.6rem}
-button.card:hover{border-color:var(--ac)}
-.gh{border:1px solid var(--bd);border-radius:.7rem;padding:.45rem .9rem;background:none}
-.gh.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
-.btn{border:0;border-radius:.7rem;padding:.55rem 1.1rem;background:var(--ac);color:var(--on);font-weight:700}
+body{margin:0;font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--tx)}
+h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0}
+a{color:inherit;text-decoration:none}button,input{font:inherit;color:inherit}button{cursor:pointer}
+[hidden]{display:none!important}
+.hdr{position:sticky;top:0;z-index:50;border-bottom:1px solid var(--bd);background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(16px)}
+.hdr>div{max-width:72rem;margin:0 auto;padding:.7rem 1.25rem;display:flex;align-items:center;gap:1rem}
+.brand{font-family:'Space Grotesk';font-weight:700;white-space:nowrap}
+.hdr nav{display:flex;gap:.25rem;overflow-x:auto;flex:1;justify-content:flex-end}
+.hdr nav a{padding:.45rem .85rem;border-radius:.6rem;color:var(--mu);white-space:nowrap;font-size:.9rem}
+.hdr nav a:hover,.hdr nav a.on{color:var(--ac);background:color-mix(in srgb,var(--ac) 10%,transparent)}
+.wrap{max-width:72rem;margin:0 auto;padding:1.5rem 1.25rem 4rem}
+.tabs{display:flex;gap:.4rem;flex-wrap:wrap;margin-bottom:1.2rem}
+.tab{padding:.6rem 1.1rem;border:1px solid var(--bd);border-radius:.8rem;background:var(--card);font-weight:600;color:var(--mu)}
+.tab.on{background:var(--ac);color:var(--on);border-color:var(--ac)}
+.eye{display:inline-flex;align-items:center;gap:.5rem;padding:.4rem .8rem;border-radius:99px;border:1px solid color-mix(in srgb,var(--ac) 35%,transparent);background:color-mix(in srgb,var(--ac) 8%,transparent);color:var(--ac);font-size:.72rem;font-weight:700;letter-spacing:.08em}
+.sd{width:7px;height:7px;border-radius:50%;background:#4ade80;box-shadow:0 0 12px #4ade80}
+.hero h1{font-size:clamp(2.1rem,6vw,3.4rem);line-height:1.08;margin:1rem 0 .7rem}
+.g{background:linear-gradient(120deg,#22d3ee,#a78bfa);-webkit-background-clip:text;background-clip:text;color:transparent}
 .mu{color:var(--mu)}
-.lv{font-size:.72rem;font-weight:700;padding:.15rem .6rem;border-radius:99px;border:1px solid currentColor}
-.Easy{color:#22c55e}.Medium{color:#f59e0b}.Hard{color:#ef4444}
-.fl{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
-.row{display:flex;gap:.6rem;flex-wrap:wrap;margin:1rem 0}
-pre{margin:.6rem 0;padding:.9rem;border:1px solid var(--bd);border-radius:.7rem;background:var(--card);overflow-x:auto;font-size:.85rem;white-space:pre-wrap}
-textarea{display:block;width:100%;margin:.4rem 0 1rem;padding:.8rem;border:1px solid var(--bd);border-radius:.8rem;background:var(--card);color:var(--tx);font:14px/1.5 Consolas,monospace;resize:vertical}
-#code{height:18rem;tab-size:2}
-.res{min-height:4rem}
+.stats{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fit,minmax(11rem,1fr));margin-top:1.4rem}
+.st{padding:.9rem 1.1rem;border:1px solid var(--bd);border-radius:1rem;background:var(--card)}
+.st b{font-family:'Space Grotesk';font-size:1.5rem}
+.bar{height:6px;border-radius:99px;background:var(--bd);overflow:hidden;margin-top:.5rem}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#06b6d4,#a78bfa)}
+.fl{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin:1.6rem 0 1rem}
+.fl .sep{width:1px;height:1.4rem;background:var(--bd);margin:0 .3rem}
+.gh{border:1px solid var(--bd);border-radius:.7rem;padding:.45rem .9rem;background:none;font-size:.85rem;transition:.2s}
+.gh:hover{border-color:var(--ac);color:var(--ac)}
+.gh.on{background:var(--ac);color:var(--on);border-color:var(--ac);font-weight:700}
+.btn{border:0;border-radius:.7rem;padding:.55rem 1.1rem;background:linear-gradient(120deg,#06b6d4,#3b82f6);color:#06111f;font-weight:800}
+#q{background:var(--card);border:1px solid var(--bd);border-radius:.7rem;padding:.45rem .9rem;min-width:11rem;outline:0}
+#q:focus{border-color:var(--ac)}
+.pgrid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fill,minmax(17rem,1fr))}
+.pc{position:relative;overflow:hidden;text-align:left;padding:1.2rem;border:1px solid var(--bd);border-radius:1.1rem;background:var(--card);transition:.25s}
+.pc::before{content:"";position:absolute;top:-70px;right:-70px;width:150px;height:150px;border-radius:50%;background:var(--lc);filter:blur(70px);opacity:.14}
+.pc:hover{transform:translateY(-4px);border-color:var(--lc)}
+.pn{display:inline-flex;align-items:center;justify-content:center;min-width:2.4rem;height:2.4rem;padding:0 .4rem;border-radius:.7rem;border:1px solid var(--lc);color:var(--lc);font-family:'Space Grotesk';font-weight:700}
+.pc h3{font-size:1.1rem;margin:.8rem 0 .3rem}
+.lv{font-size:.7rem;font-weight:700;padding:.15rem .6rem;border-radius:99px;border:1px solid var(--lc);color:var(--lc)}
+.ok{color:#22c55e;font-weight:700;font-size:.85rem}
+.tb{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.split{display:grid;gap:1.1rem;margin-top:1rem;grid-template-columns:1fr}
+@media(min-width:1000px){.split{grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr)}}
+.panel{padding:1.3rem;border:1px solid var(--bd);border-radius:1.1rem;background:var(--card);align-self:start}
+.panel h2{font-size:1.5rem;margin:.8rem 0}
+.sp{white-space:pre-wrap;margin:0;padding:.9rem;border:1px solid var(--bd);border-radius:.8rem;background:var(--ed);font:inherit;font-size:.9rem;line-height:1.7}
+.row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.9rem}
+pre.sol{margin:.8rem 0 0;padding:.9rem;border:1px solid var(--bd);border-radius:.8rem;background:var(--ed);overflow:auto;font:12px/1.6 Consolas,monospace}
+.ide{border:1px solid var(--bd);border-radius:1.1rem;background:var(--card);overflow:hidden;box-shadow:0 25px 70px rgba(0,0,0,.25)}
+.ide.max{position:fixed;inset:0;z-index:1000;border-radius:0;display:flex;flex-direction:column;background:var(--bg)}
+.itop{display:flex;align-items:center;gap:.4rem;padding:.65rem 1rem;border-bottom:1px solid var(--bd);flex-wrap:wrap}
+.itop i{width:10px;height:10px;border-radius:50%}
+.itop span{font-size:.78rem;color:var(--mu);margin-left:.4rem}
+.itop .act{margin-left:auto;display:flex;gap:.4rem}
+.ibody{display:block}
+.ide.max .ibody{display:grid;grid-template-columns:1.4fr 1fr;flex:1;min-height:0}
+.ied{display:grid;grid-template-columns:auto 1fr;height:22rem;background:var(--ed);font:13.5px/1.65 Consolas,'Courier New',monospace}
+.ide.max .ied{height:auto;min-height:0}
+#gut{margin:0;padding:.9rem .7rem .9rem 1rem;color:var(--mu);opacity:.55;text-align:right;overflow:hidden;font:inherit;border-right:1px solid var(--bd);user-select:none}
+#code{border:0;outline:0;resize:none;padding:.9rem 1rem;background:transparent;color:var(--tx);font:inherit;white-space:pre;overflow:auto;tab-size:4}
+.iside{padding:.9rem 1rem;border-top:1px solid var(--bd);overflow:auto}
+.ide.max .iside{border-top:0;border-left:1px solid var(--bd)}
+.iside label{font-size:.7rem;color:var(--mu);font-weight:700;letter-spacing:.08em}
+#inp{display:block;width:100%;height:3.8rem;margin:.3rem 0 .8rem;padding:.5rem .7rem;border:1px solid var(--bd);border-radius:.6rem;background:var(--ed);color:var(--tx);font:12.5px Consolas,monospace;resize:vertical}
+.acts{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:.8rem;align-items:center}
+.hot{border-color:var(--M)!important;color:var(--M)!important;animation:pl 1.2s infinite}
+@keyframes pl{50%{box-shadow:0 0 14px rgba(251,191,36,.45)}}
+.out{min-height:3.5rem;font-size:.85rem}
+.out pre{margin:0;white-space:pre-wrap;font:12.5px/1.6 Consolas,monospace}
+.err{color:var(--H)}
+.sum{font-family:'Space Grotesk';font-size:1.05rem;font-weight:700;margin-bottom:.5rem}
+.sum.pass{color:#22c55e}.sum.fail{color:var(--H)}
+.tc{padding:.5rem .75rem;margin-top:.4rem;border-radius:.6rem;border:1px solid var(--bd);font-size:.82rem}
+.tc.p{border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.08)}
+.tc.f{border-color:rgba(251,113,133,.5);background:rgba(251,113,133,.08)}
+.tc .d{margin-top:.35rem;font:12px/1.6 Consolas,monospace;color:var(--mu);white-space:pre-wrap}
+.expl{margin-top:.8rem;padding:.8rem .9rem;border:1px solid rgba(251,113,133,.55);border-radius:.9rem;background:rgba(251,113,133,.07);font-size:.86rem;line-height:1.7}
+.expl p{margin:.4rem 0 0}.expl .eh{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap}
+.expl code,#aitext code{background:var(--ed);padding:1px 5px;border-radius:4px;font-family:Consolas,monospace;color:var(--ac)}
+.aibox{margin-top:.9rem;border:1px solid rgba(167,139,250,.5);border-radius:.9rem;background:rgba(167,139,250,.07);padding:.8rem}
+#aitext{margin-top:.7rem;font-size:.88rem;line-height:1.75;white-space:pre-wrap}
+#aitext pre{margin:.5rem 0;padding:.6rem;border-radius:.6rem;background:var(--ed);font:12px Consolas,monospace;overflow:auto;white-space:pre}
 </style>
 </head>
 <body>
-<div class="nav"><a href="index.html"><b>Rise &amp; Grow</b></a><a href="learn.html">Learn Java</a><a href="practice.html" class="on">Coding Arena</a><a href="quiz.html">Quiz Zone</a><a href="dashboard.html">My Progress</a></div>
-<main class="wrap" id="app"></main>
+<header class="hdr"><div>
+  <a href="index.html" class="brand"><span style="color:var(--ac)">Rise</span> &amp; <span style="color:#a78bfa">Grow</span></a>
+  <nav><a href="index.html">Home</a><a href="learn.html">Learn Java</a><a href="practice.html" class="on">Coding Arena</a><a href="quiz.html">Quiz Zone</a><a href="dashboard.html">My Progress</a></nav>
+  <div id="authSlot"></div>
+</div></header>
+<main class="wrap"><div class="tabs" id="tabs"></div><div id="view"></div></main>
 
+<script src="problems.js"></script>
+<script src="problems2.js"></script>
+<script src="projects.js"></script>
+<script src="errors.js"></script>
 <script>
 try{document.documentElement.dataset.theme=JSON.parse(localStorage.cgSettings||"{}").theme||"dark"}catch(e){}
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+const fmt=s=>esc(s).replace(/`([^`]+)`/g,"<code>$1</code>");
+const norm=s=>s.replace(/\r/g,"").split("\n").map(l=>l.trimEnd()).join("\n").trim();
+const ld=k=>{try{return JSON.parse(localStorage.getItem(k)||"{}")}catch(e){return{}}};
+const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+const PH=["","Phase 1","Phase 2","Phase 3","Phase 4"], LC={Easy:"var(--E)",Medium:"var(--M)",Hard:"var(--H)"};
+const DEFAULT=`public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello, CodeGround!");
+    }
+}`;
+const TPL=b=>"import java.util.*;\n\npublic class Main {\n    public static void main(String[] args) {\n        Scanner sc = new Scanner(System.in);\n"+b+"\n    }\n}";
+const full=p=>p[6].includes("class ")?p[6]:TPL(p[6].split("\n").map(l=>"        "+l).join("\n"));
 
-const TPL = body => "import java.util.*;\n\npublic class Main {\n  public static void main(String[] args) {\n    Scanner sc = new Scanner(System.in);\n" + body + "\n  }\n}";
-const ind = b => b.split("\n").map(l => "    " + l).join("\n");
+let A=ld("cgArena"), J=ld("cgProj"), tab=localStorage.getItem("cgTab")||"problems";
+let F={ph:0,lv:"All",st:"All",q:""}, it=null, sh={h:0,s:0}, lastOut="";
 
-// [title, level, statement, hint, solution body, tests [[input, expected output], ...]]
-const P = [
-["Even or Odd","Easy","Read an integer n and print Even or Odd.\nInput: n\nOutput: Even or Odd","Use the remainder operator %.",
-"int n=sc.nextInt();\nSystem.out.println(n%2==0?\"Even\":\"Odd\");",[["7","Odd"],["10","Even"],["0","Even"]]],
-["Sum of Digits","Easy","Print the sum of the digits of n.\nInput: n (positive)\nOutput: the sum","n % 10 is the last digit, n / 10 removes it.",
-"int n=sc.nextInt(),s=0;\nwhile(n>0){s+=n%10;n/=10;}\nSystem.out.println(s);",[["1234","10"],["9","9"],["1005","6"]]],
-["Factorial","Easy","Print n! (n is from 0 to 20).\nInput: n\nOutput: n!","Multiply from 2 to n. Use long.",
-"int n=sc.nextInt();long f=1;\nfor(int i=2;i<=n;i++)f*=i;\nSystem.out.println(f);",[["5","120"],["0","1"],["20","2432902008176640000"]]],
-["Reverse a Number","Easy","Print n with its digits reversed.\nInput: n (positive)\nOutput: reversed number (1200 gives 21)","Build r = r * 10 + last digit.",
-"int n=sc.nextInt(),r=0;\nwhile(n>0){r=r*10+n%10;n/=10;}\nSystem.out.println(r);",[["1234","4321"],["1200","21"],["7","7"]]],
-["Fibonacci Series","Easy","Print the first n Fibonacci numbers separated by spaces.\nInput: n\nOutput: for n=6, 0 1 1 2 3 5","Keep two variables a and b and update them each step.",
-"int n=sc.nextInt(),a=0,b=1;\nStringBuilder sb=new StringBuilder();\nfor(int i=0;i<n;i++){sb.append(a).append(i<n-1?\" \":\"\");int c=a+b;a=b;b=c;}\nSystem.out.println(sb);",[["6","0 1 1 2 3 5"],["1","0"],["2","0 1"]]],
-["Palindrome String","Easy","Check if a word reads the same backwards.\nInput: one word\nOutput: Palindrome or Not palindrome","Compare the string with its reverse.",
-"String s=sc.next();\nboolean ok=s.equals(new StringBuilder(s).reverse().toString());\nSystem.out.println(ok?\"Palindrome\":\"Not palindrome\");",[["madam","Palindrome"],["hello","Not palindrome"],["a","Palindrome"]]],
-["Prime Check","Medium","Check if n is prime.\nInput: n\nOutput: Prime or Not prime","Test divisors only up to the square root of n. 1 is not prime.",
-"int n=sc.nextInt();boolean p=n>1;\nfor(int i=2;(long)i*i<=n;i++)if(n%i==0){p=false;break;}\nSystem.out.println(p?\"Prime\":\"Not prime\");",[["29","Prime"],["1","Not prime"],["100","Not prime"],["2","Prime"]]],
-["Largest in Array","Medium","Print the largest number.\nInput: first line n, second line n integers\nOutput: the largest","Start with the first element and update when you find a bigger one.",
-"int n=sc.nextInt(),m=sc.nextInt();\nfor(int i=1;i<n;i++){int x=sc.nextInt();if(x>m)m=x;}\nSystem.out.println(m);",[["3\n3 9 2","9"],["4\n-5 -2 -9 -7","-2"],["1\n5","5"]]],
-["Count Vowels","Medium","Count the vowels (a, e, i, o, u, any case) in a word.\nInput: one word\nOutput: the count","Convert to lowercase and test each character with indexOf.",
-"String s=sc.nextLine().toLowerCase();int c=0;\nfor(char ch:s.toCharArray())if(\"aeiou\".indexOf(ch)>=0)c++;\nSystem.out.println(c);",[["Education","5"],["rhythm","0"],["AEIOU","5"]]],
-["Second Largest","Medium","Print the second largest distinct number.\nInput: first line n, second line n integers\nOutput: the second largest distinct value","Track the largest and second largest in one pass, without sorting.",
-"int n=sc.nextInt(),f=Integer.MIN_VALUE,s=Integer.MIN_VALUE;\nfor(int i=0;i<n;i++){int x=sc.nextInt();\n  if(x>f){s=f;f=x;}else if(x>s&&x!=f)s=x;}\nSystem.out.println(s);",[["3\n4 9 7","7"],["5\n10 10 8 8 5","8"],["4\n1 2 3 4","3"]]],
-["Anagram Check","Hard","Check if two words are anagrams.\nInput: two words on two lines\nOutput: Anagram or Not anagram","Sort the characters of both words and compare them.",
-"char[] x=sc.next().toCharArray(),y=sc.next().toCharArray();\nArrays.sort(x);Arrays.sort(y);\nSystem.out.println(Arrays.equals(x,y)?\"Anagram\":\"Not anagram\");",[["listen\nsilent","Anagram"],["abc\nabd","Not anagram"],["a\na","Anagram"]]],
-["Binary Search","Hard","Find the index of key in a sorted array, or -1.\nInput: line 1 n, line 2 n sorted integers, line 3 key\nOutput: index (starting at 0) or -1","Halve the search range each step using lo, hi and mid.",
-"int n=sc.nextInt();int[] a=new int[n];\nfor(int i=0;i<n;i++)a[i]=sc.nextInt();\nint k=sc.nextInt(),lo=0,hi=n-1,idx=-1;\nwhile(lo<=hi){int m=(lo+hi)/2;\n  if(a[m]==k){idx=m;break;}else if(a[m]<k)lo=m+1;else hi=m-1;}\nSystem.out.println(idx);",[["5\n1 3 5 7 9\n7","3"],["5\n1 3 5 7 9\n4","-1"],["1\n2\n2","0"]]]
-];
+const pItem=i=>{const p=PROBLEMS[i];return{type:"p",i:i,key:"cgC_"+p[2],title:p[2],tag:p[1]+" · "+PH[p[0]],lv:p[3],stmt:p[4],hint:p[5],sol:full(p),tests:p[7],task:p[4],in0:p[7][0][0],code0:TPL("        // write your code here")}};
+const jItem=i=>{const j=PROJECTS[i];return{type:"j",i:i,key:"cgJ_"+j[0],title:j[0],tag:"Project",lv:j[1],stmt:j[2]+"\n\nFeatures to build:\n"+j[3].map(x=>"• "+x).join("\n"),hint:j[4],sol:null,tests:null,task:j[2],in0:j[6],code0:j[5]}};
+const playItem=()=>({type:"play",key:"cgC_play",title:"Playground",tag:"Free IDE",lv:"",stmt:"Yahan kuch bhi Java likho aur Run karo. Class ka naam Main hi rakhna. Input chahiye to neeche Custom Input me likho.",hint:"",sol:null,tests:null,task:"Free practice",in0:"",code0:DEFAULT});
 
-const $ = id => document.getElementById(id);
-const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
-const norm = s => s.replace(/\r/g,"").split("\n").map(l => l.trimEnd()).join("\n").trim();
-let A = {}; try { A = JSON.parse(localStorage.getItem("cgArena") || "{}"); } catch (e) {}
-let flt = "All", cur = -1, sh = {h: 0, s: 0};
+function renderTabs(){$("tabs").innerHTML=[["problems","🧩 Problems"],["projects","🚀 Projects"],["play","⌨ Playground"]].map(t=>'<button class="tab'+(tab===t[0]?" on":"")+'" data-tab="'+t[0]+'">'+t[1]+'</button>').join("")}
+function showTab(t){tab=t;it=null;localStorage.setItem("cgTab",t);document.body.style.overflow="";renderTabs();if(t==="problems")listP();else if(t==="projects")listJ();else openItem(playItem())}
 
-function list() {
-  cur = -1;
-  $("app").innerHTML = '<h1>Coding Arena</h1><p class="mu">Write real Java, run it, and submit against test cases. Solved: ' + Object.keys(A).length + ' / ' + P.length + '</p>' +
-    '<div class="fl">' + ["All","Easy","Medium","Hard"].map(l => '<button class="gh' + (l === flt ? " on" : "") + '" data-f="' + l + '">' + l + '</button>').join("") + '</div>' +
-    P.map((p, i) => flt !== "All" && p[1] !== flt ? "" :
-      '<button class="card" data-o="' + i + '"><b>' + (i + 1) + '. ' + p[0] + '</b> <span class="lv ' + p[1] + '">' + p[1] + '</span>' + (A[i] ? ' <span style="color:#22c55e">✓ Solved</span>' : "") + '</button>').join("");
+function stat(l,v,p){return '<div class="st"><div class="mu" style="font-size:.8rem">'+l+'</div><b>'+v+'</b><div class="bar"><i style="width:'+p+'%"></i></div></div>'}
+function chips(k,a){return a.map(x=>'<button class="gh'+(F[k]===x[0]?" on":"")+'" data-k="'+k+'" data-v="'+x[0]+'">'+x[1]+'</button>').join("")}
+
+function listP(){
+  const d=PROBLEMS.filter(p=>A[p[2]]).length;
+  $("view").innerHTML='<section class="hero"><span class="eye"><i class="sd"></i>CODING ARENA</span><h1>Code. Run. <span class="g">Level up.</span></h1>'+
+  '<p class="mu" style="max-width:42rem;line-height:1.7">Topic-wise problems. Code likho, Run karo, Submit se test cases check karo. Error aaye to neeche explanation milegi, aur AI se bhi poochh sakte ho.</p>'+
+  '<div class="stats">'+stat("Total solved",d+" / "+PROBLEMS.length,d/PROBLEMS.length*100)+[1,2,3,4].map(ph=>{const t=PROBLEMS.filter(p=>p[0]===ph),n=t.filter(p=>A[p[2]]).length;return stat(PH[ph],n+" / "+t.length,t.length?n/t.length*100:0)}).join("")+'</div></section><div class="fl" id="flt"></div><div class="pgrid" id="grid"></div>';
+  $("flt").innerHTML=chips("ph",[[0,"All phases"],[1,"Phase 1"],[2,"Phase 2"],[3,"Phase 3"],[4,"Phase 4"]])+'<span class="sep"></span>'+chips("lv",[["All","All levels"],["Easy","Easy"],["Medium","Medium"],["Hard","Hard"]])+'<span class="sep"></span>'+chips("st",[["All","All"],["Todo","To do"],["Done","Solved"]])+'<input id="q" placeholder="Search..." value="'+esc(F.q)+'">';
+  $("q").oninput=e=>{F.q=e.target.value;gridP()};
+  gridP();
+}
+function gridP(){
+  const q=F.q.toLowerCase();
+  const l=PROBLEMS.map((p,i)=>[p,i]).filter(([p])=>(!F.ph||p[0]===F.ph)&&(F.lv==="All"||p[3]===F.lv)&&(F.st==="All"||(F.st==="Done")===!!A[p[2]])&&(!q||(p[1]+" "+p[2]).toLowerCase().includes(q)));
+  $("grid").innerHTML=l.length?l.map(([p,i])=>'<button class="pc" style="--lc:'+LC[p[3]]+'" data-o="'+i+'"><div style="display:flex;justify-content:space-between;align-items:center"><span class="pn">'+String(i+1).padStart(2,"0")+'</span><span class="lv">'+p[3]+'</span></div><h3>'+esc(p[2])+'</h3><div class="mu" style="font-size:.82rem">'+esc(p[1])+' · '+PH[p[0]]+'</div><div style="margin-top:.7rem;font-size:.82rem">'+(A[p[2]]?'<span class="ok">✓ Solved</span>':'<span class="mu">'+p[7].length+' test cases · Solve →</span>')+'</div></button>').join(""):'<p class="mu">Koi problem nahi mili.</p>';
+}
+function listJ(){
+  const d=PROJECTS.filter(j=>J[j[0]]).length;
+  $("view").innerHTML='<section class="hero"><span class="eye"><i class="sd"></i>PROJECTS</span><h1>Build <span class="g">real things.</span></h1><p class="mu" style="max-width:42rem;line-height:1.7">Har project me chalta hua starter code hai. Use Run karke dekho, fir features jodte jao. Poora hone par "Project complete" tick karo. ('+d+' / '+PROJECTS.length+' complete)</p></section><div class="pgrid" style="margin-top:1.4rem">'+
+  PROJECTS.map((j,i)=>'<button class="pc" style="--lc:'+LC[j[1]]+'" data-j="'+i+'"><div style="display:flex;justify-content:space-between;align-items:center"><span class="pn">🚀</span><span class="lv">'+j[1]+'</span></div><h3>'+esc(j[0])+'</h3><div class="mu" style="font-size:.82rem;line-height:1.5">'+esc(j[2].slice(0,90))+'...</div><div style="margin-top:.7rem;font-size:.82rem">'+(J[j[0]]?'<span class="ok">✓ Complete</span>':'<span class="mu">Start building →</span>')+'</div></button>').join("")+'</div>';
 }
 
-function open(i) {
-  cur = i; sh = {h: 0, s: 0};
-  const p = P[i]; let code = null;
-  try { code = localStorage.getItem("cgCode" + i); } catch (e) {}
-  if (!code) code = TPL("    // write your code here");
-  $("app").innerHTML = '<button class="gh" data-b>← All problems</button>' +
-    '<h1 style="margin-top:1rem">' + (i + 1) + '. ' + p[0] + ' <span class="lv ' + p[1] + '">' + p[1] + '</span></h1><pre>' + esc(p[2]) + '</pre>' +
-    '<label class="mu">Your Java code</label><textarea id="code" spellcheck="false">' + esc(code) + '</textarea>' +
-    '<label class="mu">Custom input (used by Run)</label><textarea id="inp" spellcheck="false" style="height:5rem">' + esc(p[5][0][0]) + '</textarea>' +
-    '<div class="row"><button class="btn" data-run>▶ Run</button><button class="btn" data-sub>Submit</button><button class="gh" data-reset>Reset code</button><button class="gh" data-h>Hint</button><button class="gh" data-s>Solution</button></div>' +
-    '<pre id="res" class="res mu">Output will appear here.</pre><div id="extra"></div>';
+function openItem(x){
+  it=x;sh={h:0,s:0};lastOut="";
+  let code=null;try{code=localStorage.getItem(x.key)}catch(e){}
+  if(!code)code=x.code0;
+  const done=x.type==="p"?A[x.title]:x.type==="j"?J[x.title]:0;
+  const nav=x.type==="p"?(x.i>0?'<button class="gh" data-n="-1">← Prev</button>':"")+(x.i<PROBLEMS.length-1?'<button class="gh" data-n="1">Next →</button>':""):"";
+  $("view").innerHTML=(x.type==="play"?"":'<div class="tb"><button class="gh" data-b>← Back</button><span style="margin-left:auto"></span>'+nav+'</div>')+
+  '<div class="split" style="--lc:'+(LC[x.lv]||"var(--ac)")+'"><aside class="panel">'+(x.lv?'<span class="lv">'+x.lv+'</span> ':"")+'<span class="mu" style="font-size:.8rem">'+esc(x.tag)+'</span>'+(done?' <span class="ok">✓ Done</span>':"")+
+  '<h2>'+esc(x.title)+'</h2><pre class="sp">'+esc(x.stmt)+'</pre><div class="row">'+(x.hint?'<button class="gh" data-h>💡 Hint</button>':"")+(x.sol?'<button class="gh" data-s>Solution</button>':"")+'</div><div id="extra"></div></aside>'+
+  '<section class="ide" id="ide"><div class="itop"><i style="background:#f87171"></i><i style="background:#fbbf24"></i><i style="background:#4ade80"></i><span>Main.java</span><div class="act"><button class="gh" data-reset>Reset</button><button class="gh" data-max id="maxb">⛶ Maximize</button></div></div>'+
+  '<div class="ibody"><div class="ied"><pre id="gut"></pre><textarea id="code" wrap="off" spellcheck="false">'+esc(code)+'</textarea></div><div class="iside">'+
+  '<div class="acts"><button class="btn" data-run>▶ Run</button>'+(x.tests?'<button class="btn" data-sub>Submit</button>':"")+(x.type==="j"?'<label style="font-size:.85rem"><input type="checkbox" data-pj'+(done?" checked":"")+'> Project complete</label>':"")+'<span class="mu" style="font-size:.72rem">Ctrl+Enter = Run</span></div>'+
+  '<label>CUSTOM INPUT (Run ke liye)</label><textarea id="inp" spellcheck="false">'+esc(x.in0)+'</textarea>'+
+  '<div class="out" id="res"><span class="mu">Output yahan dikhega. (Run ke liye login zaroori hai.)</span></div><div id="expl"></div>'+
+  '<div class="aibox"><b style="font-size:.85rem">✨ AI Helper</b> <span class="mu" style="font-size:.74rem">Gemini yahin jawab deta hai. ChatGPT aur Claude naye tab me khulte hain.</span>'+
+  '<div class="acts" style="margin:.7rem 0 0"><button class="gh" id="aiD" data-ai="debug">🐞 Gemini: galti batao</button><button class="gh" data-ai="hint">💡 Gemini: hint do</button><button class="gh" data-web="https://chatgpt.com/">ChatGPT ↗</button><button class="gh" data-web="https://claude.ai/new">Claude ↗</button></div>'+
+  '<div id="aitext" class="mu">Atak gaye? Pehle Run karo, fir "galti batao" dabao.</div></div></div></div></section></div>';
+  gut();$("code").addEventListener("scroll",()=>{$("gut").scrollTop=$("code").scrollTop});
+}
+function gut(){$("gut").textContent=Array.from({length:$("code").value.split("\n").length},(_,k)=>k+1).join("\n")}
+
+async function post(u,d){try{return await(await fetch(u,{method:"POST",body:new URLSearchParams(d)})).json()}catch(e){return{ok:false,out:"Server se connect nahi ho paya. Page ko http://localhost:8080 se kholo."}}}
+
+function renderExpl(o){
+  $("expl").innerHTML=o?'<div class="expl"><div class="eh"><b>🔎 '+fmt(o.title)+'</b>'+(o.line?'<button class="gh" data-line="'+o.line+'">Line '+o.line+' par jao</button>':"")+'</div><p><b>Kyun hui:</b> '+fmt(o.why)+'</p><p><b>Kaise theek karein:</b> '+fmt(o.fix)+'</p></div>':"";
+}
+function gotoLine(n){
+  const t=$("code"),L=t.value.split("\n");let s=0;for(let k=0;k<n-1&&k<L.length;k++)s+=L[k].length+1;
+  t.focus();t.setSelectionRange(s,s+(L[n-1]||"").length);t.scrollTop=Math.max(0,(n-3)*parseFloat(getComputedStyle(t).lineHeight));
 }
 
-async function run(code, input) {
-  try {
-    return await (await fetch("/api/run", {method: "POST", body: new URLSearchParams({code: code, input: input})})).json();
-  } catch (e) { return {ok: false, out: "Cannot reach the server. Open this page from http://localhost:8080"}; }
+async function doRun(){
+  $("res").innerHTML='<span class="mu">Running...</span>';renderExpl(null);
+  const r=await post("/api/run",{code:$("code").value,input:$("inp").value});
+  lastOut=r.out||"";
+  $("res").innerHTML='<pre class="'+(r.ok?"":"err")+'">'+esc((r.ok?"":"✗ ")+(lastOut||"(no output)"))+'</pre>';
+  $("aiD").classList.toggle("hot",!r.ok);
+  if(!r.ok)renderExpl(explainError(lastOut));
 }
-
-async function doRun() {
-  $("res").textContent = "Running...";
-  const r = await run($("code").value, $("inp").value);
-  $("res").textContent = (r.ok ? "" : "✗ ") + (r.out || "(no output)");
-}
-
-async function doSub() {
-  const p = P[cur], code = $("code").value; let pass = 0, txt = "";
-  $("res").textContent = "Running tests...";
-  for (let t = 0; t < p[5].length; t++) {
-    const r = await run(code, p[5][t][0]);
-    if (!r.ok) { $("res").textContent = "✗ " + r.out; return; }
-    const ok = norm(r.out) === norm(p[5][t][1]);
-    if (ok) pass++;
-    txt += "Test " + (t + 1) + ": " + (ok ? "✓ Passed" : "✗ Failed\n   Input:    " + p[5][t][0].replace(/\n/g, " | ") + "\n   Expected: " + p[5][t][1] + "\n   Got:      " + r.out.trim()) + "\n";
+async function doSub(){
+  const p=it.tests,code=$("code").value;let pass=0,rows="";lastOut="";renderExpl(null);
+  $("res").innerHTML='<span class="mu">Running tests...</span>';
+  for(let t=0;t<p.length;t++){
+    const r=await post("/api/run",{code:code,input:p[t][0]});
+    if(!r.ok){lastOut=r.out;$("res").innerHTML='<pre class="err">✗ '+esc(r.out)+'</pre>';$("aiD").classList.add("hot");renderExpl(explainError(r.out));return}
+    const ok=norm(r.out)===norm(p[t][1]);if(ok)pass++;else if(!lastOut)lastOut="Wrong answer on test "+(t+1)+". Input: "+p[t][0]+" | Expected: "+p[t][1]+" | Got: "+r.out.trim();
+    rows+=ok?'<div class="tc p">✓ Test '+(t+1)+' passed</div>':'<div class="tc f">✗ Test '+(t+1)+' failed<div class="d">Input:    '+esc(p[t][0].replace(/\n/g," | "))+'\nExpected: '+esc(p[t][1].replace(/\n/g," | "))+'\nGot:      '+esc(r.out.trim().replace(/\n/g," | "))+'</div></div>';
   }
-  txt = "Passed " + pass + " / " + p[5].length + "\n\n" + txt;
-  if (pass === p[5].length) {
-    A[cur] = 1;
-    try { localStorage.setItem("cgArena", JSON.stringify(A)); } catch (e) {}
-    txt = "🎉 All tests passed! Problem marked as solved.\n\n" + txt;
-  }
-  $("res").textContent = txt;
+  const all=pass===p.length;
+  if(all){A[it.title]=1;sv("cgArena",A);lastOut=""}
+  $("aiD").classList.toggle("hot",!all);
+  $("res").innerHTML='<div class="sum '+(all?"pass":"fail")+'">'+(all?"🎉 Sab tests pass! Problem solved.":"Passed "+pass+" / "+p.length)+'</div>'+rows+(all&&it.i+1<PROBLEMS.length?'<div class="row"><button class="btn" data-n="1">Next problem →</button></div>':"");
+  if(!all)renderExpl({title:"Output match nahi hua",why:"Tumhara program chala, par answer expected se alag hai (compile error nahi hai).",fix:"Expected aur Got ko dhyan se compare karo: extra ya kam space, `print` vs `println`, capital/small letters, aur edge cases (0, 1, negative number, ek hi element) check karo.",line:null});
 }
 
-function extra() {
-  const p = P[cur];
-  $("extra").innerHTML = (sh.h ? '<p class="mu">💡 ' + esc(p[3]) + '</p>' : "") +
-    (sh.s ? '<pre>' + esc(TPL(ind(p[4]))) + '</pre>' : "");
+const md=t=>esc(t).replace(/```(?:\w*)\n?([\s\S]*?)```/g,"<pre>$1</pre>").replace(/`([^`\n]+)`/g,"<code>$1</code>").replace(/\*\*([^*]+)\*\*/g,"<b>$1</b>");
+async function askAI(mode){
+  $("aitext").className="";$("aitext").textContent="Gemini soch raha hai...";
+  const r=await post("/api/explain",{mode:mode,task:it.task,code:$("code").value,error:lastOut});
+  $("aitext").innerHTML=r.ok?md(r.out):'<span class="err">'+esc(r.out)+'</span>';
 }
+function openWeb(u){
+  const m="Main Java seekh raha hoon. Mujhe simple Hinglish me samjhao ki meri galti kahan hai aur kaise theek karun. Poora solution mat do, pehle hint do.\n\nTask:\n"+it.task+"\n\nMera code:\n"+$("code").value+"\n\n"+(lastOut?"Run karne par ye aaya:\n"+lastOut:"Maine abhi run nahi kiya.");
+  window.open(u,"_blank","noopener");
+  navigator.clipboard.writeText(m).then(()=>{$("aitext").className="";$("aitext").textContent="Sawal copy ho gaya. Khuli hui site me Ctrl + V karke paste karo aur Enter dabao."},()=>{$("aitext").className="err";$("aitext").textContent="Copy nahi ho paya. Code ko khud copy karke site me paste karo."});
+}
+function toggleMax(){const m=$("ide").classList.toggle("max");document.body.style.overflow=m?"hidden":"";$("maxb").textContent=m?"✕ Close":"⛶ Maximize"}
+function extra(){$("extra").innerHTML=(sh.h?'<p class="mu" style="margin:.9rem 0 0;line-height:1.6">💡 '+esc(it.hint)+'</p>':"")+(sh.s?'<pre class="sol">'+esc(it.sol)+'</pre>':"")}
 
-document.addEventListener("click", e => {
-  const t = e.target.closest("button"); if (!t) return;
-  const d = t.dataset;
-  if (d.f) { flt = d.f; list(); }
-  else if (d.o !== undefined) open(+d.o);
-  else if (d.b !== undefined) list();
-  else if (d.run !== undefined) doRun();
-  else if (d.sub !== undefined) doSub();
-  else if (d.reset !== undefined) { try { localStorage.removeItem("cgCode" + cur); } catch (err) {} open(cur); }
-  else if (d.h !== undefined) { sh.h = !sh.h; extra(); }
-  else if (d.s !== undefined) { sh.s = !sh.s; extra(); }
+document.addEventListener("click",e=>{
+  const t=e.target.closest("button");if(!t)return;const d=t.dataset;
+  if(d.tab)showTab(d.tab);
+  else if(d.k){F[d.k]=isNaN(d.v)?d.v:+d.v;listP()}
+  else if(d.o!==undefined)openItem(pItem(+d.o));
+  else if(d.j!==undefined)openItem(jItem(+d.j));
+  else if(d.b!==undefined)showTab(tab);
+  else if(d.n!==undefined)openItem(pItem(it.i+ +d.n));
+  else if(d.run!==undefined)doRun();
+  else if(d.sub!==undefined)doSub();
+  else if(d.max!==undefined)toggleMax();
+  else if(d.reset!==undefined){try{localStorage.removeItem(it.key)}catch(err){}openItem(it)}
+  else if(d.line)gotoLine(+d.line);
+  else if(d.ai)askAI(d.ai);
+  else if(d.web)openWeb(d.web);
+  else if(d.h!==undefined){sh.h=!sh.h;extra()}
+  else if(d.s!==undefined){sh.s=!sh.s;extra()}
 });
-document.addEventListener("input", e => {
-  if (e.target.id === "code") { try { localStorage.setItem("cgCode" + cur, e.target.value); } catch (err) {} }
+document.addEventListener("change",e=>{if(e.target.hasAttribute("data-pj")){if(e.target.checked)J[it.title]=1;else delete J[it.title];sv("cgProj",J)}});
+document.addEventListener("input",e=>{if(e.target.id==="code"&&it){try{localStorage.setItem(it.key,e.target.value)}catch(err){}gut()}});
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"&&$("ide")&&$("ide").classList.contains("max"))toggleMax();
+  if(e.target.id!=="code")return;
+  if(e.key==="Tab"){e.preventDefault();e.target.setRangeText("    ",e.target.selectionStart,e.target.selectionEnd,"end");e.target.dispatchEvent(new Event("input",{bubbles:true}))}
+  if(e.key==="Enter"&&e.ctrlKey){e.preventDefault();doRun()}
 });
-document.addEventListener("keydown", e => {
-  if (e.target.id === "code" && e.key === "Tab") {
-    e.preventDefault();
-    e.target.setRangeText("  ", e.target.selectionStart, e.target.selectionEnd, "end");
-    e.target.dispatchEvent(new Event("input", {bubbles: true}));
-  }
-});
-list();
+showTab(tab);
 </script>
+<script src="auth.js"></script>
 </body>
 </html>

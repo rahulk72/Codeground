@@ -1763,8 +1763,8 @@ public class Starter {
         double c = 37;
         System.out.println(c + " C = " + (c * 9 / 5 + 32) + " F");        // 98.6 F
 
-        // 3) Marks and grade for Gurleen
-        String student = "Gurleen";
+        // 3) Marks and grade for Rahul
+        String student = "Rahul";
         int m1 = 78, m2 = 84, m3 = 91;
         double avg = (m1 + m2 + m3) / 3.0;
         String grade;
@@ -1986,7 +1986,7 @@ marks[0] = 78;                    // 3) fill
 int[] ages = new int[3];          // declare + create together
 int[] nums = {10, 20, 30, 40};    // declare + create + fill (size is 4)
 int[] more = new int[]{1, 2, 3};  // same idea, useful when passing directly
-String[] team = {"Rahul", "Gurleen", "Himakshi"};
+String[] team = {"Shivam", "Mohit", "Himakshi"};
 double[] prices = {99.5, 120.0, 45.75};
 
 int size = 5;
@@ -2174,7 +2174,7 @@ int[][] m = {
 };                                    // 2 rows, 3 columns
 
 String[][] seats = {
-    {"Rahul", "Gurleen"},
+    {"Rahul", "Shivam"},
     {"Himakshi", "Mohit"}
 };
 
@@ -2713,10 +2713,10 @@ public class BuiltInSort {
         System.out.println(Arrays.toString(b));        // [9, 3, 5, 7, 1]
 
         // Strings: dictionary order, capital letters come before small letters
-        String[] team = {"Shivam", "Gurleen", "Mohit", "Himakshi", "Rahul"};
+        String[] team = {"Rahul", "Gurleen", "Mohit", "Himakshi", "Shivam"};
         Arrays.sort(team);
         System.out.println(Arrays.toString(team));
-        // [Gurleen, Himakshi, Mohit, Rahul, Shivam]
+        // [ Himakshi, Mohit, Rahul, Shivam]
 
         String[] mixed = {"banana", "Apple", "cherry"};
         Arrays.sort(mixed);                            // [Apple, banana, cherry]
@@ -3415,7 +3415,7 @@ System.out.println(text);                                 // HI`},
         System.out.println(isPalindrome("Level"));            // true
         System.out.println(removeVowels("Education"));        // dctn
         System.out.println(withCommas(1234567));              // 1,234,567
-        System.out.println(joinAll(new String[]{"Rahul", "Gurleen", "Mohit"}, " | "));   // Rahul | Gurleen | Mohit
+        System.out.println(joinAll(new String[]{"Rahul", "Himakshi", "Mohit"}, " | "));   // Rahul | Gurleen | Mohit
         System.out.print(staircase(3));
         // #
         // ##
@@ -6630,5 +6630,9352 @@ class Person {
    pts: [["Overloading: same name, DIFFERENT parameters, chosen at compile time by the declared types.", "Overriding: same name, SAME parameters, chosen at run time by the real object.", "Overloading can happen in one class. Overriding needs a parent and a child.", "Mistake: a different parameter type or spelling, which creates an overload and not an override. Always use @Override.", "Mistake: weaker access (public to protected) or a broader checked exception.", "Mistake: trying to override static, private or final methods.", "Mistake: expecting fields to behave polymorphically.", "Mistake: overriding equals() but not hashCode().", "Good habit: use @Override every time, and use super.method() when you want to keep the parent's behaviour."],
          ["Overloading: same naam, ALAG parameters, compile time par declared types se chuna jata hai.", "Overriding: same naam, SAME parameters, run time par asli object se chuna jata hai.", "Overloading ek class me ho sakti hai. Overriding ke liye parent aur child chahiye.", "Galti: alag parameter type ya spelling, jo overload banata hai override nahi. Hamesha @Override use karo.", "Galti: kamzor access (public se protected) ya bada checked exception.", "Galti: static, private ya final methods ko override karne ki koshish.", "Galti: fields ke polymorphically behave karne ki ummeed.", "Galti: equals() override karna par hashCode() nahi.", "Achhi aadat: har baar @Override use karo, aur parent ka behaviour rakhna ho to super.method() use karo."]],
    tip: ["Interview question: can we override a static method? No. A static method with the same signature in the child hides the parent's one. Can we override a private or final method? No.", "Interview question: kya static method override kar sakte hain? Nahi. Child me same signature wala static method parent wale ko hide karta hai. Kya private ya final method override kar sakte hain? Nahi."]}
+ ]}
+});
+
+Object.assign(TOPICS, {
+31: {
+ def: ["Polymorphism means 'many forms': the same method call can behave in different ways depending on the object it is used on. In Java it comes in two kinds. Compile-time polymorphism is method overloading, and runtime polymorphism is method overriding, where a parent-type variable holds a child object and Java runs the child's version of the method.",
+       "Polymorphism ka matlab hai 'kai roop': ek hi method call us object ke hisaab se alag tarah behave kar sakta hai jis par wo use ho. Java me iske do kisam hain. Compile-time polymorphism method overloading hai, aur runtime polymorphism method overriding hai, jisme parent-type variable child object rakhta hai aur Java child ka version chalata hai."],
+ secs: [
+  {h: ["The idea: one name, many behaviours", "Idea: ek naam, kai behaviours"],
+   p: ["The word comes from Greek: poly means many and morph means forms. In real life the same person is a student in college, a son at home and a customer in a shop, and behaves differently in each place. The word 'pay' is the same, but paying by UPI, by card and by cash work differently inside. Polymorphism lets your code say 'pay' once and lets each object do it in its own way.",
+       "Ye shabd Greek se aaya hai: poly ka matlab kai aur morph ka matlab roop. Real life me wahi insaan college me student, ghar me beta aur dukaan me customer hota hai, aur har jagah alag behave karta hai. 'Pay' shabd wahi hai, par UPI, card aur cash se payment andar se alag tarah kaam karta hai. Polymorphism tumhare code ko 'pay' ek baar kehne deta hai aur har object ko use apne tareeke se karne deta hai."],
+   pts: [["Compile-time (static) polymorphism: method overloading. The compiler picks the version, before the program runs.", "Runtime (dynamic) polymorphism: method overriding. The JVM picks the version while the program runs, from the real object.", "It needs three things together: inheritance (or an interface), an overridden method, and a parent-type reference holding a child object.", "Even the + operator is polymorphic: it adds numbers and joins Strings.", "The goal: write code against a general type once, and it automatically works for every specific type, including types that do not exist yet."],
+         ["Compile-time (static) polymorphism: method overloading. Compiler version chunta hai, program chalne se pehle.", "Runtime (dynamic) polymorphism: method overriding. JVM version chalte waqt, asli object se chunta hai.", "Iske liye teen cheezein ek saath chahiye: inheritance (ya interface), overridden method, aur child object rakhne wala parent-type reference.", "+ operator bhi polymorphic hai: ye numbers jodta hai aur Strings ko bhi jodta hai.", "Maqsad: general type ke liye code ek baar likho, aur wo har khaas type ke liye, un types ke liye bhi jo abhi bane nahi, apne aap chale."]]},
+  {h: ["Compile-time polymorphism: a quick recap", "Compile-time polymorphism: chhota recap"],
+   p: ["Overloading was covered in its own lesson. The key point for polymorphism: the compiler looks at the arguments you write and chooses the method before the program runs, so there is no surprise at run time.",
+       "Overloading ka alag lesson ho chuka hai. Polymorphism ke liye zaroori baat: compiler tumhare likhe arguments dekhta hai aur program chalne se pehle method chun leta hai, isliye run time par koi surprise nahi hota."],
+   code: `class Printer {
+    void print(int x)        { System.out.println("int: " + x); }
+    void print(double x)     { System.out.println("double: " + x); }
+    void print(String x)     { System.out.println("String: " + x); }
+    void print(int[] x)      { System.out.println("array of " + x.length); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Printer p = new Printer();
+        p.print(7);                  // int: 7
+        p.print(7.5);                // double: 7.5
+        p.print("Java");             // String: Java
+        p.print(new int[]{1, 2, 3}); // array of 3
+    }
+}`},
+  {h: ["Runtime polymorphism with overriding", "Overriding ke saath runtime polymorphism"],
+   p: ["Here is the full idea in action. Payment is the general type. Each child overrides pay(). The method checkout knows only about Payment, yet when you pass a UpiPayment object, the UPI version runs, and for a CardPayment the card version runs. Java decides this at run time by looking at the real object, which is called dynamic method dispatch.",
+       "Ye poora idea kaam karte hue. Payment general type hai. Har child pay() ko override karta hai. checkout method sirf Payment ke baare me jaanta hai, phir bhi UpiPayment object dene par UPI wala version chalta hai, aur CardPayment par card wala. Java ye run time par asli object dekhkar tay karta hai, jise dynamic method dispatch kehte hain."],
+   code: `class Payment {
+    void pay(double amount) {
+        System.out.println("Paying " + amount + " somehow");
+    }
+}
+
+class UpiPayment extends Payment {
+    @Override
+    void pay(double amount) { System.out.println("Paid " + amount + " using UPI"); }
+    void scanQr() { System.out.println("Scanning QR code..."); }
+}
+
+class CardPayment extends Payment {
+    @Override
+    void pay(double amount) { System.out.println("Paid " + amount + " using Card"); }
+}
+
+class CashPayment extends Payment {
+    @Override
+    void pay(double amount) { System.out.println("Paid " + amount + " in Cash"); }
+}
+
+public class Main {
+    static void checkout(Payment p, double amount) {   // knows only the general type
+        p.pay(amount);
+    }
+
+    public static void main(String[] args) {
+        checkout(new UpiPayment(), 250);     // Paid 250.0 using UPI
+        checkout(new CardPayment(), 1200);   // Paid 1200.0 using Card
+        checkout(new CashPayment(), 80);     // Paid 80.0 in Cash
+
+        Payment[] options = { new UpiPayment(), new CardPayment(), new CashPayment() };
+        for (Payment p : options) {
+            p.pay(10);                       // one loop, three different behaviours
+        }
+    }
+}`,
+   tip: ["Add a WalletPayment class tomorrow and checkout() needs no change at all. That is the real power of polymorphism.", "Kal WalletPayment class jodo aur checkout() me koi badlav nahi chahiye. Polymorphism ki asli taqat yahi hai."]},
+  {h: ["What the reference type allows", "Reference type kya allow karta hai"],
+   p: ["Two different types are involved. The type of the VARIABLE (Payment) decides which methods you are allowed to write. The type of the real OBJECT (UpiPayment) decides which version of those methods runs. So through a Payment variable you cannot call scanQr(), because Payment does not declare it. To use a child-only method you must downcast, and you should check with instanceof first so that a wrong cast cannot crash the program.",
+       "Yahan do alag types hote hain. VARIABLE ka type (Payment) tay karta hai ki tum kaun se methods likh sakte ho. Asli OBJECT ka type (UpiPayment) tay karta hai ki un methods ka kaun sa version chalega. Isliye Payment variable se scanQr() call nahi kar sakte, kyunki Payment ne use declare nahi kiya. Child ka akela method use karne ke liye downcast karna padta hai, aur pehle instanceof se check karo taaki galat cast program ko crash na kare."],
+   code: `Payment p = new UpiPayment();     // upcasting: automatic and always safe
+p.pay(100);                       // fine: Payment declares pay()
+// p.scanQr();                    // ERROR: the variable type Payment has no scanQr()
+
+if (p instanceof UpiPayment u) {  // test and cast in one step (Java 16+)
+    u.scanQr();                   // Scanning QR code...
+}
+
+UpiPayment u2 = (UpiPayment) p;   // classic downcast: works, the object really is a UpiPayment
+u2.scanQr();
+
+Payment q = new CashPayment();
+// UpiPayment bad = (UpiPayment) q;   // compiles, but ClassCastException when it runs
+System.out.println(q instanceof UpiPayment);   // false: so we avoid the bad cast`,
+   pts: [["Upcasting (child to parent) is automatic and always safe. Downcasting (parent to child) needs a cast and can fail at run time.", "The compiler checks the variable type. The JVM uses the object type.", "instanceof gives true when the object IS that type or a child of it. A null reference is never an instance of anything.", "Too many instanceof checks in one place usually means you should add an overridden method instead."],
+         ["Upcasting (child se parent) automatic aur hamesha safe hai. Downcasting (parent se child) ke liye cast chahiye aur wo run time par fail ho sakta hai.", "Compiler variable type check karta hai. JVM object type use karta hai.", "instanceof tab true deta hai jab object wo type HAI ya uska child hai. null reference kisi bhi cheez ka instance nahi hota.", "Ek jagah bahut saare instanceof checks ka matlab aam taur par ye hai ki tumhe overridden method jodna chahiye."]]},
+  {h: ["Polymorphic arrays, parameters and return types", "Polymorphic arrays, parameters aur return types"],
+   p: ["The parent type can be used in three places: as an array or list element type, as a parameter type and as a return type. A method that returns the parent type may return any child, which is how 'factory' methods hide which exact class they build. The caller only needs the common type.",
+       "Parent type teen jagah use ho sakta hai: array ya list ke element type me, parameter type me aur return type me. Parent type return karne wala method koi bhi child return kar sakta hai, isi tarah 'factory' methods chhupate hain ki wo kaun si exact class bana rahe hain. Caller ko sirf common type chahiye."],
+   code: `public class Main {
+    // returns the parent type: any child is allowed
+    static Payment choose(String type) {
+        return switch (type) {
+            case "upi"  -> new UpiPayment();
+            case "card" -> new CardPayment();
+            default     -> new CashPayment();
+        };
+    }
+
+    // takes the parent type: any child is allowed
+    static void payAll(Payment[] list, double each) {
+        for (Payment p : list) p.pay(each);
+    }
+
+    public static void main(String[] args) {
+        Payment p1 = choose("upi");
+        Payment p2 = choose("card");
+        Payment p3 = choose("anything else");
+        payAll(new Payment[]{p1, p2, p3}, 50);
+        // Paid 50.0 using UPI
+        // Paid 50.0 using Card
+        // Paid 50.0 in Cash
+    }
+}`},
+  {h: ["Polymorphism with Object and instanceof", "Object aur instanceof ke saath polymorphism"],
+   p: ["Because every class extends Object, an Object parameter accepts anything. This is how println(Object) can print any value. The method looks at the real type with instanceof and reacts to it. It works, but use it sparingly: when each type needs different work, an overridden method is the cleaner tool.",
+       "Kyunki har class Object ko extend karti hai, Object parameter kuch bhi accept karta hai. Isi tarah println(Object) kisi bhi value ko print kar leta hai. Method asli type instanceof se dekhta hai aur uske hisaab se react karta hai. Ye chalta hai, par kam use karo: har type ko alag kaam chahiye ho to overridden method saaf tool hai."],
+   code: `public class Main {
+    static String describe(Object o) {
+        if (o instanceof Integer i)  return "Integer, next is " + (i + 1);
+        if (o instanceof String s)   return "String of length " + s.length();
+        if (o instanceof int[] arr)  return "int array with " + arr.length + " items";
+        if (o == null)               return "null";
+        return "Something else: " + o;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(describe(41));                     // Integer, next is 42
+        System.out.println(describe("Gurleen"));              // String of length 7
+        System.out.println(describe(new int[]{4, 5}));        // int array with 2 items
+        System.out.println(describe(3.5));                    // Something else: 3.5
+        System.out.println(describe(null));                   // null
+    }
+}`},
+  {h: ["Static versus dynamic binding: what is NOT polymorphic", "Static vs dynamic binding: kya polymorphic NAHI hai"],
+   p: ["Binding means connecting a method call to the code that runs. Dynamic binding (decided at run time) applies only to non-private, non-static, non-final instance methods. Static methods, private methods, final methods and fields are bound at compile time using the variable's type. This is why a field accessed through a parent variable shows the parent's value even if the object is a child.",
+       "Binding ka matlab method call ko us code se jodna jo chalega. Dynamic binding (run time par tay) sirf non-private, non-static, non-final instance methods par lagu hoti hai. Static methods, private methods, final methods aur fields compile time par variable ke type se bind hote hain. Isi wajah se parent variable se field padho to child object hone par bhi parent ki value dikhti hai."],
+   code: `class A {
+    String f = "A field";
+    static void who()        { System.out.println("A static"); }
+    private void secret()    { System.out.println("A private"); }
+    void run()               { secret(); }
+    void normal()            { System.out.println("A normal"); }
+}
+
+class B extends A {
+    String f = "B field";
+    static void who()        { System.out.println("B static"); }
+    void secret()            { System.out.println("B secret"); }      // not an override
+    @Override
+    void normal()            { System.out.println("B normal"); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        A x = new B();
+        x.normal();                    // B normal   (dynamic: the object decides)
+        x.run();                       // A private  (private is bound at compile time)
+        A.who();                       // A static   (static: the class decides)
+        System.out.println(x.f);       // A field    (fields: the variable type decides)
+        System.out.println(((B) x).f); // B field
+    }
+}`},
+  {h: ["Benefits, rules and common mistakes", "Fayde, rules aur common mistakes"],
+   pts: [["Benefit: one piece of code handles many types (less code, fewer if-else chains).", "Benefit: easy to extend. New child classes work with old code without any change.", "Benefit: loose coupling. Code depends on the general type, not on the details of each child.", "Rule: the call is checked against the variable type at compile time, and run against the object type at run time.", "Rule: only instance methods are polymorphic. Fields, static, private, final methods and constructors are not.", "Mistake: forgetting @Override and creating an overload instead, which silently breaks polymorphism.", "Mistake: calling a child-only method through a parent variable without downcasting.", "Mistake: an unsafe downcast without instanceof, which throws ClassCastException.", "Mistake: expecting a parent variable to show the child's field value.", "Good habit: depend on the parent type (or interface) in method parameters and return types."],
+         ["Fayda: ek hi code kai types sambhalta hai (kam code, kam if-else chains).", "Fayda: extend karna aasan. Naye child classes purane code ke saath bina badlav ke kaam karte hain.", "Fayda: loose coupling. Code general type par nirbhar karta hai, har child ki details par nahi.", "Rule: call compile time par variable type se check hoti hai, aur run time par object type se chalti hai.", "Rule: sirf instance methods polymorphic hain. Fields, static, private, final methods aur constructors nahi.", "Galti: @Override bhulkar overload bana dena, jo chupchap polymorphism tod deta hai.", "Galti: parent variable se child ka akela method downcast kiye bina call karna.", "Galti: instanceof ke bina unsafe downcast, jisse ClassCastException aata hai.", "Galti: parent variable se child ke field ki value dikhne ki ummeed.", "Achhi aadat: method parameters aur return types me parent type (ya interface) par nirbhar raho."]],
+   tip: ["Interview question: what is the difference between compile-time and runtime polymorphism? Compile-time is overloading and is decided by the compiler. Runtime is overriding and is decided by the JVM from the real object.", "Interview question: compile-time aur runtime polymorphism me kya fark hai? Compile-time overloading hai aur compiler tay karta hai. Runtime overriding hai aur JVM asli object se tay karta hai."]}
+ ]},
+32: {
+ def: ["Abstraction means showing only the essential features of something and hiding the complicated details behind them. The user of a class needs to know WHAT it does, not HOW it does it. In Java abstraction is achieved with abstract classes and interfaces, which define what an object can do while leaving the how to the classes that implement it.",
+       "Abstraction ka matlab kisi cheez ki sirf zaroori khasiyatein dikhana aur unke peeche ki pechida details chhupana. Class use karne wale ko ye pata hona chahiye ki wo KYA karti hai, ye nahi ki KAISE karti hai. Java me abstraction abstract classes aur interfaces se milti hai, jo tay karte hain ki object kya kar sakta hai aur kaise karna hai wo implement karne wali classes par chhod dete hain."],
+ secs: [
+  {h: ["The idea in everyday life", "Roz ki zindagi me idea"],
+   p: ["When you drive a car you use the steering wheel, the pedals and the gear. You do not need to know how fuel burns in the engine or how the brakes work inside. When you withdraw money from an ATM you choose an amount and take the cash, without knowing how the bank checks your account. The car and the ATM show a small, simple surface and hide the complex inside. That is abstraction.",
+       "Car chalate waqt tum steering, pedals aur gear use karte ho. Tumhe ye jaanne ki zarurat nahi ki engine me fuel kaise jalta hai ya brakes andar se kaise kaam karte hain. ATM se paisa nikalte waqt tum amount chunte ho aur cash lete ho, ye jaane bina ki bank tumhara account kaise check karta hai. Car aur ATM ek chhoti, simple satah dikhate hain aur pechida andar chhupate hain. Yahi abstraction hai."],
+   pts: [["Abstraction = show WHAT, hide HOW.", "It reduces complexity: the user thinks about a few simple operations instead of hundreds of details.", "It lets the inside change: a new engine type does not change how you drive.", "In code, the 'surface' is a set of method names (a contract), and the 'inside' is how those methods are written."],
+         ["Abstraction = KYA dikhao, KAISE chhupao.", "Ye complexity kam karta hai: user sau details ki jagah kuch simple operations ke baare me sochta hai.", "Andar ka hissa badal sakta hai: naya engine type badalne se tumhare gaadi chalane ka tareeka nahi badalta.", "Code me 'satah' method naamon ka set (contract) hai, aur 'andar' wo hai ki un methods ko kaise likha gaya hai."]]},
+  {h: ["Abstraction versus encapsulation", "Abstraction vs encapsulation"],
+   p: ["The two ideas are close relatives and are often confused. Abstraction is about DESIGN: deciding what to show. Encapsulation is about IMPLEMENTATION: protecting the data by hiding it with private fields and controlling access with methods. A well-built class uses both.",
+       "Dono ideas kareebi rishtedaar hain aur aksar confuse hote hain. Abstraction DESIGN ke baare me hai: tay karna ki kya dikhana hai. Encapsulation IMPLEMENTATION ke baare me hai: data ko private fields se chhupakar aur methods se access control karke bachana. Achhi bani class dono use karti hai."],
+   pts: [["Abstraction solves a design problem: it hides complexity and shows a simple view. Encapsulation solves a protection problem: it hides data and guards it.", "Abstraction is achieved with abstract classes and interfaces. Encapsulation is achieved with private fields and public getters and setters.", "Abstraction works at class level (what operations exist). Encapsulation works at field level (who may touch the data).", "Example: the Payment idea 'pay(amount)' is abstraction. Keeping the card number private inside CardPayment is encapsulation."],
+         ["Abstraction design problem solve karta hai: complexity chhupakar simple view dikhata hai. Encapsulation protection problem solve karta hai: data ko chhupakar uski raksha karta hai.", "Abstraction abstract classes aur interfaces se milti hai. Encapsulation private fields aur public getters aur setters se milti hai.", "Abstraction class level par kaam karti hai (kaun se operations hain). Encapsulation field level par (data ko kaun chhu sakta hai).", "Example: Payment ka idea 'pay(amount)' abstraction hai. Card number ko CardPayment ke andar private rakhna encapsulation hai."]]},
+  {h: ["Code without abstraction and with abstraction", "Abstraction ke bina aur abstraction ke saath code"],
+   p: ["Without abstraction, the code that uses different kinds of things must know every kind and check each one with if-else. Adding a new kind means editing that code again. With abstraction you define the common operation once, each kind implements it, and the using code never mentions the kinds.",
+       "Abstraction ke bina, alag-alag kisam ki cheezein use karne wale code ko har kisam pata honi chahiye aur har ek ko if-else se check karna padta hai. Nayi kisam jodne ka matlab us code ko dobara edit karna. Abstraction me common operation ek baar define karte ho, har kisam use implement karti hai, aur use karne wala code kisamon ka naam kabhi nahi leta."],
+   code: `// WITHOUT abstraction: the sender must know every channel
+class AlertBad {
+    static void alert(String channel, String to, String msg) {
+        if (channel.equals("email")) {
+            System.out.println("Email to " + to + ": " + msg);
+        } else if (channel.equals("sms")) {
+            System.out.println("SMS to " + to + ": " + msg);
+        }
+        // adding WhatsApp means editing this method again
+    }
+}
+
+// WITH abstraction: one idea, many implementations
+abstract class Notifier {
+    abstract void send(String to, String msg);     // WHAT: only the promise
+}
+
+class EmailNotifier extends Notifier {
+    @Override void send(String to, String msg) {   // HOW: hidden in the child
+        System.out.println("Email to " + to + ": " + msg);
+    }
+}
+
+class SmsNotifier extends Notifier {
+    @Override void send(String to, String msg) {
+        System.out.println("SMS to " + to + ": " + msg);
+    }
+}
+
+public class Main {
+    static void alert(Notifier n) {                // knows only the abstraction
+        n.send("Gurleen", "Your order is ready");
+    }
+
+    public static void main(String[] args) {
+        alert(new EmailNotifier());    // Email to Gurleen: Your order is ready
+        alert(new SmsNotifier());      // SMS to Gurleen: Your order is ready
+    }
+}`},
+  {h: ["The two tools: abstract classes and interfaces", "Do tools: abstract classes aur interfaces"],
+   p: ["Java gives you two tools for abstraction, and the next two lessons explain each in depth. An abstract class is a class that is only partly finished: it may have abstract methods (no body) and normal methods with code. An interface is a pure contract that lists what a class must be able to do. A class extends one abstract class, but can implement many interfaces.",
+       "Java abstraction ke do tools deta hai, aur agle do lessons har ek ko gehrai se samjhate hain. Abstract class aisi class hai jo sirf aadhi poori hai: isme abstract methods (bina body) aur code wale normal methods ho sakte hain. Interface shuddh contract hai jo batata hai ki class kya kar sakni chahiye. Class ek abstract class extend karti hai, par kai interfaces implement kar sakti hai."],
+   pts: [["Abstract class: use abstract keyword. Can have fields, constructors, abstract methods and normal methods. A child extends it. Gives partial abstraction.", "Interface: use interface keyword. Lists methods a class must provide, plus constants, default and static methods. A class implements it. Gives full abstraction of the contract.", "Abstract method: a method with no body, ending in a semicolon. Every concrete child must write its body.", "You can never create an object of an abstract class or of an interface directly with new. You create objects of the concrete child classes."],
+         ["Abstract class: abstract keyword use hota hai. Isme fields, constructors, abstract methods aur normal methods ho sakte hain. Child ise extend karta hai. Partial abstraction deti hai.", "Interface: interface keyword use hota hai. Ye wo methods batata hai jo class ko dene hain, saath me constants, default aur static methods. Class ise implement karti hai. Contract ki full abstraction deti hai.", "Abstract method: bina body ka method jo semicolon par khatam hota hai. Har concrete child ko iski body likhni padti hai.", "Abstract class ya interface ka object seedha new se kabhi nahi bana sakte. Concrete child classes ke objects banate ho."]],
+   code: `abstract class Animal {                // abstract class: partly finished
+    abstract void makeSound();         // abstract method: no body
+    void sleep() {                     // normal method: has a body
+        System.out.println("Sleeping...");
+    }
+}
+
+interface Flyable {                    // interface: a pure contract
+    void fly();
+}
+
+// Animal a = new Animal();            // ERROR: Animal is abstract; cannot be instantiated
+// Flyable f = new Flyable();          // ERROR: Flyable is abstract; cannot be instantiated`},
+  {h: ["A complete example: hiding a database", "Ek poora example: database chhupana"],
+   p: ["Real applications use abstraction constantly. The part of the program that saves a student does not care whether the data goes to MySQL, to a file or to a cloud service. It talks to an abstract Database. Later you can switch the real database by changing one line, and none of the other code changes.",
+       "Real applications abstraction ka lagatar use karti hain. Program ka wo hissa jo student save karta hai use fark nahi padta ki data MySQL me jaye, file me ya cloud service me. Wo ek abstract Database se baat karta hai. Baad me ek line badalkar asli database badal sakte ho, aur baaki code me kuch nahi badalta."],
+   code: `abstract class Database {
+    abstract void connect();
+    abstract void save(String data);
+
+    void close() {                                  // shared, finished behaviour
+        System.out.println("Connection closed");
+    }
+}
+
+class MySqlDatabase extends Database {
+    @Override void connect() { System.out.println("Connected to MySQL"); }
+    @Override void save(String data) { System.out.println("MySQL saved: " + data); }
+}
+
+class FileDatabase extends Database {
+    @Override void connect() { System.out.println("Opened file students.txt"); }
+    @Override void save(String data) { System.out.println("File saved: " + data); }
+}
+
+class StudentService {
+    private final Database db;                      // depends on the abstraction
+
+    StudentService(Database db) { this.db = db; }
+
+    void register(String name) {
+        db.connect();
+        db.save("student " + name);
+        db.close();
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        new StudentService(new MySqlDatabase()).register("Himakshi");
+        // Connected to MySQL
+        // MySQL saved: student Himakshi
+        // Connection closed
+
+        new StudentService(new FileDatabase()).register("Mohit");   // one word changed, same service
+        // Opened file students.txt
+        // File saved: student Mohit
+        // Connection closed
+    }
+}`},
+  {h: ["Abstraction in the Java library", "Java library me abstraction"],
+   p: ["You have been using abstraction already. List is an abstract idea (an ordered collection). ArrayList and LinkedList are two different ways to build it. Programs usually declare the variable as the abstract type, so the real class can be swapped later by changing one word.",
+       "Tum abstraction pehle se use kar rahe ho. List ek abstract idea hai (ordered collection). ArrayList aur LinkedList use banane ke do alag tareeke hain. Programs aam taur par variable ko abstract type me declare karte hain, taaki asli class baad me ek shabd badalkar badli ja sake."],
+   code: `import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        List<String> names = new ArrayList<>();      // swap to LinkedList<>() and nothing else changes
+        names.add("Shivam");
+        names.add("Rahul");
+        names.add("Mohit");
+
+        System.out.println(names.size());            // 3
+        System.out.println(names.get(1));            // Rahul
+
+        // Other examples of abstraction you already know:
+        // System.out.println(...): you do not know how the text reaches the screen
+        // Math.sqrt(...): you do not know the algorithm inside
+        // Collections.sort(...): you do not know which sorting method runs
+    }
+}`},
+  {h: ["Designing good abstractions, and common mistakes", "Achhi abstractions design karna, aur common mistakes"],
+   pts: [["Name methods by WHAT they do (send, save, calculatePay), not by HOW (sendUsingSmtpServer).", "Keep the abstraction small and focused. A contract with 30 methods is hard to implement and hard to understand.", "Show only what the user needs. Everything else stays hidden inside.", "Think about the users first: write down how you want to call the class, then design it.", "Do not abstract too early. Wait until you really have two or more different implementations.", "Mistake: an abstraction that leaks, where the user must still know the inside to use it correctly.", "Mistake: mixing unrelated operations in one abstraction. Split it into smaller ones.", "Mistake: confusing abstraction with encapsulation. One hides complexity, the other protects data.", "Mistake: making everything abstract 'just in case'. Extra layers add reading effort without any benefit.", "Good habit: program to an abstraction (a parent type or an interface), not to a concrete class."],
+         ["Methods ke naam KYA karte hain us par rakho (send, save, calculatePay), KAISE par nahi (sendUsingSmtpServer).", "Abstraction chhoti aur focused rakho. 30 methods wala contract implement karna aur samajhna dono mushkil hai.", "Sirf wahi dikhao jo user ko chahiye. Baaki sab andar chhupa rahe.", "Pehle users ke baare me socho: likho ki class ko kaise call karna chahte ho, fir design karo.", "Bahut jaldi abstract mat karo. Tab ruko jab sach me do ya zyada alag implementations ho.", "Galti: aisi abstraction jo leak kare, jahan user ko sahi use ke liye abhi bhi andar ki jaankari chahiye.", "Galti: ek abstraction me ajeeb alag operations milana. Use chhoti abstractions me todo.", "Galti: abstraction ko encapsulation se confuse karna. Ek complexity chhupata hai, dusra data bachata hai.", "Galti: 'kya pata kab kaam aaye' soch kar sab kuch abstract bana dena. Extra layers bina fayde ke padhne ki mehnat badhati hain.", "Achhi aadat: concrete class ki jagah abstraction (parent type ya interface) ke liye program likho."]],
+   tip: ["Interview answer in one line: abstraction hides the implementation and shows only functionality, achieved in Java with abstract classes and interfaces.", "Interview answer ek line me: abstraction implementation chhupati hai aur sirf functionality dikhati hai, Java me abstract classes aur interfaces se milti hai."]}
+ ]},
+33: {
+ def: ["An abstract class is a class declared with the abstract keyword that is meant to be a base for other classes and cannot be instantiated itself. It can contain abstract methods (declared without a body, which every concrete child MUST implement) and ordinary methods, fields and constructors. It lets you share common code AND force children to provide their own version of certain behaviour.",
+       "Abstract class abstract keyword se declare ki gayi wo class hai jo dusri classes ki base banne ke liye hai aur khud instantiate nahi ho sakti. Isme abstract methods (bina body ke declare hue, jinhe har concrete child ko implement KARNA padta hai) aur normal methods, fields aur constructors ho sakte hain. Isse common code share karte ho AUR children ko kuch behaviour ka apna version dene par majboor karte ho."],
+ secs: [
+  {h: ["Why do we need abstract classes?", "Abstract classes ki zarurat kyun?"],
+   p: ["Think of a Shape. Every shape has a color and must be able to tell its area, but 'the area of a shape' makes no sense by itself: you must know whether it is a circle or a rectangle. A normal class would force you to invent a fake area() (like return 0). An abstract class lets you say honestly: 'every shape has an area, but I cannot say how to compute it, each child must'. The shared parts (the color, a describe method) are written once.",
+       "Shape socho. Har shape ka ek color hota hai aur use apna area batana aana chahiye, par 'shape ka area' akele me koi matlab nahi rakhta: pata hona chahiye ki circle hai ya rectangle. Normal class tumhe nakli area() (jaise return 0) banane par majboor karti. Abstract class tumhe imaandari se kehne deti hai: 'har shape ka area hota hai, par main nahi bata sakta ki kaise nikalte hain, har child ko batana hoga'. Shared hisse (color, describe method) ek baar likhe jate hain."],
+   pts: [["Use an abstract class when classes are closely related (an IS-A family) and share some code or fields.", "It stops people from creating meaningless objects such as 'a plain Shape'.", "It guarantees that every concrete child has the methods that the common code needs.", "It sits between a normal class (everything written) and an interface (nothing written)."],
+         ["Abstract class tab use karo jab classes kareebi taur par judi ho (IS-A family) aur kuch code ya fields share karti ho.", "Ye logon ko 'ek simple Shape' jaise matlab-heen objects banane se rokti hai.", "Ye guarantee deti hai ki har concrete child ke paas wo methods hon jo common code ko chahiye.", "Ye normal class (sab kuch likha hua) aur interface (kuch bhi likha nahi) ke beech me baithti hai."]]},
+  {h: ["Declaring an abstract class and abstract methods", "Abstract class aur abstract methods declare karna"],
+   p: ["Write abstract before class. An abstract method has the abstract keyword, NO body, and ends with a semicolon instead of braces. A class that has even one abstract method must itself be declared abstract. An abstract class may also have zero abstract methods, which is useful just to stop objects being created.",
+       "class se pehle abstract likho. Abstract method me abstract keyword hota hai, body NAHI hoti, aur braces ki jagah semicolon par khatam hota hai. Jis class me ek bhi abstract method ho use khud abstract declare karna padta hai. Abstract class me zero abstract methods bhi ho sakte hain, jo sirf objects banne se rokne ke kaam aata hai."],
+   code: `abstract class Shape {                      // the class is abstract
+    String color;
+
+    Shape(String color) {                   // abstract classes can have constructors
+        this.color = color;
+    }
+
+    abstract double area();                 // no body, semicolon
+    abstract double perimeter();            // each child must write this
+
+    void describe() {                       // normal method: shared, finished code
+        System.out.printf("%s shape: area %.2f, perimeter %.2f%n", color, area(), perimeter());
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Shape s = new Shape("red");      // ERROR: Shape is abstract; cannot be instantiated
+    }
+}`,
+   pts: [["An abstract method has no { }. Writing abstract void f() { } is an error.", "A class with an abstract method must be abstract, or the compiler reports an error.", "abstract and final cannot be combined (abstract needs children, final forbids them).", "abstract methods cannot be private (children could not see them), static (static has no overriding) or final."],
+         ["Abstract method me { } nahi hota. abstract void f() { } likhna error hai.", "Abstract method wali class abstract honi chahiye, warna compiler error deta hai.", "abstract aur final saath nahi ho sakte (abstract ko children chahiye, final unhe rokta hai).", "abstract methods private (children unhe dekh nahi paate), static (static me overriding nahi hoti) ya final nahi ho sakte."]]},
+  {h: ["Extending an abstract class", "Abstract class ko extend karna"],
+   p: ["A concrete (normal) child class must implement EVERY abstract method it inherits. If it misses even one, the compiler refuses, unless the child is itself declared abstract. The normal methods are inherited and work as they are, and here describe() calls area() and perimeter() of whichever child it runs on. This is runtime polymorphism inside a parent method.",
+       "Concrete (normal) child class ko apne inherit kiye HAR abstract method ko implement karna padta hai. Ek bhi chhoot jaye to compiler mana kar deta hai, jab tak child khud abstract declare na ho. Normal methods inherit hote hain aur jaise hain waise kaam karte hain, aur yahan describe() jis child par chal raha ho uska area() aur perimeter() call karta hai. Ye parent method ke andar runtime polymorphism hai."],
+   code: `class Circle extends Shape {
+    private double radius;
+
+    Circle(String color, double radius) {
+        super(color);                                // runs the abstract parent's constructor
+        this.radius = radius;
+    }
+
+    @Override double area()      { return Math.PI * radius * radius; }
+    @Override double perimeter() { return 2 * Math.PI * radius; }
+}
+
+class Rectangle extends Shape {
+    private double w, h;
+
+    Rectangle(String color, double w, double h) {
+        super(color);
+        this.w = w;
+        this.h = h;
+    }
+
+    @Override double area()      { return w * h; }
+    @Override double perimeter() { return 2 * (w + h); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shape[] shapes = { new Circle("red", 2), new Rectangle("blue", 3, 4) };
+        for (Shape s : shapes) {
+            s.describe();        // the SAME inherited method, different results
+        }
+        // red shape: area 12.57, perimeter 12.57
+        // blue shape: area 12.00, perimeter 14.00
+    }
+}`,
+   tip: ["Compiler message '... is not abstract and does not override abstract method ...' means the child forgot to implement one of the abstract methods. Add it, or make the child abstract too.", "Compiler message '... is not abstract and does not override abstract method ...' ka matlab child ek abstract method implement karna bhul gaya. Use jodo, ya child ko bhi abstract banao."]},
+  {h: ["Constructors, fields and normal methods in an abstract class", "Abstract class me constructors, fields aur normal methods"],
+   p: ["Even though you cannot create an abstract object, its constructor still exists and runs: when a child object is created, the abstract parent's constructor runs first (through super(...)) and sets up the shared fields. Abstract classes can hold fields (even private ones with getters), normal methods, static methods, final methods and constants.",
+       "Bhale hi abstract object nahi bana sakte, uska constructor phir bhi hota hai aur chalta hai: child object banta hai to abstract parent ka constructor pehle chalta hai (super(...) se) aur shared fields set karta hai. Abstract classes fields (private bhi, getters ke saath), normal methods, static methods, final methods aur constants rakh sakti hain."],
+   code: `abstract class Employee {
+    private final String name;                  // shared data, kept private
+    private static int count = 0;               // a static field works too
+
+    Employee(String name) {
+        this.name = name;
+        count++;
+    }
+
+    String getName() { return name; }
+    static int getCount() { return count; }
+
+    abstract double monthlyPay();               // each kind of employee pays differently
+
+    final void payslip() {                      // final: children cannot change the format
+        System.out.println(name + " earns Rs " + monthlyPay());
+    }
+}
+
+class FullTime extends Employee {
+    private final double salary;
+    FullTime(String name, double salary) {
+        super(name);
+        this.salary = salary;
+    }
+    @Override double monthlyPay() { return salary; }
+}
+
+class PartTime extends Employee {
+    private final int hours;
+    private final double rate;
+    PartTime(String name, int hours, double rate) {
+        super(name);
+        this.hours = hours;
+        this.rate = rate;
+    }
+    @Override double monthlyPay() { return hours * rate; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Employee a = new FullTime("Mohit", 45000);
+        Employee b = new PartTime("Shivam", 80, 300);
+        a.payslip();                                  // Mohit earns Rs 45000.0
+        b.payslip();                                  // Shivam earns Rs 24000.0
+        System.out.println(Employee.getCount());      // 2
+    }
+}`},
+  {h: ["The template method pattern", "Template method pattern"],
+   p: ["This is the most useful design idea with abstract classes. The abstract parent writes the overall steps of a task in ONE method, in a fixed order, and makes that method final so nobody can change the order. Some steps are normal and shared, and some are abstract, left for the children to fill in. The parent controls the process, and the children supply the details.",
+       "Abstract classes ke saath ye sabse kaam ka design idea hai. Abstract parent ek task ke overall steps ek hi method me, tay order me likhta hai, aur us method ko final bana deta hai taaki koi order na badal sake. Kuch steps normal aur shared hote hain, aur kuch abstract, jo children ke bharne ke liye chhode jate hain. Parent process ko control karta hai, aur children details dete hain."],
+   code: `abstract class Beverage {
+    final void prepare() {                       // the template: fixed order, cannot be overridden
+        boilWater();
+        brew();
+        pour();
+        addExtras();
+    }
+
+    void boilWater() { System.out.println("Boiling water"); }    // shared step
+    void pour()      { System.out.println("Pouring into a cup"); }
+
+    abstract void brew();                        // steps that differ
+    abstract void addExtras();
+}
+
+class Tea extends Beverage {
+    @Override void brew()      { System.out.println("Steeping the tea leaves"); }
+    @Override void addExtras() { System.out.println("Adding lemon"); }
+}
+
+class Coffee extends Beverage {
+    @Override void brew()      { System.out.println("Dripping coffee through the filter"); }
+    @Override void addExtras() { System.out.println("Adding milk and sugar"); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        new Tea().prepare();
+        // Boiling water
+        // Steeping the tea leaves
+        // Pouring into a cup
+        // Adding lemon
+        System.out.println("---");
+        new Coffee().prepare();
+    }
+}`},
+  {h: ["Rules and restrictions at a glance", "Rules aur restrictions ek nazar me"],
+   pts: [["You cannot create an object of an abstract class with new. You CAN create an anonymous subclass or a normal child.", "A reference of the abstract type can hold any concrete child object (polymorphism).", "A child must implement all abstract methods, or itself be abstract.", "An abstract child can implement only some of the methods and leave the rest for its own children.", "An abstract class can have constructors, which are called through super(...).", "It may have any number of abstract and non-abstract methods, including zero abstract ones.", "It can extend ONE class (abstract or not) and implement any number of interfaces.", "Not allowed: abstract with private, final or static on a method. abstract with final on a class.", "A static method and the main method can exist inside an abstract class, so you can run a program from it."],
+         ["Abstract class ka object new se nahi bana sakte. Anonymous subclass ya normal child BANA sakte ho.", "Abstract type ka reference kisi bhi concrete child object ko pakad sakta hai (polymorphism).", "Child ko saare abstract methods implement karne padte hain, ya khud abstract hona padta hai.", "Abstract child kuch hi methods implement kar sakta hai aur baaki apne children par chhod sakta hai.", "Abstract class me constructors ho sakte hain, jo super(...) se call hote hain.", "Isme abstract aur non-abstract methods ki koi bhi ginti ho sakti hai, zero abstract methods bhi.", "Ye EK class (abstract ya normal) extend kar sakti hai aur kitne bhi interfaces implement kar sakti hai.", "Allowed nahi: method par abstract ke saath private, final ya static. Class par abstract ke saath final.", "Abstract class ke andar static method aur main method ho sakta hai, isliye usme se program chala sakte ho."]],
+   code: `abstract class Base {
+    // abstract private void a();      // ERROR: abstract methods cannot be private
+    // abstract static void b();       // ERROR: abstract methods cannot be static
+    // abstract final void c();        // ERROR: abstract methods cannot be final
+}
+
+// abstract final class X { }          // ERROR: a class cannot be both abstract and final
+
+abstract class Middle extends Base {   // fine: an abstract child may leave methods unfinished
+    abstract void todo();
+}
+
+class Last extends Middle {
+    @Override void todo() { System.out.println("Finally implemented"); }
+}`},
+  {h: ["Polymorphism with an abstract reference, and anonymous subclasses", "Abstract reference ke saath polymorphism aur anonymous subclasses"],
+   p: ["You can keep a Shape variable even though Shape is abstract, as long as it points to a concrete child. You can also create a one-time child on the spot, called an anonymous class, by writing new Shape(...) followed by a body that implements the abstract methods. It is a quick way to provide a small, single-use implementation.",
+       "Shape abstract hone par bhi Shape variable rakh sakte ho, jab tak wo kisi concrete child ko point kare. Wahin par ek baar ka child bhi bana sakte ho, jise anonymous class kehte hain, new Shape(...) ke baad ek body likhkar jo abstract methods implement kare. Ye chhoti, ek baar ki implementation dene ka tez tareeka hai."],
+   code: `public class Main {
+    public static void main(String[] args) {
+        Shape s = new Circle("green", 1);            // abstract reference, concrete object
+        s.describe();                                // green shape: area 3.14, perimeter 6.28
+
+        Shape unitSquare = new Shape("white") {      // anonymous subclass
+            @Override double area()      { return 1; }
+            @Override double perimeter() { return 4; }
+        };
+        unitSquare.describe();                       // white shape: area 1.00, perimeter 4.00
+
+        System.out.println(unitSquare instanceof Shape);   // true
+        System.out.println(s.getClass().getSimpleName());  // Circle
+    }
+}`},
+  {h: ["Abstract class versus interface, and common mistakes", "Abstract class vs interface aur common mistakes"],
+   p: ["Both give abstraction, and beginners ask when to use which. The next lesson covers interfaces in full. The short rule: choose an abstract class when the children are one family and share state (fields) and code. Choose an interface when unrelated classes must promise the same abilities.",
+       "Dono abstraction dete hain, aur beginners poochte hain ki kab kaun sa use karein. Agla lesson interfaces ko poori tarah cover karta hai. Chhota rule: children ek hi family ho aur state (fields) aur code share karte ho to abstract class chuno. Unrelated classes ko same abilities ka vaada karna ho to interface chuno."],
+   pts: [["Abstract class: can have fields with state, constructors and any kind of method. A class can extend only one.", "Interface: no instance fields (only constants), no constructors. A class can implement many.", "Mistake: trying to instantiate an abstract class with new.", "Mistake: forgetting to implement an abstract method in a concrete child.", "Mistake: writing a body for an abstract method, or forgetting the semicolon.", "Mistake: using abstract on private, static or final methods.", "Mistake: making a class abstract when it has no reason to be incomplete. Keep it normal.", "Mistake: calling an abstract method from the parent's constructor. The child's version may run before the child's fields are set.", "Good habit: put the common, finished code in the abstract class, and keep the abstract methods few and meaningful."],
+         ["Abstract class: state wale fields, constructors aur har tarah ke method ho sakte hain. Class sirf ek hi extend kar sakti hai.", "Interface: instance fields nahi (sirf constants), constructors nahi. Class kai implement kar sakti hai.", "Galti: abstract class ko new se instantiate karne ki koshish.", "Galti: concrete child me abstract method implement karna bhul jana.", "Galti: abstract method ki body likh dena, ya semicolon bhul jana.", "Galti: private, static ya final methods par abstract lagana.", "Galti: class ko abstract banana jabki use adhoora rehne ki koi wajah nahi. Use normal rakho.", "Galti: parent ke constructor se abstract method call karna. Child ka version child ke fields set hone se pehle chal sakta hai.", "Achhi aadat: common, poora code abstract class me rakho, aur abstract methods kam aur matlab wale rakho."]],
+   tip: ["Interview question: can an abstract class have a constructor? Yes. It runs when a child object is created, through super(...). Can it have a main method? Yes.", "Interview question: kya abstract class me constructor ho sakta hai? Haan. Ye child object banne par super(...) se chalta hai. Kya isme main method ho sakta hai? Haan."]}
+ ]},
+34: {
+ def: ["An interface is a contract that lists the methods a class promises to provide, without saying how they work. A class that implements an interface must write the body of every one of its abstract methods. An interface is declared with the interface keyword and used with implements, and a class can implement many interfaces. It is the main way Java achieves full abstraction and multiple inheritance of behaviour.",
+       "Interface ek contract hai jo un methods ki list deta hai jo class dene ka vaada karti hai, ye bataye bina ki wo kaise kaam karte hain. Interface implement karne wali class ko uske har abstract method ki body likhni padti hai. Interface interface keyword se declare hota hai aur implements se use hota hai, aur class kai interfaces implement kar sakti hai. Java me full abstraction aur behaviour ki multiple inheritance ka ye main tareeka hai."],
+ secs: [
+  {h: ["The idea: a contract", "Idea: ek contract"],
+   p: ["A USB port is an interface. It does not care whether you plug in a keyboard, a pen drive or a phone charger, as long as the device follows the USB rules. A TV remote works the same way with any TV that understands its signals. In Java, an interface lists the abilities, such as draw(), and any class that can do them, a Circle, a Photo or a Chart, signs the contract by implementing it. The code that uses the interface does not care which class it is.",
+       "USB port ek interface hai. Use fark nahi padta ki tum keyboard lagate ho, pen drive ya phone charger, bas device ko USB ke rules follow karne chahiye. TV remote bhi aise hi kisi bhi TV ke saath chalta hai jo uske signals samajhta ho. Java me interface abilities ki list deta hai, jaise draw(), aur jo bhi class unhe kar sakti hai, Circle, Photo ya Chart, use implement karke contract par sign karti hai. Interface use karne wala code is par dhyan nahi deta ki wo kaun si class hai."],
+   pts: [["Interface = WHAT a class can do. Class = HOW it does it.", "Unrelated classes can share one interface (a Bird and an Aeroplane can both be Flyable).", "An interface cannot be instantiated, but a variable of the interface type can hold any object of an implementing class.", "Naming: interfaces are often adjectives or abilities (Comparable, Runnable, Drawable) or plain nouns (List, Map)."],
+         ["Interface = class KYA kar sakti hai. Class = wo KAISE karti hai.", "Unrelated classes ek interface share kar sakti hain (Bird aur Aeroplane dono Flyable ho sakte hain).", "Interface instantiate nahi ho sakta, par interface type ka variable implement karne wali class ke kisi bhi object ko pakad sakta hai.", "Naming: interfaces aksar adjectives ya abilities (Comparable, Runnable, Drawable) ya simple nouns (List, Map) hote hain."]]},
+  {h: ["Declaring and implementing an interface", "Interface declare aur implement karna"],
+   p: ["Declare it with the interface keyword and list the method signatures. A class uses the implements keyword and must write every abstract method. In an interface, every method is automatically public and abstract, and every field is automatically public, static and final (a constant). Because the interface methods are public, the implementing method MUST also be declared public. Forgetting public is the most common beginner error.",
+       "interface keyword se declare karo aur method signatures likho. Class implements keyword use karti hai aur har abstract method likhna padta hai. Interface me har method apne aap public aur abstract hota hai, aur har field apne aap public, static aur final (constant) hota hai. Interface ke methods public hote hain, isliye implement karne wala method bhi public declare karna ZAROORI hai. public bhulna beginners ki sabse common error hai."],
+   code: `interface Drawable {
+    int MAX_SIZE = 100;            // automatically public static final
+    void draw();                   // automatically public abstract
+    void resize(int percent);
+}
+
+class Circle implements Drawable {
+    private int size = 10;
+
+    @Override
+    public void draw() {                       // must be public
+        System.out.println("Drawing a circle of size " + size);
+    }
+
+    @Override
+    public void resize(int percent) {
+        size = Math.min(MAX_SIZE, size * percent / 100);   // MAX_SIZE is available
+    }
+}
+
+// class Wrong implements Drawable {
+//     void draw() { }                         // ERROR: attempting to assign weaker access privileges
+//     public void resize(int p) { }
+// }
+
+public class Main {
+    public static void main(String[] args) {
+        Circle c = new Circle();
+        c.draw();                              // Drawing a circle of size 10
+        c.resize(500);
+        c.draw();                              // Drawing a circle of size 50
+        System.out.println(Drawable.MAX_SIZE); // 100: reached through the interface name
+        // Drawable d = new Drawable();        // ERROR: Drawable is abstract; cannot be instantiated
+    }
+}`,
+   pts: [["Methods: public abstract is automatic. You may write it, but nobody does.", "Fields: public static final is automatic, so they are constants and must be given a value at once.", "No constructors, and no instance fields or instance initializer blocks.", "A class that implements an interface but skips a method must be abstract.", "An interface can be public or package-private, like a class. The file name must match a public interface."],
+         ["Methods: public abstract automatic hai. Likh sakte ho, par koi likhta nahi.", "Fields: public static final automatic hai, isliye wo constants hain aur turant value deni padti hai.", "Constructors nahi, aur instance fields ya instance initializer blocks nahi.", "Jo class interface implement kare par koi method chhod de use abstract hona padta hai.", "Interface class ki tarah public ya package-private ho sakta hai. Public interface ka file naam match hona chahiye."]]},
+  {h: ["Implementing many interfaces", "Kai interfaces implement karna"],
+   p: ["Java classes cannot extend two classes, but a class can implement as many interfaces as it wants, separated by commas. This is how Java gives you 'multiple inheritance of abilities' without the diamond problem of classes. A Duck can walk, fly and swim, so it implements three small interfaces.",
+       "Java classes do classes extend nahi kar sakti, par ek class jitne chahe interfaces comma se alag karke implement kar sakti hai. Isi tarah Java classes ke diamond problem ke bina 'abilities ki multiple inheritance' deta hai. Duck chal, ud aur tair sakti hai, isliye wo teen chhote interfaces implement karti hai."],
+   code: `interface Walkable { void walk(); }
+interface Flyable  { void fly(); }
+interface Swimmable { void swim(); }
+
+class Duck implements Walkable, Flyable, Swimmable {
+    @Override public void walk() { System.out.println("Duck waddles"); }
+    @Override public void fly()  { System.out.println("Duck flies low"); }
+    @Override public void swim() { System.out.println("Duck paddles"); }
+}
+
+class Fish implements Swimmable {
+    @Override public void swim() { System.out.println("Fish swims fast"); }
+}
+
+public class Main {
+    static void goForSwim(Swimmable s) { s.swim(); }    // accepts ANY swimmer
+
+    public static void main(String[] args) {
+        Duck d = new Duck();
+        goForSwim(d);                  // Duck paddles
+        goForSwim(new Fish());         // Fish swims fast
+
+        Flyable f = d;                 // the same object seen through another interface
+        f.fly();                       // Duck flies low
+        // f.swim();                   // ERROR: Flyable has no swim()
+    }
+}`},
+  {h: ["Interfaces extending interfaces", "Interfaces ka interfaces ko extend karna"],
+   p: ["An interface can extend one or even several other interfaces using extends. The new interface gets all the abstract methods of its parents, and a class implementing it must provide all of them. This builds bigger contracts out of small ones.",
+       "Interface extends se ek ya kai dusre interfaces ko extend kar sakta hai. Naye interface ko apne parents ke saare abstract methods mil jate hain, aur use implement karne wali class ko saare dene padte hain. Isse chhote contracts se bade contracts bante hain."],
+   code: `interface Animal {
+    void eat();
+}
+
+interface Pet extends Animal {            // interface extends interface
+    void play();
+}
+
+interface Trainable {
+    void learn(String trick);
+}
+
+interface SmartPet extends Pet, Trainable { }     // extends several at once
+
+class Dog implements SmartPet {
+    @Override public void eat()  { System.out.println("Dog eats"); }
+    @Override public void play() { System.out.println("Dog plays fetch"); }
+    @Override public void learn(String trick) { System.out.println("Dog learns " + trick); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        SmartPet p = new Dog();
+        p.eat();                        // from Animal
+        p.play();                       // from Pet
+        p.learn("roll over");           // from Trainable
+        Animal a = p;                   // a SmartPet IS an Animal too
+        a.eat();
+    }
+}`},
+  {h: ["Default methods (Java 8)", "Default methods (Java 8)"],
+   p: ["Before Java 8, adding a new method to an interface broke every class that implemented it, because they all had to write it. A default method solves this: it has a body inside the interface, and implementing classes get it for free. A class may still override it to behave differently. Default methods let interfaces grow safely over the years.",
+       "Java 8 se pehle interface me naya method jodne se use implement karne wali har class toot jati thi, kyunki sabko use likhna padta tha. Default method ye hal karta hai: iski body interface ke andar hoti hai, aur implement karne wali classes ko ye muft me milta hai. Class chahe to use override karke alag behave kar sakti hai. Default methods interfaces ko saalon tak surakshit tareeke se badhne dete hain."],
+   code: `interface Vehicle {
+    void start();                                   // abstract: every class must write it
+
+    default void honk() {                           // default: has a body, optional to override
+        System.out.println("Beep beep");
+    }
+}
+
+class Car implements Vehicle {
+    @Override public void start() { System.out.println("Car starts"); }
+    // honk() is inherited from the interface
+}
+
+class Truck implements Vehicle {
+    @Override public void start() { System.out.println("Truck starts"); }
+    @Override public void honk()  { System.out.println("HOOONK!"); }    // own version
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Vehicle a = new Car();
+        Vehicle b = new Truck();
+        a.start();  a.honk();      // Car starts / Beep beep
+        b.start();  b.honk();      // Truck starts / HOOONK!
+    }
+}`,
+   pts: [["Write the keyword default before the return type. A default method is always public.", "A default method can call the abstract methods of the same interface, because at run time a real object exists.", "Real use: Java added forEach() and sort() to List as default methods without breaking old code."],
+         ["Return type se pehle default keyword likho. Default method hamesha public hota hai.", "Default method usi interface ke abstract methods call kar sakta hai, kyunki run time par asli object maujood hota hai.", "Real use: Java ne purane code ko tode bina List me forEach() aur sort() default methods ki tarah jode."]]},
+  {h: ["Static and private methods in interfaces", "Interfaces me static aur private methods"],
+   p: ["Since Java 8 an interface can hold static methods, which belong to the interface itself and are called with the interface name, like helper functions. They are NOT inherited by implementing classes. Since Java 9 an interface can also hold private methods, used to share code between default methods without exposing it to the outside.",
+       "Java 8 se interface me static methods ho sakte hain, jo interface ke khud ke hote hain aur interface ke naam se call hote hain, helper functions ki tarah. Wo implement karne wali classes ko inherit NAHI hote. Java 9 se interface me private methods bhi ho sakte hain, jo default methods ke beech code share karne ke kaam aate hain bina use bahar dikhaye."],
+   code: `interface MathOps {
+    static int square(int x) {                 // static: called as MathOps.square(...)
+        return x * x;
+    }
+    static boolean isEven(int x) {
+        return x % 2 == 0;
+    }
+}
+
+interface Logger {
+    default void info(String message)  { log("INFO", message); }
+    default void error(String message) { log("ERROR", message); }
+
+    private void log(String level, String message) {      // private helper (Java 9+)
+        System.out.println("[" + level + "] " + message);
+    }
+}
+
+class ConsoleLogger implements Logger { }
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println(MathOps.square(7));        // 49
+        System.out.println(MathOps.isEven(10));       // true
+
+        Logger log = new ConsoleLogger();
+        log.info("Server started");                   // [INFO] Server started
+        log.error("Disk almost full");                // [ERROR] Disk almost full
+        // log.log("X", "y");                         // ERROR: log has private access
+    }
+}`},
+  {h: ["The diamond problem and how Java solves it", "Diamond problem aur Java use kaise hal karta hai"],
+   p: ["If a class implements two interfaces that both give a default method with the same name, Java cannot guess which one you want, so it reports an error. You must resolve it yourself by overriding the method in the class. Inside, you can pick one parent's version, or both, using InterfaceName.super.method().",
+       "Class do aise interfaces implement kare jo dono same naam ka default method dete hon, to Java andaza nahi laga sakta ki tum kaun sa chahte ho, isliye error deta hai. Tumhe khud class me method override karke ise hal karna padta hai. Andar InterfaceName.super.method() se ek parent ka version, ya dono, chun sakte ho."],
+   code: `interface Phone {
+    default void ring() { System.out.println("Phone rings"); }
+}
+
+interface Alarm {
+    default void ring() { System.out.println("Alarm rings"); }
+}
+
+// class Gadget implements Phone, Alarm { }     // ERROR: inherits unrelated defaults for ring()
+
+class SmartWatch implements Phone, Alarm {
+    @Override
+    public void ring() {                        // you must decide
+        Phone.super.ring();                     // use the Phone version...
+        Alarm.super.ring();                     // ...and the Alarm version
+        System.out.println("Watch vibrates");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        new SmartWatch().ring();
+        // Phone rings
+        // Alarm rings
+        // Watch vibrates
+    }
+}`,
+   tip: ["The rule of priority: a class's own method wins over any interface default. If two interfaces conflict and the class does not override, it is a compile error.", "Priority ka rule: class ka apna method kisi bhi interface default par jeetta hai. Do interfaces ka takrav ho aur class override na kare to compile error hai."]},
+  {h: ["Polymorphism with interfaces", "Interfaces ke saath polymorphism"],
+   p: ["An interface type is the most flexible reference you can use. A list of Drawable can hold a Circle, a Photo and an object made on the spot, and one loop calls draw() on each. A one-time implementation can be written as an anonymous class. An interface with exactly one abstract method is called a functional interface, and in Phase 4 you will write it in one short line using a lambda expression.",
+       "Interface type sabse flexible reference hai jo tum use kar sakte ho. Drawable ki list Circle, Photo aur wahin bane ek object ko rakh sakti hai, aur ek loop har ek par draw() call karta hai. Ek baar ki implementation anonymous class se likh sakte ho. Jis interface me bilkul ek abstract method ho use functional interface kehte hain, aur Phase 4 me use lambda expression se ek chhoti line me likhoge."],
+   code: `import java.util.*;
+
+interface Drawable {
+    void draw();
+}
+
+class Circle implements Drawable {
+    @Override public void draw() { System.out.println("Drawing a circle"); }
+}
+
+class Photo implements Drawable {
+    @Override public void draw() { System.out.println("Showing a photo"); }
+}
+
+@FunctionalInterface
+interface Calculator {                      // exactly one abstract method
+    int apply(int a, int b);
+}
+
+public class Main {
+    public static void main(String[] args) {
+        List<Drawable> items = new ArrayList<>();
+        items.add(new Circle());
+        items.add(new Photo());
+        items.add(new Drawable() {          // anonymous class: a one-time implementation
+            @Override public void draw() { System.out.println("Drawing something custom"); }
+        });
+
+        for (Drawable d : items) {
+            d.draw();                       // one loop, three behaviours
+        }
+
+        Calculator add = (a, b) -> a + b;   // a lambda, taught properly in Phase 4
+        Calculator mul = (a, b) -> a * b;
+        System.out.println(add.apply(6, 7));   // 13
+        System.out.println(mul.apply(6, 7));   // 42
+    }
+}`},
+  {h: ["Interface versus abstract class", "Interface vs abstract class"],
+   p: ["Both define abstract methods, so it is easy to confuse them. The differences decide which one fits your design. As a simple guide: use an interface to describe an ability that many unrelated classes can have, and use an abstract class to share code and state between closely related classes.",
+       "Dono abstract methods define karte hain, isliye confuse hona aasan hai. Farak tay karte hain ki tumhare design me kaun fit baithta hai. Simple guide: kai unrelated classes ke paas ho sakne wali ability batane ke liye interface, aur kareebi taur par judi classes ke beech code aur state share karne ke liye abstract class."],
+   pts: [["Keyword: interface and implements, versus abstract class and extends.", "Inheritance: a class can implement MANY interfaces but extend only ONE class.", "Fields: an interface has only constants (public static final). An abstract class can have normal instance fields with state.", "Constructors: an interface has none. An abstract class has constructors.", "Methods: interface methods are public. Abstract classes allow any access level (private, protected, default, public).", "Code in methods: an interface may have default, static and private methods. An abstract class may have any normal methods.", "Relationship: interface = CAN-DO (ability). Abstract class = IS-A (family).", "Speed of change: adding an abstract method to an interface breaks all implementers (use default instead). Adding a normal method to an abstract class breaks nobody.", "You can combine them: a class can extend an abstract class AND implement several interfaces."],
+         ["Keyword: interface aur implements, versus abstract class aur extends.", "Inheritance: class KAI interfaces implement kar sakti hai par sirf EK class extend kar sakti hai.", "Fields: interface me sirf constants (public static final) hote hain. Abstract class me state wale normal instance fields ho sakte hain.", "Constructors: interface me nahi hote. Abstract class me hote hain.", "Methods: interface ke methods public hote hain. Abstract classes har access level (private, protected, default, public) allow karti hain.", "Methods me code: interface me default, static aur private methods ho sakte hain. Abstract class me koi bhi normal methods ho sakte hain.", "Relationship: interface = CAN-DO (ability). Abstract class = IS-A (family).", "Badlav ki speed: interface me abstract method jodne se saare implementers toot jate hain (uski jagah default use karo). Abstract class me normal method jodne se koi nahi tootta.", "Dono mila sakte ho: class ek abstract class extend KAR sakti hai AUR kai interfaces implement kar sakti hai."]],
+   code: `interface Payable {                        // ability: many unrelated things can be paid
+    double amountDue();
+}
+
+interface Printable {
+    void print();
+}
+
+abstract class Person {                    // family: shared state and code
+    protected final String name;
+    Person(String name) { this.name = name; }
+    String getName() { return name; }
+}
+
+class Employee extends Person implements Payable, Printable {   // one class + two interfaces
+    private final double salary;
+
+    Employee(String name, double salary) {
+        super(name);
+        this.salary = salary;
+    }
+
+    @Override public double amountDue() { return salary; }
+    @Override public void print() { System.out.println(name + " is owed " + amountDue()); }
+}
+
+class Invoice implements Payable {         // unrelated to Person, still Payable
+    @Override public double amountDue() { return 2500; }
+}
+
+public class Main {
+    static double total(Payable[] items) {
+        double t = 0;
+        for (Payable p : items) t += p.amountDue();
+        return t;
+    }
+
+    public static void main(String[] args) {
+        Payable[] bills = { new Employee("Himakshi", 40000), new Invoice() };
+        System.out.println(total(bills));                    // 42500.0
+        new Employee("Rahul", 30000).print();                // Rahul is owed 30000.0
+    }
+}`},
+  {h: ["Marker interfaces, important library interfaces and common mistakes", "Marker interfaces, zaroori library interfaces aur common mistakes"],
+   p: ["An interface with no methods at all is called a marker interface. It only 'marks' a class with a property, such as Serializable (the object may be saved as bytes). Java's library is full of useful interfaces that you will meet in Phase 4: Comparable and Comparator (sorting), Runnable (threads), Iterable and Iterator (loops over collections), and List, Set and Map (collections). Learning to read and implement interfaces is one of the most important Java skills.",
+       "Jis interface me koi method hi na ho use marker interface kehte hain. Ye sirf class par ek property ka 'nishaan' lagata hai, jaise Serializable (object ko bytes ki tarah save kiya ja sakta hai). Java ki library kaam ke interfaces se bhari hai jo Phase 4 me milenge: Comparable aur Comparator (sorting), Runnable (threads), Iterable aur Iterator (collections par loops), aur List, Set aur Map (collections). Interfaces padhna aur implement karna Java ki sabse zaroori skills me se ek hai."],
+   pts: [["Mistake: forgetting public on the implementing method, which gives 'attempting to assign weaker access privileges'.", "Mistake: forgetting to implement one abstract method, so the class must be abstract.", "Mistake: trying to create an object with new Interface().", "Mistake: expecting instance variables in an interface. Every field is a constant.", "Mistake: creating a huge interface with 20 methods. Split it into small, focused interfaces.", "Mistake: two interfaces with the same default method and no override in the class.", "Mistake: calling a static interface method through an object. Use InterfaceName.method().", "Good habit: program to the interface (List<String> x = new ArrayList<>()), not to the concrete class.", "Good habit: name the interface by the ability (Drawable) and the classes by the thing (Circle)."],
+         ["Galti: implement karne wale method par public bhul jana, jisse 'attempting to assign weaker access privileges' aata hai.", "Galti: ek abstract method implement karna bhul jana, jisse class ko abstract hona padta hai.", "Galti: new Interface() se object banane ki koshish.", "Galti: interface me instance variables ki ummeed. Har field constant hota hai.", "Galti: 20 methods wala bada interface banana. Use chhote, focused interfaces me todo.", "Galti: do interfaces me same default method aur class me override nahi.", "Galti: static interface method ko object se call karna. InterfaceName.method() use karo.", "Achhi aadat: interface ke liye program likho (List<String> x = new ArrayList<>()), concrete class ke liye nahi.", "Achhi aadat: interface ka naam ability par (Drawable) aur classes ka naam cheez par (Circle) rakho."]],
+   code: `import java.io.Serializable;
+
+class Student implements Serializable {     // a marker interface: no methods to write
+    String name = "Shivam";
+}
+
+// Reading an interface: what must a class do to be comparable?
+interface Comparable<T> {
+    int compareTo(T other);                 // negative, zero or positive
+}
+
+// Example: Student implementing it (you will use this in Phase 4 for sorting)
+class Marks implements java.lang.Comparable<Marks> {
+    int value;
+    Marks(int value) { this.value = value; }
+
+    @Override
+    public int compareTo(Marks other) {
+        return Integer.compare(this.value, other.value);
+    }
+}`,
+   tip: ["Interview question: can an interface extend a class? No. Can an interface have a main method? Yes, a static one. Can a class implement an interface and extend a class? Yes, extends comes first: class A extends B implements C, D.", "Interview question: kya interface class ko extend kar sakta hai? Nahi. Kya interface me main method ho sakta hai? Haan, static wala. Kya class interface implement karke class extend bhi kar sakti hai? Haan, extends pehle aata hai: class A extends B implements C, D."]}
+ ]}
+});
+
+Object.assign(TOPICS, {
+35: {
+ def: ["Access modifiers are keywords that control WHO is allowed to see and use a class, a field, a method or a constructor. Java has four access levels: private (only inside the same class), default or package-private (no keyword, only inside the same package), protected (the same package plus child classes) and public (everywhere). They are the tool that makes encapsulation possible.",
+       "Access modifiers wo keywords hain jo tay karte hain ki kisi class, field, method ya constructor ko KAUN dekh aur use kar sakta hai. Java me chaar access levels hain: private (sirf usi class ke andar), default ya package-private (koi keyword nahi, sirf usi package ke andar), protected (same package aur child classes) aur public (har jagah). Ye wo tool hai jisse encapsulation mumkin hota hai."],
+ secs: [
+  {h: ["Why access control?", "Access control kyun?"],
+   p: ["In a big program hundreds of classes talk to each other. If every field and method is open to everyone, any class can change any data, and a small change in one place breaks code far away. Access modifiers let you draw a clear line: this part is my private business, this part is for my package, this part is for my children, and this part is the public face that everyone may use. The smaller the public face, the easier it is to change the inside later.",
+       "Bade program me sau classes ek dusre se baat karti hain. Har field aur method sabke liye khula ho to koi bhi class kisi bhi data ko badal sakti hai, aur ek jagah ka chhota badlav door ke code ko tod deta hai. Access modifiers saaf line kheenchne dete hain: ye hissa mera private maamla hai, ye mere package ke liye hai, ye mere children ke liye hai, aur ye public chehra hai jise sab use kar sakte hain. Public chehra jitna chhota, andar ka hissa baad me badalna utna aasan."],
+   pts: [["Security: data cannot be changed by code that has no right to do it.", "Freedom to change: private details can be rewritten without breaking other classes.", "Clear design: the public methods tell other programmers what the class is for.", "Rule of thumb: start with the strictest level (private) and open up only when there is a real need."],
+         ["Security: jis code ko haq nahi wo data nahi badal sakta.", "Badalne ki azaadi: private details ko dusri classes tode bina dobara likha ja sakta hai.", "Saaf design: public methods dusre programmers ko batate hain ki class kis kaam ki hai.", "Thumb rule: sabse sakht level (private) se shuru karo aur sirf asli zaroorat par kholo."]]},
+  {h: ["The four levels at a glance", "Chaaron levels ek nazar me"],
+   p: ["From the strictest to the most open: private, default (package-private), protected, public. The table below shows where each one can be used. 'Child in another package' means a subclass that lives in a different package than the parent.",
+       "Sabse sakht se sabse khule tak: private, default (package-private), protected, public. Neeche ki table batati hai ki har ek kahan use ho sakta hai. 'Dusre package ka child' ka matlab wo subclass jo parent se alag package me rehti hai."],
+   code: `// Where can the member be used?
+//
+// modifier    same class   same package   child in other package   everywhere else
+// ---------   ----------   ------------   ----------------------   ---------------
+// private        yes          no                 no                      no
+// default        yes          yes                no                      no
+// protected      yes          yes                yes (via inheritance)   no
+// public         yes          yes                yes                     yes
+
+public class Demo {
+    private int a = 1;          // only inside Demo
+    int b = 2;                  // default: no keyword, whole package
+    protected int c = 3;        // package + children
+    public int d = 4;           // everybody
+}`},
+  {h: ["private: only inside the same class", "private: sirf usi class ke andar"],
+   p: ["A private member is invisible outside its own class, even to child classes and to other classes in the same file. It is the right choice for fields, for helper methods and for anything that is an internal detail. The class itself can use it freely, including one object reading the private field of another object of the same class.",
+       "Private member apni class ke bahar dikhta hi nahi, child classes aur same file ki dusri classes ko bhi nahi. Fields, helper methods aur har internal detail ke liye ye sahi choice hai. Class khud ise khule me use kar sakti hai, aur usi class ka ek object dusre object ka private field bhi padh sakta hai."],
+   code: `class Safe {
+    private int code = 1234;                      // hidden data
+
+    private boolean check(int attempt) {          // hidden helper
+        return attempt == code;
+    }
+
+    public boolean open(int attempt) {            // the controlled door
+        return check(attempt);
+    }
+
+    boolean sameCode(Safe other) {
+        return this.code == other.code;           // allowed: same class, other object
+    }
+}
+
+class Thief {
+    void attempt() {
+        Safe s = new Safe();
+        // System.out.println(s.code);            // ERROR: code has private access in Safe
+        // s.check(1234);                         // ERROR: check(int) has private access in Safe
+        System.out.println(s.open(1234));         // true: only the public door works
+    }
+}
+
+// A private constructor: nobody can create an object with new
+final class MathUtil {
+    private MathUtil() { }                        // a utility class is never instantiated
+    static int cube(int x) { return x * x * x; }
+}
+// new MathUtil();                                // ERROR: MathUtil() has private access`,
+   pts: [["Use private for every field unless you have a very good reason.", "Use private for helper methods that only make sense inside the class.", "A private constructor stops outsiders from using new. It is used for utility classes and singletons.", "Private members are not inherited, so a child cannot use or override them.", "The compiler message to remember: 'x has private access in Y'."],
+         ["Har field ke liye private use karo, jab tak koi bahut achhi wajah na ho.", "Un helper methods ke liye private use karo jo sirf class ke andar matlab rakhte hain.", "Private constructor bahar walon ko new use karne se rokta hai. Ye utility classes aur singletons me use hota hai.", "Private members inherit nahi hote, isliye child unhe use ya override nahi kar sakta.", "Compiler message yaad rakho: 'x has private access in Y'."]]},
+  {h: ["default (package-private): no keyword", "default (package-private): koi keyword nahi"],
+   p: ["If you write NO modifier, the member gets default access: every class in the SAME package can use it, and nobody outside the package can. There is no keyword named default for this (the word default is used for something else in switch and interfaces). It is handy for helper classes that belong together, and it is also what you get by accident when you forget to write a modifier.",
+       "Koi modifier NA likho to member ko default access milta hai: SAME package ki har class use kar sakti hai, aur package ke bahar koi nahi. Iske liye default naam ka keyword nahi hota (default shabd switch aur interfaces me kisi aur kaam ke liye hai). Ye saath rehne wali helper classes ke liye kaam ka hai, aur ye tab bhi milta hai jab tum galti se modifier likhna bhul jao."],
+   code: `// File: shop/Order.java
+package shop;
+
+class Order {                       // default class: visible only inside package shop
+    int quantity = 1;               // default field
+    void print() {                  // default method
+        System.out.println("Order of " + quantity);
+    }
+}
+
+// File: shop/Main.java  (same package)
+package shop;
+
+public class Main {
+    public static void main(String[] args) {
+        Order o = new Order();      // OK: same package
+        o.quantity = 5;             // OK
+        o.print();                  // Order of 5
+    }
+}
+
+// File: other/Test.java  (different package)
+package other;
+
+public class Test {
+    void run() {
+        // shop.Order o = new shop.Order();   // ERROR: Order is not public in shop; cannot be accessed from outside package
+    }
+}`,
+   tip: ["If a class or method suddenly 'is not public' when you move code to another package, you probably left out the modifier. Add public where it truly belongs.", "Code dusre package me le jane par class ya method achanak 'is not public' bataye, to tumne shayad modifier chhod diya tha. Jahan sach me zaroorat ho wahan public lagao."]},
+  {h: ["protected: package plus children", "protected: package aur children"],
+   p: ["Protected is for members that the child classes need, but the whole world should not. A protected member is visible in the same package, and also in every subclass, even if the subclass lives in another package. There is one subtle rule: in another package, a child may use the protected member only through ITSELF (this, or a reference of the child's own type), not through a plain object of the parent type.",
+       "Protected un members ke liye hai jo child classes ko chahiye par poori duniya ko nahi. Protected member same package me dikhta hai, aur har subclass me bhi, chahe subclass dusre package me rehti ho. Ek baarik rule hai: dusre package me child protected member ko sirf KHUD (this ya child ke apne type ke reference) ke through use kar sakta hai, parent type ke simple object ke through nahi."],
+   code: `// File: bank/Account.java
+package bank;
+
+public class Account {
+    protected double balance = 100;
+    protected void audit() { System.out.println("auditing " + balance); }
+}
+
+// File: app/Savings.java   (a different package)
+package app;
+
+import bank.Account;
+
+public class Savings extends Account {
+    void test() {
+        balance += 10;                // OK: inherited, used on this object
+        audit();                      // OK
+
+        Savings s = new Savings();
+        s.balance += 1;               // OK: through a reference of the child's own type
+
+        Account other = new Account();
+        // other.balance += 1;        // ERROR: protected access works only through Savings, not through Account
+    }
+}
+
+// File: app/Main.java
+package app;
+
+import bank.Account;
+
+public class Main {
+    public static void main(String[] args) {
+        Account a = new Account();
+        // a.balance = 0;             // ERROR: balance has protected access in Account
+    }
+}`,
+   pts: [["Use protected for fields or methods that child classes must reach, such as a helper used in overriding.", "Protected is more open than default: it also reaches children in other packages.", "Prefer private fields with protected getters, so children cannot corrupt the data."],
+         ["Un fields ya methods ke liye protected use karo jinhe child classes ko chhona zaroori ho, jaise overriding me kaam aane wala helper.", "Protected default se zyada khula hai: ye dusre packages ke children tak bhi pahunchta hai.", "Private fields aur protected getters ko prefer karo, taaki children data kharab na kar sakein."]]},
+  {h: ["public: open to everyone", "public: sabke liye khula"],
+   p: ["A public member can be used from any class in any package. Public is how you build the visible face of your class: the methods other code is meant to call. A public class is the only kind that other packages can import, and one source file can hold only one public class, whose name must match the file name. Be careful: everything you make public becomes a promise that you must keep working in the future.",
+       "Public member kisi bhi package ki kisi bhi class se use ho sakta hai. Public se tum class ka dikhne wala chehra banate ho: wo methods jinhe dusra code call karne ke liye hai. Public class hi wo kisam hai jise dusre packages import kar sakte hain, aur ek source file me sirf ek public class ho sakti hai jiska naam file ke naam jaisa hona chahiye. Dhyan rakho: jo bhi public banate ho wo ek vaada ban jata hai jo tumhe aage bhi nibhana padta hai."],
+   code: `public class Calculator {              // public class: visible to every package
+    public static final double VERSION = 2.0;       // a public constant is fine
+
+    private int memory = 0;                          // private: hidden state
+
+    public int add(int a, int b) {                   // public: the intended face
+        return a + b;
+    }
+
+    public void store(int value) { memory = value; }
+    public int recall() { return memory; }
+
+    public static void main(String[] args) {         // main must be public static
+        Calculator c = new Calculator();
+        System.out.println(c.add(2, 3));             // 5
+    }
+}`},
+  {h: ["Which modifiers can go where", "Kaun sa modifier kahan lag sakta hai"],
+   pts: [["A top-level class (a class by itself in a file) can be public or default only. private and protected are NOT allowed on it.", "Fields, methods and constructors can use all four levels.", "Nested classes (a class inside a class) can use all four levels, because they are members of the outer class.", "Local variables inside a method cannot have any access modifier. They are visible only in their own block anyway.", "Interface methods are public automatically, and interface fields are public static final.", "Enum constructors are private automatically.", "main must be public static void, so that the JVM can call it from outside."],
+         ["Top-level class (file me akeli class) sirf public ya default ho sakti hai. private aur protected is par ALLOWED NAHI hain.", "Fields, methods aur constructors chaaron levels use kar sakte hain.", "Nested classes (class ke andar class) chaaron levels use kar sakti hain, kyunki wo outer class ke members hain.", "Method ke andar ke local variables par koi access modifier nahi lagta. Wo waise bhi apne block me hi dikhte hain.", "Interface ke methods apne aap public hote hain, aur interface fields public static final.", "Enum constructors apne aap private hote hain.", "main public static void hona chahiye, taaki JVM use bahar se call kar sake."]],
+   code: `public class Outer {
+    private int secret = 7;
+
+    private class Inner {                 // allowed: a nested class is a member
+        void show() {
+            System.out.println(secret);   // an inner class can even read Outer's private field
+        }
+    }
+
+    void run() {
+        new Inner().show();               // 7
+    }
+}
+
+// private class Wrong { }                // ERROR: modifier private not allowed here (top-level class)
+// protected class AlsoWrong { }          // ERROR: modifier protected not allowed here`},
+  {h: ["Access, inheritance and overriding", "Access, inheritance aur overriding"],
+   p: ["When a child overrides a method it may keep the same access level or make it MORE open, but never less open. A public parent method must stay public in the child. The reason is simple: code that holds a parent reference and calls the public method must still be allowed to call it on any child. Private methods are not inherited, so a child method with the same name is a separate method and the rule does not apply.",
+       "Child method override kare to wo wahi access level rakh sakta hai ya ZYADA khula bana sakta hai, kam khula kabhi nahi. Public parent method child me bhi public hi rehna chahiye. Wajah simple hai: jo code parent reference rakhta hai aur public method call karta hai use har child par bhi call karne ki ijazat honi chahiye. Private methods inherit nahi hote, isliye child ka same naam ka method alag method hai aur ye rule lagu nahi hota."],
+   code: `class Parent {
+    public void show()        { System.out.println("Parent show"); }
+    protected void helper()   { System.out.println("Parent helper"); }
+    private void secret()     { System.out.println("Parent secret"); }
+}
+
+class Child extends Parent {
+    // void show() { }                         // ERROR: attempting to assign weaker access privileges; was public
+
+    @Override
+    public void helper() {                      // OK: protected became public (more open)
+        System.out.println("Child helper");
+    }
+
+    void secret() {                             // NOT an override: Parent.secret() is invisible here
+        System.out.println("Child secret");
+    }
+}`,
+   tip: ["When you implement an interface method, you MUST write public, because interface methods are public. Forgetting it gives 'attempting to assign weaker access privileges'.", "Interface ka method implement karte waqt public likhna ZAROORI hai, kyunki interface methods public hote hain. Bhulne par 'attempting to assign weaker access privileges' aata hai."]},
+  {h: ["Choosing the right level, and common mistakes", "Sahi level chunna, aur common mistakes"],
+   p: ["Ask one question for every member: who really needs this? If only my own class, make it private. If other classes in my package, leave it default. If my children, make it protected. If anyone in the world, make it public. When in doubt, choose the stricter level, because it is easy to open something later and very hard to close something that other people already use.",
+       "Har member ke liye ek sawal pucho: ise sach me kise chahiye? Sirf meri apni class ko to private. Mere package ki dusri classes ko to default. Mere children ko to protected. Duniya me kisi ko bhi to public. Shak ho to sakht level chuno, kyunki baad me kuch kholna aasan hai aur jo cheez dusre log pehle se use kar rahe hon use band karna bahut mushkil."],
+   pts: [["Fields: private (almost always). Add getters and setters only when needed.", "Helper methods: private.", "The operations you offer to the world: public.", "Methods and fields meant for children only: protected.", "Mistake: making fields public to 'save time'. This destroys encapsulation.", "Mistake: forgetting public on a class you want to import from another package.", "Mistake: forgetting public when implementing an interface method.", "Mistake: making a method protected or default and then calling it from another package.", "Mistake: believing private means secret from the program. It only controls code access. A determined program can still reach private members with reflection, so never store passwords in plain text because a field is private.", "Good habit: make the class itself package-private when only your package needs it. A smaller public surface is easier to keep correct."],
+         ["Fields: private (lagbhag hamesha). Getters aur setters sirf zaroorat par jodo.", "Helper methods: private.", "Wo operations jo duniya ko dene hain: public.", "Jo methods aur fields sirf children ke liye hain: protected.", "Galti: 'time bachane' ke liye fields public banana. Isse encapsulation toot jata hai.", "Galti: jis class ko dusre package se import karna ho us par public bhul jana.", "Galti: interface method implement karte waqt public bhul jana.", "Galti: method ko protected ya default banakar dusre package se call karna.", "Galti: ye maanna ki private ka matlab program se bhi secret hai. Ye sirf code access control karta hai. Pakka irada rakhne wala program reflection se private members tak pahunch sakta hai, isliye field private hone ki wajah se passwords plain text me store mat karo.", "Achhi aadat: class ko khud package-private rakho jab sirf tumhare package ko chahiye. Chhota public surface sahi rakhna aasan hota hai."]],
+   tip: ["Interview question: what is the difference between default and protected? Default is visible inside the same package only. Protected is visible in the same package AND in subclasses of other packages.", "Interview question: default aur protected me kya fark hai? Default sirf same package me dikhta hai. Protected same package me AUR dusre packages ki subclasses me dikhta hai."]}
+ ]},
+36: {
+ def: ["static means 'belongs to the class itself, not to any single object'. A static variable has ONE copy shared by all objects, and a static method can be called without creating an object. final means 'cannot be changed': a final variable can be given a value only once, a final method cannot be overridden and a final class cannot be extended. Together, static final makes constants.",
+       "static ka matlab 'class ka khud ka hai, kisi ek object ka nahi'. Static variable ki EK copy hoti hai jo saare objects share karte hain, aur static method object banaye bina call ho sakta hai. final ka matlab 'badla nahi ja sakta': final variable ko sirf ek baar value di ja sakti hai, final method override nahi ho sakta aur final class extend nahi ho sakti. Dono saath (static final) constants banate hain."],
+ secs: [
+  {h: ["The big idea of static", "static ka bada idea"],
+   p: ["Normally every object has its own copy of each field, like every student having their own roll number. But some information belongs to the whole group: how many students exist, the name of the school, the rate of interest for every account. Such data should exist once, not inside every object. That is what static is for. Static members belong to the CLASS, they are created when the class is first loaded, and you reach them with the class name.",
+       "Aam taur par har object ke har field ki apni copy hoti hai, jaise har student ka apna roll number. Par kuch jaankari poore group ki hoti hai: kitne students hain, school ka naam, har account ka byaaj dar. Aisa data ek hi baar hona chahiye, har object ke andar nahi. static isi ke liye hai. Static members CLASS ke hote hain, class pehli baar load hote hi ban jate hain, aur class ke naam se unhe use karte ho."],
+   pts: [["Instance member: one copy per object. Needs an object: s1.name.", "Static member: one copy per class. Use the class name: Student.count.", "Static members exist even if you never create an object.", "You can reach a static member through an object (s1.count), but that is misleading. Always write ClassName.member."],
+         ["Instance member: har object ki ek copy. Object chahiye: s1.name.", "Static member: har class ki ek copy. Class ka naam use karo: Student.count.", "Static members tab bhi maujood hote hain jab tum koi object nahi banate.", "Static member ko object (s1.count) se bhi use kar sakte ho, par ye bhramak hai. Hamesha ClassName.member likho."]]},
+  {h: ["Static variables (class variables)", "Static variables (class variables)"],
+   p: ["A static variable is shared. If one object changes it, every object (and the class itself) sees the new value. The classic uses are counters (how many objects were created), shared settings and constants.",
+       "Static variable share hota hai. Ek object use badle to har object (aur class khud) nayi value dekhta hai. Classic uses counters (kitne objects bane), shared settings aur constants hain."],
+   code: `public class Student {
+    static int count = 0;                       // ONE copy for the whole class
+    static final String SCHOOL = "CodeGround School";
+
+    private final int roll;                     // each student has their own
+    private final String name;
+
+    Student(String name) {
+        this.name = name;
+        count++;                                // update the shared counter
+        this.roll = count;                      // use it to give the next roll number
+    }
+
+    void show() {
+        System.out.println(roll + " " + name + " - " + SCHOOL);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Student.count);      // 0  (works before any object exists)
+        Student a = new Student("Gurleen");
+        Student b = new Student("Mohit");
+        Student c = new Student("Shivam");
+        a.show();                               // 1 Gurleen - CodeGround School
+        c.show();                               // 3 Shivam - CodeGround School
+        System.out.println(Student.count);      // 3  (shared by everyone)
+    }
+}`,
+   pts: [["Memory picture: instance fields live inside each object on the heap. A static field lives once, with the class.", "Static variables get a default value (0, false, null) like fields do.", "In a multi-threaded program a shared static variable needs care (Phase 4).", "A mutable static variable is a global variable. Use it sparingly, because any code can change it."],
+         ["Memory picture: instance fields har object ke andar heap me rehte hain. Static field class ke saath ek hi baar rehta hai.", "Static variables ko fields ki tarah default value (0, false, null) milti hai.", "Multi-threaded program me shared static variable me dhyan rakhna padta hai (Phase 4).", "Badalne wala (mutable) static variable global variable hai. Kam use karo, kyunki koi bhi code use badal sakta hai."]]},
+  {h: ["Static methods", "Static methods"],
+   p: ["A static method belongs to the class. You call it with the class name and need no object. Math.sqrt(), Integer.parseInt() and Arrays.sort() are all static. The big rule: a static method has no this, because it does not run on any object. So it can use only static members directly. To use instance members it needs an object passed in or created inside. That is also why main, which is static, must create an object before calling instance methods.",
+       "Static method class ka hota hai. Use class ke naam se call karte ho aur object nahi chahiye. Math.sqrt(), Integer.parseInt() aur Arrays.sort() sab static hain. Bada rule: static method ke paas this nahi hota, kyunki wo kisi object par nahi chalta. Isliye wo sirf static members ko seedha use kar sakta hai. Instance members use karne ke liye use object andar pass karna ya andar banana padta hai. Isi wajah se main, jo static hai, ko instance methods call karne se pehle object banana padta hai."],
+   code: `public class Counter {
+    private int value;                      // instance field
+    private static int total = 0;           // static field
+
+    void increment() {                      // instance method: works on one object
+        value++;
+        total++;                            // may use static members
+    }
+
+    static int getTotal() {                 // static method
+        // value++;                         // ERROR: non-static variable value cannot be referenced from a static context
+        // increment();                     // ERROR: non-static method increment() cannot be referenced from a static context
+        // System.out.println(this);        // ERROR: no this in a static method
+        return total;
+    }
+
+    static int max(int a, int b) {          // a pure utility: needs no object at all
+        return a > b ? a : b;
+    }
+
+    static void bump(Counter c) {           // a static method CAN use instance members if given an object
+        c.value += 10;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(max(4, 9));              // 9
+        Counter a = new Counter();
+        Counter b = new Counter();
+        a.increment();
+        a.increment();
+        b.increment();
+        System.out.println(Counter.getTotal());     // 3
+        bump(a);
+        System.out.println(a.value);                // 12
+    }
+}`,
+   pts: [["Use a static method when the work depends only on its parameters (a pure helper such as max, isPrime or toCelsius).", "Use an instance method when the work depends on the object's own data.", "A static method can call other static methods and use static fields directly.", "Static methods cannot be overridden. A child's static method with the same signature hides the parent's one.", "Compiler message to remember: 'non-static variable/method cannot be referenced from a static context'."],
+         ["Static method tab use karo jab kaam sirf uske parameters par nirbhar ho (pure helper jaise max, isPrime ya toCelsius).", "Instance method tab use karo jab kaam object ke apne data par nirbhar ho.", "Static method dusre static methods call kar sakta hai aur static fields seedha use kar sakta hai.", "Static methods override nahi ho sakte. Child ka same signature wala static method parent wale ko hide karta hai.", "Compiler message yaad rakho: 'non-static variable/method cannot be referenced from a static context'."]]},
+  {h: ["Static blocks and the order of initialization", "Static blocks aur initialization ka order"],
+   p: ["A static block, written as static { ... }, runs exactly ONCE, when the class is first used, before any object is created and before main in that class. It is used for setup that is too long for a single line, like filling a table of constants. An instance initializer block, written as just { ... }, runs for every object, before its constructor. The order is: static blocks (once), then for each new object the instance blocks, then the constructor.",
+       "Static block, jo static { ... } ki tarah likha jata hai, bilkul EK baar chalta hai, jab class pehli baar use hoti hai, kisi bhi object ke banne se pehle aur us class ke main se pehle. Ye us setup ke liye hai jo ek line me na aaye, jaise constants ki table bharna. Instance initializer block, jo sirf { ... } likha hota hai, har object ke liye, uske constructor se pehle chalta hai. Order ye hai: static blocks (ek baar), fir har naye object ke liye instance blocks, fir constructor."],
+   code: `public class Config {
+    static final int[] PRIMES;
+    static int created = 0;
+
+    static {                                    // runs once, when the class is first used
+        System.out.println("static block");
+        PRIMES = new int[]{2, 3, 5, 7, 11};
+    }
+
+    {                                           // runs for every object, before the constructor
+        System.out.println("instance block");
+    }
+
+    Config() {
+        created++;
+        System.out.println("constructor " + created);
+    }
+
+    public static void main(String[] args) {
+        System.out.println("main starts");
+        new Config();
+        new Config();
+        // main starts
+        // static block          (only once, at first use)
+        // instance block
+        // constructor 1
+        // instance block
+        // constructor 2
+    }
+}`},
+  {h: ["Static nested classes and static imports", "Static nested classes aur static imports"],
+   p: ["A class can be declared static inside another class. A static nested class does not hold a hidden reference to an outer object, so you can create it without one, and it can use only the outer class's static members. It is used to group a helper class with the class that needs it. Separately, a static import lets you use static members without the class name, which is handy for constants and math helpers.",
+       "Ek class ke andar dusri class static declare ho sakti hai. Static nested class ke paas outer object ka chhupa reference nahi hota, isliye use bina outer object ke bana sakte ho, aur wo outer class ke sirf static members use kar sakti hai. Ye helper class ko us class ke saath group karne ke kaam aati hai jise uski zaroorat ho. Alag se, static import se static members ko class ke naam ke bina use kar sakte ho, jo constants aur math helpers ke liye kaam ka hai."],
+   code: `import static java.lang.Math.sqrt;
+import static java.lang.Math.PI;
+
+public class Outer {
+    private static int next = 1;                    // static field of the outer class
+
+    static class Ticket {                           // static nested class
+        final int number;
+        Ticket() { number = next++; }               // can use Outer's static members
+    }
+
+    public static void main(String[] args) {
+        Outer.Ticket t1 = new Outer.Ticket();       // no Outer object needed
+        Outer.Ticket t2 = new Outer.Ticket();
+        System.out.println(t1.number + " " + t2.number);   // 1 2
+
+        System.out.println(sqrt(81));               // 9.0   (no Math. prefix, thanks to the static import)
+        System.out.println(PI);                     // 3.141592653589793
+    }
+}`},
+  {h: ["final variables: constants and write-once values", "final variables: constants aur ek baar likhi jane wali values"],
+   p: ["A final variable can be given a value only ONCE. After that, assigning again is a compile error. A final local variable or parameter is a promise that you will not change it. A final field must be set exactly once, either where it is declared or in every constructor (a 'blank final'). Careful: for objects and arrays, final stops the VARIABLE from pointing somewhere else, but the object itself can still change inside.",
+       "Final variable ko sirf EK baar value di ja sakti hai. Uske baad dobara assign karna compile error hai. Final local variable ya parameter ek vaada hai ki tum use nahi badloge. Final field ko theek ek baar set karna padta hai, ya jahan declare hua wahan ya har constructor me ('blank final'). Dhyan rakho: objects aur arrays ke liye final VARIABLE ko kahin aur point karne se rokta hai, par object khud andar se badal sakta hai."],
+   code: `public class Finals {
+    final double TAX = 0.18;                    // set where declared
+    final int id;                               // blank final: must be set in every constructor
+
+    Finals(int id) {
+        this.id = id;                           // the one and only assignment
+    }
+
+    static void demo(final int limit) {         // a final parameter cannot be reassigned
+        // limit = 5;                           // ERROR: final parameter limit may not be assigned
+        final int doubled = limit * 2;
+        // doubled = 7;                         // ERROR: cannot assign a value to final variable doubled
+        System.out.println(doubled);
+    }
+
+    public static void main(String[] args) {
+        Finals f = new Finals(7);
+        // f.id = 8;                            // ERROR: cannot assign a value to final variable id
+        demo(21);                               // 42
+
+        // final does NOT freeze what an object contains
+        final int[] arr = {1, 2, 3};
+        arr[0] = 99;                            // OK: the array content changes
+        // arr = new int[5];                    // ERROR: the variable cannot point to a new array
+        System.out.println(arr[0]);             // 99
+
+        final StringBuilder sb = new StringBuilder("Hi");
+        sb.append(" there");                    // OK: the object changes
+        System.out.println(sb);                 // Hi there
+    }
+}`,
+   pts: [["final primitive: the value is frozen. final reference: the pointing is frozen, not the object.", "A final field that is never assigned is a compile error: 'variable might not have been initialized'.", "Use final for values that must not change, such as ids and rates. It also makes the intention clear to readers.", "final local variables can be used inside lambdas and anonymous classes (Phase 4)."],
+         ["final primitive: value jam jati hai. final reference: point karna jam jata hai, object nahi.", "Jis final field ko kabhi assign na karo wo compile error hai: 'variable might not have been initialized'.", "Un values ke liye final use karo jo nahi badalni chahiye, jaise ids aur rates. Isse padhne walon ko iraada bhi saaf dikhta hai.", "final local variables lambdas aur anonymous classes ke andar use ho sakte hain (Phase 4)."]]},
+  {h: ["final methods and final classes", "final methods aur final classes"],
+   p: ["A final method cannot be overridden: it is a parent's way of saying that this behaviour must never change in any child. A final class cannot be extended at all. String, Integer and Math are final classes, which is how Java guarantees that nobody can create a fake String that behaves differently. Immutable classes are normally made final. Do not mark a class final without a reason, because it removes the freedom to extend it.",
+       "Final method override nahi ho sakta: ye parent ka tareeka hai kehne ka ki ye behaviour kisi bhi child me kabhi nahi badalna chahiye. Final class ko extend hi nahi kar sakte. String, Integer aur Math final classes hain, isi se Java guarantee deta hai ki koi nakli String nahi bana sakta jo alag behave kare. Immutable classes aam taur par final banai jati hain. Bina wajah class ko final mat banao, kyunki isse use extend karne ki azaadi chali jati hai."],
+   code: `class Payment {
+    final void printReceipt() {                 // the receipt format must never change
+        System.out.println("---- RECEIPT ----");
+        System.out.println("Amount: " + amount());
+    }
+
+    double amount() { return 0; }               // children may change this
+}
+
+class UpiPayment extends Payment {
+    // void printReceipt() { }                  // ERROR: printReceipt() in UpiPayment cannot override; overridden method is final
+    @Override double amount() { return 250; }
+}
+
+final class Money {                             // nobody can extend Money
+    private final long paise;
+    Money(long paise) { this.paise = paise; }
+    long getPaise() { return paise; }
+}
+
+// class FakeMoney extends Money { }            // ERROR: cannot inherit from final Money
+
+public class Main {
+    public static void main(String[] args) {
+        new UpiPayment().printReceipt();
+        // ---- RECEIPT ----
+        // Amount: 250.0
+    }
+}`},
+  {h: ["static final: constants", "static final: constants"],
+   p: ["The two words together create a constant: one shared value that can never change, such as Math.PI or Integer.MAX_VALUE. The naming convention is UPPER_CASE with underscores. The compiler replaces a constant of a primitive type or a String with its value, so it costs nothing at run time. Put such values in one place instead of repeating magic numbers like 0.18 in the code.",
+       "Dono shabd milkar constant banate hain: ek shared value jo kabhi nahi badalti, jaise Math.PI ya Integer.MAX_VALUE. Naming convention UPPER_CASE underscore ke saath hai. Compiler primitive type ya String ke constant ko uski value se badal deta hai, isliye run time par koi kharcha nahi. Aisi values ek jagah rakho, code me 0.18 jaise magic numbers dohrane ki jagah."],
+   code: `public class Shop {
+    public static final double GST_RATE = 0.18;        // one value for the whole program
+    public static final int MAX_ITEMS = 50;
+    public static final String CURRENCY = "INR";
+
+    static double withTax(double price) {
+        return price * (1 + GST_RATE);                  // no magic number
+    }
+
+    public static void main(String[] args) {
+        System.out.println(withTax(100));               // 118.0
+        System.out.println(Shop.MAX_ITEMS + " " + Shop.CURRENCY);
+        // Shop.MAX_ITEMS = 60;                         // ERROR: cannot assign a value to final variable
+    }
+}
+
+// For a fixed list of named values, an enum is even better than several constants
+enum Level { LOW, MEDIUM, HIGH }
+
+class Alert {
+    static String message(Level l) {
+        return switch (l) {
+            case LOW -> "All good";
+            case MEDIUM -> "Check soon";
+            case HIGH -> "Act now";
+        };
+    }
+}`},
+  {h: ["static versus instance, and common mistakes", "static vs instance, aur common mistakes"],
+   pts: [["Instance field: one per object, needs an object, lives as long as the object. Static field: one per class, use the class name, lives as long as the program.", "Instance method: has this, can use everything. Static method: no this, can use only static members directly.", "Constructors are never static, and static methods are not overridden.", "main is static because the JVM must call it before any object exists.", "Mistake: calling an instance method from main without creating an object.", "Mistake: using a static field for data that should be per object (for example name), so all objects show the same value.", "Mistake: making everything static to avoid creating objects. This is not object-oriented any more.", "Mistake: thinking final makes an object unchangeable. final arrays and lists can still change inside.", "Mistake: forgetting to give a final field a value in one of the constructors.", "Mistake: changing a static counter from many threads without protection (Phase 4).", "Good habit: use static for constants and pure helper methods, and instance members for everything that depends on an object's state."],
+         ["Instance field: har object ka ek, object chahiye, object jitni der rehta hai utni der. Static field: har class ka ek, class ka naam use karo, program jitni der chalta hai utni der.", "Instance method: this hota hai, sab use kar sakta hai. Static method: this nahi, sirf static members seedha use kar sakta hai.", "Constructors kabhi static nahi hote, aur static methods override nahi hote.", "main static isliye hai kyunki JVM ko use kisi object ke banne se pehle call karna hota hai.", "Galti: main se bina object banaye instance method call karna.", "Galti: jo data har object ka alag hona chahiye (jaise name) use static field me rakhna, jisse saare objects ek hi value dikhate hain.", "Galti: objects banane se bachne ke liye sab kuch static bana dena. Ye object-oriented nahi rehta.", "Galti: ye sochna ki final object ko badalne se rokta hai. final arrays aur lists andar se badal sakte hain.", "Galti: kisi ek constructor me final field ko value dena bhul jana.", "Galti: kai threads se bina suraksha ke static counter badalna (Phase 4).", "Achhi aadat: constants aur pure helper methods ke liye static, aur jo object ki state par nirbhar hai uske liye instance members use karo."]],
+   tip: ["Interview question: why is main static? So the JVM can start the program without first creating an object of the class. Can a static method be overridden? No, it can only be hidden. Can a constructor be final or static? No.", "Interview question: main static kyun hai? Taaki JVM class ka object banaye bina program shuru kar sake. Kya static method override ho sakta hai? Nahi, sirf hide hota hai. Kya constructor final ya static ho sakta hai? Nahi."]}
+ ]},
+37: {
+ def: ["A package is a named group of related classes, interfaces and sub-packages, like a folder that keeps files organised. Packages prevent name clashes (two different classes can both be called Date if they live in different packages), control access (default access works inside a package) and keep large programs tidy. You declare one with the package keyword and use classes from other packages with import.",
+       "Package related classes, interfaces aur sub-packages ka ek naam wala group hai, ek folder ki tarah jo files ko organised rakhta hai. Packages naam ke takrav rokte hain (do alag classes dono ka naam Date ho sakta hai agar wo alag packages me ho), access control karte hain (default access package ke andar chalta hai) aur bade programs ko saaf rakhte hain. Package package keyword se declare hota hai aur dusre packages ki classes import se use hoti hain."],
+ secs: [
+  {h: ["Why packages?", "Packages kyun?"],
+   p: ["A real project has hundreds of classes. Put them all in one folder and finding anything is a nightmare, and two programmers may both write a class called User. Packages solve this the same way folders solve it on your computer: shop.model.User and admin.model.User are two different classes. Java's own library is organised in packages, such as java.util for collections and java.io for files.",
+       "Real project me sau classes hoti hain. Sab ek folder me daalo to kuch dhundhna mushkil hai, aur do programmers dono ek class User likh sakte hain. Packages ise waise hi hal karte hain jaise tumhare computer par folders: shop.model.User aur admin.model.User do alag classes hain. Java ki apni library bhi packages me organised hai, jaise collections ke liye java.util aur files ke liye java.io."],
+   pts: [["Organisation: related classes live together (all model classes in one package, all services in another).", "Name safety: the full name of a class includes its package, so two classes with the same simple name do not clash.", "Access control: members with default access are visible only inside their own package.", "Reuse: a package can be packed into a .jar file and shared with other projects.", "Convention: package names are all lowercase and start with a reversed domain name, such as com.codeground.shop. This makes them globally unique."],
+         ["Organisation: related classes saath rehti hain (saari model classes ek package me, saari services dusre me).", "Naam ki suraksha: class ke poore naam me uska package shamil hota hai, isliye same simple naam wali do classes me takrav nahi hota.", "Access control: default access wale members sirf apne package me dikhte hain.", "Reuse: package ko .jar file me pack karke dusre projects ke saath share kiya ja sakta hai.", "Convention: package ke naam poore lowercase me aur ulte domain naam se shuru hote hain, jaise com.codeground.shop. Isse wo poori duniya me unique rehte hain."]]},
+  {h: ["Declaring a package and the folder rule", "Package declare karna aur folder ka rule"],
+   p: ["The first statement of a source file (before imports and classes) is package name;. There is a strict rule: the folder structure on disk MUST match the package name. A class in package shop.model must be saved inside the folders shop/model/. The dots in the package name become folder separators. If you do not write any package statement, the class goes into the unnamed 'default package', which is fine for small practice programs but not for real projects.",
+       "Source file ka pehla statement (imports aur classes se pehle) package name; hota hai. Ek sakht rule hai: disk par folder structure package ke naam se match KARNA ZAROORI hai. Package shop.model ki class shop/model/ folders ke andar save honi chahiye. Package naam ke dots folder separators ban jate hain. Package statement na likho to class unnamed 'default package' me jati hai, jo chhote practice programs ke liye theek hai par real projects ke liye nahi."],
+   code: `// Project folder layout. The folders match the package names.
+//
+// myproject/
+// └── shop/
+//     ├── Main.java              package shop;
+//     ├── model/
+//     │   └── Product.java       package shop.model;
+//     └── service/
+//         └── Cart.java          package shop.service;
+
+// File: shop/model/Product.java
+package shop.model;                         // must be the FIRST statement
+
+public class Product {                      // public, so other packages can use it
+    private final String name;
+    private final double price;
+
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
+    }
+
+    public String getName()  { return name; }
+    public double getPrice() { return price; }
+}`,
+   pts: [["package must be the very first statement. Only comments may come before it.", "Only ONE package statement per file.", "Classes in the same package do not need to import each other.", "Packages named java or javax are reserved for the Java library. Do not use them.", "Package names are lowercase and singular by habit (model, service, util), and they have no spaces."],
+         ["package bilkul pehla statement hona chahiye. Usse pehle sirf comments aa sakte hain.", "Ek file me sirf EK package statement.", "Same package ki classes ko ek dusre ko import karne ki zarurat nahi.", "java ya javax naam ke packages Java library ke liye reserved hain. Unhe use mat karo.", "Package ke naam aadatan lowercase aur singular hote hain (model, service, util), aur unme spaces nahi hote."]]},
+  {h: ["A complete project with three files", "Teen files ka poora project"],
+   p: ["Here is a tiny shop with three files in three packages. Notice that Cart needs two imports (Product from another package, and ArrayList and List from java.util) and that everything other packages use is public. Main is in the package shop, so it must import the two other packages.",
+       "Ye teen packages me teen files wali ek chhoti shop hai. Dekho ki Cart ko do imports chahiye (dusre package ka Product, aur java.util se ArrayList aur List) aur dusre packages jo use karte hain wo sab public hai. Main package shop me hai, isliye use baaki do packages import karne padte hain."],
+   code: `// File: shop/service/Cart.java
+package shop.service;
+
+import shop.model.Product;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Cart {
+    private final List<Product> items = new ArrayList<>();
+
+    public void add(Product p) {
+        items.add(p);
+    }
+
+    public double total() {
+        double sum = 0;
+        for (Product p : items) sum += p.getPrice();
+        return sum;
+    }
+
+    public int size() { return items.size(); }
+}
+
+// File: shop/Main.java
+package shop;
+
+import shop.model.Product;
+import shop.service.Cart;
+
+public class Main {
+    public static void main(String[] args) {
+        Cart cart = new Cart();
+        cart.add(new Product("Notebook", 60));
+        cart.add(new Product("Pen", 10));
+        cart.add(new Product("Bag", 450));
+        System.out.println(cart.size() + " items, total Rs " + cart.total());
+        // 3 items, total Rs 520.0
+    }
+}`},
+  {h: ["Compiling and running packaged code", "Package wala code compile aur run karna"],
+   p: ["Always compile and run from the ROOT folder, the one that contains the first package folder (here myproject, which contains shop). Compile the class that has main, and javac finds the other files it needs because it searches the current folder. Run with the FULL name of the class, with dots, not with slashes and not from inside the package folder. The -d option tells javac where to put the compiled .class files, and it creates the package folders for you.",
+       "Hamesha ROOT folder se compile aur run karo, wo folder jisme pehla package folder ho (yahan myproject, jisme shop hai). Jis class me main hai use compile karo, aur javac baaki zaroori files khud dhundh leta hai kyunki wo current folder me khojta hai. Class ke POORE naam se run karo, dots ke saath, slashes ke saath nahi aur package folder ke andar se nahi. -d option batata hai ki javac compiled .class files kahan rakhe, aur wo package folders tumhare liye bana deta hai."],
+   code: `// Open a terminal in the project root (the folder that contains "shop")
+//
+// cd myproject
+//
+// 1) Compile. javac finds Product and Cart by itself.
+//    javac shop/Main.java
+//
+// 2) Run with the FULL class name (dots, not slashes)
+//    java shop.Main
+//
+// Better: keep source and compiled files apart with -d
+//    javac -d out shop/Main.java
+//    java -cp out shop.Main
+//
+// Java 11+ can also run a single source file, but only when it has no other custom classes to find:
+//    java shop/Main.java   (works only if it needs nothing from your own packages)
+//
+// In VS Code with the Extension Pack for Java, open the myproject folder (not the shop folder),
+// and the Run button above main does all of this for you.`,
+   pts: [["Run from the root. Running from inside shop/ gives 'Could not find or load main class'.", "Use dots in java shop.Main. Slashes belong to javac file paths: javac shop/Main.java.", "-cp (or -classpath) tells java where to look for compiled classes. The default is the current folder.", "If you change one file, compile again before running."],
+         ["Root se run karo. shop/ ke andar se run karne par 'Could not find or load main class' aata hai.", "java shop.Main me dots use karo. Slashes javac file paths ke liye hain: javac shop/Main.java.", "-cp (ya -classpath) java ko batata hai ki compiled classes kahan dhundhni hain. Default current folder hai.", "Ek file badlo to run karne se pehle dobara compile karo."]]},
+  {h: ["Importing: single, wildcard and static", "Import: single, wildcard aur static"],
+   p: ["Without import you must write the full name every time, like java.util.ArrayList. An import statement lets you use the short name. A single-type import names one class. A wildcard import (with a star) brings in every class of that package, though not the classes of its sub-packages. A static import brings in static members so you can use them without the class name. Imports come after the package statement and before the first class. java.lang is imported automatically, which is why String, Math and System work with no import.",
+       "Import ke bina har baar poora naam likhna padta hai, jaise java.util.ArrayList. Import statement short naam use karne deta hai. Single-type import ek class ka naam leta hai. Wildcard import (star ke saath) us package ki har class laata hai, par uske sub-packages ki classes nahi. Static import static members laata hai taaki unhe class ke naam ke bina use kar sako. Imports package statement ke baad aur pehli class se pehle aate hain. java.lang apne aap import hota hai, isi liye String, Math aur System bina import ke chalte hain."],
+   code: `package demo;
+
+import java.util.ArrayList;           // single-type import: one class
+import java.util.List;
+import java.util.*;                   // wildcard: every class in java.util (not java.util.function)
+import java.io.File;
+import static java.lang.Math.*;       // static import: abs, max, sqrt, PI ... without "Math."
+
+public class Imports {
+    public static void main(String[] args) {
+        List<String> names = new ArrayList<>();      // short names work after import
+        names.add("Himakshi");
+
+        java.util.Date today = new java.util.Date();   // full name: no import needed
+
+        System.out.println(max(3, 9));               // 9   (static import)
+        System.out.println(sqrt(49));                // 7.0
+        System.out.println(String.valueOf(PI));      // java.lang is automatic
+    }
+}`,
+   pts: [["Importing does not copy code. It only lets you write a shorter name.", "A wildcard import is fine for quick work, but single imports make it obvious where each class comes from. Many teams prefer single imports.", "import java.util.* does NOT import java.util.concurrent.*. Sub-packages need their own import.", "Two wildcard imports with the same class name (java.util.* and java.sql.* both have Date) cause an ambiguity error only if you use that name.", "Unused imports are harmless, but IDEs remove them to keep the file clean."],
+         ["Import code copy nahi karta. Ye sirf chhota naam likhne deta hai.", "Jaldi ke kaam ke liye wildcard import theek hai, par single imports saaf dikhate hain ki har class kahan se aa rahi hai. Kai teams single imports prefer karti hain.", "import java.util.* se java.util.concurrent.* import NAHI hota. Sub-packages ko apna import chahiye.", "Same class naam wale do wildcard imports (java.util.* aur java.sql.* dono me Date hai) ambiguity error tabhi dete hain jab tum wo naam use karo.", "Bekar imports se nuksan nahi hota, par IDEs file saaf rakhne ke liye unhe hata deti hain."]]},
+  {h: ["The most useful built-in packages", "Sabse kaam ke built-in packages"],
+   p: ["Java ships with thousands of ready-made classes in packages. You will meet most of these in the coming lessons. Learn the names now so you know where to look.",
+       "Java hazaron ready-made classes packages me leke aata hai. In me se zyadatar tumhe aane wale lessons me milengi. Naam abhi seekh lo taaki pata ho kahan dekhna hai."],
+   pts: [["java.lang: String, Math, System, Integer, Object, Thread, StringBuilder. Imported automatically.", "java.util: ArrayList, HashMap, Scanner, Arrays, Random, Collections, Objects.", "java.io: File, FileReader, FileWriter, BufferedReader, IOException (file handling).", "java.nio.file: Files and Path, the modern way to work with files.", "java.time: LocalDate, LocalTime, LocalDateTime, Duration (Date and Time API).", "java.util.function and java.util.stream: lambdas and the Stream API.", "java.math: BigDecimal and BigInteger for exact money and huge numbers.", "java.net and java.sql: networking and databases (JDBC).", "javax.swing and java.awt: desktop windows (older GUI libraries)."],
+         ["java.lang: String, Math, System, Integer, Object, Thread, StringBuilder. Apne aap import hota hai.", "java.util: ArrayList, HashMap, Scanner, Arrays, Random, Collections, Objects.", "java.io: File, FileReader, FileWriter, BufferedReader, IOException (file handling).", "java.nio.file: Files aur Path, files ke saath kaam karne ka modern tareeka.", "java.time: LocalDate, LocalTime, LocalDateTime, Duration (Date and Time API).", "java.util.function aur java.util.stream: lambdas aur Stream API.", "java.math: exact paise aur bade numbers ke liye BigDecimal aur BigInteger.", "java.net aur java.sql: networking aur databases (JDBC).", "javax.swing aur java.awt: desktop windows (purani GUI libraries)."]]},
+  {h: ["Name clashes and fully qualified names", "Naam ke takrav aur fully qualified names"],
+   p: ["Sometimes two imported classes have the same simple name. Java lets you import only one of them. For the other you write its fully qualified name (package plus class) at the place where you use it. This is exactly the problem packages were invented to solve.",
+       "Kabhi-kabhi do imported classes ka simple naam same hota hai. Java unme se sirf ek ko import karne deta hai. Dusri ke liye jahan use karte ho wahan uska fully qualified name (package plus class) likhte ho. Packages isi problem ko hal karne ke liye bane the."],
+   code: `import java.util.Date;                     // we import the util one
+
+public class Clash {
+    public static void main(String[] args) {
+        Date a = new Date();                           // java.util.Date
+
+        java.sql.Date b = new java.sql.Date(0);        // the other Date: use the full name
+        System.out.println(a.getClass().getName());    // java.util.Date
+        System.out.println(b.getClass().getName());    // java.sql.Date
+    }
+}
+
+// Your own classes can clash with library classes too.
+// If you write your own class named List, then "List" means YOUR class in that package
+// (a class in the same package wins over a wildcard import).`},
+  {h: ["Packages and access control", "Packages aur access control"],
+   p: ["Packages are tied to the access levels from the Access Modifiers lesson. A class or member with default access (no keyword) is visible only to classes in its own package, and a protected member also reaches subclasses elsewhere. Packages are NOT nested in terms of access: shop.model and shop.service are two separate packages, so shop.service cannot see the default members of shop.model, even though the names look related.",
+       "Packages access levels se jude hain jo Access Modifiers lesson me the. Default access (koi keyword nahi) wali class ya member sirf apne package ki classes ko dikhta hai, aur protected member dusri jagah ki subclasses tak bhi pahunchta hai. Access ke hisaab se packages nested NAHI hote: shop.model aur shop.service do alag packages hain, isliye shop.service shop.model ke default members nahi dekh sakta, chahe naam judte hue lagte hon."],
+   code: `// File: shop/model/Product.java
+package shop.model;
+
+public class Product {
+    String internalCode = "P-001";        // default access: only shop.model can see it
+    public String name = "Pen";
+}
+
+// File: shop/model/Inventory.java        (same package)
+package shop.model;
+
+class Inventory {                         // default class: only shop.model can use it
+    String code(Product p) { return p.internalCode; }    // OK: same package
+}
+
+// File: shop/Main.java                   (parent package shop is a different package)
+package shop;
+
+import shop.model.Product;
+
+public class Main {
+    public static void main(String[] args) {
+        Product p = new Product();
+        System.out.println(p.name);       // OK: public
+        // System.out.println(p.internalCode);   // ERROR: internalCode is not public; cannot be accessed from outside package
+        // shop.model.Inventory i;                // ERROR: Inventory is not public in shop.model
+    }
+}`},
+  {h: ["Making a .jar file, and common errors", ".jar file banana, aur common errors"],
+   p: ["A JAR (Java ARchive) is a zip-like file that holds many compiled classes in their package folders, so you can share a library or run a program as one file. You create it with the jar tool that comes with the JDK. Most packaging problems come from a small set of errors, and the table below teaches you to read them.",
+       "JAR (Java ARchive) zip jaisi file hai jisme kai compiled classes apne package folders me hoti hain, taaki ek library share kar sako ya program ko ek file ki tarah chala sako. Ise JDK ke saath aane wale jar tool se banate ho. Packaging ki zyadatar problems kuch gine-chune errors se aati hain, aur neeche ki list unhe padhna sikhati hai."],
+   code: `// Make a runnable jar from the compiled classes in the folder "out"
+//
+//    jar --create --file shop.jar --main-class shop.Main -C out .
+//
+// Run it
+//    java -jar shop.jar
+//
+// Use a jar as a library: put it on the classpath
+//    javac -cp shop.jar MyApp.java
+//    java  -cp shop.jar;. MyApp        (on Windows; on Mac or Linux use a colon instead of a semicolon)`,
+   pts: [["'package shop.model does not exist': the import is wrong, or the folder is missing, or you compile from the wrong folder.", "'class Product is public, should be declared in a file named Product.java': the file name must match the public class.", "'Could not find or load main class shop.Main': you are in the wrong folder, you forgot to compile, or you typed slashes instead of dots.", "'cannot find symbol': a misspelled name, a missing import, or a missing public.", "'is not public in shop.model; cannot be accessed from outside package': add public to the class or the member.", "'package statement does not match the folder': the declared package and the real folders must be the same.", "Mistake: putting the package statement after the imports. It must be first.", "Mistake: running java from inside the package folder. Run from the root.", "Good habit: use one reversed-domain root such as com.codeground and keep the folder structure identical to it."],
+         ["'package shop.model does not exist': import galat hai, ya folder missing hai, ya tum galat folder se compile kar rahe ho.", "'class Product is public, should be declared in a file named Product.java': file ka naam public class se match hona chahiye.", "'Could not find or load main class shop.Main': tum galat folder me ho, compile karna bhul gaye, ya dots ki jagah slashes type kar diye.", "'cannot find symbol': naam ki spelling galat hai, import missing hai, ya public missing hai.", "'is not public in shop.model; cannot be accessed from outside package': class ya member par public lagao.", "'package statement does not match the folder': declare kiya package aur asli folders same hone chahiye.", "Galti: package statement ko imports ke baad likhna. Wo pehla hona chahiye.", "Galti: package folder ke andar se java chalana. Root se chalao.", "Achhi aadat: ek ulta-domain root jaise com.codeground rakho aur folder structure ko bilkul uske jaisa rakho."]],
+   tip: ["Interview question: what is the default package? The unnamed package used when a file has no package statement. Is import necessary for java.lang? No, it is automatic. Does import java.util.* import the sub-packages too? No.", "Interview question: default package kya hai? Wo unnamed package jo tab use hota hai jab file me package statement na ho. Kya java.lang ke liye import zaroori hai? Nahi, wo automatic hai. Kya import java.util.* sub-packages bhi import karta hai? Nahi."]}
+ ]},
+38: {
+ def: ["The OOPs mini project is a small but complete application that uses every idea from Phase 3 together: classes and objects, constructors, this, encapsulation, inheritance, super, overloading, overriding, polymorphism, abstraction with an abstract class and an interface, access modifiers, static and final. Here you build a Library Management System that runs in the console.",
+       "OOPs mini project ek chhota par poora application hai jo Phase 3 ke har idea ko ek saath use karta hai: classes aur objects, constructors, this, encapsulation, inheritance, super, overloading, overriding, polymorphism, abstract class aur interface ke saath abstraction, access modifiers, static aur final. Yahan tum console par chalne wala Library Management System banate ho."],
+ secs: [
+  {h: ["What we will build", "Hum kya banayenge"],
+   p: ["A small library that keeps books and magazines and lets members borrow and return them. You can list all items, list members, borrow an item for a member, and return it. The rules are simple: an item can be borrowed by only one member at a time, and a member can hold at most 3 items. The loan period differs by kind: 14 days for a book and 7 days for a magazine.",
+       "Ek chhoti library jisme books aur magazines hain aur members unhe borrow aur return kar sakte hain. Tum saare items ki list, members ki list dekh sakte ho, kisi member ke liye item borrow kar sakte ho aur return kar sakte ho. Rules simple hain: ek item ek samay par sirf ek member le sakta hai, aur ek member zyada se zyada 3 items rakh sakta hai. Loan period kisam ke hisaab se alag hai: book ke liye 14 din aur magazine ke liye 7 din."],
+   pts: [["Features: add items (preloaded), list items, list members, borrow, return, exit.", "Rules: one holder per item, at most 3 items per member, sensible error messages.", "Design goal: use every Phase 3 idea in the place where it truly fits, not just to show off.", "Output: a text menu in the console, using Scanner.", "Ready for the future: the design lets you add a DVD or a fine system with little change."],
+         ["Features: items add karna (pehle se bhare), items ki list, members ki list, borrow, return, exit.", "Rules: ek item ka ek holder, ek member ke zyada se zyada 3 items, samajhdaar error messages.", "Design goal: Phase 3 ka har idea wahan use karo jahan wo sach me fit ho, sirf dikhane ke liye nahi.", "Output: console par text menu, Scanner ke saath.", "Aage ke liye taiyar: design me DVD ya fine system kam badlav se jod sakte ho."]]},
+  {h: ["Step 1: find the classes (nouns and verbs)", "Step 1: classes dhundho (nouns aur verbs)"],
+   p: ["The easiest way to design with OOP is to read the requirements and underline the NOUNS and the VERBS. Nouns usually become classes or fields (item, book, magazine, member, library). Verbs usually become methods (borrow, return, list, find). Things that are kinds of another thing become child classes (a book IS an item).",
+       "OOP me design karne ka sabse aasan tareeka requirements padhna aur NOUNS aur VERBS ko underline karna hai. Nouns aam taur par classes ya fields ban jate hain (item, book, magazine, member, library). Verbs aam taur par methods ban jate hain (borrow, return, list, find). Jo cheezein kisi dusri cheez ki kisam hain wo child classes ban jati hain (book ek item HAI)."],
+   code: `// Nouns  -> classes:  Item (Book, Magazine), Member, Library
+// Verbs  -> methods:  borrow, giveBack, isAvailable, addItem, findItem, checkout
+//
+// Which Phase 3 idea goes where?
+//
+// Abstract class  Item      Book and Magazine share id, title and borrowing logic, but each has its own
+//                           loan period and type. An "Item" alone is meaningless, so it is abstract.
+// Inheritance     Book and Magazine extend Item and call super(...) in their constructors.
+// Interface       Borrowable lists the abilities (borrow, giveBack, isAvailable). Item implements it.
+// Encapsulation   private fields, public getters, and rules checked inside the methods.
+// Polymorphism    Library keeps a list of Item and calls loanDays() and toString() on each,
+//                 and the right version for Book or Magazine runs.
+// Overriding      Book overrides toString() and uses super.toString() to extend it.
+// static / final  static counter gives each item a unique id. final fields never change after creation.
+// Constructors    Every class sets up a valid object at birth.
+// Access          Everything private unless another class really needs it.`},
+  {h: ["Step 2: the interface and the abstract class", "Step 2: interface aur abstract class"],
+   p: ["Start with the contract. Borrowable says what any lendable thing can do. Item is the abstract base: it holds the shared data (a unique id, a title, and who currently holds it) and the borrowing logic, and it leaves two things for the children to decide: the loan period and the type name. Book and Magazine extend it. Notice how the logic that must stay the same lives in ONE place.",
+       "Contract se shuru karo. Borrowable batata hai ki koi bhi lend hone wali cheez kya kar sakti hai. Item abstract base hai: isme shared data (unique id, title aur abhi kiske paas hai) aur borrowing logic hai, aur do cheezein children ke tay karne ke liye chhodi gayi hain: loan period aur type ka naam. Book aur Magazine ise extend karte hain. Dekho kaise wo logic jo hamesha same rehna chahiye ek hi jagah par hai."],
+   code: `// File: Main.java   (Part 1 of 3: put all three parts into ONE file named Main.java)
+import java.util.*;
+
+interface Borrowable {                        // the contract
+    boolean borrow(Member m);
+    boolean giveBack();
+    boolean isAvailable();
+}
+
+abstract class Item implements Borrowable {   // abstract base class
+    private static int nextId = 1;            // static: shared counter
+    private final int id;                     // final: never changes
+    private final String title;
+    private Member borrowedBy;                // null means available
+
+    Item(String title) {
+        this.id = nextId++;
+        this.title = title;
+    }
+
+    int getId()       { return id; }
+    String getTitle() { return title; }
+
+    @Override
+    public boolean isAvailable() { return borrowedBy == null; }
+
+    @Override
+    public boolean borrow(Member m) {
+        if (!isAvailable() || !m.canBorrowMore()) return false;   // the rules live here
+        borrowedBy = m;
+        m.addItem(this);
+        return true;
+    }
+
+    @Override
+    public boolean giveBack() {
+        if (isAvailable()) return false;
+        borrowedBy.removeItem(this);
+        borrowedBy = null;
+        return true;
+    }
+
+    abstract int loanDays();                  // each kind decides
+    abstract String type();
+
+    @Override
+    public String toString() {
+        String status = isAvailable() ? "available" : "borrowed by " + borrowedBy.getName();
+        return "#" + id + " [" + type() + "] " + title + " (" + status + ")";
+    }
+}
+
+class Book extends Item {
+    private final String author;
+
+    Book(String title, String author) {
+        super(title);                         // parent builds id and title first
+        this.author = author;
+    }
+
+    @Override int loanDays()  { return 14; }
+    @Override String type()   { return "Book"; }
+
+    @Override
+    public String toString() {
+        return super.toString() + " by " + author;     // extend the parent's text
+    }
+}
+
+class Magazine extends Item {
+    Magazine(String title) { super(title); }
+
+    @Override int loanDays()  { return 7; }
+    @Override String type()   { return "Magazine"; }
+}`},
+  {h: ["Step 3: Member and Library", "Step 3: Member aur Library"],
+   p: ["Member owns a private list of the items it holds and a static final limit of 3. It hides the list and exposes only safe methods. Library is the manager: it keeps all items and members, finds things by id or name, and checks every rule before it lets a borrow happen. It prints clear messages instead of crashing. Here you meet ArrayList and the for-each loop, which you will study in Phase 4. For now read list.add(x), list.size(), list.remove(x) and for (Item i : list) as a growing array.",
+       "Member ke paas apne items ki private list aur static final limit 3 hai. Ye list ko chhupata hai aur sirf safe methods deta hai. Library manager hai: ye saare items aur members rakhti hai, id ya naam se cheezein dhundhti hai, aur borrow hone se pehle har rule check karti hai. Ye crash hone ki jagah saaf messages print karti hai. Yahan tumhe ArrayList aur for-each loop milta hai, jo Phase 4 me padhoge. Abhi list.add(x), list.size(), list.remove(x) aur for (Item i : list) ko badhne wale array ki tarah padho."],
+   code: `// Part 2 of 3: continue in the same Main.java file
+
+class Member {
+    private static final int LIMIT = 3;            // constant: rule for every member
+    private final String name;
+    private final List<Item> items = new ArrayList<>();
+
+    Member(String name) { this.name = name; }
+
+    String getName() { return name; }
+
+    boolean canBorrowMore() { return items.size() < LIMIT; }
+
+    void addItem(Item i)    { items.add(i); }
+    void removeItem(Item i) { items.remove(i); }
+
+    List<Item> getItems() {
+        return Collections.unmodifiableList(items);    // outsiders get a read-only view
+    }
+
+    @Override
+    public String toString() {
+        return name + " holds " + items.size() + "/" + LIMIT + " items";
+    }
+}
+
+class Library {
+    private final List<Item> items = new ArrayList<>();
+    private final List<Member> members = new ArrayList<>();
+
+    void addItem(Item i)     { items.add(i); }
+    void addMember(Member m) { members.add(m); }
+
+    Item findItem(int id) {
+        for (Item i : items) if (i.getId() == id) return i;
+        return null;
+    }
+
+    Member findMember(String name) {
+        for (Member m : members) if (m.getName().equalsIgnoreCase(name)) return m;
+        return null;
+    }
+
+    void showItems() {
+        if (items.isEmpty()) { System.out.println("No items yet."); return; }
+        for (Item i : items) System.out.println(i);       // polymorphism: each toString() is the right one
+    }
+
+    void showMembers() {
+        for (Member m : members) System.out.println(m);
+    }
+
+    void checkout(int id, String who) {
+        Item item = findItem(id);
+        Member m = findMember(who);
+        if (item == null)             { System.out.println("No item with id " + id); return; }
+        if (m == null)                { System.out.println("No member named " + who); return; }
+        if (!item.isAvailable())      { System.out.println("Sorry, that item is already borrowed."); return; }
+        if (!m.canBorrowMore())       { System.out.println(m.getName() + " has reached the limit."); return; }
+
+        item.borrow(m);
+        System.out.println(m.getName() + " borrowed \\"" + item.getTitle() + "\\". Return within " + item.loanDays() + " days.");
+    }
+
+    void giveBack(int id) {
+        Item item = findItem(id);
+        if (item == null)  { System.out.println("No item with id " + id); return; }
+        if (item.giveBack()) System.out.println("\\"" + item.getTitle() + "\\" returned. Thank you!");
+        else                 System.out.println("That item was not borrowed.");
+    }
+}`},
+  {h: ["Step 4: the console menu (Main)", "Step 4: console menu (Main)"],
+   p: ["Main creates the library, adds some starting data and runs a menu loop until the user chooses 0. Numbers are read as a line and converted with Integer.parseInt, which avoids the nextLine() trap you met in the User Input lesson, and a try-catch turns bad typing into -1 so the program does not crash (you will study try-catch properly in Phase 4). The switch uses the modern arrow form from Java 14.",
+       "Main library banata hai, kuch shuruaati data jodta hai aur menu loop tab tak chalata hai jab tak user 0 na chune. Numbers ko line ki tarah padhkar Integer.parseInt se convert karte hain, jisse User Input lesson ka nextLine() trap bachta hai, aur try-catch galat typing ko -1 bana deta hai taaki program crash na ho (try-catch Phase 4 me achhe se padhoge). Switch Java 14 ka modern arrow form use karta hai."],
+   code: `// Part 3 of 3: the last part of the same Main.java file
+
+public class Main {
+    static int readInt(Scanner sc) {
+        try {
+            return Integer.parseInt(sc.nextLine().trim());
+        } catch (NumberFormatException e) {
+            return -1;                                   // bad input becomes "invalid choice"
+        }
+    }
+
+    public static void main(String[] args) {
+        Library lib = new Library();
+        lib.addItem(new Book("Java Basics", "Himakshi"));
+        lib.addItem(new Book("Data Structures", "Mohit"));
+        lib.addItem(new Book("Learn OOP", "Shivam"));
+        lib.addItem(new Magazine("Tech Today"));
+        lib.addMember(new Member("Rahul"));
+        lib.addMember(new Member("Gurleen"));
+
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        do {
+            System.out.println();
+            System.out.println("===== Library Menu =====");
+            System.out.println("1. Show all items");
+            System.out.println("2. Show members");
+            System.out.println("3. Borrow an item");
+            System.out.println("4. Return an item");
+            System.out.println("0. Exit");
+            System.out.print("Choose: ");
+            choice = readInt(sc);
+
+            switch (choice) {
+                case 1 -> lib.showItems();
+                case 2 -> lib.showMembers();
+                case 3 -> {
+                    System.out.print("Item id: ");
+                    int id = readInt(sc);
+                    System.out.print("Member name: ");
+                    String who = sc.nextLine().trim();
+                    lib.checkout(id, who);
+                }
+                case 4 -> {
+                    System.out.print("Item id: ");
+                    lib.giveBack(readInt(sc));
+                }
+                case 0 -> System.out.println("Goodbye!");
+                default -> System.out.println("Invalid choice, try again.");
+            }
+        } while (choice != 0);
+    }
+}`,
+   tip: ["Put the three parts one after another into a single file named Main.java, then run: javac Main.java and java Main. Only Main is public, and the other classes are package-private, which is allowed in one file.", "Teeno parts ko ek ke baad ek Main.java naam ki ek file me rakho, fir chalao: javac Main.java aur java Main. Sirf Main public hai, aur baaki classes package-private hain, jo ek file me allowed hai."]},
+  {h: ["A sample run and how the pillars show up", "Ek sample run aur pillars kahan dikhte hain"],
+   p: ["Run the program and try this sequence. Read the output and match each line to the code that produced it. Then check that each OOP idea really appears in the code.",
+       "Program chalao aur ye sequence try karo. Output padho aur har line ko us code se milao jisne use banaya. Fir check karo ki har OOP idea sach me code me dikhta hai."],
+   code: `// Typing 1, then 3 (item 1, Rahul), 3 (item 1, Gurleen), 3 (item 4, Rahul), 1, 4 (item 1), 1:
+//
+// ===== Library Menu =====  -> Choose: 1
+// #1 [Book] Java Basics (available) by Himakshi
+// #2 [Book] Data Structures (available) by Mohit
+// #3 [Book] Learn OOP (available) by Shivam
+// #4 [Magazine] Tech Today (available)
+//
+// Choose: 3 -> Item id: 1 -> Member name: Rahul
+// Rahul borrowed "Java Basics". Return within 14 days.
+//
+// Choose: 3 -> Item id: 1 -> Member name: Gurleen
+// Sorry, that item is already borrowed.
+//
+// Choose: 3 -> Item id: 4 -> Member name: Rahul
+// Rahul borrowed "Tech Today". Return within 7 days.
+//
+// Choose: 1
+// #1 [Book] Java Basics (borrowed by Rahul) by Himakshi
+// ...
+// #4 [Magazine] Tech Today (borrowed by Rahul)
+//
+// Choose: 4 -> Item id: 1
+// "Java Basics" returned. Thank you!`,
+   pts: [["Encapsulation: every field is private. Member hands out only an unmodifiable list, so outsiders cannot break the limit.", "Abstraction: Borrowable is the contract, and Item is a partly finished base. Library only talks about Item.", "Inheritance: Book and Magazine reuse id, title and the whole borrowing logic from Item.", "Polymorphism: showItems() prints a list of Items, and every object produces its own text. loanDays() gives 14 or 7 depending on the real object.", "Overriding: Book.toString() adds the author using super.toString().", "Constructors: super(title) builds the parent part, and the constructors set up valid objects.", "this: this.id = nextId++, this.title = title, and this.author = author.", "static and final: the static counter gives unique ids, final makes id and title fixed, and static final LIMIT is a constant.", "Access modifiers: fields are private, the methods other classes use are package-private or public, and the interface methods are public."],
+         ["Encapsulation: har field private hai. Member sirf unmodifiable list deta hai, isliye bahar wale limit nahi tod sakte.", "Abstraction: Borrowable contract hai, aur Item aadhi bani base hai. Library sirf Item ke baare me baat karti hai.", "Inheritance: Book aur Magazine Item se id, title aur poora borrowing logic reuse karte hain.", "Polymorphism: showItems() Items ki list print karta hai, aur har object apna text banata hai. loanDays() asli object ke hisaab se 14 ya 7 deta hai.", "Overriding: Book.toString() super.toString() se author jodta hai.", "Constructors: super(title) parent hissa banata hai, aur constructors valid objects set up karte hain.", "this: this.id = nextId++, this.title = title aur this.author = author.", "static aur final: static counter unique ids deta hai, final id aur title ko fixed rakhta hai, aur static final LIMIT constant hai.", "Access modifiers: fields private hain, jo methods dusri classes use karti hain wo package-private ya public hain, aur interface ke methods public hain."]]},
+  {h: ["Step 5: extend it (practice ideas)", "Step 5: ise badhao (practice ideas)"],
+   p: ["A project is only yours when you change it. Try these extensions from easy to hard. Each one teaches a different skill, and a good design makes most of them a small change.",
+       "Project tabhi tumhara hota hai jab tum use badalte ho. Ye extensions aasan se mushkil tak try karo. Har ek alag skill sikhata hai, aur achha design inme se zyadatar ko chhota badlav bana deta hai."],
+   pts: [["Easy: add a Dvd class that extends Item with loanDays() of 3 days. You change nothing else, and that proves the design works.", "Easy: show only the available items (a new method in Library with a for loop and an if).", "Easy: add a menu option to search an item by part of the title (use String.contains).", "Medium: add a due date and a fine of Rs 5 per late day (add fields to Item and a method calculateFine()).", "Medium: add a method in Member that lists its own items, and a menu option to show it.", "Medium: let users add new items and members from the menu (read the title and the kind).", "Medium: make loanDays() and the limit configurable using static final constants in one Settings class.", "Hard: a second interface Reportable with a report() method, implemented by Library and Member.", "Hard: replace the prints with exceptions such as ItemNotAvailableException (Phase 4, Custom Exceptions).", "Hard: save and load the data with file handling (Phase 4)."],
+         ["Easy: Item ko extend karne wali Dvd class jodo jiska loanDays() 3 din ho. Aur kuch mat badlo, isse design ka kaam karna sabit hota hai.", "Easy: sirf available items dikhao (Library me for loop aur if wala naya method).", "Easy: title ke hisse se item search karne ka menu option jodo (String.contains use karo).", "Medium: due date aur har late din ke Rs 5 fine jodo (Item me fields aur calculateFine() method).", "Medium: Member me apne items ki list dikhane wala method aur use dikhane ka menu option jodo.", "Medium: users ko menu se naye items aur members add karne do (title aur kisam padho).", "Medium: loanDays() aur limit ko ek Settings class ke static final constants se configurable banao.", "Hard: doosra interface Reportable jisme report() method ho, jise Library aur Member implement karein.", "Hard: prints ki jagah ItemNotAvailableException jaise exceptions use karo (Phase 4, Custom Exceptions).", "Hard: file handling se data save aur load karo (Phase 4)."]]},
+  {h: ["Testing, presenting it, and common mistakes", "Test karna, presentation aur common mistakes"],
+   p: ["Test every rule on purpose. Borrow an item twice, borrow four items with one member, return an item that was never borrowed, type letters where a number is expected, and use a wrong id. A program is finished only when the BAD inputs behave well. If you must explain the project in a viva or an interview, follow this order: what the program does, the class diagram in words (who extends or implements whom), then the four pillars with one example each from your own code.",
+       "Har rule ko jaan-bujhkar test karo. Ek item do baar borrow karo, ek member se chaar items borrow karwao, jo item borrow hua hi nahi use return karo, number ki jagah letters type karo, aur galat id use karo. Program tab poora hota hai jab GALAT inputs bhi achhe se sambhale jayein. Viva ya interview me project samjhana ho to is order me chalo: program kya karta hai, shabdon me class diagram (kaun kisko extend ya implement karta hai), fir chaaron pillars ek-ek example ke saath apne hi code se."],
+   pts: [["Test checklist: borrow twice, limit of 3, return without borrowing, wrong id, wrong member name, letters in a number field, empty name.", "Mistake: forgetting to rebuild: after changing a file, run javac again before java.", "Mistake: two public classes in one file. Only Main is public here.", "Mistake: the file name differs from the public class name (it must be Main.java).", "Mistake: forgetting public on the interface method implementations, which gives 'weaker access privileges'.", "Mistake: forgetting super(title) in a child constructor, because Item has no no-argument constructor.", "Mistake: removing an item from a list inside a for-each loop (ConcurrentModificationException). Remove outside the loop.", "Mistake: using == to compare member names. Use equalsIgnoreCase.", "Good habit: write a tiny test in main for each new method before adding the next feature.", "Good habit: commit to one change at a time, run it, and only then move on.", "Next: Phase 4, Core Java Advanced. You will learn exceptions, collections, files and threads, and you can come back and upgrade this project with each of them."],
+         ["Test checklist: do baar borrow, limit 3, bina borrow kiye return, galat id, galat member naam, number ki jagah letters, khali naam.", "Galti: dobara build karna bhul jana: file badalne ke baad java se pehle javac dobara chalao.", "Galti: ek file me do public classes. Yahan sirf Main public hai.", "Galti: file ka naam public class ke naam se alag (ye Main.java hona chahiye).", "Galti: interface method implementations par public bhul jana, jisse 'weaker access privileges' aata hai.", "Galti: child constructor me super(title) bhul jana, kyunki Item ka koi no-argument constructor nahi hai.", "Galti: for-each loop ke andar list se item hatana (ConcurrentModificationException). Loop ke bahar hatao.", "Galti: member names ko == se compare karna. equalsIgnoreCase use karo.", "Achhi aadat: har naye method ke liye agla feature jodne se pehle main me chhota test likho.", "Achhi aadat: ek baar me ek badlav karo, chalao, fir aage badho.", "Aage: Phase 4, Core Java Advanced. Exceptions, collections, files aur threads seekhoge, aur har ek ke saath is project ko upgrade karne wapas aa sakte ho."]],
+   tip: ["When you can build this project from a blank file without looking, the Phase 3 milestone is reached: you can build a small Java application using OOPs concepts.", "Jab tum ye project khali file se bina dekhe bana sako, to Phase 3 ka milestone poora hua: tum OOPs concepts se ek chhota Java application bana sakte ho."]}
+ ]}
+});
+
+Object.assign(TOPICS, {
+39: {
+ def: ["An exception is an unwanted event that happens while a program is running and disturbs its normal flow, such as dividing by zero, reading a file that does not exist, or using an index outside an array. Exception handling is Java's way of detecting such problems, reporting them clearly, and letting the program recover or end gracefully instead of crashing.",
+       "Exception ek anchaahi ghatna hai jo program chalte waqt hoti hai aur uske normal flow ko bigaadti hai, jaise zero se divide karna, aisi file padhna jo hai hi nahi, ya array ke bahar ka index use karna. Exception handling Java ka tareeka hai in problems ko pakadne, saaf report karne, aur program ko crash hone ki jagah sambhalne ya aaram se khatam karne ka."],
+ secs: [
+  {h: ["What is an exception?", "Exception kya hai?"],
+   p: ["A compiler error stops your code BEFORE it runs, for example a missing semicolon. An exception happens WHILE the code runs, for example when the user types 0 and your program divides by it. When something goes wrong, Java creates an exception OBJECT that describes the problem (its type, a message and where it happened) and 'throws' it. If nobody catches it, the program stops at that line and prints the details. Every line after it is skipped.",
+       "Compiler error tumhare code ko chalne se PEHLE rokta hai, jaise semicolon chhoot jana. Exception code ke chalne ke DAURAN hota hai, jaise user 0 type kare aur tumhara program usse divide kare. Kuch galat hota hai to Java ek exception OBJECT banata hai jo problem batata hai (uska type, ek message aur wo kahan hui) aur use 'throw' karta hai. Koi use na pakde to program usi line par ruk jata hai aur details print karta hai. Uske baad ki har line skip ho jati hai."],
+   pts: [["Exceptions are objects. Each one is an instance of a class such as ArithmeticException.", "Throwing an exception means creating it and handing it to the Java runtime. It then searches for code that can handle it.", "If nothing handles it, the thread ends and Java prints the exception name, the message and a stack trace.", "Typical causes: bad user input, a missing file, a lost network, a null reference, a wrong index.", "A good program expects such failures and decides what to do: ask again, use a default value, show a friendly message or stop safely."],
+         ["Exceptions objects hote hain. Har ek ArithmeticException jaisi kisi class ka instance hota hai.", "Exception throw karne ka matlab use banana aur Java runtime ko dena. Fir wo use sambhalne wala code dhundhta hai.", "Kuch bhi use na sambhale to thread khatam ho jata hai aur Java exception ka naam, message aur stack trace print karta hai.", "Aam wajah: galat user input, missing file, network ka toot jana, null reference, galat index.", "Achha program aisi failures ki ummeed rakhta hai aur tay karta hai ki kya karna hai: dobara poochna, default value lena, friendly message dikhana ya surakshit tareeke se rukna."]],
+   code: `public class Demo {
+    public static void main(String[] args) {
+        System.out.println("Start");
+        int a = 10, b = 0;
+        System.out.println(a / b);          // the exception happens here
+        System.out.println("End");          // never runs
+    }
+}
+// Output:
+// Start
+// Exception in thread "main" java.lang.ArithmeticException: / by zero
+//         at Demo.main(Demo.java:5)`},
+  {h: ["The class hierarchy: Throwable, Error and Exception", "Class hierarchy: Throwable, Error aur Exception"],
+   p: ["Every problem object in Java belongs to a family tree whose root is java.lang.Throwable. Only Throwable objects can be thrown and caught. Below it the tree splits into two big branches. Error is for serious problems of the JVM itself, like running out of memory, which your program is not expected to handle. Exception is for problems your program can reasonably handle. Under Exception, RuntimeException is a special branch for programming mistakes.",
+       "Java me har problem object ek family tree ka hissa hai jiski jad java.lang.Throwable hai. Sirf Throwable objects hi throw aur catch ho sakte hain. Uske neeche tree do bade hisson me bat jata hai. Error JVM ki khud ki gambhir problems ke liye hai, jaise memory khatam ho jana, jise tumhare program se sambhalne ki ummeed nahi hoti. Exception un problems ke liye hai jo tumhara program wajib tareeke se sambhal sakta hai. Exception ke neeche RuntimeException programming galtiyon ke liye ek khaas shakha hai."],
+   pts: [["Throwable: the root. Gives getMessage(), getCause(), printStackTrace().", "Error: OutOfMemoryError, StackOverflowError, and similar. Do not try to handle these in normal code.", "Exception: problems a program can recover from, such as IOException and SQLException.", "RuntimeException (a child of Exception): ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException, IllegalArgumentException and more.", "Catching a parent type also catches all its children. catch (Exception e) catches almost everything, which is usually too broad."],
+         ["Throwable: jad. getMessage(), getCause(), printStackTrace() deta hai.", "Error: OutOfMemoryError, StackOverflowError jaise. Normal code me inhe sambhalne ki koshish mat karo.", "Exception: wo problems jinse program recover kar sakta hai, jaise IOException aur SQLException.", "RuntimeException (Exception ka child): ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException, IllegalArgumentException aur aur bhi.", "Parent type catch karne se uske saare children bhi pakde jate hain. catch (Exception e) lagbhag sab kuch pakadta hai, jo aam taur par zyada broad hai."]],
+   code: `// The family tree (simplified)
+//
+// Object
+//  └── Throwable
+//       ├── Error                          (serious JVM problems; do not catch)
+//       │    ├── OutOfMemoryError
+//       │    └── StackOverflowError
+//       └── Exception                      (problems a program can handle)
+//            ├── IOException               (checked)
+//            │    └── FileNotFoundException
+//            ├── SQLException              (checked)
+//            └── RuntimeException          (unchecked)
+//                 ├── ArithmeticException
+//                 ├── NullPointerException
+//                 ├── IllegalArgumentException
+//                 │    └── NumberFormatException
+//                 ├── IndexOutOfBoundsException
+//                 │    ├── ArrayIndexOutOfBoundsException
+//                 │    └── StringIndexOutOfBoundsException
+//                 └── ClassCastException
+
+public class Hierarchy {
+    static int deep(int n) { return deep(n + 1); }      // never stops
+
+    public static void main(String[] args) {
+        try {
+            deep(1);
+        } catch (StackOverflowError e) {               // an Error, shown only to illustrate the family
+            System.out.println("Caught: " + e.getClass().getSimpleName());
+        }
+    }
+}`},
+  {h: ["Checked versus unchecked exceptions", "Checked vs unchecked exceptions"],
+   p: ["Java divides exceptions by one question: does the COMPILER force you to deal with it? Checked exceptions are those that extend Exception but not RuntimeException. They describe problems outside your control, like a missing file or a broken network, so the compiler makes you either catch them or declare them with throws. Unchecked exceptions are RuntimeException and its children, plus Error. They usually mean a bug in your code, so the compiler does not force you to handle them. Fix the bug instead.",
+       "Java exceptions ko ek sawal se baantta hai: kya COMPILER tumhe unhe sambhalne par majboor karta hai? Checked exceptions wo hain jo Exception ko extend karte hain par RuntimeException ko nahi. Ye tumhare control se bahar ki problems batate hain, jaise missing file ya toota network, isliye compiler ya to unhe catch karwata hai ya throws se declare karwata hai. Unchecked exceptions RuntimeException aur uske children hain, saath me Error. Ye aam taur par tumhare code me bug batate hain, isliye compiler unhe sambhalne par majboor nahi karta. Bug theek karo."],
+   pts: [["Checked (compile-time checked): IOException, FileNotFoundException, SQLException, InterruptedException, ClassNotFoundException.", "Unchecked (not checked by the compiler): ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException, NumberFormatException, IllegalArgumentException, ClassCastException.", "Checked exception: the compiler error says 'unreported exception X; must be caught or declared to be thrown'.", "Unchecked exceptions can be caught too, but you do not have to.", "Rule of thumb: use unchecked for programming mistakes (wrong argument, wrong state) and checked for recoverable problems outside the program (files, network)."],
+         ["Checked (compile-time par check): IOException, FileNotFoundException, SQLException, InterruptedException, ClassNotFoundException.", "Unchecked (compiler check nahi karta): ArithmeticException, NullPointerException, ArrayIndexOutOfBoundsException, NumberFormatException, IllegalArgumentException, ClassCastException.", "Checked exception me compiler error aata hai: 'unreported exception X; must be caught or declared to be thrown'.", "Unchecked exceptions ko bhi catch kar sakte ho, par zaroori nahi.", "Thumb rule: programming galtiyon (galat argument, galat state) ke liye unchecked aur program ke bahar ki recoverable problems (files, network) ke liye checked use karo."]],
+   code: `import java.io.IOException;
+
+public class CheckedDemo {
+    static void readDisk() throws IOException {         // a checked exception must be declared
+        throw new IOException("disk not ready");
+    }
+
+    public static void main(String[] args) {
+        // readDisk();    // ERROR: unreported exception IOException; must be caught or declared to be thrown
+
+        try {
+            readDisk();                                  // OK: we handle it
+        } catch (IOException e) {
+            System.out.println("Handled: " + e.getMessage());   // Handled: disk not ready
+        }
+
+        int[] a = new int[2];
+        // a[5] = 1;      // compiles fine. Unchecked: it only fails when the program runs
+        System.out.println("Unchecked exceptions are not forced on you");
+    }
+}`},
+  {h: ["The most common exceptions and why they happen", "Sabse common exceptions aur wo kyun hote hain"],
+   p: ["Knowing the usual suspects saves hours. The program below causes seven of them on purpose and prints only the class name of each. Read the cause next to each line. Do not worry about the try and catch yet, the next lesson explains them in detail.",
+       "Aam gunahgaron ko jaanne se ghante bachte hain. Neeche ka program jaan-bujhkar saat exceptions karwata hai aur har ek ka sirf class naam print karta hai. Har line ke saath uski wajah padho. Abhi try aur catch ki chinta mat karo, agla lesson unhe detail me samjhata hai."],
+   code: `import java.util.ArrayList;
+import java.util.List;
+
+public class CommonExceptions {
+    public static void main(String[] args) {
+        try { System.out.println(10 / 0); }
+        catch (Exception e) { System.out.println("1) " + e.getClass().getSimpleName()); }
+        // ArithmeticException: whole-number division by zero
+
+        try { int[] a = new int[3]; a[3] = 1; }
+        catch (Exception e) { System.out.println("2) " + e.getClass().getSimpleName()); }
+        // ArrayIndexOutOfBoundsException: valid indexes are 0 to 2
+
+        try { String s = null; s.length(); }
+        catch (Exception e) { System.out.println("3) " + e.getClass().getSimpleName()); }
+        // NullPointerException: used a method on a null reference
+
+        try { Integer.parseInt("abc"); }
+        catch (Exception e) { System.out.println("4) " + e.getClass().getSimpleName()); }
+        // NumberFormatException: the text is not a valid number
+
+        try { Object o = "text"; Integer i = (Integer) o; }
+        catch (Exception e) { System.out.println("5) " + e.getClass().getSimpleName()); }
+        // ClassCastException: the object is not of that type
+
+        try { "abc".charAt(10); }
+        catch (Exception e) { System.out.println("6) " + e.getClass().getSimpleName()); }
+        // StringIndexOutOfBoundsException: no such position in the String
+
+        try { List<Integer> list = new ArrayList<>(); list.get(0); }
+        catch (Exception e) { System.out.println("7) " + e.getClass().getSimpleName()); }
+        // IndexOutOfBoundsException: the list is empty
+    }
+}`,
+   pts: [["ArithmeticException: / or % by zero with whole numbers. (Decimals give Infinity or NaN, with no exception.)", "ArrayIndexOutOfBoundsException and StringIndexOutOfBoundsException: an index below 0 or at or above the length.", "NullPointerException: a method call or field access on null. The single most common Java error.", "NumberFormatException: parseInt or parseDouble on text that is not a number. Spaces count as wrong too.", "ClassCastException: a wrong downcast. Check with instanceof first.", "InputMismatchException: Scanner.nextInt() met text instead of a number.", "IllegalArgumentException: a method got an argument it does not accept.", "NegativeArraySizeException: new int[-1]. ConcurrentModificationException: changing a list while looping over it.", "UnsupportedOperationException: changing a fixed list such as List.of(1, 2)."],
+         ["ArithmeticException: whole numbers ke saath / ya % zero se. (Decimals me Infinity ya NaN milta hai, exception nahi.)", "ArrayIndexOutOfBoundsException aur StringIndexOutOfBoundsException: 0 se neeche ya length ke barabar ya upar ka index.", "NullPointerException: null par method call ya field access. Java ki sabse common error.", "NumberFormatException: jo text number nahi hai us par parseInt ya parseDouble. Spaces bhi galat maane jate hain.", "ClassCastException: galat downcast. Pehle instanceof se check karo.", "InputMismatchException: Scanner.nextInt() ko number ki jagah text mila.", "IllegalArgumentException: method ko aisa argument mila jo wo nahi leta.", "NegativeArraySizeException: new int[-1]. ConcurrentModificationException: list par loop chalate waqt use badalna.", "UnsupportedOperationException: List.of(1, 2) jaisi fixed list ko badalna."]]},
+  {h: ["Reading a stack trace", "Stack trace padhna"],
+   p: ["When an exception is not handled, Java prints a stack trace. It is a map of the method calls that were active at the moment of the failure. Read it from the TOP: the first line gives the exception type and the message, and the first 'at' line below it shows exactly where it was thrown. The lines further down show who called that method, back to main. Open the first line that mentions YOUR own file and fix the problem there.",
+       "Exception sambhala na jaye to Java stack trace print karta hai. Ye un method calls ka naksha hai jo failure ke waqt active the. Ise UPAR se padho: pehli line exception ka type aur message deti hai, aur uske neeche pehli 'at' line batati hai ki wo bilkul kahan throw hua. Aur neeche ki lines batati hain ki us method ko kisne call kiya, main tak. Pehli wo line kholo jisme TUMHARI apni file ka naam ho aur wahin problem theek karo."],
+   code: `public class Trace {
+    static void c(int d) { int x = 1 / d; }     // line 2: the failure happens here
+    static void b(int d) { c(d); }              // line 3: called by b
+    static void a(int d) { b(d); }              // line 4: called by a
+    public static void main(String[] args) { a(0); }   // line 5: the program started here
+}
+// Output:
+// Exception in thread "main" java.lang.ArithmeticException: / by zero
+//         at Trace.c(Trace.java:2)
+//         at Trace.b(Trace.java:3)
+//         at Trace.a(Trace.java:4)
+//         at Trace.main(Trace.java:5)
+//
+// Read it like this:
+//   ArithmeticException      -> WHAT went wrong (division by zero)
+//   at Trace.c(Trace.java:2) -> WHERE: method c, file Trace.java, line 2
+//   the lines below          -> the chain of callers, ending at main`,
+   tip: ["Do not be scared of long traces. Read the first line (what), then the first line with your own class name (where). That is 90 percent of debugging.", "Lambi traces se darro mat. Pehli line (kya) padho, fir apni class ke naam wali pehli line (kahan). Debugging ka 90 percent yahi hai."]},
+  {h: ["The throw keyword: raising your own exception", "throw keyword: apna exception uthana"],
+   p: ["You do not have to wait for Java to throw an exception. If your method receives something invalid, use throw followed by a new exception object. This stops the method at once, exactly like Java's own failures, and the caller learns that the input was wrong. Put a clear message that says what was wrong and what value was received.",
+       "Tumhe Java ke exception throw karne ka intezaar nahi karna padta. Tumhare method ko kuch invalid mile to throw ke baad naya exception object likho. Isse method turant ruk jata hai, bilkul Java ki apni failures ki tarah, aur caller ko pata chalta hai ki input galat tha. Saaf message likho jo bataye ki kya galat tha aur kaun si value mili."],
+   code: `public class ThrowDemo {
+    static void setAge(int age) {
+        if (age < 0 || age > 120) {
+            throw new IllegalArgumentException("Age must be 0 to 120, but got " + age);
+        }
+        System.out.println("Age set to " + age);
+    }
+
+    static double divide(int a, int b) {
+        if (b == 0) {
+            throw new ArithmeticException("Cannot divide " + a + " by zero");
+        }
+        return (double) a / b;
+    }
+
+    public static void main(String[] args) {
+        setAge(21);                                  // Age set to 21
+        try {
+            setAge(-5);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Rejected: " + e.getMessage());   // Rejected: Age must be 0 to 120, but got -5
+        }
+        System.out.println(divide(9, 2));            // 4.5
+    }
+}`,
+   pts: [["Syntax: throw new ExceptionType(\"message\");", "throw works only with Throwable objects. You cannot throw a String or an int.", "After a throw statement, the lines below it in the same block are unreachable and give a compile error.", "Use IllegalArgumentException for a bad argument and IllegalStateException when the object is in the wrong state for the call.", "Check the input at the start of the method and throw at once. This is called a guard clause."],
+         ["Syntax: throw new ExceptionType(\"message\");", "throw sirf Throwable objects ke saath chalta hai. String ya int throw nahi kar sakte.", "throw statement ke baad usi block ki neeche ki lines unreachable hoti hain aur compile error deti hain.", "Galat argument ke liye IllegalArgumentException aur object galat state me ho to IllegalStateException use karo.", "Method ki shuruaat me input check karo aur turant throw karo. Ise guard clause kehte hain."]]},
+  {h: ["The throws keyword: declaring what a method may throw", "throws keyword: method kya throw kar sakta hai ye batana"],
+   p: ["If a method can throw a CHECKED exception and does not handle it inside, it must announce this in its signature with throws. This is a warning label for every caller: 'this method may fail in this way, so deal with it'. The caller then chooses to catch it or to pass it further up with its own throws. throws mentions the TYPES only, and a method can list several, separated by commas.",
+       "Method CHECKED exception throw kar sakta ho aur use andar sambhalta na ho, to use signature me throws se batana padta hai. Ye har caller ke liye ek chetavni hai: 'ye method is tarah fail ho sakta hai, isliye isse niptao'. Caller fir ise catch karta hai ya apne throws se aage upar bhej deta hai. throws sirf TYPES likhta hai, aur method kai types comma se alag karke likh sakta hai."],
+   code: `import java.io.FileNotFoundException;
+import java.io.IOException;
+
+public class ThrowsDemo {
+    // the signature warns every caller
+    static void openFile(String name) throws FileNotFoundException {
+        if (!name.endsWith(".txt")) {
+            throw new FileNotFoundException("Only .txt files are supported: " + name);
+        }
+        System.out.println("Opened " + name);
+    }
+
+    static void process(String name) throws IOException {      // passes it further up
+        openFile(name);                                        // FileNotFoundException is an IOException
+        System.out.println("Processing done");
+    }
+
+    public static void main(String[] args) {
+        try {
+            process("notes.txt");       // Opened notes.txt / Processing done
+            process("photo.png");       // fails
+        } catch (IOException e) {
+            System.out.println("Could not finish: " + e.getMessage());
+        }
+    }
+}`,
+   pts: [["throw (no s) is a STATEMENT inside a method body that actually throws one exception object.", "throws (with s) is a CLAUSE in the method signature that lists the exception types the method may throw.", "You may declare unchecked exceptions in throws, but nobody is forced to handle them.", "An overriding method cannot declare broader checked exceptions than the parent method. It may declare fewer or none.", "main can also say throws Exception, which is acceptable in tiny practice programs but hides problems in real ones."],
+         ["throw (s ke bina) method body ke andar ek STATEMENT hai jo sach me ek exception object throw karta hai.", "throws (s ke saath) method signature ka ek CLAUSE hai jo wo exception types batata hai jo method throw kar sakta hai.", "Unchecked exceptions ko bhi throws me likh sakte ho, par kisi ko unhe sambhalna zaroori nahi.", "Overriding method parent method se bade checked exceptions declare nahi kar sakta. Kam ya koi nahi kar sakta hai.", "main bhi throws Exception likh sakta hai, jo chhote practice programs me chalta hai par real programs me problems chhupata hai."]]},
+  {h: ["How an exception travels up the call stack", "Exception call stack me upar kaise jata hai"],
+   p: ["When an exception is thrown, Java looks for a matching catch in the CURRENT method. If there is none, the method ends immediately and the exception moves to the method that called it, then to the caller of that, and so on up to main. This is called propagation or stack unwinding. The first matching catch handles it and the program continues after that catch. If the search reaches the top without success, the program stops with a stack trace. All the code between the throw and the catch is skipped.",
+       "Exception throw hone par Java pehle CURRENT method me matching catch dhundhta hai. Na mile to method turant khatam ho jata hai aur exception us method ke paas jata hai jisne ise call kiya tha, fir uske caller ke paas, aur aise hi main tak. Ise propagation ya stack unwinding kehte hain. Pehla matching catch use sambhalta hai aur program us catch ke baad se aage chalta hai. Search upar tak bina safalta ke pahunche to program stack trace ke saath ruk jata hai. Throw aur catch ke beech ka saara code skip ho jata hai."],
+   code: `public class Travel {
+    static void level3() {
+        System.out.println("level3 start");
+        throw new IllegalStateException("problem in level3");
+    }
+
+    static void level2() {
+        System.out.println("level2 start");
+        level3();
+        System.out.println("level2 end");            // skipped
+    }
+
+    static void level1() {
+        System.out.println("level1 start");
+        try {
+            level2();
+        } catch (IllegalStateException e) {          // caught here, two levels above the failure
+            System.out.println("level1 caught: " + e.getMessage());
+        }
+        System.out.println("level1 end");            // runs normally
+    }
+
+    public static void main(String[] args) {
+        level1();
+        System.out.println("main finished");
+    }
+}
+// level1 start
+// level2 start
+// level3 start
+// level1 caught: problem in level3
+// level1 end
+// main finished`},
+  {h: ["Good habits and common mistakes", "Achhi aadatein aur common mistakes"],
+   pts: [["Handle an exception at the level that knows what to do about it. Often that is not the method where it was thrown.", "Throw early (check inputs at the start), catch late (where you can recover or inform the user).", "Prefer the most specific exception type: IllegalArgumentException is better than a plain RuntimeException, and a custom one (next lessons) is better still.", "Always write a useful message with the bad value inside it.", "Do not use exceptions for normal flow. Checking if (b != 0) is cheaper and clearer than catching ArithmeticException.", "Mistake: catching Exception and doing nothing, which hides bugs.", "Mistake: forgetting that a checked exception must be caught or declared, then adding catch blocks only to silence the compiler.", "Mistake: printing the message and continuing as if nothing happened, so wrong results are used later.", "Mistake: catching Throwable or Error. Leave serious JVM problems alone.", "Good habit: fix the cause of an unchecked exception (null check, range check) instead of wrapping everything in try."],
+         ["Exception ko us level par sambhalo jise pata ho ki kya karna hai. Aksar ye wo method nahi hota jahan wo throw hua.", "Jaldi throw karo (shuruaat me inputs check karo), der se catch karo (jahan recover kar sako ya user ko bata sako).", "Sabse specific exception type chuno: IllegalArgumentException saade RuntimeException se behtar hai, aur custom wala (agle lessons) usse bhi behtar.", "Hamesha kaam ka message likho jisme galat value shamil ho.", "Normal flow ke liye exceptions use mat karo. if (b != 0) check karna ArithmeticException catch karne se sasta aur saaf hai.", "Galti: Exception catch karke kuch na karna, jisse bugs chhup jate hain.", "Galti: ye bhul jana ki checked exception catch ya declare karna zaroori hai, fir sirf compiler ko chup karane ke liye catch blocks jodna.", "Galti: message print karke aise aage badhna jaise kuch hua hi nahi, jisse baad me galat results use hote hain.", "Galti: Throwable ya Error catch karna. Gambhir JVM problems ko chhod do.", "Achhi aadat: unchecked exception ki wajah theek karo (null check, range check), sab kuch try me lapetne ki jagah."]],
+   tip: ["Interview questions: (1) What is the difference between Error and Exception? Error is a serious JVM problem you should not handle, Exception is recoverable. (2) Checked versus unchecked? The compiler forces handling of checked ones only. (3) throw versus throws? throw raises an exception, throws declares one.", "Interview questions: (1) Error aur Exception me fark? Error gambhir JVM problem hai jise nahi sambhalna chahiye, Exception recoverable hai. (2) Checked vs unchecked? Compiler sirf checked ko sambhalne par majboor karta hai. (3) throw vs throws? throw exception uthata hai, throws use declare karta hai."]}
+ ]},
+40: {
+ def: ["try, catch and finally are the three blocks that let you handle exceptions. Code that might fail goes inside try. If an exception happens, Java jumps to the matching catch block, where you decide what to do. The finally block holds cleanup code that runs in every case, whether an exception happened or not. Since Java 7, try-with-resources closes files and other resources for you automatically.",
+       "try, catch aur finally wo teen blocks hain jo exceptions sambhalne deti hain. Jo code fail ho sakta hai wo try ke andar jata hai. Exception ho jaye to Java matching catch block par kood jata hai, jahan tum tay karte ho ki kya karna hai. finally block me safai ka code hota hai jo har haal me chalta hai, exception ho ya na ho. Java 7 se try-with-resources files aur dusre resources ko tumhare liye apne aap band kar deta hai."],
+ secs: [
+  {h: ["Why try-catch?", "try-catch kyun?"],
+   p: ["Without handling, one bad input stops the whole program. With try-catch you wrap only the risky lines, you describe what to do when they fail, and the rest of the program keeps working. A calculator should print 'cannot divide by zero' and wait for the next sum, not disappear with a long red error.",
+       "Sambhale bina ek galat input poora program rok deta hai. try-catch se sirf risky lines ko lapette ho, batate ho ki fail hone par kya karna hai, aur baaki program kaam karta rehta hai. Calculator ko 'zero se divide nahi kar sakte' print karke agle hisab ka intezaar karna chahiye, lambi laal error ke saath gayab nahi hona chahiye."],
+   pts: [["Put only the lines that can really fail inside try. A giant try block makes it hard to know what failed.", "catch is not a normal method. It runs only when a matching exception arrives.", "After a catch finishes, the program continues with the first line AFTER the whole try-catch statement.", "A try block must be followed by at least one catch or a finally (or be a try-with-resources)."],
+         ["Sirf wahi lines try me rakho jo sach me fail ho sakti hain. Bada try block ye pata lagana mushkil bana deta hai ki kya fail hua.", "catch normal method nahi hai. Ye sirf tab chalta hai jab matching exception aata hai.", "catch khatam hone ke baad program poore try-catch statement ke BAAD ki pehli line se aage chalta hai.", "try block ke baad kam se kam ek catch ya finally hona chahiye (ya wo try-with-resources ho)."]]},
+  {h: ["Basic try-catch syntax and flow", "Basic try-catch syntax aur flow"],
+   p: ["The shape is try { risky code } catch (ExceptionType name) { recovery code }. The variable in the brackets holds the exception object. The order of events matters: lines in try run one by one. The moment one of them throws, the REST of the try block is skipped, and Java looks for a matching catch. If the try finishes without an exception, all catch blocks are skipped.",
+       "Shape ye hai: try { risky code } catch (ExceptionType name) { recovery code }. Brackets me wala variable exception object rakhta hai. Events ka order matter karta hai: try ki lines ek-ek karke chalti hain. Inme se koi throw karte hi try block ka BAAKI hissa skip ho jata hai, aur Java matching catch dhundhta hai. try bina exception ke khatam ho to saare catch blocks skip ho jate hain."],
+   code: `public class BasicCatch {
+    public static void main(String[] args) {
+        System.out.println("1. before try");
+        try {
+            System.out.println("2. inside try, start");
+            int result = 10 / 0;                        // exception here
+            System.out.println("3. never printed: " + result);
+        } catch (ArithmeticException e) {
+            System.out.println("4. caught: " + e.getMessage());
+        }
+        System.out.println("5. program continues");
+    }
+}
+// 1. before try
+// 2. inside try, start
+// 4. caught: / by zero
+// 5. program continues      (line 3 was skipped)
+
+// Same code with a good input
+//   int result = 10 / 2;  ->  1, 2, 3 (prints 5), then 5. The catch block is skipped.`},
+  {h: ["Multiple catch blocks and their order", "Kai catch blocks aur unka order"],
+   p: ["One try can have several catch blocks, one for each kind of problem, each with its own reaction. Java checks them from top to bottom and runs ONLY the first one that matches. Because a parent type also matches its children, you must put the MORE SPECIFIC exceptions first and the general ones last. Putting a parent before its child is a compile error, because the child's block could never run.",
+       "Ek try me kai catch blocks ho sakte hain, har tarah ki problem ke liye ek, har ek ka apna reaction. Java unhe upar se neeche check karta hai aur SIRF pehla matching wala chalata hai. Parent type apne children se bhi match karta hai, isliye ZYADA SPECIFIC exceptions pehle aur general wale baad me rakhne padte hain. Parent ko child se pehle rakhna compile error hai, kyunki child ka block kabhi chal hi nahi sakta."],
+   code: `public class ManyCatches {
+    static void test(String text, int[] data, int index) {
+        try {
+            int n = Integer.parseInt(text);              // may throw NumberFormatException
+            System.out.println(data[index] / n);         // may throw ArrayIndexOutOfBounds or Arithmetic
+        } catch (NumberFormatException e) {
+            System.out.println("Not a number: " + text);
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero");
+        } catch (IndexOutOfBoundsException e) {          // parent of ArrayIndexOutOfBoundsException
+            System.out.println("No such position: " + index);
+        } catch (Exception e) {                          // the general safety net, always LAST
+            System.out.println("Unexpected: " + e);
+        }
+    }
+
+    public static void main(String[] args) {
+        int[] data = {100, 200, 300};
+        test("5", data, 1);        // 40
+        test("abc", data, 1);      // Not a number: abc
+        test("0", data, 1);        // Cannot divide by zero
+        test("5", data, 9);        // No such position: 9
+    }
+}
+
+// WRONG order does not compile:
+//   catch (Exception e) { ... }
+//   catch (NumberFormatException e) { ... }   // ERROR: exception NumberFormatException has already been caught`},
+  {h: ["Multi-catch with the pipe |", "Pipe | ke saath multi-catch"],
+   p: ["When two or more exceptions need exactly the same reaction, join them in one catch with the pipe symbol. This removes copy-pasted code. There are two rules: the types in one multi-catch must NOT be related by inheritance (you cannot write a parent and its child together), and the variable is implicitly final, so you cannot assign a new value to it.",
+       "Do ya zyada exceptions ko bilkul same reaction chahiye to unhe pipe symbol se ek catch me jodo. Isse copy-paste kiya code hat jata hai. Do rules hain: ek multi-catch ke types inheritance se judne NAHI chahiye (parent aur uska child saath nahi likh sakte), aur variable apne aap final hota hai, isliye usme nayi value assign nahi kar sakte."],
+   code: `public class MultiCatch {
+    public static void main(String[] args) {
+        String[] data = {"10", "x", "0"};
+        for (String s : data) {
+            try {
+                int n = Integer.parseInt(s);
+                System.out.println(100 / n);
+            } catch (NumberFormatException | ArithmeticException e) {   // same reaction for both
+                System.out.println("Skipping '" + s + "': " + e.getClass().getSimpleName());
+            }
+        }
+        // 10
+        // Skipping 'x': NumberFormatException
+        // Skipping '0': ArithmeticException
+    }
+}
+
+// catch (NumberFormatException | IllegalArgumentException e) { }
+// ERROR: Alternatives in a multi-catch statement cannot be related by subclassing`},
+  {h: ["Getting information from the exception object", "Exception object se jaankari lena"],
+   p: ["The catch variable carries useful details. getMessage() gives the text. Printing the object itself (or toString()) gives the class name plus the message. getCause() returns the original exception when one was wrapped. printStackTrace() prints the full trace to the error stream, which is the right tool while developing. In a real application you write this information to a log instead of the screen.",
+       "catch variable kaam ki jaankari rakhta hai. getMessage() text deta hai. Object ko seedha print karna (ya toString()) class ka naam aur message deta hai. getCause() wo original exception deta hai jise lapeta gaya ho. printStackTrace() poori trace error stream me print karta hai, jo development ke dauran sahi tool hai. Real application me ye jaankari screen ki jagah log me likhte ho."],
+   code: `public class ExceptionInfo {
+    public static void main(String[] args) {
+        try {
+            Integer.parseInt("12abc");
+        } catch (NumberFormatException e) {
+            System.out.println(e.getMessage());           // For input string: "12abc"
+            System.out.println(e);                        // java.lang.NumberFormatException: For input string: "12abc"
+            System.out.println(e.getClass().getName());   // java.lang.NumberFormatException
+            System.out.println(e.getClass().getSimpleName());   // NumberFormatException
+            System.out.println(e.getCause());             // null (nothing was wrapped)
+            e.printStackTrace();                          // full trace, printed to System.err
+        }
+    }
+}`,
+   pts: [["System.err is a separate output stream for errors. In an IDE it is usually shown in red.", "getMessage() can be null for some exceptions, so do not call methods on it without thinking.", "Show users a friendly sentence. Keep the technical trace for the log and for yourself."],
+         ["System.err errors ke liye alag output stream hai. IDE me ye aam taur par laal dikhta hai.", "Kuch exceptions ke liye getMessage() null ho sakta hai, isliye bina soche us par methods call mat karo.", "Users ko friendly vakya dikhao. Technical trace ko log aur apne liye rakho."]]},
+  {h: ["The finally block", "finally block"],
+   p: ["Code in finally runs almost always: after a normal try, after a catch, even when an exception was NOT caught, and even when try or catch contains a return, break or continue. That makes it the right place for cleanup such as closing a file, a connection or releasing a lock. The only ways it does not run are System.exit(), a crash of the JVM or an infinite loop or a stopped thread.",
+       "finally ka code lagbhag hamesha chalta hai: normal try ke baad, catch ke baad, tab bhi jab exception pakda NAHI gaya, aur tab bhi jab try ya catch me return, break ya continue ho. Isliye ye safai ke liye sahi jagah hai, jaise file ya connection band karna ya lock chhodna. Ye sirf tab nahi chalta jab System.exit() ho, JVM crash ho, ya infinite loop ya ruka hua thread ho."],
+   code: `public class FinallyDemo {
+    static int test() {
+        try {
+            return 1;
+        } finally {
+            System.out.println("finally runs before the method returns");
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            System.out.println(10 / 0);
+        } catch (ArithmeticException e) {
+            System.out.println("catch");
+        } finally {
+            System.out.println("finally always");
+        }
+        // catch
+        // finally always
+
+        System.out.println(test());
+        // finally runs before the method returns
+        // 1
+
+        try {
+            System.out.println("try with finally only");
+        } finally {                              // try + finally, no catch, is allowed
+            System.out.println("cleanup");
+        }
+
+        try {
+            System.out.println("exiting");
+            System.exit(0);                      // the JVM stops: finally does NOT run
+        } finally {
+            System.out.println("never printed");
+        }
+    }
+}`,
+   pts: [["Order of events: try, then catch (if an exception matched), then finally.", "finally runs even if the try block throws an exception that no catch handles. The exception then continues upward AFTER finally ends.", "Do not put return inside finally. It silently overrides the value from try and swallows any exception, and the compiler warns about it.", "If finally itself throws an exception, it replaces the earlier one. Keep finally simple."],
+         ["Events ka order: try, fir catch (agar koi exception match hua), fir finally.", "try block aisa exception throw kare jise koi catch na sambhale tab bhi finally chalta hai. Exception fir finally KHATAM hone ke BAAD upar jata hai.", "finally ke andar return mat likho. Ye chupchap try ki value ko badal deta hai aur exception ko nigal jata hai, aur compiler isse warning deta hai.", "finally khud exception throw kare to wo pichhle ko badal deta hai. finally ko simple rakho."]]},
+  {h: ["try-with-resources: automatic closing (Java 7+)", "try-with-resources: apne aap band karna (Java 7+)"],
+   p: ["A resource is something you must close after use: a file, a stream, a database connection. Closing it by hand in finally is long and easy to get wrong. Write the resource in brackets after try, and Java closes it for you at the end, even when an exception occurs. Any class that implements AutoCloseable can be used. Several resources are closed in the REVERSE order of creation. A catch or finally can still follow.",
+       "Resource wo cheez hai jise use ke baad band karna zaroori hai: file, stream, database connection. Use finally me hath se band karna lamba hai aur galti aasan hai. Resource ko try ke baad brackets me likho, aur Java end me use apne aap band kar deta hai, exception hone par bhi. Jo bhi class AutoCloseable implement kare wo use ho sakti hai. Kai resources banne ke ULTE order me band hote hain. Uske baad catch ya finally bhi aa sakta hai."],
+   code: `import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.StringReader;
+
+class Door implements AutoCloseable {                  // our own resource
+    private final String name;
+    Door(String name) { this.name = name; System.out.println("open " + name); }
+    void use()        { System.out.println("using " + name); }
+    @Override
+    public void close() { System.out.println("close " + name); }
+}
+
+public class TryWithResources {
+    public static void main(String[] args) {
+        try (Door a = new Door("A"); Door b = new Door("B")) {
+            a.use();
+            b.use();
+            throw new IllegalStateException("oops");
+        } catch (IllegalStateException e) {
+            System.out.println("caught " + e.getMessage());
+        } finally {
+            System.out.println("finally");
+        }
+        // open A
+        // open B
+        // using A
+        // using B
+        // close B          (reverse order, closed BEFORE the catch runs)
+        // close A
+        // caught oops
+        // finally
+
+        // A real reader (a String stands in for a file here)
+        try (BufferedReader br = new BufferedReader(new StringReader("hello\\nworld"))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                System.out.println(line.toUpperCase());     // HELLO, WORLD
+            }
+        } catch (IOException e) {
+            System.out.println("Read failed: " + e.getMessage());
+        }
+    }
+}`,
+   pts: [["Resources declared in the brackets are implicitly final, and they are in scope only inside the try block.", "Since Java 9 you can also write an existing effectively-final variable in the brackets: try (reader) { ... }", "If the body and close() both throw, the body's exception wins and the close() one is attached to it as a suppressed exception (see getSuppressed()).", "Do not close System.in (a Scanner on the keyboard) this way in a program that still needs input afterwards.", "Prefer try-with-resources to a manual finally every time you open a resource."],
+         ["Brackets me declare kiye resources apne aap final hote hain, aur wo sirf try block ke andar scope me hote hain.", "Java 9 se brackets me pehle se bana effectively-final variable bhi likh sakte ho: try (reader) { ... }", "Body aur close() dono throw karein to body ka exception jeet jata hai aur close() wala suppressed exception ki tarah usse jud jata hai (getSuppressed() dekho).", "Aise program me jahan baad me bhi input chahiye wahan System.in (keyboard par Scanner) ko is tarah band mat karo.", "Jab bhi resource kholo, hath wale finally ki jagah try-with-resources ko prefer karo."]]},
+  {h: ["Nested try, rethrowing and wrapping", "Nested try, rethrow aur wrap karna"],
+   p: ["Sometimes a catch block cannot fully handle the problem. It can log something and throw the SAME exception again with throw e;, so the caller still finds out. Or it can throw a DIFFERENT exception that fits the caller's world better, passing the original as the cause so the history is not lost. This wrapping keeps low-level details (NumberFormatException) away from high-level code and still lets you find the root with getCause().",
+       "Kabhi-kabhi catch block problem ko poori tarah nahi sambhal sakta. Wo kuch log karke SAME exception ko throw e; se dobara throw kar sakta hai, taaki caller ko phir bhi pata chale. Ya wo ek ALAG exception throw kar sakta hai jo caller ki duniya me behtar fit baithe, original ko cause ki tarah dekar taaki history na khoye. Is wrap karne se low-level details (NumberFormatException) high-level code se door rehti hain aur getCause() se jad phir bhi mil jati hai."],
+   code: `public class Rethrow {
+    static int readQuantity(String text) {
+        try {
+            return Integer.parseInt(text.trim());
+        } catch (NumberFormatException e) {
+            // wrap: a friendlier type, and keep the original as the cause
+            throw new IllegalArgumentException("Quantity must be a number, got '" + text + "'", e);
+        }
+    }
+
+    static void logAndRethrow() {
+        try {
+            int[] a = new int[1];
+            a[2] = 5;
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.out.println("LOG: " + e.getMessage());
+            throw e;                                         // same exception continues upward
+        }
+    }
+
+    public static void main(String[] args) {
+        try {
+            readQuantity("five");
+        } catch (IllegalArgumentException e) {
+            System.out.println(e.getMessage());              // Quantity must be a number, got 'five'
+            System.out.println(e.getCause().getClass().getSimpleName());   // NumberFormatException
+        }
+
+        try {
+            logAndRethrow();                                 // LOG: Index 2 out of bounds for length 1
+        } catch (RuntimeException e) {
+            System.out.println("main also knows: " + e.getClass().getSimpleName());
+        }
+
+        // A try inside a try is allowed too
+        try {
+            try {
+                System.out.println(10 / 0);
+            } finally {
+                System.out.println("inner cleanup");
+            }
+        } catch (ArithmeticException e) {
+            System.out.println("outer caught it");
+        }
+    }
+}`},
+  {h: ["A practical pattern: ask again until the input is valid", "Practical pattern: valid input milne tak dobara poochna"],
+   p: ["User input is the most common reason for exceptions. This loop keeps asking until the answer is valid. It reads a whole line (which avoids the nextLine() trap), parses it, checks the range, and uses two catch blocks. Notice the order: NumberFormatException is a child of IllegalArgumentException, so the child must come first.",
+       "User input exceptions ki sabse common wajah hai. Ye loop tab tak poochta rehta hai jab tak jawab valid na ho. Ye poori line padhta hai (jisse nextLine() trap bachta hai), parse karta hai, range check karta hai, aur do catch blocks use karta hai. Order dekho: NumberFormatException, IllegalArgumentException ka child hai, isliye child pehle aana chahiye."],
+   code: `import java.util.Scanner;
+
+public class AskUntilValid {
+    static int askAge(Scanner sc) {
+        int age = -1;
+        while (true) {
+            System.out.print("Enter your age (0-120): ");
+            String line = sc.nextLine();
+            try {
+                age = Integer.parseInt(line.trim());
+                if (age < 0 || age > 120) {
+                    throw new IllegalArgumentException("Age out of range");
+                }
+                return age;                                        // valid: leave the method
+            } catch (NumberFormatException e) {                    // child first
+                System.out.println("Please type digits only.");
+            } catch (IllegalArgumentException e) {                 // then the parent
+                System.out.println(e.getMessage() + ", try again.");
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Your age: " + askAge(sc));
+    }
+}
+// Enter your age (0-120): abc        -> Please type digits only.
+// Enter your age (0-120): 500        -> Age out of range, try again.
+// Enter your age (0-120): 21         -> Your age: 21`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: an empty catch block (catch (Exception e) { }). The error disappears and the bug stays hidden. At least print or log it.", "Mistake: catching Exception everywhere. Catch the specific types you can really handle.", "Mistake: parent catch before child catch, a compile error.", "Mistake: a huge try block around 50 lines. Wrap only the risky lines.", "Mistake: return inside finally, which swallows exceptions and hides results.", "Mistake: forgetting to close resources, which leaks files and connections. Use try-with-resources.", "Mistake: using exceptions as a replacement for if checks in everyday logic.", "Mistake: catch (Exception e) { throw new RuntimeException(); } without the cause, which loses the history. Pass e as the cause.", "Mistake: catching a checked exception that the try block can never throw, which is a compile error ('exception X is never thrown in body of corresponding try statement').", "Good habit: handle what you can, log what you cannot, and let the rest travel upward.", "Good habit: write the failing case on purpose and run it, to see that your catch really works."],
+         ["Galti: khali catch block (catch (Exception e) { }). Error gayab ho jati hai aur bug chhupa rehta hai. Kam se kam print ya log karo.", "Galti: har jagah Exception catch karna. Wahi specific types catch karo jo tum sach me sambhal sakte ho.", "Galti: parent catch child catch se pehle, jo compile error hai.", "Galti: 50 lines ke upar bada try block. Sirf risky lines lapeto.", "Galti: finally ke andar return, jo exceptions ko nigal leta hai aur results chhupata hai.", "Galti: resources band karna bhul jana, jisse files aur connections leak hote hain. try-with-resources use karo.", "Galti: roz ke logic me if checks ki jagah exceptions use karna.", "Galti: catch (Exception e) { throw new RuntimeException(); } cause ke bina, jisse history kho jati hai. e ko cause ki tarah do.", "Galti: aise checked exception ko catch karna jo try block kabhi throw nahi kar sakta, jo compile error hai ('exception X is never thrown in body of corresponding try statement').", "Achhi aadat: jo sambhal sako sambhalo, jo na sambhal sako log karo, aur baaki upar jane do.", "Achhi aadat: failing case jaan-bujhkar likho aur chalao, ye dekhne ke liye ki tumhara catch sach me kaam karta hai."]],
+   tip: ["Interview questions: (1) Can finally be skipped? Only with System.exit(), a JVM crash or an endless loop. (2) Can we have try without catch? Yes, with finally or as try-with-resources. (3) Can one try have many catch blocks? Yes, but specific before general.", "Interview questions: (1) Kya finally skip ho sakta hai? Sirf System.exit(), JVM crash ya endless loop se. (2) Kya try bina catch ke ho sakta hai? Haan, finally ke saath ya try-with-resources ki tarah. (3) Kya ek try me kai catch ho sakte hain? Haan, par specific pehle aur general baad me."]}
+ ]},
+41: {
+ def: ["A custom exception is an exception class that YOU write for the special problems of your own program, by extending Exception (checked) or RuntimeException (unchecked). Names such as InsufficientBalanceException or InvalidAgeException say exactly what went wrong, can carry extra data like an error code or an amount, and let callers catch that one problem separately from all others.",
+       "Custom exception wo exception class hai jo TUM apne program ki khaas problems ke liye likhte ho, Exception (checked) ya RuntimeException (unchecked) ko extend karke. InsufficientBalanceException ya InvalidAgeException jaise naam bilkul batate hain ki kya galat hua, extra data jaise error code ya amount rakh sakte hain, aur callers ko us ek problem ko baaki sab se alag catch karne dete hain."],
+ secs: [
+  {h: ["Why create your own exceptions?", "Apne exceptions kyun banayein?"],
+   p: ["Built-in exceptions are general. If a bank withdraw fails because the balance is low, throwing a plain RuntimeException or IllegalArgumentException says almost nothing. The caller cannot tell a low balance from any other mistake without reading the message text. A custom exception gives the problem a NAME and a TYPE. The caller can write catch (InsufficientBalanceException e) and react to exactly that, for example by offering a loan, while other problems follow another path.",
+       "Built-in exceptions general hote hain. Bank withdraw kam balance ki wajah se fail ho aur tum saada RuntimeException ya IllegalArgumentException throw karo to wo lagbhag kuch nahi batata. Caller message ka text padhe bina kam balance ko kisi aur galti se alag nahi kar sakta. Custom exception problem ko ek NAAM aur ek TYPE deta hai. Caller catch (InsufficientBalanceException e) likhkar theek usi par react kar sakta hai, jaise loan offer karke, jabki baaki problems alag raaste jati hain."],
+   pts: [["Clear meaning: the class name tells the story, so code and stack traces read like plain English.", "Precise catching: you can handle one failure differently from the others.", "Extra data: fields such as shortfall, errorCode or the invalid value travel with the exception.", "Grouping: several related exceptions can share a base class, so callers can catch the whole family at once.", "Business rules: rules of your application (an age limit, a stock limit) become visible in the code."],
+         ["Saaf matlab: class ka naam kahani batata hai, isliye code aur stack traces seedhi angrezi jaise padhte hain.", "Sahi pakadna: ek failure ko baaki se alag tarah sambhal sakte ho.", "Extra data: shortfall, errorCode ya invalid value jaise fields exception ke saath jate hain.", "Grouping: kai related exceptions ek base class share kar sakte hain, isliye callers poori family ko ek saath catch kar sakte hain.", "Business rules: tumhari application ke rules (age limit, stock limit) code me dikhne lagte hain."]]},
+  {h: ["A checked custom exception", "Ek checked custom exception"],
+   p: ["Extend Exception and the new class is CHECKED: every caller must catch it or declare it with throws. Choose this when the failure is a normal, expected part of the business that the caller can recover from, such as not enough balance. The class is tiny: a name and a constructor that passes the message to super(message). Your class is also a Throwable, so everything from the Exception Handling lesson applies.",
+       "Exception ko extend karo to nayi class CHECKED hoti hai: har caller ko use catch ya throws se declare karna padta hai. Ise tab chuno jab failure business ka normal, ummeed wala hissa ho jisse caller recover kar sake, jaise balance ka kam hona. Class bahut chhoti hoti hai: ek naam aur ek constructor jo message ko super(message) ko deta hai. Tumhari class bhi ek Throwable hai, isliye Exception Handling lesson ka sab kuch lagu hota hai."],
+   code: `// All classes below go into ONE file named Main.java
+
+class InsufficientBalanceException extends Exception {     // checked
+    public InsufficientBalanceException(String message) {
+        super(message);                                    // the parent stores the message
+    }
+}
+
+class Account {
+    private final String owner;
+    private double balance;
+
+    Account(String owner, double balance) {
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    void withdraw(double amount) throws InsufficientBalanceException {   // callers are warned
+        if (amount <= 0) {
+            throw new IllegalArgumentException("Amount must be positive");  // a bug: unchecked
+        }
+        if (amount > balance) {
+            throw new InsufficientBalanceException(
+                owner + " has only " + balance + ", cannot withdraw " + amount);
+        }
+        balance -= amount;
+    }
+
+    double getBalance() { return balance; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Account acc = new Account("Shivam", 1000);
+        try {
+            acc.withdraw(400);
+            System.out.println("Balance: " + acc.getBalance());   // Balance: 600.0
+            acc.withdraw(5000);
+        } catch (InsufficientBalanceException e) {
+            System.out.println("Declined: " + e.getMessage());
+            // Declined: Shivam has only 600.0, cannot withdraw 5000.0
+        }
+    }
+}`},
+  {h: ["An unchecked custom exception", "Ek unchecked custom exception"],
+   p: ["Extend RuntimeException and the new class is UNCHECKED: callers are not forced to catch or declare it. Choose this for mistakes in how your code is used, such as an invalid age or a wrong state, where the right fix is to correct the call and not to write a handler. It keeps method signatures clean and is the style of most modern Java frameworks.",
+       "RuntimeException ko extend karo to nayi class UNCHECKED hoti hai: callers ko use catch ya declare karna zaroori nahi hota. Ise un galtiyon ke liye chuno jo tumhare code ke galat istemal se hoti hain, jaise invalid age ya galat state, jahan sahi fix call ko theek karna hai, handler likhna nahi. Isse method signatures saaf rehte hain aur zyadatar modern Java frameworks ka yahi style hai."],
+   code: `class InvalidAgeException extends RuntimeException {      // unchecked
+    private final int age;
+
+    public InvalidAgeException(int age) {
+        super("Invalid age: " + age + " (must be 0 to 120)");
+        this.age = age;
+    }
+
+    public int getAge() { return age; }
+}
+
+class Person {
+    private int age;
+
+    void setAge(int age) {                                    // no throws clause needed
+        if (age < 0 || age > 120) {
+            throw new InvalidAgeException(age);
+        }
+        this.age = age;
+    }
+
+    int getAge() { return age; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Person p = new Person();
+        p.setAge(21);                                         // fine
+        System.out.println(p.getAge());                       // 21
+
+        try {
+            p.setAge(300);
+        } catch (InvalidAgeException e) {                     // optional to catch
+            System.out.println(e.getMessage());               // Invalid age: 300 (must be 0 to 120)
+            System.out.println(e.getAge());                   // 300
+        }
+
+        p.setAge(-1);       // not caught: the program stops with InvalidAgeException and a stack trace
+    }
+}`,
+   pts: [["Checked custom (extends Exception): the caller can recover and the failure is a normal outcome (balance too low, file missing, item sold out).", "Unchecked custom (extends RuntimeException): the caller made a mistake or the program is in an impossible state (invalid argument, broken rule).", "A common modern habit: prefer unchecked exceptions, and use checked ones only when the caller has a real way to recover.", "Never extend Error or Throwable directly for your own problems. Use Exception or RuntimeException."],
+         ["Checked custom (Exception extend): caller recover kar sakta hai aur failure normal natija hai (balance kam, file missing, item sold out).", "Unchecked custom (RuntimeException extend): caller se galti hui hai ya program namumkin state me hai (invalid argument, tooti rule).", "Ek aam modern aadat: unchecked exceptions prefer karo, aur checked tab use karo jab caller ke paas sach me recover karne ka tareeka ho.", "Apni problems ke liye Error ya Throwable ko seedha extend mat karo. Exception ya RuntimeException use karo."]]},
+  {h: ["The standard constructors", "Standard constructors"],
+   p: ["Library exceptions offer four constructors, and a well-made custom exception does the same. This lets callers create it in the most natural way, and it lets you wrap another exception as the cause. Each constructor simply hands its arguments to the matching super constructor. Names always end with the word Exception.",
+       "Library exceptions chaar constructors dete hain, aur achha banaya custom exception bhi wahi karta hai. Isse callers use sabse natural tareeke se bana sakte hain, aur tum kisi dusre exception ko cause ki tarah lapet sakte ho. Har constructor apne arguments ko matching super constructor ko de deta hai. Naam hamesha Exception shabd par khatam hote hain."],
+   code: `public class AppException extends Exception {
+    private static final long serialVersionUID = 1L;       // exceptions are Serializable; this silences a warning
+
+    public AppException() {                                // 1) no details
+        super();
+    }
+
+    public AppException(String message) {                  // 2) message only
+        super(message);
+    }
+
+    public AppException(String message, Throwable cause) { // 3) message plus the original cause
+        super(message, cause);
+    }
+
+    public AppException(Throwable cause) {                 // 4) cause only
+        super(cause);
+    }
+}`,
+   pts: [["super(message) makes getMessage() return that text.", "super(message, cause) also makes getCause() return the wrapped exception.", "You usually do not override getMessage(). If you need a different text, build it in the constructor and pass it to super.", "Keep custom exception classes small. They exist to carry information, not to do work."],
+         ["super(message) se getMessage() wahi text return karta hai.", "super(message, cause) se getCause() lapeta hua exception bhi return karta hai.", "Aam taur par getMessage() ko override nahi karte. Alag text chahiye to use constructor me banao aur super ko do.", "Custom exception classes ko chhota rakho. Ye jaankari ledne ke liye hain, kaam karne ke liye nahi."]]},
+  {h: ["Carrying extra data: error codes and values", "Extra data le jana: error codes aur values"],
+   p: ["The big advantage over a plain message is data the caller can USE in code. The exception holds private final fields and public getters, so it is immutable and safe. A web app can map errorCode to a screen. A shop can read the stock that is left and offer to order less.",
+       "Plain message ke muqable bada fayda wo data hai jise caller code me USE kar sakta hai. Exception private final fields aur public getters rakhta hai, isliye wo immutable aur surakshit hota hai. Web app errorCode ko kisi screen se jod sakti hai. Shop bacha hua stock padh sakti hai aur kam order karne ka offer de sakti hai."],
+   code: `class OutOfStockException extends Exception {
+    private final String product;
+    private final int requested;
+    private final int available;
+
+    public OutOfStockException(String product, int requested, int available) {
+        super(requested + " x " + product + " requested, only " + available + " in stock");
+        this.product = product;
+        this.requested = requested;
+        this.available = available;
+    }
+
+    public String getProduct() { return product; }
+    public int getRequested()  { return requested; }
+    public int getAvailable()  { return available; }
+    public int getShortfall()  { return requested - available; }
+}
+
+class Shop {
+    private int pens = 5;
+
+    void buyPens(int count) throws OutOfStockException {
+        if (count > pens) {
+            throw new OutOfStockException("Pen", count, pens);
+        }
+        pens -= count;
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Shop shop = new Shop();
+        try {
+            shop.buyPens(8);
+        } catch (OutOfStockException e) {
+            System.out.println(e.getMessage());                    // 8 x Pen requested, only 5 in stock
+            System.out.println("Short by " + e.getShortfall());    // Short by 3
+            if (e.getAvailable() > 0) {
+                try {
+                    shop.buyPens(e.getAvailable());                // the program REACTS using the data
+                    System.out.println("Bought " + e.getAvailable() + " instead");   // Bought 5 instead
+                } catch (OutOfStockException again) {
+                    System.out.println("Still not possible");
+                }
+            }
+        }
+    }
+}`},
+  {h: ["Exception chaining: keep the original cause", "Exception chaining: original cause sambhalo"],
+   p: ["Low-level failures (a SQL error, a number format error) mean little to the higher layers of your program. Wrap them in an exception from YOUR domain, but pass the original as the cause. The user-facing code sees a meaningful type, and the developer still finds the real root through getCause() and in the stack trace, which prints a 'Caused by:' section. Throwing a new exception without the cause throws away the most valuable clue.",
+       "Low-level failures (SQL error, number format error) tumhare program ki upar ki layers ke liye zyada matlab nahi rakhti. Unhe APNI domain ke exception me lapeto, par original ko cause ki tarah pass karo. User-facing code ko matlab wala type dikhta hai, aur developer ko asli jad getCause() aur stack trace me, jo 'Caused by:' section print karta hai, phir bhi mil jati hai. Cause ke bina naya exception throw karna sabse kimti suragh fenk deta hai."],
+   code: `class ConfigException extends Exception {
+    public ConfigException(String message, Throwable cause) {
+        super(message, cause);
+    }
+}
+
+class Config {
+    static int readPort(String text) throws ConfigException {
+        try {
+            return Integer.parseInt(text);
+        } catch (NumberFormatException e) {
+            throw new ConfigException("Invalid port in settings: '" + text + "'", e);   // wrap + keep the cause
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        try {
+            Config.readPort("80a");
+        } catch (ConfigException e) {
+            System.out.println(e.getMessage());                       // Invalid port in settings: '80a'
+            Throwable root = e.getCause();
+            System.out.println(root.getClass().getSimpleName());      // NumberFormatException
+            System.out.println(root.getMessage());                    // For input string: "80a"
+        }
+    }
+}
+// If it were uncaught, the trace would show both parts:
+// ConfigException: Invalid port in settings: '80a'
+//     at Config.readPort(Main.java:10)
+// Caused by: java.lang.NumberFormatException: For input string: "80a"
+//     at ...`},
+  {h: ["Your own exception hierarchy", "Apni exception hierarchy"],
+   p: ["For a bigger program, create ONE base exception for the whole application, and let every specific problem extend it. Callers can then choose their level: catch the specific type to react precisely, or catch the base type to handle 'any problem from this application' in one place, such as the top of a menu loop. This is the same idea as the Java library, where FileNotFoundException extends IOException.",
+       "Bade program ke liye poori application ka EK base exception banao, aur har specific problem use extend kare. Callers fir apna level chun sakte hain: precise reaction ke liye specific type catch karo, ya 'is application ki koi bhi problem' ko ek jagah, jaise menu loop ke upar, sambhalne ke liye base type catch karo. Ye wahi idea hai jo Java library me hai, jahan FileNotFoundException, IOException ko extend karta hai."],
+   code: `class LibraryException extends Exception {                // the one base type
+    public LibraryException(String message) { super(message); }
+}
+
+class ItemNotFoundException extends LibraryException {
+    public ItemNotFoundException(int id) { super("No item with id " + id); }
+}
+
+class ItemNotAvailableException extends LibraryException {
+    public ItemNotAvailableException(String title) { super("'" + title + "' is already borrowed"); }
+}
+
+class MemberLimitException extends LibraryException {
+    public MemberLimitException(String name, int limit) { super(name + " already holds " + limit + " items"); }
+}
+
+public class Main {
+    static void checkout(int id, String member) throws LibraryException {
+        if (id != 1) throw new ItemNotFoundException(id);
+        if (member.equals("Rahul")) throw new ItemNotAvailableException("Java Basics");
+        if (member.equals("Gurleen")) throw new MemberLimitException(member, 3);
+        System.out.println(member + " borrowed item " + id);
+    }
+
+    public static void main(String[] args) {
+        String[] members = {"Himakshi", "Rahul", "Gurleen"};
+        for (String m : members) {
+            try {
+                checkout(1, m);
+            } catch (ItemNotAvailableException e) {          // precise: offer a reservation
+                System.out.println("Reserve instead? " + e.getMessage());
+            } catch (LibraryException e) {                   // the whole family, handled in one place
+                System.out.println("Library says: " + e.getMessage());
+            }
+        }
+        // Himakshi borrowed item 1
+        // Reserve instead? 'Java Basics' is already borrowed
+        // Library says: Gurleen already holds 3 items
+
+        try {
+            checkout(9, "Mohit");
+        } catch (LibraryException e) {
+            System.out.println(e.getMessage());              // No item with id 9
+        }
+    }
+}`,
+   tip: ["Practice idea: upgrade the OOPs mini project from Phase 3. Replace its 'return false' and println messages with these three exceptions, and let the menu loop catch LibraryException once.", "Practice idea: Phase 3 ke OOPs mini project ko upgrade karo. Uske 'return false' aur println messages ki jagah ye teen exceptions lagao, aur menu loop me LibraryException ek hi baar catch karo."]},
+  {h: ["A validation example in layers", "Layers me validation ka example"],
+   p: ["Real programs validate data in one place and report all failures in the same style. Here a registration method checks the name, the email and the age, and throws a ValidationException that names the field. The caller shows a message and does not need to know the details of each rule.",
+       "Real programs data ko ek jagah validate karte hain aur saari failures ek hi style me report karte hain. Yahan registration method naam, email aur age check karta hai, aur ek ValidationException throw karta hai jo field ka naam batata hai. Caller message dikhata hai aur use har rule ki details jaanne ki zarurat nahi."],
+   code: `class ValidationException extends RuntimeException {
+    private final String field;
+
+    public ValidationException(String field, String problem) {
+        super(field + ": " + problem);
+        this.field = field;
+    }
+
+    public String getField() { return field; }
+}
+
+class Registration {
+    static void register(String name, String email, int age) {
+        if (name == null || name.isBlank()) {
+            throw new ValidationException("name", "must not be empty");
+        }
+        if (!email.contains("@")) {
+            throw new ValidationException("email", "must contain @");
+        }
+        if (age < 18) {
+            throw new ValidationException("age", "must be at least 18, got " + age);
+        }
+        System.out.println("Registered " + name);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        String[][] forms = {
+            {"Mohit", "mohit@mail.com", "21"},
+            {"", "x@mail.com", "30"},
+            {"Gurleen", "gurleen.mail.com", "25"},
+            {"Rahul", "rahul@mail.com", "16"}
+        };
+        for (String[] f : forms) {
+            try {
+                Registration.register(f[0], f[1], Integer.parseInt(f[2]));
+            } catch (ValidationException e) {
+                System.out.println("Fix the field '" + e.getField() + "' -> " + e.getMessage());
+            }
+        }
+        // Registered Mohit
+        // Fix the field 'name' -> name: must not be empty
+        // Fix the field 'email' -> email: must contain @
+        // Fix the field 'age' -> age: must be at least 18, got 16
+    }
+}`},
+  {h: ["Best practices and common mistakes", "Best practices aur common mistakes"],
+   pts: [["Name it after the PROBLEM, not the place: InsufficientBalanceException is better than AccountException.", "Always end the class name with Exception.", "Write messages that contain the bad value and the rule: 'Age 300 is not between 0 and 120'.", "Make the fields private final, and offer getters only. An exception should never change after it is created.", "Do not create a custom exception when a standard one fits (IllegalArgumentException, IllegalStateException, UnsupportedOperationException, NoSuchElementException).", "Do not create too many classes. One exception per real decision a caller makes is enough.", "Document the exceptions in the method comment with @throws, so users of your code know what to expect.", "Mistake: forgetting super(message), so getMessage() returns null.", "Mistake: throwing a new exception inside catch without passing the cause, which loses the stack trace of the original.", "Mistake: extending Exception when callers cannot do anything useful about it, which only forces pointless try-catch blocks.", "Mistake: catching your own exception and ignoring it. Handle it or let it travel up."],
+         ["Naam PROBLEM ke hisaab se rakho, jagah ke hisaab se nahi: InsufficientBalanceException, AccountException se behtar hai.", "Class ka naam hamesha Exception par khatam karo.", "Aise messages likho jisme galat value aur rule ho: 'Age 300 is not between 0 and 120'.", "Fields ko private final rakho aur sirf getters do. Exception banne ke baad kabhi nahi badalna chahiye.", "Standard exception fit ho to custom exception mat banao (IllegalArgumentException, IllegalStateException, UnsupportedOperationException, NoSuchElementException).", "Bahut saari classes mat banao. Caller jo har asli faisla leta hai uske liye ek exception kaafi hai.", "Method ke comment me exceptions ko @throws se document karo, taaki tumhara code use karne walon ko pata ho kya ummeed rakhni hai.", "Galti: super(message) bhul jana, jisse getMessage() null return karta hai.", "Galti: catch ke andar cause pass kiye bina naya exception throw karna, jisse original ka stack trace kho jata hai.", "Galti: Exception extend karna jab callers kuch kaam ka nahi kar sakte, jisse sirf bekar try-catch blocks likhne padte hain.", "Galti: apna hi exception catch karke use ignore karna. Use sambhalo ya upar jane do."]],
+   code: `/**
+ * Withdraws money from the account.
+ *
+ * @param amount the amount to withdraw, must be positive
+ * @throws InsufficientBalanceException if the balance is lower than the amount
+ * @throws IllegalArgumentException     if the amount is zero or negative
+ */
+void withdraw(double amount) throws InsufficientBalanceException {
+    // ...
+}`,
+   tip: ["Interview questions: (1) How do you create a custom exception? Extend Exception for checked or RuntimeException for unchecked, and call super(message). (2) When checked and when unchecked? Checked when the caller can recover, unchecked for programming mistakes. (3) What is exception chaining? Passing the original exception as the cause of a new one.", "Interview questions: (1) Custom exception kaise banate hain? Checked ke liye Exception ya unchecked ke liye RuntimeException extend karo aur super(message) call karo. (2) Checked kab aur unchecked kab? Caller recover kar sake to checked, programming galtiyon ke liye unchecked. (3) Exception chaining kya hai? Original exception ko naye exception ke cause ki tarah dena."]}
+ ]},
+42: {
+ def: ["A wrapper class is an object version of a primitive type: Integer for int, Double for double, Character for char, Boolean for boolean and so on. Wrappers let primitives be used where objects are required, such as in ArrayList and generics, give you useful methods (parsing, comparing, converting) and can hold null. Java converts between a primitive and its wrapper automatically, which is called autoboxing and unboxing.",
+       "Wrapper class primitive type ka object version hai: int ke liye Integer, double ke liye Double, char ke liye Character, boolean ke liye Boolean aur aise hi. Wrappers primitives ko wahan use karne dete hain jahan objects chahiye, jaise ArrayList aur generics me, kaam ke methods (parsing, comparing, converting) dete hain aur null rakh sakte hain. Java primitive aur uske wrapper ke beech apne aap badalta hai, ise autoboxing aur unboxing kehte hain."],
+ secs: [
+  {h: ["Why do wrapper classes exist?", "Wrapper classes kyun hain?"],
+   p: ["The eight primitive types (int, double and so on) are fast and simple, but they are not objects. They have no methods, they cannot be null and, most importantly, collections and generics such as ArrayList<Integer> work only with objects. You cannot write ArrayList<int>. The wrapper classes fill this gap: each primitive has a matching class that holds the same value inside an object. Wrappers also hold handy utilities, for example Integer.parseInt() and Integer.MAX_VALUE.",
+       "Aathon primitive types (int, double waghera) tez aur simple hain, par wo objects nahi hain. Unke methods nahi hote, wo null nahi ho sakte aur sabse zaroori, collections aur generics jaise ArrayList<Integer> sirf objects ke saath chalte hain. ArrayList<int> likh nahi sakte. Wrapper classes ye kami bharti hain: har primitive ki ek matching class hoti hai jo wahi value ek object ke andar rakhti hai. Wrappers me kaam ki utilities bhi hoti hain, jaise Integer.parseInt() aur Integer.MAX_VALUE."],
+   pts: [["Collections and generics need objects: ArrayList<Integer>, HashMap<String, Double>.", "A wrapper can be null, to mean 'no value'. A primitive int can never be null.", "Wrappers give methods: Integer.parseInt(), Double.compare(), Character.isDigit(), Boolean.parseBoolean().", "Wrappers carry constants: Integer.MAX_VALUE, Double.MIN_VALUE, Long.MAX_VALUE.", "Wrappers are IMMUTABLE, like String: once created, the value inside never changes.", "All six numeric wrappers extend the abstract class Number, so you can ask any of them for intValue(), doubleValue() and so on."],
+         ["Collections aur generics ko objects chahiye: ArrayList<Integer>, HashMap<String, Double>.", "Wrapper null ho sakta hai, 'koi value nahi' batane ke liye. Primitive int kabhi null nahi ho sakta.", "Wrappers methods dete hain: Integer.parseInt(), Double.compare(), Character.isDigit(), Boolean.parseBoolean().", "Wrappers constants rakhte hain: Integer.MAX_VALUE, Double.MIN_VALUE, Long.MAX_VALUE.", "Wrappers IMMUTABLE hote hain, String ki tarah: ek baar ban gaye to andar ki value kabhi nahi badalti.", "Chhahon numeric wrappers abstract class Number ko extend karte hain, isliye kisi se bhi intValue(), doubleValue() waghera maang sakte ho."]]},
+  {h: ["The eight wrapper classes", "Aathon wrapper classes"],
+   p: ["Every primitive has exactly one wrapper. Six of them are numbers, and two (Character and Boolean) are not. Learn the pairs, because a mistake in the name (Int instead of Integer, or char instead of Character) is a very common beginner error.",
+       "Har primitive ka theek ek wrapper hota hai. Unme se chhe numbers hain, aur do (Character aur Boolean) nahi. Jodiyan yaad kar lo, kyunki naam me galti (Integer ki jagah Int, ya Character ki jagah char) beginners ki bahut common error hai."],
+   pts: [["byte  ->  Byte", "short  ->  Short", "int  ->  Integer (the name is different!)", "long  ->  Long", "float  ->  Float", "double  ->  Double", "char  ->  Character (the name is different!)", "boolean  ->  Boolean", "Byte, Short, Integer, Long, Float and Double extend Number. Character and Boolean extend Object directly."],
+         ["byte  ->  Byte", "short  ->  Short", "int  ->  Integer (naam alag hai!)", "long  ->  Long", "float  ->  Float", "double  ->  Double", "char  ->  Character (naam alag hai!)", "boolean  ->  Boolean", "Byte, Short, Integer, Long, Float aur Double Number ko extend karte hain. Character aur Boolean seedhe Object ko extend karte hain."]],
+   code: `public class Wrappers {
+    public static void main(String[] args) {
+        Integer age = 21;
+        Double price = 99.5;
+        Character grade = 'A';
+        Boolean passed = true;
+        Long population = 8000000000L;
+
+        System.out.println(age + " " + price + " " + grade + " " + passed + " " + population);
+
+        // A wrapper is an object, so it has methods
+        System.out.println(age.toString().length());      // 2
+        System.out.println(price.intValue());              // 99
+        System.out.println(grade.compareTo('C'));          // -2
+        System.out.println(passed.equals(false));          // false
+
+        // The Number class lets you convert between numeric wrappers
+        Number n = 42;                                     // an Integer seen as a Number
+        System.out.println(n.doubleValue());               // 42.0
+        System.out.println(n.longValue());                 // 42
+
+        // A wrapper can hold null; a primitive cannot
+        Integer missing = null;
+        // int broken = null;                              // ERROR
+        System.out.println(missing);                       // null
+    }
+}`},
+  {h: ["Boxing and unboxing", "Boxing aur unboxing"],
+   p: ["Boxing means putting a primitive into its wrapper object. Unboxing means taking the primitive back out. Since Java 5 the compiler does both for you automatically: this is autoboxing and auto-unboxing, and it is why you can write list.add(5) and int x = list.get(0). Behind the scenes the compiler calls Integer.valueOf(5) and intValue(). Knowing this matters, because boxing creates objects and unboxing a null reference crashes.",
+       "Boxing ka matlab primitive ko uske wrapper object me rakhna. Unboxing ka matlab primitive ko wapas nikalna. Java 5 se compiler dono apne aap karta hai: ye autoboxing aur auto-unboxing hai, aur isi wajah se list.add(5) aur int x = list.get(0) likh sakte ho. Peeche compiler Integer.valueOf(5) aur intValue() call karta hai. Ye jaanna zaroori hai, kyunki boxing objects banata hai aur null reference ko unbox karna crash karta hai."],
+   code: `import java.util.ArrayList;
+import java.util.List;
+
+public class Boxing {
+    public static void main(String[] args) {
+        // Manual (what the compiler does for you)
+        Integer a = Integer.valueOf(10);          // boxing
+        int b = a.intValue();                     // unboxing
+
+        // Automatic
+        Integer c = 10;                           // autoboxing:    Integer.valueOf(10)
+        int d = c;                                // auto-unboxing: c.intValue()
+
+        List<Integer> marks = new ArrayList<>();
+        marks.add(85);                            // 85 is boxed to Integer
+        marks.add(92);
+        int first = marks.get(0);                 // unboxed to int
+        int total = 0;
+        for (int m : marks) total += m;           // each Integer is unboxed
+        System.out.println(first + " " + total);  // 85 177
+
+        // Arithmetic and comparison unbox the wrappers
+        Integer x = 7, y = 3;
+        System.out.println(x + y);                // 10
+        System.out.println(x > y);                // true
+
+        // Only exact matches box: these do NOT compile
+        // Long big = 5;                          // ERROR: int cannot be converted to Long
+        // Double half = 1;                       // ERROR: int cannot be converted to Double
+        Long big = 5L;                            // OK
+        Double half = 1.0;                        // OK
+        double wide = 5;                          // OK: a plain primitive widening
+    }
+}`,
+   pts: [["Autoboxing works in assignments, method arguments, return values and collections.", "Boxing keeps the same type: an int becomes an Integer, never a Long or a Double.", "A primitive can first widen and then box? No. int to Long is not allowed, but int to long (a primitive) is.", "Each boxing (outside the small cache) creates a new object, so avoid it in tight loops."],
+         ["Autoboxing assignments, method arguments, return values aur collections me chalta hai.", "Boxing wahi type rakhta hai: int Integer banta hai, Long ya Double kabhi nahi.", "Kya primitive pehle widen hokar fir box ho sakta hai? Nahi. int se Long allowed nahi hai, par int se long (primitive) allowed hai.", "Har boxing (chhoti cache ke bahar) naya object banati hai, isliye tight loops me isse bacho."]]},
+  {h: ["Creating wrappers and converting to and from text", "Wrappers banana aur text se aur text me badalna"],
+   p: ["Create a wrapper with valueOf() or simply by autoboxing, never with new Integer(...), which is deprecated and wasteful. To turn text into a number use parseInt (gives a primitive) or valueOf (gives a wrapper). To turn a number into text use toString(), String.valueOf() or + \"\". A radix lets you read and write other number systems. Bad text throws NumberFormatException, so catch it whenever the text comes from a user.",
+       "Wrapper valueOf() se ya seedhe autoboxing se banao, new Integer(...) se kabhi nahi, jo deprecated aur bekar hai. Text ko number banane ke liye parseInt (primitive deta hai) ya valueOf (wrapper deta hai) use karo. Number ko text banane ke liye toString(), String.valueOf() ya + \"\" use karo. Radix se doosre number systems padh aur likh sakte ho. Galat text NumberFormatException deta hai, isliye jab bhi text user se aaye use catch karo."],
+   code: `public class Conversions {
+    public static void main(String[] args) {
+        // Text to number
+        int a = Integer.parseInt("123");               // primitive int
+        Integer b = Integer.valueOf("123");            // wrapper Integer
+        double d = Double.parseDouble("3.75");
+        long l = Long.parseLong("9000000000");
+        boolean flag = Boolean.parseBoolean("TRUE");   // true: any capitals are fine
+        System.out.println(Boolean.parseBoolean("yes"));   // false: anything except "true" is false
+
+        // Number to text
+        String s1 = Integer.toString(42);
+        String s2 = String.valueOf(42);
+        String s3 = 42 + "";
+        System.out.println(s1 + s2 + s3);              // 424242
+
+        // Other number systems
+        System.out.println(Integer.toBinaryString(10));    // 1010
+        System.out.println(Integer.toHexString(255));      // ff
+        System.out.println(Integer.toOctalString(8));      // 10
+        System.out.println(Integer.parseInt("ff", 16));    // 255
+        System.out.println(Integer.parseInt("1010", 2));   // 10
+        System.out.println(Integer.parseInt("+5"));        // 5   (a leading + is allowed)
+
+        // Bad text
+        String[] inputs = {"42", " 42", "4 2", "42.0", "", "abc"};
+        for (String in : inputs) {
+            try {
+                System.out.println("'" + in + "' -> " + Integer.parseInt(in));
+            } catch (NumberFormatException e) {
+                System.out.println("'" + in + "' is not a valid int");
+            }
+        }
+        // '42' -> 42
+        // ' 42' is not a valid int      (spaces: use trim() first)
+        // '4 2' is not a valid int
+        // '42.0' is not a valid int     (use Double.parseDouble)
+        // '' is not a valid int
+        // 'abc' is not a valid int
+    }
+}`,
+   pts: [["Prefer Integer.valueOf(x) over new Integer(x). valueOf can reuse cached objects.", "parseInt returns int, valueOf returns Integer. With autoboxing the difference rarely matters, but parseInt avoids an extra object.", "Double.parseDouble accepts forms such as \"3.75\", \"1e3\" and \"-0.5\".", "Trim the text first: Integer.parseInt(input.trim()).", "Boolean.parseBoolean never throws. It returns true only for the text true (ignoring case)."],
+         ["new Integer(x) ki jagah Integer.valueOf(x) prefer karo. valueOf cached objects dobara use kar sakta hai.", "parseInt int return karta hai, valueOf Integer. Autoboxing ke saath fark kam hi matter karta hai, par parseInt ek extra object bachata hai.", "Double.parseDouble \"3.75\", \"1e3\" aur \"-0.5\" jaise forms leta hai.", "Pehle text trim karo: Integer.parseInt(input.trim()).", "Boolean.parseBoolean kabhi throw nahi karta. Ye sirf text true (capitals ignore karke) ke liye true deta hai."]]},
+  {h: ["Useful constants and utility methods", "Kaam ke constants aur utility methods"],
+   p: ["The wrapper classes are a toolbox. Memorise the constants for the limits of each type and the handful of static helpers you will use constantly. Character has a full set of tests for letters and digits, and Double has methods for the special values NaN and Infinity.",
+       "Wrapper classes ek toolbox hain. Har type ki limits ke constants aur kuch static helpers yaad kar lo jo tum lagatar use karoge. Character ke paas letters aur digits ke poore tests hain, aur Double ke paas khaas values NaN aur Infinity ke methods hain."],
+   code: `public class Utilities {
+    public static void main(String[] args) {
+        // Limits
+        System.out.println(Integer.MAX_VALUE);       // 2147483647
+        System.out.println(Integer.MIN_VALUE);       // -2147483648
+        System.out.println(Long.MAX_VALUE);          // 9223372036854775807
+        System.out.println(Byte.MAX_VALUE);          // 127
+        System.out.println(Double.MAX_VALUE);        // 1.7976931348623157E308
+        System.out.println(Double.MIN_VALUE);        // 4.9E-324  (the smallest POSITIVE value, not the most negative!)
+
+        // Integer helpers
+        System.out.println(Integer.compare(5, 9));   // -1
+        System.out.println(Integer.max(4, 9));       // 9
+        System.out.println(Integer.min(4, 9));       // 4
+        System.out.println(Integer.sum(2, 3));       // 5
+        System.out.println(Integer.signum(-17));     // -1
+        System.out.println(Integer.bitCount(7));     // 3  (binary 111)
+        System.out.println(Integer.reverse(1) < 0);  // true
+
+        // Double helpers
+        double nothing = 0.0 / 0;
+        System.out.println(Double.isNaN(nothing));                 // true
+        System.out.println(nothing == nothing);                    // false (NaN is never equal, not even to itself)
+        System.out.println(Double.isInfinite(1.0 / 0));            // true
+        System.out.println(Double.compare(1.5, 2.5));              // -1
+
+        // Character helpers
+        System.out.println(Character.isDigit('7'));        // true
+        System.out.println(Character.isLetter('a'));       // true
+        System.out.println(Character.isLetterOrDigit('_')); // false
+        System.out.println(Character.isUpperCase('Q'));    // true
+        System.out.println(Character.isWhitespace(' '));   // true
+        System.out.println(Character.toUpperCase('b'));    // B
+        System.out.println(Character.getNumericValue('7')); // 7
+        System.out.println((char) ('a' + 1));              // b
+    }
+}`,
+   pts: [["Integer.MAX_VALUE + 1 overflows to Integer.MIN_VALUE. Use Long when a number may pass 2 billion.", "Always compare decimals with Double.compare() or with a tolerance, never with == (and NaN is never equal to anything).", "Integer.compare(a, b) is safer than a - b, because the subtraction can overflow.", "Sorting and the comparators you will meet in Phase 4 use compare and compareTo all the time.", "For exact money use BigDecimal, and for huge whole numbers use BigInteger (both are in java.math)."],
+         ["Integer.MAX_VALUE + 1 overflow hokar Integer.MIN_VALUE ban jata hai. Number 2 arab paar kar sake to Long use karo.", "Decimals ko hamesha Double.compare() ya tolerance se compare karo, == se kabhi nahi (aur NaN kisi ke barabar nahi hota).", "Integer.compare(a, b) a - b se zyada safe hai, kyunki subtraction overflow kar sakta hai.", "Sorting aur Phase 4 ke comparators compare aur compareTo ka lagatar use karte hain.", "Exact paise ke liye BigDecimal aur bahut bade whole numbers ke liye BigInteger use karo (dono java.math me hain)."]]},
+  {h: ["The Integer cache and the == trap", "Integer cache aur == ka trap"],
+   p: ["For small values, Integer.valueOf() (and so autoboxing) does not create a new object. It reuses a ready-made one from a cache that covers the values -128 to 127. So two boxed 127s are the SAME object, but two boxed 128s are TWO objects. On objects, == compares references, which makes the results look random. The fix is simple: compare wrapper objects with equals(), or unbox them first. This is a famous interview question.",
+       "Chhoti values ke liye Integer.valueOf() (aur isliye autoboxing) naya object nahi banata. Wo -128 se 127 tak ki values ki cache se pehle se bana object dobara use karta hai. Isliye do boxed 127 EK hi object hain, par do boxed 128 DO objects hain. Objects par == references compare karta hai, jisse results random lagte hain. Fix simple hai: wrapper objects ko equals() se compare karo, ya pehle unbox karo. Ye interview ka mashhoor sawal hai."],
+   code: `public class CacheTrap {
+    public static void main(String[] args) {
+        Integer a = 127, b = 127;
+        System.out.println(a == b);            // true   (both are the cached object)
+
+        Integer c = 128, d = 128;
+        System.out.println(c == d);            // false  (two different objects)
+        System.out.println(c.equals(d));       // true   (same value): the correct way
+
+        int e = 128;
+        System.out.println(c == e);            // true   (one side is a primitive, so c is unboxed)
+
+        Integer f = new Integer(5);            // deprecated: always a NEW object
+        Integer g = 5;
+        System.out.println(f == g);            // false
+        System.out.println(f.equals(g));       // true
+
+        // equals() also checks the TYPE
+        Integer i = 1;
+        Long l = 1L;
+        System.out.println(i.equals(l));       // false (Integer versus Long)
+        System.out.println(l.equals(1));       // false (the 1 is boxed to an Integer)
+        System.out.println(l.equals(1L));      // true
+        System.out.println(i.intValue() == l.longValue());   // true (compare as primitives)
+    }
+}`,
+   pts: [["Cache range (with default settings): Integer, Short, Byte and Long from -128 to 127, Character from 0 to 127, and Boolean true and false.", "Double and Float have NO cache, so two boxed 1.0 values are different objects.", "Rule: never use == to compare two wrapper objects. Use equals(), or compare primitives.", "== between a wrapper and a primitive is safe, because the wrapper is unboxed first.", "The compiler warning about 'new Integer' being deprecated is telling you to stop using it."],
+         ["Cache range (default settings me): Integer, Short, Byte aur Long -128 se 127 tak, Character 0 se 127 tak, aur Boolean true aur false.", "Double aur Float ki koi cache NAHI hoti, isliye do boxed 1.0 alag objects hain.", "Rule: do wrapper objects ko == se kabhi compare mat karo. equals() use karo, ya primitives compare karo.", "Wrapper aur primitive ke beech == safe hai, kyunki wrapper pehle unbox hota hai.", "'new Integer' deprecated hone ki compiler warning tumhe use band karne ko keh rahi hai."]]},
+  {h: ["null and the NullPointerException trap", "null aur NullPointerException ka trap"],
+   p: ["A wrapper variable can be null, and unboxing a null is a crash: the compiler quietly calls intValue() on null, and that throws NullPointerException. The source is usually hidden, such as a map lookup that finds nothing, or a field that was never set. Whenever a wrapper might be null, check before you use it in arithmetic or assign it to a primitive.",
+       "Wrapper variable null ho sakta hai, aur null ko unbox karna crash hai: compiler chupchap null par intValue() call karta hai, aur wo NullPointerException throw karta hai. Source aksar chhupa hota hai, jaise map lookup jisme kuch nahi mila, ya aisa field jo kabhi set nahi hua. Wrapper jab bhi null ho sakta ho, use arithmetic me use karne ya primitive me assign karne se pehle check karo."],
+   code: `import java.util.HashMap;
+import java.util.Map;
+
+public class NullTrap {
+    static Integer findScore(String name) {
+        Map<String, Integer> scores = new HashMap<>();
+        scores.put("Himakshi", 90);
+        return scores.get(name);                  // returns null when the key is missing
+    }
+
+    public static void main(String[] args) {
+        Integer s1 = findScore("Himakshi");
+        int ok = s1;                              // fine: 90
+        System.out.println(ok);
+
+        Integer s2 = findScore("Nobody");         // null
+        // int crash = s2;                        // NullPointerException (unboxing null)
+        // System.out.println(s2 + 1);            // NullPointerException
+
+        if (s2 != null) {
+            System.out.println(s2 + 1);
+        } else {
+            System.out.println("No score recorded");        // No score recorded
+        }
+
+        int safe = (s2 != null) ? s2 : 0;                    // a default value
+        System.out.println(safe);                            // 0
+
+        // Same idea with the Map helper
+        Map<String, Integer> m = new HashMap<>();
+        System.out.println(m.getOrDefault("Nobody", 0));     // 0
+    }
+}`,
+   tip: ["Use a wrapper only when you really need 'no value' (null) or a collection. In every other case use the primitive: it is faster and can never be null.", "Wrapper tabhi use karo jab sach me 'koi value nahi' (null) ya collection chahiye. Baaki har jagah primitive use karo: wo tez hai aur kabhi null nahi ho sakta."]},
+  {h: ["Wrappers in collections, and the remove() surprise", "Collections me wrappers aur remove() ka surprise"],
+   p: ["Collections hold objects, so every number you store is boxed. This is invisible most of the time, but it leads to one famous surprise. A List<Integer> has TWO remove methods: remove(int index), which removes by position, and remove(Object o), which removes by value. When you pass an int variable or a literal, Java picks remove(int index). To remove by value you must pass an Integer object.",
+       "Collections objects rakhte hain, isliye jo bhi number store karte ho wo box hota hai. Zyadatar waqt ye dikhta nahi, par ek mashhoor surprise hota hai. List<Integer> ke paas DO remove methods hain: remove(int index), jo position se hatata hai, aur remove(Object o), jo value se hatata hai. int variable ya literal doge to Java remove(int index) chunta hai. Value se hatane ke liye Integer object dena padta hai."],
+   code: `import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
+public class WrapperLists {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>(Arrays.asList(10, 20, 30));
+
+        list.remove(1);                          // remove(int index): removes the element AT index 1
+        System.out.println(list);                // [10, 30]
+
+        list.remove(Integer.valueOf(30));        // remove(Object): removes the VALUE 30
+        System.out.println(list);                // [10]
+
+        // A list of wrappers sorts and compares naturally
+        List<Integer> nums = new ArrayList<>(Arrays.asList(5, 2, 9, 1));
+        Collections.sort(nums);
+        System.out.println(nums);                // [1, 2, 5, 9]
+        System.out.println(Collections.max(nums));   // 9
+
+        // Summing: each element is unboxed
+        int total = 0;
+        for (int n : nums) total += n;
+        System.out.println(total);               // 17
+
+        // Primitive arrays are NOT lists. Wrapper arrays are objects
+        Integer[] boxed = {3, 1, 2};
+        Arrays.sort(boxed, Collections.reverseOrder());      // works only with wrapper arrays
+        System.out.println(Arrays.toString(boxed));          // [3, 2, 1]
+    }
+}`,
+   pts: [["remove(1) removes the element at index 1. remove(Integer.valueOf(1)) removes the value 1.", "contains(), indexOf() and equals use equals(), so they work correctly with values.", "Sorting a wrapper array in reverse needs Integer[], not int[], because Collections.reverseOrder() works on objects.", "You will study ArrayList, HashMap and sorting in detail in the next lessons."],
+         ["remove(1) index 1 ka element hatata hai. remove(Integer.valueOf(1)) value 1 hatata hai.", "contains(), indexOf() aur equals equals() use karte hain, isliye values ke saath sahi chalte hain.", "Wrapper array ko ulta sort karne ke liye Integer[] chahiye, int[] nahi, kyunki Collections.reverseOrder() objects par chalta hai.", "ArrayList, HashMap aur sorting ko agle lessons me detail me padhoge."]]},
+  {h: ["Performance, immutability and choosing the right type", "Performance, immutability aur sahi type chunna"],
+   p: ["Wrappers are objects, so they use more memory (an Integer takes about 16 bytes, an int takes 4) and boxing creates objects that the garbage collector must clean up. In a loop that runs millions of times, accidental boxing can make a program several times slower. Because wrappers are immutable, an 'update' such as count++ on an Integer variable actually creates a NEW Integer and points the variable to it.",
+       "Wrappers objects hain, isliye zyada memory lete hain (Integer lagbhag 16 bytes, int 4 bytes) aur boxing aise objects banati hai jinhe garbage collector ko saaf karna padta hai. Karodon baar chalne wale loop me anjaane me hui boxing program ko kai guna dheema bana sakti hai. Wrappers immutable hain, isliye Integer variable par count++ jaisa 'update' asal me NAYA Integer banata hai aur variable ko usi par point karata hai."],
+   code: `public class BoxingCost {
+    public static void main(String[] args) {
+        int n = 5_000_000;
+
+        long t1 = System.nanoTime();
+        long primitiveSum = 0;
+        for (int i = 0; i < n; i++) primitiveSum += i;           // no objects at all
+        long t2 = System.nanoTime();
+
+        Long boxedSum = 0L;
+        for (int i = 0; i < n; i++) boxedSum += i;               // a new Long object on EVERY step
+        long t3 = System.nanoTime();
+
+        System.out.println(primitiveSum == boxedSum);            // true: same answer
+        System.out.println("primitive: " + (t2 - t1) / 1_000_000 + " ms");
+        System.out.println("boxed    : " + (t3 - t2) / 1_000_000 + " ms");
+        // The exact times depend on your computer, but the boxed loop is clearly slower.
+
+        // Immutability: the "change" makes a new object
+        Integer count = 1000;
+        Integer same = count;
+        count++;                                                 // count now points to a NEW Integer
+        System.out.println(count + " " + same);                  // 1001 1000
+    }
+}`,
+   pts: [["Use primitives for local variables, counters, loop variables and arithmetic.", "Use wrappers for collections, generics, optional values that may be null, and APIs that demand objects.", "Watch for accidental boxing: a Long total in a loop, or mixing Integer and int in hot code.", "The wrapper classes are final and immutable, so they are safe to share and to use as keys in a HashMap.", "Wrapper versus primitive in overloaded methods: print(int) is chosen for an int, and print(Object) for an Integer, so the declared type decides."],
+         ["Local variables, counters, loop variables aur arithmetic ke liye primitives use karo.", "Collections, generics, null ho sakne wali optional values aur objects maangne wali APIs ke liye wrappers use karo.", "Anjaane me hui boxing par nazar rakho: loop me Long total, ya hot code me Integer aur int ka mel.", "Wrapper classes final aur immutable hain, isliye share karne aur HashMap me keys ki tarah use karne me safe hain.", "Overloaded methods me wrapper vs primitive: int ke liye print(int) chuna jata hai, aur Integer ke liye print(Object), yaani declared type tay karta hai."]]},
+  {h: ["Comparing wrappers and common mistakes", "Wrappers ki tulna aur common mistakes"],
+   pts: [["Compare wrapper values with equals() or compareTo(), never with ==.", "compareTo returns 0 when equal, a negative number when smaller and a positive number when bigger. Integer.compare(a, b) does the same for primitives.", "equals checks the type as well: new Long(1).equals(1) is false.", "Mistake: using Int, Float or Bool instead of Integer, Float and Boolean. The names are Integer, Character and Boolean.", "Mistake: writing Long big = 5; or Double d = 1;. Use 5L and 1.0, because boxing never changes the type.", "Mistake: unboxing null, which throws NullPointerException. Check for null, or use getOrDefault.", "Mistake: comparing Integer objects above 127 with ==.", "Mistake: calling list.remove(int) when you meant to remove a value.", "Mistake: forgetting trim() before parseInt, or not catching NumberFormatException for user text.", "Mistake: using a decimal ==. Use Double.compare or a tolerance.", "Good habit: use primitives by default, and wrappers only where an object or a null is truly needed."],
+         ["Wrapper values ko equals() ya compareTo() se compare karo, == se kabhi nahi.", "compareTo barabar ho to 0, chhota ho to negative aur bada ho to positive deta hai. Integer.compare(a, b) primitives ke liye wahi karta hai.", "equals type bhi check karta hai: new Long(1).equals(1) false hai.", "Galti: Integer, Float aur Boolean ki jagah Int, Float ya Bool likhna. Sahi naam Integer, Character aur Boolean hain.", "Galti: Long big = 5; ya Double d = 1; likhna. 5L aur 1.0 use karo, kyunki boxing type kabhi nahi badalti.", "Galti: null ko unbox karna, jisse NullPointerException aata hai. null check karo, ya getOrDefault use karo.", "Galti: 127 se bade Integer objects ko == se compare karna.", "Galti: jab value hatani ho tab list.remove(int) call karna.", "Galti: parseInt se pehle trim() bhul jana, ya user text ke liye NumberFormatException catch na karna.", "Galti: decimal ko == se compare karna. Double.compare ya tolerance use karo.", "Achhi aadat: default me primitives use karo, aur wrappers wahin jahan object ya null sach me chahiye."]],
+   code: `public class CompareWrappers {
+    public static void main(String[] args) {
+        Integer a = 500, b = 500;
+        System.out.println(a.equals(b));         // true
+        System.out.println(a.compareTo(b));      // 0
+        System.out.println(a.compareTo(900));    // -1  (smaller)
+        System.out.println(Integer.compare(900, 500));   // 1
+
+        // Sorting names and numbers uses compareTo behind the scenes
+        System.out.println("Gurleen".compareTo("Mohit") < 0);   // true: G comes before M
+
+        // The safe way to compare two possibly-null wrappers
+        Integer x = null, y = 5;
+        System.out.println(java.util.Objects.equals(x, y));     // false, no crash
+    }
+}`,
+   tip: ["Interview questions: (1) What is autoboxing? Automatic conversion of a primitive to its wrapper object. (2) Why is Integer a == 128 false but 127 true? The Integer cache covers -128 to 127. (3) Why do generics need wrappers? Type parameters must be objects, so ArrayList<int> is invalid and ArrayList<Integer> is valid.", "Interview questions: (1) Autoboxing kya hai? Primitive ka apne wrapper object me apne aap badalna. (2) Integer 128 par == false aur 127 par true kyun? Integer cache -128 se 127 ko cover karti hai. (3) Generics ko wrappers kyun chahiye? Type parameters objects hone chahiye, isliye ArrayList<int> galat aur ArrayList<Integer> sahi hai."]}
+ ]}
+});
+Object.assign(TOPICS, {
+43: {
+ def: ["Generics let you write classes, interfaces and methods that work with a TYPE PARAMETER, a placeholder such as T that is replaced by a real type when the code is used. List<String> means 'a list that holds only Strings'. Generics move type mistakes from run time (ClassCastException) to compile time, remove the need for casting, and let one piece of code work safely for many types.",
+       "Generics aise classes, interfaces aur methods likhne dete hain jo ek TYPE PARAMETER ke saath kaam karte hain, yaani T jaisa placeholder jo code use hote waqt asli type se badal jata hai. List<String> ka matlab hai 'aisi list jo sirf Strings rakhti hai'. Generics type ki galtiyon ko run time (ClassCastException) se compile time par le aate hain, casting ki zarurat hata dete hain, aur ek hi code ko kai types ke liye safely chalne dete hain."],
+ secs: [
+  {h: ["The problem generics solve", "Generics kaun si problem solve karte hain"],
+   p: ["Before Java 5, collections stored plain Object. You could put a String and an Integer into the same list, and when you took an item out you had to cast it yourself. If your guess was wrong, the program crashed with ClassCastException at run time, maybe after it was already in use. Generics tell the compiler which type a collection holds. The compiler then checks every add and every get, so a wrong type is a compile error on your screen and not a crash in front of the user.",
+       "Java 5 se pehle collections simple Object store karte the. Ek hi list me String aur Integer dono daal sakte the, aur item nikalte waqt cast khud lagana padta tha. Andaza galat ho to program run time par ClassCastException se crash ho jata tha, shayad tab jab wo use me aa chuka ho. Generics compiler ko batate hain ki collection kaun sa type rakhta hai. Compiler fir har add aur har get check karta hai, isliye galat type tumhari screen par compile error hota hai, user ke saamne crash nahi."],
+   code: `import java.util.ArrayList;
+import java.util.List;
+
+public class WhyGenerics {
+    public static void main(String[] args) {
+        // Old style: a raw list holds Objects (the compiler only warns)
+        List raw = new ArrayList();
+        raw.add("Java");
+        raw.add(42);                              // nothing stops this
+        String first = (String) raw.get(0);       // a cast is required
+        // String second = (String) raw.get(1);   // ClassCastException when the program runs
+
+        // Generic list: the compiler checks everything
+        List<String> names = new ArrayList<>();
+        names.add("Gurleen");
+        // names.add(42);                         // compile ERROR: int cannot be converted to String
+        String name = names.get(0);               // no cast needed
+        System.out.println(first + " " + name);   // Java Gurleen
+    }
+}`,
+   pts: [["Type safety: wrong types are caught by the compiler, before the program runs.", "No casting: list.get(0) already has the right type.", "Reusable code: one ArrayList class works for String, Integer, Student and every other type.", "Self-documenting: List<Student> tells the reader exactly what is inside.", "Raw types (a List with no <...>) still compile for old code, but you get a warning and lose all the safety. Avoid them."],
+         ["Type safety: galat types compiler pakad leta hai, program chalne se pehle.", "Casting nahi: list.get(0) ka type pehle se sahi hota hai.", "Reusable code: ek hi ArrayList class String, Integer, Student aur har type ke liye chalti hai.", "Self-documenting: List<Student> padhne wale ko saaf batata hai ki andar kya hai.", "Raw types (bina <...> wali List) purane code ke liye abhi bhi compile hote hain, par warning milti hai aur saari safety chali jati hai. Inse bacho."]]},
+  {h: ["Your first generic class: Box<T>", "Tumhari pehli generic class: Box<T>"],
+   p: ["Write the type parameter in angle brackets after the class name. Inside the class, T can be used like any type: for fields, parameters and return values. When someone creates a Box<String>, the compiler replaces T with String everywhere. The diamond operator <> on the right side lets the compiler work out the type from the left side, so you do not repeat it.",
+       "Type parameter ko class ke naam ke baad angle brackets me likho. Class ke andar T ko kisi bhi type ki tarah use kar sakte ho: fields, parameters aur return values ke liye. Koi Box<String> banata hai to compiler har jagah T ko String se badal deta hai. Right side ka diamond operator <> compiler ko left side se type nikalne deta hai, isliye use dohrana nahi padta."],
+   code: `class Box<T> {
+    private T value;
+
+    Box(T value) { this.value = value; }
+
+    T get()          { return value; }
+    void set(T value) { this.value = value; }
+    boolean isEmpty() { return value == null; }
+
+    @Override
+    public String toString() { return "Box[" + value + "]"; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Box<String> name = new Box<>("Himakshi");     // T is String
+        String s = name.get();                        // no cast
+        System.out.println(s.length());               // 8
+
+        Box<Integer> age = new Box<>(21);             // T is Integer
+        int next = age.get() + 1;                     // auto-unboxing
+        System.out.println(next);                     // 22
+
+        // name.set(5);                               // ERROR: int cannot be converted to String
+        // Box<int> bad = new Box<>(3);               // ERROR: type arguments must be objects
+
+        System.out.println(name + " " + age);         // Box[Himakshi] Box[21]
+    }
+}`,
+   pts: [["Naming convention: T = Type, E = Element (collections), K = Key, V = Value, N = Number, and S, U for a second or third type.", "The type argument must be a class or interface. Use the wrapper (Integer, Double) for primitives.", "Each use creates a different type: Box<String> and Box<Integer> are not interchangeable.", "A generic class can be created without the diamond: new Box<String>(\"x\"). The diamond is just shorter.", "A type parameter exists only at compile time. At run time the JVM sees plain Object (type erasure, explained later)."],
+         ["Naming convention: T = Type, E = Element (collections), K = Key, V = Value, N = Number, aur dusre ya teesre type ke liye S, U.", "Type argument class ya interface hona chahiye. Primitives ke liye wrapper (Integer, Double) use karo.", "Har use ek alag type banata hai: Box<String> aur Box<Integer> ek dusre ki jagah nahi le sakte.", "Generic class diamond ke bina bhi ban sakti hai: new Box<String>(\"x\"). Diamond bas chhota hai.", "Type parameter sirf compile time par hota hai. Run time par JVM ko simple Object dikhta hai (type erasure, aage samjhaya hai)."]]},
+  {h: ["Several type parameters: Pair<K, V>", "Kai type parameters: Pair<K, V>"],
+   p: ["A class can have more than one type parameter, separated by commas. A Pair holds two values that may be of different types, for example a name and an age. The type arguments can themselves be generic types, so you can nest them: a Pair whose value is a List<String>.",
+       "Ek class ke paas ek se zyada type parameters ho sakte hain, comma se alag. Pair do values rakhta hai jo alag types ki ho sakti hain, jaise naam aur age. Type arguments khud generic types bhi ho sakte hain, isliye unhe nest kar sakte ho: aisa Pair jiski value List<String> ho."],
+   code: `import java.util.List;
+
+class Pair<K, V> {
+    private final K key;
+    private final V value;
+
+    Pair(K key, V value) {
+        this.key = key;
+        this.value = value;
+    }
+
+    K getKey()   { return key; }
+    V getValue() { return value; }
+
+    Pair<V, K> swap() {                       // the types swap places too
+        return new Pair<>(value, key);
+    }
+
+    @Override
+    public String toString() { return "(" + key + ", " + value + ")"; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Pair<String, Integer> p = new Pair<>("Mohit", 21);
+        String who = p.getKey();
+        int age = p.getValue();                           // unboxed
+        System.out.println(p);                            // (Mohit, 21)
+        System.out.println(p.swap());                     // (21, Mohit)
+
+        Pair<Integer, List<String>> nested = new Pair<>(1, List.of("Java", "OOP"));
+        System.out.println(nested.getValue().get(1));     // OOP
+        System.out.println(nested);                       // (1, [Java, OOP])
+    }
+}`},
+  {h: ["Generic methods", "Generic methods"],
+   p: ["A method can have its own type parameter, even inside a normal class. Write it in angle brackets BEFORE the return type: static <T> void show(T x). The compiler works out T from the arguments you pass, so you almost never write it yourself at the call. Generic methods are perfect for utilities that must work for any type, such as printing an array, swapping two items or finding the first element.",
+       "Method ka apna type parameter ho sakta hai, normal class ke andar bhi. Use return type se PEHLE angle brackets me likho: static <T> void show(T x). Compiler T ko tumhare diye arguments se nikal leta hai, isliye call par use khud likhna lagbhag kabhi nahi padta. Generic methods un utilities ke liye perfect hain jo kisi bhi type par chalni chahiye, jaise array print karna, do items swap karna ya pehla element dhundhna."],
+   code: `import java.util.List;
+
+public class GenericMethods {
+    static <T> void printAll(T[] items) {
+        for (T item : items) System.out.print(item + " ");
+        System.out.println();
+    }
+
+    static <T> void swap(T[] arr, int i, int j) {
+        T temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    static <T> T firstOf(List<T> list) {
+        return list.isEmpty() ? null : list.get(0);
+    }
+
+    static <A, B> String describe(A a, B b) {              // two type parameters
+        return a + " & " + b;
+    }
+
+    public static void main(String[] args) {
+        Integer[] nums = {1, 2, 3};
+        String[] names = {"Rahul", "Shivam", "Gurleen"};
+
+        printAll(nums);                                     // 1 2 3        (T is Integer)
+        printAll(names);                                    // Rahul Shivam Gurleen   (T is String)
+
+        swap(names, 0, 2);
+        printAll(names);                                    // Gurleen Shivam Rahul
+
+        String f = firstOf(List.of("A", "B"));              // T inferred as String
+        System.out.println(f);                              // A
+        System.out.println(describe("age", 21));            // age & 21
+        System.out.println(GenericMethods.<Double>firstOf(List.of(2.5)));   // 2.5  (explicit type, rarely needed)
+    }
+}`,
+   pts: [["The <T> before the return type is what makes it a generic method. Without it, T would be an unknown name.", "A generic method works in a normal class, and a static generic method does not need an object.", "Arrays must be arrays of objects (Integer[], not int[]) to use T[].", "Type inference means you can almost always leave the type out at the call."],
+         ["Return type se pehle ka <T> hi ise generic method banata hai. Iske bina T ek anjaana naam hota.", "Generic method normal class me bhi chalta hai, aur static generic method ko object nahi chahiye.", "T[] use karne ke liye arrays objects ke hone chahiye (Integer[], int[] nahi).", "Type inference ka matlab call par type lagbhag hamesha chhod sakte ho."]]},
+  {h: ["Bounded type parameters: T extends ...", "Bounded type parameters: T extends ..."],
+   p: ["Sometimes T must be something more specific than 'any type'. A method that finds the biggest of two things needs to compare them, and a class that averages numbers needs numbers. Use extends to set an UPPER BOUND: T extends Number means T must be Number or one of its children. Inside the class, you may now use every method of the bound. You can require several bounds with &, such as T extends Number & Comparable<T> (the class first, then interfaces).",
+       "Kabhi-kabhi T ko 'koi bhi type' se zyada khaas hona padta hai. Do cheezon me se bada dhundhne wale method ko unhe compare karna aana chahiye, aur numbers ka average nikalne wali class ko numbers chahiye. UPPER BOUND lagane ke liye extends use karo: T extends Number ka matlab T Number ya uska child hona chahiye. Class ke andar ab bound ke saare methods use kar sakte ho. & se kai bounds maang sakte ho, jaise T extends Number & Comparable<T> (pehle class, fir interfaces)."],
+   code: `import java.util.List;
+
+class Stats<T extends Number> {                   // T must be a Number
+    private final List<T> nums;
+
+    Stats(List<T> nums) { this.nums = nums; }
+
+    double average() {
+        double sum = 0;
+        for (T n : nums) sum += n.doubleValue();  // a Number method: allowed because of the bound
+        return nums.isEmpty() ? 0 : sum / nums.size();
+    }
+}
+
+public class Bounds {
+    // T must be comparable to itself, so we may call compareTo
+    static <T extends Comparable<T>> T maxOf(T a, T b) {
+        return a.compareTo(b) >= 0 ? a : b;
+    }
+
+    static <T extends Comparable<T>> T largest(List<T> list) {
+        T best = list.get(0);
+        for (T x : list) if (x.compareTo(best) > 0) best = x;
+        return best;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(new Stats<>(List.of(1, 2, 3, 4)).average());    // 2.5
+        System.out.println(new Stats<>(List.of(1.5, 2.5)).average());      // 2.0
+        // new Stats<>(List.of("a", "b"));                                  // ERROR: String is not a Number
+
+        System.out.println(maxOf(3, 9));                  // 9
+        System.out.println(maxOf("apple", "banana"));     // banana
+        System.out.println(largest(List.of(4, 17, 9)));   // 17
+        // maxOf(new Object(), new Object());             // ERROR: Object is not Comparable
+    }
+}`,
+   tip: ["Without the bound, a.compareTo(b) would not compile, because T could be any type, and not every type has compareTo. The bound is a promise that gives you access to the methods.", "Bound ke bina a.compareTo(b) compile nahi hota, kyunki T koi bhi type ho sakta hai, aur har type ke paas compareTo nahi hota. Bound ek vaada hai jo tumhe methods tak pahunch deta hai."]},
+  {h: ["Wildcards: ?, ? extends and ? super", "Wildcards: ?, ? extends aur ? super"],
+   p: ["Here is a surprise: even though Integer is a Number, a List<Integer> is NOT a List<Number>. Generic types are invariant. If it were allowed, you could add a Double to a List<Integer> by looking at it as a List<Number>. A wildcard (the question mark) is the tool for 'some unknown type'. ? extends Number means 'a list of Number or any child'. You may READ from it (every item is at least a Number), but you may not add to it. ? super Integer means 'a list of Integer or any parent'. You may ADD Integers to it, but what you read back is only an Object. A bare ? means any type at all.",
+       "Ek surprise: Integer ek Number hai, phir bhi List<Integer>, List<Number> NAHI hai. Generic types invariant hote hain. Ye allowed hota to List<Number> ki tarah dekhkar List<Integer> me Double daal sakte the. Wildcard (question mark) 'koi anjaana type' ke liye tool hai. ? extends Number ka matlab 'Number ya uske kisi child ki list'. Isse tum PADH sakte ho (har item kam se kam Number hai), par usme jod nahi sakte. ? super Integer ka matlab 'Integer ya uske kisi parent ki list'. Usme Integers JOD sakte ho, par wapas padhne par sirf Object milta hai. Akela ? ka matlab koi bhi type."],
+   code: `import java.util.ArrayList;
+import java.util.List;
+
+public class Wildcards {
+    // reads numbers: List<Integer>, List<Double>, List<Long> all work
+    static double sum(List<? extends Number> list) {
+        double total = 0;
+        for (Number n : list) total += n.doubleValue();
+        return total;
+    }
+
+    // writes Integers: List<Integer>, List<Number>, List<Object> all work
+    static void fill(List<? super Integer> list) {
+        list.add(1);
+        list.add(2);
+        list.add(3);
+    }
+
+    // does not care about the type at all
+    static void show(List<?> list) {
+        for (Object o : list) System.out.print(o + " ");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(sum(List.of(1, 2, 3)));         // 6.0
+        System.out.println(sum(List.of(1.5, 2.5)));        // 4.0
+
+        List<Number> numbers = new ArrayList<>();
+        List<Object> objects = new ArrayList<>();
+        fill(numbers);
+        fill(objects);
+        show(numbers);                                     // 1 2 3
+        show(List.of("a", "b"));                           // a b
+
+        // List<Number> bad = new ArrayList<Integer>();    // ERROR: generics are invariant
+        // List<? extends Number> ro = new ArrayList<Integer>();
+        // ro.add(5);                                      // ERROR: you cannot add to a ? extends list
+    }
+}`,
+   pts: [["PECS rule: Producer Extends, Consumer Super. If the list PRODUCES items for you to read, use ? extends. If it CONSUMES items you put in, use ? super.", "Use ? extends T for parameters you only read from, ? super T for parameters you only write to, and plain T when you do both.", "A wildcard is for parameters. You cannot create new ArrayList<?>() as an object.", "The Java library uses wildcards everywhere. For example Collections.copy(List<? super T> dest, List<? extends T> src)."],
+         ["PECS rule: Producer Extends, Consumer Super. List tumhe items PADHNE ke liye de rahi hai to ? extends. List tumhare daale items LE rahi hai to ? super.", "Jis parameter se sirf padhte ho uske liye ? extends T, jis me sirf likhte ho uske liye ? super T, aur dono karte ho to simple T use karo.", "Wildcard parameters ke liye hai. new ArrayList<?>() ko object ki tarah nahi bana sakte.", "Java library me wildcards har jagah hain. Jaise Collections.copy(List<? super T> dest, List<? extends T> src)."]]},
+  {h: ["Generic interfaces and generic inheritance", "Generic interfaces aur generic inheritance"],
+   p: ["Interfaces can be generic too, and a class that implements one either picks the real type (class A implements Repository<Student>) or stays generic itself (class Store<T> implements Repository<T>). The same applies to inheritance. This is how the library defines Comparable<T>, List<E> and Map<K, V>, and it lets you write one contract that fits many kinds of data.",
+       "Interfaces bhi generic ho sakte hain, aur use implement karne wali class ya asli type chun leti hai (class A implements Repository<Student>) ya khud generic rehti hai (class Store<T> implements Repository<T>). Inheritance par bhi yahi lagu hota hai. Library Comparable<T>, List<E> aur Map<K, V> ko isi tarah define karti hai, aur isse tum ek contract likh sakte ho jo kai tarah ke data par fit ho."],
+   code: `import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+interface Repository<T, ID> {                       // a generic contract
+    void save(T item);
+    T findById(ID id);
+    List<T> findAll();
+}
+
+class Student {
+    final int id;
+    final String name;
+    Student(int id, String name) { this.id = id; this.name = name; }
+    @Override public String toString() { return id + ":" + name; }
+}
+
+// picks the real types
+class StudentRepo implements Repository<Student, Integer> {
+    private final Map<Integer, Student> data = new HashMap<>();
+
+    @Override public void save(Student s)       { data.put(s.id, s); }
+    @Override public Student findById(Integer id) { return data.get(id); }
+    @Override public List<Student> findAll()    { return new ArrayList<>(data.values()); }
+}
+
+// stays generic: works for any type that can name its own key
+class MemoryStore<T> {
+    private final List<T> items = new ArrayList<>();
+    void add(T item) { items.add(item); }
+    T get(int index) { return items.get(index); }
+    int size()       { return items.size(); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        StudentRepo repo = new StudentRepo();
+        repo.save(new Student(1, "Gurleen"));
+        repo.save(new Student(2, "Mohit"));
+        System.out.println(repo.findById(2));         // 2:Mohit
+        System.out.println(repo.findAll().size());    // 2
+
+        MemoryStore<String> words = new MemoryStore<>();
+        words.add("Java");
+        System.out.println(words.get(0) + " " + words.size());    // Java 1
+    }
+}`},
+  {h: ["Type erasure and restrictions", "Type erasure aur restrictions"],
+   p: ["Generics exist only for the compiler. After checking your code, the compiler ERASES the type parameters and inserts the casts itself. At run time, a List<String> and a List<Integer> are both just List. This was done so that new code still works with old libraries, and it explains a list of restrictions that surprise beginners. Most of them come down to one rule: you cannot use T in a way that needs to know the real type while the program runs.",
+       "Generics sirf compiler ke liye hote hain. Tumhara code check karne ke baad compiler type parameters ko ERASE kar deta hai aur casts khud laga deta hai. Run time par List<String> aur List<Integer> dono sirf List hain. Ye isliye kiya gaya taaki naya code purani libraries ke saath bhi chale, aur isi se wo restrictions samajh aate hain jo beginners ko chaukate hain. Zyadatar ek rule par aate hain: T ko aise use nahi kar sakte jisme program chalte waqt asli type jaanna pade."],
+   code: `import java.util.ArrayList;
+import java.util.List;
+
+class Demo<T> {
+    // T item = new T();                  // ERROR: the real type is erased, Java cannot construct it
+    // T[] arr = new T[10];               // ERROR: generic array creation
+    // static T shared;                   // ERROR: static members belong to the class, not to a type argument
+    // boolean b = item instanceof T;     // ERROR: cannot check against an erased type
+    T[] fromCaller;                       // OK: a field of array type is fine if the caller supplies the array
+    List<T> good = new ArrayList<>();     // OK: use a List<T> instead of T[]
+}
+
+public class Erasure {
+    public static void main(String[] args) {
+        List<String> a = new ArrayList<>();
+        List<Integer> b = new ArrayList<>();
+        System.out.println(a.getClass() == b.getClass());        // true: both are just ArrayList at run time
+
+        // List<int> c;                                          // ERROR: primitives are not allowed
+        // if (a instanceof List<String>) { }                    // ERROR: cannot check a parameterised type
+        if (a instanceof List<?>) {                              // OK: the wildcard form is allowed
+            System.out.println("a is a List");                   // a is a List
+        }
+        // try { } catch (MyException<String> e) { }             // ERROR: a generic class cannot extend Throwable
+    }
+}`,
+   pts: [["Cannot use primitives as type arguments. Use Integer, Double, Character and so on.", "Cannot create an instance of T (new T()) or an array of T (new T[10]). Pass a factory, a Class object or a List<T> instead.", "Cannot use instanceof or a cast with a specific parameterised type (List<String>).", "Cannot make a static field or a static method use the class's T. A static generic method can declare its own <T>.", "Cannot overload two methods that differ only by type argument: print(List<String>) and print(List<Integer>) clash after erasure.", "Because of erasure, mixing raw and generic types can still hide bugs until run time. This is called heap pollution, so avoid raw types and respect unchecked warnings."],
+         ["Primitives ko type argument nahi bana sakte. Integer, Double, Character waghera use karo.", "T ka instance (new T()) ya T ka array (new T[10]) nahi bana sakte. Uski jagah factory, Class object ya List<T> do.", "Kisi khaas parameterised type (List<String>) ke saath instanceof ya cast nahi kar sakte.", "Static field ya static method class ke T ko use nahi kar sakta. Static generic method apna <T> declare kar sakta hai.", "Sirf type argument se alag do methods overload nahi kar sakte: print(List<String>) aur print(List<Integer>) erasure ke baad takrate hain.", "Erasure ki wajah se raw aur generic types ka mel bugs ko run time tak chhupa sakta hai. Ise heap pollution kehte hain, isliye raw types se bacho aur unchecked warnings ko gambhirta se lo."]]},
+  {h: ["Practical example: a generic stack", "Practical example: generic stack"],
+   p: ["A stack is a last-in, first-out structure, like a pile of plates. Writing it with a type parameter means ONE class works for Strings, Integers, tasks and anything else. We keep the items in a List<T> (not a T[]), which avoids the generic array restriction. A custom exception (from the previous lessons) reports an empty-stack mistake.",
+       "Stack last-in, first-out structure hai, plates ke dher ki tarah. Ise type parameter ke saath likhne ka matlab ek hi class Strings, Integers, tasks aur kisi bhi cheez ke liye chalti hai. Items ko List<T> me rakhte hain (T[] me nahi), jisse generic array wali restriction se bach jate hain. Custom exception (pichle lessons se) empty-stack ki galti report karta hai."],
+   code: `import java.util.ArrayList;
+import java.util.List;
+
+class EmptyStackException extends RuntimeException {
+    EmptyStackException() { super("The stack is empty"); }
+}
+
+class MyStack<T> {
+    private final List<T> items = new ArrayList<>();
+
+    void push(T item) { items.add(item); }
+
+    T pop() {
+        if (items.isEmpty()) throw new EmptyStackException();
+        return items.remove(items.size() - 1);            // take from the top
+    }
+
+    T peek() {
+        if (items.isEmpty()) throw new EmptyStackException();
+        return items.get(items.size() - 1);
+    }
+
+    boolean isEmpty() { return items.isEmpty(); }
+    int size()        { return items.size(); }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        MyStack<String> history = new MyStack<>();
+        history.push("home");
+        history.push("search");
+        history.push("results");
+        System.out.println(history.pop());      // results
+        System.out.println(history.peek());     // search
+        System.out.println(history.size());     // 2
+
+        MyStack<Integer> numbers = new MyStack<>();
+        numbers.push(10);
+        numbers.push(20);
+        int top = numbers.pop();                // no cast, auto-unboxing
+        System.out.println(top);                // 20
+
+        // Reverse a word with a stack
+        MyStack<Character> letters = new MyStack<>();
+        for (char c : "Java".toCharArray()) letters.push(c);
+        StringBuilder sb = new StringBuilder();
+        while (!letters.isEmpty()) sb.append(letters.pop());
+        System.out.println(sb);                 // avaJ
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: using raw types (List, ArrayList) in new code. Always write the type: List<String>.", "Mistake: using a primitive as a type argument (List<int>). Use List<Integer>.", "Mistake: believing List<Object> can hold a List<String>. Generics are invariant, so use List<?> or List<? extends Object>.", "Mistake: forgetting the <T> before the return type in a generic method.", "Mistake: trying new T() or new T[n]. Use a List<T> or let the caller pass what you need.", "Mistake: comparing T items with > or <. Add the bound T extends Comparable<T> and call compareTo.", "Mistake: using ? super when you must read items, or ? extends when you must write. Remember PECS.", "Mistake: ignoring 'unchecked' compiler warnings. They point to places where type safety may break at run time.", "Good habit: program against the interface in the declaration: List<String> x = new ArrayList<>().", "Good habit: choose clear names for type parameters. One letter is fine for simple cases, and a longer name such as TKey is fine when it helps."],
+         ["Galti: naye code me raw types (List, ArrayList) use karna. Hamesha type likho: List<String>.", "Galti: primitive ko type argument banana (List<int>). List<Integer> use karo.", "Galti: ye maanna ki List<Object> me List<String> aa sakti hai. Generics invariant hain, isliye List<?> ya List<? extends Object> use karo.", "Galti: generic method me return type se pehle <T> bhul jana.", "Galti: new T() ya new T[n] likhne ki koshish. List<T> use karo ya caller se jo chahiye wo pass karwao.", "Galti: T items ko > ya < se compare karna. T extends Comparable<T> bound lagao aur compareTo call karo.", "Galti: items padhne ho to ? super, ya likhne ho to ? extends use karna. PECS yaad rakho.", "Galti: 'unchecked' compiler warnings ko ignore karna. Ye un jagahon ko dikhati hain jahan run time par type safety toot sakti hai.", "Achhi aadat: declaration me interface ke liye program karo: List<String> x = new ArrayList<>().", "Achhi aadat: type parameters ke saaf naam chuno. Simple cases me ek akshar theek hai, aur TKey jaisa lamba naam tab theek hai jab madad kare."]],
+   tip: ["Interview questions: (1) What is type erasure? The compiler removes generic type information after checking, so at run time List<String> is just List. (2) Why can't you create a generic array? Because of erasure, the JVM could not check the element type, so arrays and generics do not mix safely. (3) Difference between ? extends T and ? super T? The first is for reading (producer), the second for writing (consumer).", "Interview questions: (1) Type erasure kya hai? Compiler check ke baad generic type ki jaankari hata deta hai, isliye run time par List<String> sirf List hai. (2) Generic array kyun nahi bana sakte? Erasure ki wajah se JVM element type check nahi kar pata, isliye arrays aur generics safely nahi milte. (3) ? extends T aur ? super T me fark? Pehla padhne ke liye (producer), doosra likhne ke liye (consumer)."]}
+ ]},
+44: {
+ def: ["The Java Collections Framework is a set of ready-made interfaces and classes in java.util for storing and processing groups of objects. It gives you dynamic lists, sets without duplicates, queues, and key-value maps, all built on the same small family of interfaces, together with algorithms such as sorting and searching. It replaces hand-written arrays and linked structures with tested, fast and flexible tools.",
+       "Java Collections Framework java.util me objects ke groups ko store aur process karne ke ready-made interfaces aur classes ka set hai. Ye tumhe dynamic lists, duplicates ke bina sets, queues aur key-value maps deta hai, sab ek hi chhote interfaces ke family par bane hue, saath me sorting aur searching jaise algorithms. Ye hath se likhe arrays aur linked structures ki jagah test kiye hue, tez aur flexible tools deta hai."],
+ secs: [
+  {h: ["Why collections? The limits of arrays", "Collections kyun? Arrays ki seemayein"],
+   p: ["Arrays are fast but rigid. Their size is fixed when you create them, so adding the 11th item to a 10-slot array means writing the copy code yourself. You cannot insert in the middle without shifting items by hand, you cannot remove an item and close the gap, and there is no built-in way to check 'is this value already present?'. The Collections Framework solves each of these with ready methods, and the structure grows and shrinks on its own.",
+       "Arrays tez hain par sakht. Unka size banate waqt tay ho jata hai, isliye 10 slots ke array me 11vi item jodne ka matlab copy ka code khud likhna. Beech me insert karne ke liye items ko hath se khiskana padta hai, item hatakar jagah bhar nahi sakte, aur 'kya ye value pehle se hai?' check karne ka koi built-in tareeka nahi. Collections Framework inme se har ek ko ready methods se solve karta hai, aur structure apne aap badhta aur ghatta hai."],
+   pts: [["Dynamic size: add and remove items freely.", "Rich methods: add, remove, contains, indexOf, sort, size and many more.", "Choice of structures: lists (ordered, duplicates), sets (unique), queues (waiting line), maps (key to value). Each is tuned for a different job.", "Generic and type-safe: List<Student> holds only Students.", "One common vocabulary: add(), remove(), size(), iterator() work the same way on all of them, so what you learn once carries over."],
+         ["Dynamic size: items kholkar jodo aur hatao.", "Rich methods: add, remove, contains, indexOf, sort, size aur bahut kuch.", "Structures ka choice: lists (ordered, duplicates), sets (unique), queues (intezaar ki line), maps (key se value). Har ek alag kaam ke liye tuned hai.", "Generic aur type-safe: List<Student> sirf Students rakhti hai.", "Ek common vocabulary: add(), remove(), size(), iterator() sab par ek jaise chalte hain, isliye ek baar seekha sab jagah kaam aata hai."]]},
+  {h: ["The big picture: the interface hierarchy", "Bada picture: interface hierarchy"],
+   p: ["Everything starts from a small tree of interfaces. Iterable (can be used in a for-each loop) is the root. Collection extends it and describes any group of objects. Three interfaces extend Collection: List (ordered, duplicates allowed), Set (no duplicates) and Queue (items waiting for processing). Map is a separate tree, because it stores key-value PAIRS, not single items, so it does not extend Collection. Under each interface sit the concrete classes you actually create.",
+       "Sab kuch interfaces ke chhote tree se shuru hota hai. Iterable (for-each loop me use ho sakta hai) jad hai. Collection use extend karta hai aur kisi bhi objects ke group ko describe karta hai. Teen interfaces Collection ko extend karte hain: List (ordered, duplicates allowed), Set (duplicates nahi) aur Queue (processing ka intezaar karte items). Map alag tree hai, kyunki ye key-value JODIYAN store karta hai, akele items nahi, isliye ye Collection ko extend nahi karta. Har interface ke neeche wo concrete classes hain jo tum asal me banate ho."],
+   code: `// The Collections Framework (simplified)
+//
+// Iterable
+//  └── Collection
+//       ├── List     ordered, allows duplicates, access by index
+//       │     ├── ArrayList      resizable array: fast reads        (next lesson)
+//       │     ├── LinkedList     linked nodes: fast ends, also a Queue/Deque  (next lesson)
+//       │     └── Vector, Stack  old, synchronized; avoid in new code
+//       ├── Set      no duplicates
+//       │     ├── HashSet        fastest, no order                  (lesson 46)
+//       │     ├── LinkedHashSet  keeps insertion order              (lesson 46)
+//       │     └── TreeSet        always sorted                      (lesson 46)
+//       └── Queue    items waiting to be processed
+//             ├── PriorityQueue  smallest (or chosen) item first
+//             └── ArrayDeque     fast double-ended queue and stack
+//
+// Map  (a separate tree: key -> value pairs)
+//       ├── HashMap         fastest, no order                      (lesson 47)
+//       ├── LinkedHashMap   keeps insertion order                  (lesson 47)
+//       ├── TreeMap         keys always sorted                     (lesson 47)
+//       └── Hashtable       old, synchronized; avoid in new code
+//
+// Helper classes: Collections (algorithms for collections), Arrays (algorithms for arrays)`},
+  {h: ["A first tour with the four main kinds", "Chaar main kisamon ka pehla daura"],
+   p: ["Before the details, see the four main kinds working side by side. Notice that each one is declared with its interface type on the left and created with a concrete class on the right. This habit, programming to the interface, lets you swap the class later by changing a single word.",
+       "Details se pehle chaaron main kisame saath-saath kaam karte dekho. Dhyan do ki har ek left side par apne interface type se declare hota hai aur right side par concrete class se banta hai. Ye aadat, interface ke liye program likhna, tumhe baad me ek hi shabd badalkar class badalne deti hai."],
+   code: `import java.util.*;
+
+public class Tour {
+    public static void main(String[] args) {
+        // List: ordered, keeps duplicates
+        List<String> list = new ArrayList<>(List.of("Mohit", "Gurleen", "Mohit"));
+        System.out.println(list);                    // [Mohit, Gurleen, Mohit]
+        System.out.println(list.get(1));             // Gurleen  (access by position)
+
+        // Set: no duplicates
+        Set<String> set = new HashSet<>(list);
+        System.out.println(set.size());              // 2  (the second Mohit vanished)
+        System.out.println(set.contains("Gurleen")); // true
+
+        // Queue: first in, first out
+        Queue<String> line = new ArrayDeque<>();
+        line.offer("Himakshi");
+        line.offer("Shivam");
+        System.out.println(line.poll());             // Himakshi  (served first)
+        System.out.println(line.peek());             // Shivam    (next in line, not removed)
+
+        // Map: key -> value
+        Map<String, Integer> marks = new HashMap<>();
+        marks.put("Shivam", 88);
+        marks.put("Rahul", 72);
+        System.out.println(marks.get("Shivam"));     // 88
+        System.out.println(marks.containsKey("Mohit"));   // false
+    }
+}`},
+  {h: ["The Collection interface: methods every collection has", "Collection interface: wo methods jo har collection me hote hain"],
+   p: ["Because List, Set and Queue all extend Collection, they share one set of methods. Learn them once and they work everywhere. One detail deserves attention: on a Collection reference there is only remove(Object), which removes by VALUE. The extra remove(int index) exists only on a List.",
+       "Kyunki List, Set aur Queue teeno Collection ko extend karte hain, unke paas methods ka ek hi set hota hai. Ek baar seekho aur sab jagah chalega. Ek baat par dhyan do: Collection reference par sirf remove(Object) hota hai, jo VALUE se hatata hai. Extra remove(int index) sirf List par hota hai."],
+   code: `import java.util.*;
+
+public class CollectionMethods {
+    public static void main(String[] args) {
+        Collection<Integer> c = new ArrayList<>();
+        c.add(10);
+        c.add(20);
+        c.add(30);
+        c.addAll(List.of(40, 50));
+        System.out.println(c);                         // [10, 20, 30, 40, 50]
+        System.out.println(c.size());                  // 5
+        System.out.println(c.contains(20));            // true
+        System.out.println(c.isEmpty());               // false
+
+        c.remove(30);                                  // by VALUE here (no index version on Collection)
+        System.out.println(c);                         // [10, 20, 40, 50]
+
+        c.removeAll(List.of(10, 20));                  // remove every value found in the other collection
+        System.out.println(c);                         // [40, 50]
+
+        c.retainAll(List.of(40, 99));                  // keep only values that are also in the other
+        System.out.println(c);                         // [40]
+
+        System.out.println(c.containsAll(List.of(40))); // true
+
+        Object[] array = c.toArray();                  // to a plain array
+        Integer[] typed = c.toArray(new Integer[0]);   // to a typed array
+        System.out.println(array.length + " " + typed[0]);   // 1 40
+
+        c.clear();
+        System.out.println(c.isEmpty());               // true
+    }
+}`,
+   pts: [["add(x), addAll(other): put items in. Both return true if the collection changed.", "remove(x), removeAll(other), retainAll(other), removeIf(condition), clear(): take items out.", "contains(x), containsAll(other), isEmpty(), size(): ask questions.", "iterator(), forEach(...), stream(): go through the items. toArray(): copy to an array.", "A Set's add() returns false when the item was already there, which is a handy duplicate check.", "equals() is used to decide whether two items are 'the same', so your own classes need a correct equals() (and hashCode()) to work well in collections."],
+         ["add(x), addAll(other): items andar daalte hain. Dono true return karte hain agar collection badla.", "remove(x), removeAll(other), retainAll(other), removeIf(condition), clear(): items bahar nikalte hain.", "contains(x), containsAll(other), isEmpty(), size(): sawal poochte hain.", "iterator(), forEach(...), stream(): items par chalte hain. toArray(): array me copy karta hai.", "Set ka add() false deta hai jab item pehle se ho, jo duplicate check ka kaam ka tareeka hai.", "Do items 'same' hain ya nahi ye equals() tay karta hai, isliye tumhari apni classes ko collections me achhe se chalne ke liye sahi equals() (aur hashCode()) chahiye."]]},
+  {h: ["Choosing the right collection", "Sahi collection chunna"],
+   p: ["Ask three questions. Do I need duplicates? Does order matter, and which order? How will I look things up: by position, by value, or by a key? The answers point straight to one interface, and then you pick the implementation by the speed you need. When in doubt, start with ArrayList, HashSet and HashMap. They are the right default in most programs.",
+       "Teen sawal poochho. Kya mujhe duplicates chahiye? Kya order matter karta hai, aur kaun sa order? Cheezein kaise dhundhni hain: position se, value se, ya key se? Jawab seedha ek interface ki taraf le jate hain, fir implementation ko speed ke hisaab se chunte ho. Shak ho to ArrayList, HashSet aur HashMap se shuru karo. Zyadatar programs me wahi sahi default hain."],
+   pts: [["Ordered list with duplicates and access by index: List, usually ArrayList.", "Frequent insert or remove at the front or back, or queue and stack behaviour: ArrayDeque (or LinkedList).", "Unique items, fastest lookup, order not needed: HashSet.", "Unique items in the order you added them: LinkedHashSet.", "Unique items always sorted, or 'nearest higher or lower' searches: TreeSet.", "Look up a value by a key (name to marks, id to student): HashMap.", "A map that is also sorted by key: TreeMap. A map that remembers insertion order: LinkedHashMap.", "Always pick the weakest interface that does the job: if you only loop over the items, accept Collection or Iterable instead of ArrayList."],
+         ["Duplicates ke saath ordered list aur index se access: List, aam taur par ArrayList.", "Aage ya peeche baar-baar insert ya remove, ya queue aur stack behaviour: ArrayDeque (ya LinkedList).", "Unique items, sabse tez lookup, order ki zarurat nahi: HashSet.", "Unique items us order me jis me jode the: LinkedHashSet.", "Unique items hamesha sorted, ya 'sabse paas ka bada ya chhota' searches: TreeSet.", "Key se value dhundhna (naam se marks, id se student): HashMap.", "Wo map jo key se sorted bhi ho: TreeMap. Wo map jo insertion order yaad rakhe: LinkedHashMap.", "Hamesha sabse kamzor interface chuno jo kaam kar de: sirf items par loop chalana ho to ArrayList ki jagah Collection ya Iterable lo."]],
+   code: `// A quick decision table (typical speeds, n = number of items)
+//
+// need                        class           add         contains     get by index
+// -------------------------   -------------   ---------   ----------   ------------
+// list, fast reads            ArrayList       O(1) end    O(n)         O(1)
+// list, fast ends             LinkedList      O(1) ends   O(n)         O(n)
+// queue / stack               ArrayDeque      O(1) ends   O(n)         -
+// unique, no order            HashSet         O(1)        O(1)         -
+// unique, insertion order     LinkedHashSet   O(1)        O(1)         -
+// unique, sorted              TreeSet         O(log n)    O(log n)     -
+// key -> value, no order      HashMap         O(1)        O(1) by key  -
+// key -> value, sorted keys   TreeMap         O(log n)    O(log n)     -`},
+  {h: ["The Collections utility class", "Collections utility class"],
+   p: ["Do not mix up Collection (the interface) and Collections (a class with static helper methods, just like Arrays and Math). Collections has ready-made algorithms: sort, reverse, shuffle, swap, find the biggest or smallest, count how often an item appears, search a sorted list, and wrap a collection so it cannot be changed. Most of them work on a List.",
+       "Collection (interface) aur Collections (static helper methods wali class, Arrays aur Math ki tarah) ko mix mat karo. Collections me ready-made algorithms hain: sort, reverse, shuffle, swap, sabse bada ya chhota dhundhna, item kitni baar aaya ginna, sorted list me search karna, aur collection ko aise lapetna ki wo badal na sake. Zyadatar List par chalte hain."],
+   code: `import java.util.*;
+
+public class CollectionsUtil {
+    public static void main(String[] args) {
+        List<Integer> nums = new ArrayList<>(List.of(5, 3, 9, 1, 7));
+
+        Collections.sort(nums);
+        System.out.println(nums);                          // [1, 3, 5, 7, 9]
+        Collections.reverse(nums);
+        System.out.println(nums);                          // [9, 7, 5, 3, 1]
+        Collections.swap(nums, 0, 4);
+        System.out.println(nums);                          // [1, 7, 5, 3, 9]
+
+        System.out.println(Collections.max(nums));         // 9
+        System.out.println(Collections.min(nums));         // 1
+        System.out.println(Collections.frequency(nums, 5)); // 1
+
+        Collections.shuffle(nums, new Random(1));          // random order (a seed makes it repeatable)
+        Collections.sort(nums);
+        System.out.println(Collections.binarySearch(nums, 7));   // 3  (only on a SORTED list)
+
+        List<Integer> readOnly = Collections.unmodifiableList(nums);
+        // readOnly.add(1);                                // UnsupportedOperationException
+        System.out.println(readOnly.size());               // 5
+
+        System.out.println(Collections.nCopies(3, "ab"));  // [ab, ab, ab]
+        System.out.println(Collections.emptyList());       // []
+
+        List<String> names = new ArrayList<>(List.of("Shivam", "Gurleen", "Himakshi"));
+        Collections.sort(names);                            // alphabetical order
+        System.out.println(names);                         // [Gurleen, Himakshi, Shivam]
+        Collections.sort(names, Collections.reverseOrder());
+        System.out.println(names);                         // [Shivam, Himakshi, Gurleen]
+    }
+}`,
+   pts: [["sort works on a List whose items are Comparable (numbers and Strings already are). For your own classes you need Comparable or a Comparator (lesson 49).", "binarySearch needs a list sorted in the same order. On unsorted data the answer is meaningless.", "unmodifiableList returns a read-only VIEW. The original list can still change, and the view shows the change.", "synchronizedList and similar wrappers make a collection safer for threads (Phase 4, Multithreading)."],
+         ["sort aisi List par chalta hai jiske items Comparable hon (numbers aur Strings pehle se hain). Apni classes ke liye Comparable ya Comparator chahiye (lesson 49).", "binarySearch ko usi order me sorted list chahiye. Unsorted data par answer matlab-heen hota hai.", "unmodifiableList read-only VIEW deta hai. Original list phir bhi badal sakti hai, aur view badlav dikhata hai.", "synchronizedList jaise wrappers collection ko threads ke liye safer banate hain (Phase 4, Multithreading)."]]},
+  {h: ["Immutable collections: List.of, Set.of, Map.of", "Immutable collections: List.of, Set.of, Map.of"],
+   p: ["Since Java 9 you can create small fixed collections in one line with List.of, Set.of and Map.of. They cannot be changed afterwards (add, remove and set throw UnsupportedOperationException), they reject null, and Set.of rejects duplicates. They are perfect for constants and test data. Arrays.asList is different: it gives a fixed-SIZE list that is backed by the array, so you may change items with set but you cannot add or remove.",
+       "Java 9 se List.of, Set.of aur Map.of se ek line me chhote fixed collections bana sakte ho. Baad me inhe badal nahi sakte (add, remove aur set UnsupportedOperationException dete hain), null reject karte hain, aur Set.of duplicates reject karta hai. Constants aur test data ke liye perfect hain. Arrays.asList alag hai: ye array se jud hui fixed-SIZE list deta hai, isliye set se items badal sakte ho par add ya remove nahi kar sakte."],
+   code: `import java.util.*;
+
+public class Immutables {
+    public static void main(String[] args) {
+        List<String> days = List.of("Mon", "Tue", "Wed");
+        Set<Integer> primes = Set.of(2, 3, 5, 7);
+        Map<String, Integer> limits = Map.of("small", 10, "large", 100);
+
+        System.out.println(days.get(1));            // Tue
+        System.out.println(limits.get("large"));    // 100
+        // days.add("Thu");                          // UnsupportedOperationException
+        // List.of("a", null);                       // NullPointerException
+        // Set.of(1, 1);                             // IllegalArgumentException: duplicate element
+
+        // Need a changeable copy? Wrap it
+        List<String> mine = new ArrayList<>(days);
+        mine.add("Thu");
+        System.out.println(mine);                    // [Mon, Tue, Wed, Thu]
+
+        // Arrays.asList: fixed size, backed by the array
+        String[] arr = {"x", "y", "z"};
+        List<String> view = Arrays.asList(arr);
+        view.set(0, "CHANGED");                      // allowed
+        System.out.println(arr[0]);                  // CHANGED  (the array changed too!)
+        // view.add("w");                            // UnsupportedOperationException
+
+        List<String> copy = List.copyOf(mine);       // an immutable copy (Java 10+)
+        System.out.println(copy.size());             // 4
+    }
+}`,
+   tip: ["Interview trap: a list made with Arrays.asList or List.of looks like a normal list, but add() throws UnsupportedOperationException. Wrap it in new ArrayList<>(...) when you need a changeable one.", "Interview trap: Arrays.asList ya List.of se bani list normal list jaisi dikhti hai, par add() UnsupportedOperationException deta hai. Badalne wali chahiye to new ArrayList<>(...) me lapeto."]},
+  {h: ["Iterating: for-each, iterator and forEach", "Iterate karna: for-each, iterator aur forEach"],
+   p: ["Every Collection can be looped over. The for-each loop is the simplest. An Iterator gives you control: it is the only SAFE way to remove an item while looping, through its own remove(). Changing a collection directly (add or remove) while a for-each loop is running makes the loop fail with ConcurrentModificationException at the next step. The modern fix for removing by a condition is removeIf. The forEach method takes a short function (a lambda, which you will study in lesson 54).",
+       "Har Collection par loop chala sakte ho. for-each loop sabse simple hai. Iterator control deta hai: loop chalte waqt item hatane ka ye akela SAFE tareeka hai, apne remove() se. for-each chal raha ho aur collection ko seedha badlo (add ya remove) to agle step par loop ConcurrentModificationException se fail ho jata hai. Condition se hatane ka modern fix removeIf hai. forEach method ek chhota function (lambda, jise lesson 54 me padhoge) leta hai."],
+   code: `import java.util.*;
+
+public class Iterating {
+    public static void main(String[] args) {
+        List<String> names = new ArrayList<>(List.of("a", "b", "c", "d"));
+
+        for (String s : names) System.out.print(s + " ");     // a b c d
+        System.out.println();
+
+        names.forEach(s -> System.out.print(s.toUpperCase() + " "));   // A B C D
+        System.out.println();
+
+        // WRONG: removing while a for-each loop runs
+        // for (String s : names) {
+        //     if (s.equals("b")) names.remove(s);            // ConcurrentModificationException
+        // }
+
+        // RIGHT 1: the iterator removes safely
+        Iterator<String> it = names.iterator();
+        while (it.hasNext()) {
+            if (it.next().equals("b")) it.remove();
+        }
+        System.out.println(names);                            // [a, c, d]
+
+        // RIGHT 2: removeIf (read it as: remove every s that is "c")
+        names.removeIf(s -> s.equals("c"));
+        System.out.println(names);                            // [a, d]
+
+        // RIGHT 3: loop over a copy while changing the original
+        for (String s : new ArrayList<>(names)) {
+            if (s.equals("a")) names.remove(s);
+        }
+        System.out.println(names);                            // [d]
+    }
+}`,
+   pts: [["ConcurrentModificationException is thrown when a collection is changed behind a running iterator's back. Use iterator.remove(), removeIf, or loop over a copy.", "A plain for loop with an index also works on a List, but be careful: removing shifts later items, so loop backwards or adjust i.", "A Set and a Queue have no index, so for-each or an iterator is the only way to visit all their items.", "The loop variable in for-each is a reference. Reassigning it does not change the collection."],
+         ["ConcurrentModificationException tab aata hai jab chalte iterator ke peeche collection badal diya jaye. iterator.remove(), removeIf use karo, ya copy par loop chalao.", "Index wala simple for loop List par bhi chalta hai, par dhyan rakho: hatane se baad ke items khiskte hain, isliye ulta chalo ya i adjust karo.", "Set aur Queue me index nahi hota, isliye unke saare items dekhne ka for-each ya iterator hi tareeka hai.", "for-each me loop variable ek reference hota hai. Use dobara assign karne se collection nahi badalta."]]},
+  {h: ["Null, ordering and thread-safety: a quick comparison", "Null, ordering aur thread-safety: ek chhoti tulna"],
+   p: ["Different classes make different promises, and mixing them up causes surprises. None of the common ones is thread-safe by default, so sharing one between threads needs care (Phase 4). The facts below are worth memorising, and they are very popular interview questions.",
+       "Alag classes alag vaade karti hain, aur unhe mix karne se surprises hote hain. Common wali koi bhi default me thread-safe nahi hai, isliye threads ke beech ek share karne me dhyan rakhna padta hai (Phase 4). Neeche ke facts yaad rakhne layak hain, aur ye interview ke bahut popular sawal hain."],
+   pts: [["ArrayList and LinkedList allow null and duplicates, and keep insertion order.", "HashSet allows ONE null, no duplicates, no guaranteed order. LinkedHashSet allows one null and keeps insertion order.", "TreeSet does NOT allow null (it must compare), no duplicates, and keeps items sorted.", "HashMap allows one null key and many null values. TreeMap does not allow a null key. Hashtable allows neither.", "ArrayDeque does not allow null. PriorityQueue does not allow null.", "List.of, Set.of and Map.of allow no nulls at all.", "Vector, Stack and Hashtable are old synchronized classes. Prefer ArrayList, ArrayDeque and HashMap, plus the java.util.concurrent classes when threads are involved.", "Fail-fast: the iterators of ArrayList, HashSet and HashMap throw ConcurrentModificationException when they detect a change during the loop."],
+         ["ArrayList aur LinkedList null aur duplicates allow karte hain, aur insertion order rakhte hain.", "HashSet EK null allow karta hai, duplicates nahi, order ki guarantee nahi. LinkedHashSet ek null allow karta hai aur insertion order rakhta hai.", "TreeSet null allow NAHI karta (compare karna padta hai), duplicates nahi, aur items sorted rakhta hai.", "HashMap ek null key aur kai null values allow karta hai. TreeMap null key allow nahi karta. Hashtable dono nahi.", "ArrayDeque null allow nahi karta. PriorityQueue null allow nahi karta.", "List.of, Set.of aur Map.of koi null allow nahi karte.", "Vector, Stack aur Hashtable purani synchronized classes hain. ArrayList, ArrayDeque aur HashMap prefer karo, aur threads ho to java.util.concurrent classes.", "Fail-fast: ArrayList, HashSet aur HashMap ke iterators loop ke dauran badlav pakadne par ConcurrentModificationException dete hain."]]},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: using an array when the size is not known in advance. Use a List.", "Mistake: confusing Collection with Collections, and Arrays with ArrayList.", "Mistake: declaring ArrayList<String> x everywhere. Declare List<String> x so the class can change later.", "Mistake: changing a collection during a for-each loop (ConcurrentModificationException).", "Mistake: expecting HashSet or HashMap to keep insertion order. Use the Linked versions for that.", "Mistake: a null in a TreeSet, or a custom class in a TreeSet without Comparable (ClassCastException).", "Mistake: forgetting equals() and hashCode() on your own class, so contains() and HashSet do not find equal objects.", "Mistake: calling sort on List.of(...) or Arrays.asList(...) results that are fixed or immutable.", "Mistake: using list.remove(int) when you meant to remove a value from a List<Integer>.", "Good habit: choose the collection by the question 'how will I look things up?'.", "Good habit: when you return a collection from a method, return an unmodifiable copy so the callers cannot break your data."],
+         ["Galti: size pehle se pata na ho tab array use karna. List use karo.", "Galti: Collection aur Collections, aur Arrays aur ArrayList ko confuse karna.", "Galti: har jagah ArrayList<String> x declare karna. List<String> x declare karo taaki class baad me badal sake.", "Galti: for-each loop ke dauran collection badalna (ConcurrentModificationException).", "Galti: HashSet ya HashMap se insertion order ki ummeed. Uske liye Linked versions use karo.", "Galti: TreeSet me null, ya Comparable ke bina apni class TreeSet me (ClassCastException).", "Galti: apni class par equals() aur hashCode() bhul jana, jisse contains() aur HashSet barabar objects nahi dhundh paate.", "Galti: List.of(...) ya Arrays.asList(...) ke result par sort call karna jo fixed ya immutable hain.", "Galti: List<Integer> me value hatani ho tab list.remove(int) use karna.", "Achhi aadat: collection ko is sawal se chuno: 'cheezein kaise dhundhni hain?'.", "Achhi aadat: method se collection return karo to unmodifiable copy return karo taaki callers tumhara data na tod sakein."]],
+   tip: ["Interview questions: (1) Difference between Collection and Collections? Collection is the root interface, Collections is a utility class with static helpers. (2) Why is Map not part of Collection? It stores key-value pairs, not single elements. (3) Which collection would you use for unique, sorted items? TreeSet.", "Interview questions: (1) Collection aur Collections me fark? Collection root interface hai, Collections static helpers wali utility class hai. (2) Map Collection ka hissa kyun nahi hai? Ye key-value pairs store karta hai, akele elements nahi. (3) Unique aur sorted items ke liye kaun si collection use karoge? TreeSet."]}
+ ]},
+45: {
+ def: ["ArrayList and LinkedList are the two main implementations of the List interface: an ordered collection that allows duplicates and lets you reach items by position. ArrayList stores its items in a resizable array and is very fast for reading by index. LinkedList stores its items in a chain of linked nodes and is fast for adding or removing at the two ends. Both are used through the same List methods.",
+       "ArrayList aur LinkedList List interface ke do main implementations hain: ordered collection jo duplicates allow karti hai aur position se items tak pahunchne deti hai. ArrayList items ko resize hone wale array me rakhti hai aur index se padhne me bahut tez hai. LinkedList items ko linked nodes ki chain me rakhti hai aur dono ends par jodne ya hatane me tez hai. Dono ko same List methods se use karte hain."],
+ secs: [
+  {h: ["The List interface: what both share", "List interface: dono me kya common hai"],
+   p: ["A List keeps items in the order you add them, allows duplicates, allows null, and numbers every item with an index that starts at 0. Because ArrayList and LinkedList both implement List, the same code works on both. This is why you should declare the variable as List and only name the class when you create it.",
+       "List items ko usi order me rakhti hai jisme tum jodte ho, duplicates allow karti hai, null allow karti hai, aur har item ko 0 se shuru hone wale index se number deti hai. ArrayList aur LinkedList dono List ko implement karti hain, isliye wahi code dono par chalta hai. Isiliye variable ko List declare karna chahiye aur class ka naam sirf banate waqt likhna chahiye."],
+   code: `import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+
+public class SameInterface {
+    static void report(List<String> list) {            // works for ANY List
+        System.out.println(list.size() + " items, first = " + list.get(0));
+    }
+
+    public static void main(String[] args) {
+        List<String> a = new ArrayList<>(List.of("Rahul", "Gurleen"));
+        List<String> b = new LinkedList<>(List.of("Himakshi", "Mohit", "Shivam"));
+        report(a);                   // 2 items, first = Rahul
+        report(b);                   // 3 items, first = Himakshi
+
+        // Swapping the implementation later means changing ONE word:
+        List<String> tasks = new ArrayList<>();          // or new LinkedList<>()
+        tasks.add("write code");
+        tasks.add("test code");
+        tasks.add("write code");                          // duplicates are fine
+        System.out.println(tasks);                        // [write code, test code, write code]
+    }
+}`,
+   pts: [["Ordered: items stay in insertion order. (Ordered does not mean sorted.)", "Indexed: get(i), set(i, x), add(i, x), remove(i), indexOf(x).", "Duplicates and null are allowed.", "Both implement List, Collection, Iterable (and LinkedList also implements Deque, so it is a queue too).", "The generic type decides the item type: List<String>, List<Integer>, List<Student>."],
+         ["Ordered: items insertion order me rehte hain. (Ordered ka matlab sorted nahi hai.)", "Indexed: get(i), set(i, x), add(i, x), remove(i), indexOf(x).", "Duplicates aur null allowed hain.", "Dono List, Collection, Iterable implement karti hain (aur LinkedList Deque bhi implement karti hai, isliye wo queue bhi hai).", "Generic type item ka type tay karta hai: List<String>, List<Integer>, List<Student>."]]},
+  {h: ["ArrayList: how it works", "ArrayList: kaise kaam karti hai"],
+   p: ["An ArrayList hides an ordinary array. You create it empty, and on the first add it prepares room for 10 items. When the array is full, ArrayList makes a new array about 1.5 times bigger, copies every item across, and carries on, all without you seeing it. Because the items sit side by side in memory, get(i) jumps straight to the right slot, which is why reading by index is so fast. The price is paid in the middle: inserting or removing in the middle shifts every later item.",
+       "ArrayList ke andar ek aam array chhupa hota hai. Ise khali banate ho, aur pehle add par wo 10 items ki jagah taiyar karti hai. Array bhar jaye to ArrayList lagbhag 1.5 guna bada naya array banati hai, saare items copy karti hai aur aage badhti hai, ye sab tumhe dikhe bina. Items memory me paas-paas hote hain, isliye get(i) seedha sahi slot par kood jata hai, isi wajah se index se padhna itna tez hai. Keemat beech me chukani padti hai: beech me insert ya remove karne se baad ke saare items khiskte hain."],
+   code: `import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListInside {
+    public static void main(String[] args) {
+        // Three constructors
+        List<Integer> empty = new ArrayList<>();                 // starts empty
+        List<Integer> sized = new ArrayList<>(1000);             // reserves room for 1000 (a hint, still size 0)
+        List<Integer> copy  = new ArrayList<>(List.of(4, 5, 6)); // copies another collection
+
+        System.out.println(empty.size() + " " + sized.size() + " " + copy.size());   // 0 0 3
+
+        // If you know roughly how many items are coming, say so: it avoids repeated growing
+        List<Integer> big = new ArrayList<>(100_000);
+        for (int i = 0; i < 100_000; i++) big.add(i);
+        System.out.println(big.size());                          // 100000
+
+        // Only ArrayList itself has these two capacity helpers
+        ArrayList<Integer> tuned = new ArrayList<>();
+        tuned.ensureCapacity(500);
+        tuned.add(1);
+        tuned.trimToSize();                                       // give back unused room
+        System.out.println(tuned);                                // [1]
+    }
+}`,
+   pts: [["Default: an empty ArrayList reserves room for 10 items on the first add. Growth is about 50 percent each time.", "size() is how many items you stored. The capacity is the hidden array length. They are different.", "add at the end is O(1) on average. get(i) and set(i, x) are O(1). add(i, x) and remove(i) in the middle are O(n) because items shift.", "contains(x) and indexOf(x) are O(n): they check items one by one using equals().", "ArrayList is NOT thread-safe."],
+         ["Default: khali ArrayList pehle add par 10 items ki jagah rakhti hai. Har baar lagbhag 50 percent badhti hai.", "size() tumne kitne items rakhe hain wo hai. Capacity chhupe array ki length hai. Dono alag hain.", "End me add average par O(1) hai. get(i) aur set(i, x) O(1) hain. Beech me add(i, x) aur remove(i) O(n) hain kyunki items khiskte hain.", "contains(x) aur indexOf(x) O(n) hain: ye equals() se items ko ek-ek karke check karte hain.", "ArrayList thread-safe NAHI hai."]]},
+  {h: ["ArrayList methods in action", "ArrayList ke methods action me"],
+   p: ["These are the methods you will use every day. Study the outputs: they show exactly how indexes shift after an insert or a remove. Note the difference between remove(String), which removes by value, and remove(int), which removes by position.",
+       "Ye wo methods hain jo tum roz use karoge. Outputs dhyan se dekho: wo bilkul dikhate hain ki insert ya remove ke baad indexes kaise khiskte hain. remove(String), jo value se hatata hai, aur remove(int), jo position se hatata hai, ka fark dhyan me rakho."],
+   code: `import java.util.ArrayList;
+import java.util.List;
+
+public class ArrayListDemo {
+    public static void main(String[] args) {
+        List<String> team = new ArrayList<>();
+        team.add("Rahul");
+        team.add("Gurleen");
+        team.add("Mohit");
+        team.add(1, "Himakshi");                     // insert at index 1, the rest shift right
+        System.out.println(team);                    // [Rahul, Himakshi, Gurleen, Mohit]
+
+        System.out.println(team.get(2));             // Gurleen
+        team.set(0, "Shivam");                       // replace the item at index 0
+        System.out.println(team);                    // [Shivam, Himakshi, Gurleen, Mohit]
+
+        System.out.println(team.size());             // 4
+        System.out.println(team.indexOf("Mohit"));   // 3
+        System.out.println(team.indexOf("Nobody"));  // -1
+        System.out.println(team.contains("Rahul"));  // false (it was replaced)
+        System.out.println(team.isEmpty());          // false
+
+        team.remove("Gurleen");                      // by VALUE
+        team.remove(0);                              // by INDEX
+        System.out.println(team);                    // [Himakshi, Mohit]
+
+        team.addAll(List.of("Rahul", "Gurleen"));    // add many at the end
+        System.out.println(team);                    // [Himakshi, Mohit, Rahul, Gurleen]
+        System.out.println(team.subList(1, 3));      // [Mohit, Rahul]  (index 1 up to, not including, 3)
+        System.out.println(team.lastIndexOf("Rahul")); // 2
+
+        team.clear();
+        System.out.println(team.size());             // 0
+    }
+}`,
+   pts: [["add(x) appends. add(i, x) inserts. addAll(c) appends many.", "get(i) reads. set(i, x) replaces and returns the old item.", "remove(i) by index returns the removed item. remove(x) by value returns true or false.", "On a List<Integer>, list.remove(2) removes INDEX 2. To remove the VALUE 2 write list.remove(Integer.valueOf(2)).", "Using an index below 0 or at or above size() throws IndexOutOfBoundsException (note that add(i, x) accepts i up to size()).", "subList(from, to) is a VIEW of the same data, not a copy. Wrap it in new ArrayList<>(...) for an independent copy."],
+         ["add(x) end me jodta hai. add(i, x) beech me insert karta hai. addAll(c) kai jodta hai.", "get(i) padhta hai. set(i, x) badalta hai aur purana item return karta hai.", "Index se remove(i) hataya hua item return karta hai. Value se remove(x) true ya false return karta hai.", "List<Integer> par list.remove(2) INDEX 2 hatata hai. VALUE 2 hatane ke liye list.remove(Integer.valueOf(2)) likho.", "0 se neeche ya size() ke barabar ya upar ka index IndexOutOfBoundsException deta hai (dhyan do ki add(i, x) size() tak ka i leta hai).", "subList(from, to) usi data ka VIEW hai, copy nahi. Alag copy ke liye new ArrayList<>(...) me lapeto."]]},
+  {h: ["Traversing, searching and sorting", "Traverse, search aur sort karna"],
+   p: ["Use a plain for loop when you need the index, for-each when you just read, an Iterator or removeIf when you remove, and a ListIterator when you want to go both ways or change items while walking. Sorting uses Collections.sort(list) or list.sort(...). A list of numbers or Strings sorts by itself. Sorting your own objects needs a Comparator (lesson 49).",
+       "Index chahiye to simple for loop, sirf padhna ho to for-each, hatana ho to Iterator ya removeIf, aur dono taraf chalna ya chalte hue items badalne ho to ListIterator use karo. Sorting Collections.sort(list) ya list.sort(...) se hoti hai. Numbers ya Strings ki list apne aap sort ho jati hai. Apne objects ko sort karne ke liye Comparator chahiye (lesson 49)."],
+   code: `import java.util.*;
+
+public class Traversal {
+    public static void main(String[] args) {
+        List<Integer> marks = new ArrayList<>(List.of(70, 85, 92, 60));
+
+        for (int i = 0; i < marks.size(); i++) {
+            System.out.print(marks.get(i) + " ");         // 70 85 92 60
+        }
+        System.out.println();
+
+        for (int m : marks) System.out.print(m + " ");    // 70 85 92 60
+        System.out.println();
+
+        // Remove low marks while walking: use the iterator
+        Iterator<Integer> it = marks.iterator();
+        while (it.hasNext()) {
+            if (it.next() < 65) it.remove();
+        }
+        System.out.println(marks);                        // [70, 85, 92]
+
+        // ListIterator can change items in place
+        ListIterator<Integer> li = marks.listIterator();
+        while (li.hasNext()) {
+            int v = li.next();
+            li.set(v + 5);                                // grace marks
+        }
+        System.out.println(marks);                        // [75, 90, 97]
+
+        // Walk backwards
+        ListIterator<Integer> back = marks.listIterator(marks.size());
+        while (back.hasPrevious()) System.out.print(back.previous() + " ");   // 97 90 75
+        System.out.println();
+
+        // Sorting
+        List<Integer> nums = new ArrayList<>(List.of(5, 2, 9, 1));
+        Collections.sort(nums);
+        System.out.println(nums);                         // [1, 2, 5, 9]
+        nums.sort(Collections.reverseOrder());
+        System.out.println(nums);                         // [9, 5, 2, 1]
+
+        // removeIf and replaceAll take a short function (lambdas, lesson 54)
+        List<Integer> data = new ArrayList<>(List.of(1, 2, 3, 4, 5, 6));
+        data.removeIf(n -> n % 2 == 0);                   // remove the even numbers
+        System.out.println(data);                         // [1, 3, 5]
+        data.replaceAll(n -> n * 10);                     // multiply every item by 10
+        System.out.println(data);                         // [10, 30, 50]
+    }
+}`},
+  {h: ["LinkedList: how it works", "LinkedList: kaise kaam karti hai"],
+   p: ["A LinkedList is built from small boxes called nodes. Each node holds one item plus two links: one to the node before it and one to the node after it (a doubly linked list). The list itself remembers only the first and the last node. Adding or removing at either end is O(1), because only a few links change and nothing is copied or shifted. The price is on reading: to reach the item at index 500, Java must walk through nodes from the nearest end, so get(i) is O(n). LinkedList also implements Deque, so it has queue and stack methods.",
+       "LinkedList nodes naam ke chhote dibbon se bani hoti hai. Har node me ek item aur do links hote hain: ek apne se pehle wale node ka aur ek baad wale node ka (doubly linked list). List khud sirf pehla aur aakhri node yaad rakhti hai. Dono ends par jodna ya hatana O(1) hai, kyunki sirf kuch links badalte hain aur kuch copy ya shift nahi hota. Keemat padhne me hai: index 500 ka item pakadne ke liye Java ko sabse paas ke end se nodes par chalna padta hai, isliye get(i) O(n) hai. LinkedList Deque bhi implement karti hai, isliye isme queue aur stack ke methods hote hain."],
+   code: `// What a LinkedList looks like inside
+//
+//   first                                    last
+//     |                                        |
+//     v                                        v
+//   [ null | "A" | next ] <-> [ prev | "B" | next ] <-> [ prev | "C" | null ]
+//
+// Add at the front : create a node, point it at the old first node. Nothing moves.
+// Remove from the middle: reconnect the node before and the node after. No shifting.
+// Get index 2      : start at the first node and follow 'next' two times.
+
+import java.util.LinkedList;
+
+public class LinkedListDemo {
+    public static void main(String[] args) {
+        LinkedList<String> ll = new LinkedList<>();
+        ll.add("B");                          // [B]
+        ll.addFirst("A");                     // [A, B]
+        ll.addLast("C");                      // [A, B, C]
+        System.out.println(ll);               // [A, B, C]
+
+        System.out.println(ll.getFirst());    // A
+        System.out.println(ll.getLast());     // C
+        System.out.println(ll.get(1));        // B   (works, but walks the chain)
+
+        System.out.println(ll.removeFirst()); // A
+        System.out.println(ll.removeLast());  // C
+        System.out.println(ll);               // [B]
+
+        ll.add(0, "X");                       // all the List methods work too
+        ll.add("Y");
+        System.out.println(ll);               // [X, B, Y]
+        ll.remove("B");
+        System.out.println(ll);               // [X, Y]
+    }
+}`},
+  {h: ["LinkedList as a queue and a stack", "LinkedList queue aur stack ki tarah"],
+   p: ["A queue is first-in, first-out, like people waiting in a line. offer adds at the back, poll removes from the front, and peek only looks at the front. A stack is last-in, first-out, like a pile of plates. push adds at the front, pop removes from the front, and peek looks at the top. The difference between the 'throwing' and the 'safe' versions matters: remove() and element() throw NoSuchElementException on an empty list, while poll() and peek() simply return null.",
+       "Queue first-in, first-out hoti hai, line me intezaar karte logon ki tarah. offer peeche jodta hai, poll aage se hatata hai, aur peek sirf aage dekhta hai. Stack last-in, first-out hoti hai, plates ke dher ki tarah. push aage jodta hai, pop aage se hatata hai, aur peek upar dekhta hai. 'Throw karne wale' aur 'safe' versions ka fark matter karta hai: khali list par remove() aur element() NoSuchElementException dete hain, jabki poll() aur peek() sirf null return karte hain."],
+   code: `import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Deque;
+
+public class QueueAndStack {
+    public static void main(String[] args) {
+        // QUEUE: serve people in the order they arrived
+        Queue<String> line = new LinkedList<>();
+        line.offer("Himakshi");
+        line.offer("Shivam");
+        line.offer("Gurleen");
+        System.out.println(line.peek());      // Himakshi  (front, not removed)
+        System.out.println(line.poll());      // Himakshi  (removed)
+        System.out.println(line.poll());      // Shivam
+        System.out.println(line);             // [Gurleen]
+        line.poll();
+        System.out.println(line.poll());      // null  (empty: poll is safe)
+        // line.remove();                      // NoSuchElementException on an empty queue
+
+        // STACK: the last item added comes out first
+        Deque<String> pages = new LinkedList<>();
+        pages.push("home");
+        pages.push("search");
+        pages.push("results");
+        System.out.println(pages.peek());     // results (top)
+        System.out.println(pages.pop());      // results
+        System.out.println(pages.pop());      // search
+        System.out.println(pages);            // [home]
+    }
+}`,
+   pts: [["Queue methods: offer / poll / peek (safe, null when empty) and add / remove / element (throw when empty).", "Stack methods on a Deque: push (add at the front), pop (remove from the front), peek (look at the front).", "For a pure queue or stack, ArrayDeque is usually faster and lighter than LinkedList. LinkedList is the one to use when you also need the List methods (get by index, add in the middle).", "Do not use the old Stack class. Use a Deque such as ArrayDeque."],
+         ["Queue methods: offer / poll / peek (safe, khali par null) aur add / remove / element (khali par throw).", "Deque par stack methods: push (aage jodna), pop (aage se hatana), peek (aage dekhna).", "Sirf queue ya stack ke liye ArrayDeque aam taur par LinkedList se tez aur halki hoti hai. LinkedList tab chuno jab List ke methods bhi chahiye (index se get, beech me add).", "Purani Stack class use mat karo. ArrayDeque jaisa Deque use karo."]]},
+  {h: ["ArrayList versus LinkedList", "ArrayList vs LinkedList"],
+   p: ["Which one is faster depends on what you do most. In practice ArrayList wins in the large majority of programs, because computers are very good at reading memory that sits side by side, and ArrayList also uses less memory (a LinkedList node carries two extra links). Choose LinkedList only when you add and remove at the front or in the middle of a very long list all the time, and then think about ArrayDeque first.",
+       "Kaun tez hai ye is par nirbhar hai ki tum sabse zyada kya karte ho. Practice me zyadatar programs me ArrayList jeetti hai, kyunki computers paas-paas rakhi memory padhne me bahut achhe hote hain, aur ArrayList kam memory bhi leti hai (LinkedList ke node me do extra links hote hain). LinkedList tab chuno jab bahut lambi list me aage ya beech me lagatar add aur remove karte ho, aur tab bhi pehle ArrayDeque ke baare me socho."],
+   code: `import java.util.*;
+
+public class Compare {
+    public static void main(String[] args) {
+        int n = 50_000;
+
+        // 1) Insert at the FRONT
+        List<Integer> al = new ArrayList<>();
+        long t1 = System.nanoTime();
+        for (int i = 0; i < n; i++) al.add(0, i);         // every insert shifts all items
+        long t2 = System.nanoTime();
+        LinkedList<Integer> ll = new LinkedList<>();
+        for (int i = 0; i < n; i++) ll.addFirst(i);       // just change a few links
+        long t3 = System.nanoTime();
+        System.out.println("front insert  ArrayList: " + (t2 - t1) / 1_000_000 + " ms");
+        System.out.println("front insert  LinkedList: " + (t3 - t2) / 1_000_000 + " ms");
+
+        // 2) Read by index
+        long t4 = System.nanoTime();
+        long sumA = 0;
+        for (int i = 0; i < 20_000; i++) sumA += al.get(i);       // direct jump
+        long t5 = System.nanoTime();
+        long sumL = 0;
+        for (int i = 0; i < 20_000; i++) sumL += ll.get(i);       // walks the chain every time
+        long t6 = System.nanoTime();
+        System.out.println("read by index ArrayList: " + (t5 - t4) / 1_000_000 + " ms");
+        System.out.println("read by index LinkedList: " + (t6 - t5) / 1_000_000 + " ms");
+        // The exact numbers differ on every computer: LinkedList wins the first test, ArrayList wins the second.
+    }
+}`,
+   pts: [["get(i) / set(i): ArrayList O(1), LinkedList O(n).", "add at the end: both O(1) on average.", "add or remove at the FRONT: ArrayList O(n) (shifts everything), LinkedList O(1).", "add or remove in the MIDDLE: ArrayList O(n) (shifts), LinkedList O(n) to find the spot and then O(1) to link. Often still slower than ArrayList because walking is slow.", "contains / indexOf: both O(n).", "Memory: ArrayList stores items only. LinkedList stores items plus two links per node.", "A for-each loop over a LinkedList is fine (it follows the chain once). A for loop with get(i) over a LinkedList is slow (O(n squared)).", "Default choice: ArrayList. Queue or stack: ArrayDeque. Need both List and Deque on one object: LinkedList."],
+         ["get(i) / set(i): ArrayList O(1), LinkedList O(n).", "End me add: dono average par O(1).", "AAGE add ya remove: ArrayList O(n) (sab khiskata hai), LinkedList O(1).", "BEECH me add ya remove: ArrayList O(n) (khiskata hai), LinkedList jagah dhundhne me O(n) aur fir link karne me O(1). Aksar phir bhi ArrayList se slow, kyunki chalna slow hota hai.", "contains / indexOf: dono O(n).", "Memory: ArrayList sirf items rakhti hai. LinkedList items aur har node ke do links rakhti hai.", "LinkedList par for-each loop theek hai (chain par ek baar chalta hai). LinkedList par get(i) wala for loop slow hai (O(n squared)).", "Default choice: ArrayList. Queue ya stack: ArrayDeque. Ek hi object par List aur Deque dono chahiye: LinkedList."]]},
+  {h: ["Converting between arrays and lists, copying and equality", "Arrays aur lists ke beech conversion, copy aur equality"],
+   p: ["Moving between arrays and lists is something you do constantly. list.toArray(...) gives an array. new ArrayList<>(Arrays.asList(array)) gives a changeable list from an object array (a primitive int[] needs a stream or a loop). Copying a list with new ArrayList<>(other) makes a SHALLOW copy: a new list, but the same item objects inside. Two lists are equal when they have the same items in the same order, whatever their class.",
+       "Arrays aur lists ke beech jana tum lagatar karte ho. list.toArray(...) array deta hai. new ArrayList<>(Arrays.asList(array)) object array se badalne layak list deta hai (primitive int[] ke liye stream ya loop chahiye). new ArrayList<>(other) se list copy karna SHALLOW copy banata hai: nayi list, par andar wahi item objects. Do lists barabar hoti hain jab unme wahi items wahi order me hon, chahe class kuch bhi ho."],
+   code: `import java.util.*;
+
+public class Conversions {
+    public static void main(String[] args) {
+        // List to array
+        List<String> names = new ArrayList<>(List.of("Mohit", "Rahul", "Gurleen"));
+        String[] array = names.toArray(new String[0]);
+        System.out.println(array.length + " " + array[1]);    // 3 Rahul
+
+        // Array to a CHANGEABLE list (wrap Arrays.asList in new ArrayList)
+        String[] items = {"x", "y", "z"};
+        List<String> list = new ArrayList<>(Arrays.asList(items));
+        list.add("w");
+        System.out.println(list);                             // [x, y, z, w]
+
+        // int[] to List<Integer>: a primitive array needs a loop
+        int[] primitive = {3, 1, 2};
+        List<Integer> boxed = new ArrayList<>();
+        for (int p : primitive) boxed.add(p);
+        System.out.println(boxed);                            // [3, 1, 2]
+
+        // Shallow copy: a new list, the SAME objects inside
+        StringBuilder sb = new StringBuilder("hi");
+        List<StringBuilder> original = new ArrayList<>(List.of(sb));
+        List<StringBuilder> copy = new ArrayList<>(original);
+        copy.get(0).append("!!");                              // changes the shared object
+        System.out.println(original.get(0));                   // hi!!
+        copy.add(new StringBuilder("new"));
+        System.out.println(original.size() + " " + copy.size());   // 1 2  (the lists themselves are independent)
+
+        // Equality ignores the class, but not the order
+        List<Integer> a = new ArrayList<>(List.of(1, 2, 3));
+        List<Integer> b = new LinkedList<>(List.of(1, 2, 3));
+        System.out.println(a.equals(b));                       // true
+        System.out.println(a.equals(List.of(3, 2, 1)));        // false
+    }
+}`},
+  {h: ["Practical example: a to-do manager", "Practical example: to-do manager"],
+   p: ["Here an ArrayList holds the tasks. The class keeps the list private (encapsulation from Phase 3), checks bad input, and offers the operations the user needs. It also shows a read-only view for printing, so outside code cannot change the data.",
+       "Yahan ArrayList tasks ko rakhti hai. Class list ko private rakhti hai (Phase 3 ki encapsulation), galat input check karti hai, aur user ko chahiye wo operations deti hai. Ye printing ke liye read-only view bhi deti hai, taaki bahar ka code data na badal sake."],
+   code: `import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
+class TodoList {
+    private final List<String> tasks = new ArrayList<>();
+
+    void add(String task) {
+        if (task == null || task.isBlank()) {
+            System.out.println("Task cannot be empty");
+            return;
+        }
+        tasks.add(task.trim());
+    }
+
+    boolean done(String task) {                       // removes the first matching task
+        return tasks.remove(task);
+    }
+
+    void moveToTop(int index) {                       // index starts at 0
+        if (index < 0 || index >= tasks.size()) {
+            System.out.println("No task at position " + index);
+            return;
+        }
+        String t = tasks.remove(index);
+        tasks.add(0, t);
+    }
+
+    List<String> view() {
+        return Collections.unmodifiableList(tasks);   // read-only for the outside
+    }
+
+    void show() {
+        if (tasks.isEmpty()) {
+            System.out.println("Nothing to do!");
+            return;
+        }
+        for (int i = 0; i < tasks.size(); i++) {
+            System.out.println((i + 1) + ". " + tasks.get(i));
+        }
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        TodoList todo = new TodoList();
+        todo.add("Write notes");
+        todo.add("Practice arrays");
+        todo.add("Solve 3 problems");
+        todo.add("   ");                               // Task cannot be empty
+        todo.moveToTop(2);
+        todo.show();
+        // 1. Solve 3 problems
+        // 2. Write notes
+        // 3. Practice arrays
+
+        System.out.println(todo.done("Write notes"));    // true
+        System.out.println(todo.done("Sleep"));          // false (not in the list)
+        System.out.println(todo.view());                 // [Solve 3 problems, Practice arrays]
+        // todo.view().add("hack");                      // UnsupportedOperationException
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: calling get(i) in a loop on a LinkedList. Use for-each, which follows the chain once.", "Mistake: removing inside a for-each loop (ConcurrentModificationException). Use an iterator or removeIf.", "Mistake: list.remove(i) on a List<Integer> when you meant to remove a value. Use Integer.valueOf(x).", "Mistake: IndexOutOfBoundsException. Valid indexes are 0 to size() - 1.", "Mistake: confusing size() (List), length (array) and length() (String).", "Mistake: using a primitive type: ArrayList<int>. Use ArrayList<Integer>.", "Mistake: expecting subList to be an independent copy. It is a view of the original.", "Mistake: calling add on the result of List.of or Arrays.asList.", "Mistake: using == to compare lists or items. Use equals().", "Mistake: putting a LinkedList everywhere because 'inserting is O(1)'. ArrayList is the faster default.", "Good habit: declare as List<Type> x = new ArrayList<>() and give the expected size when you know it.", "Good habit: never return your internal list directly. Return an unmodifiable view or a copy."],
+         ["Galti: LinkedList par loop me get(i) call karna. for-each use karo, jo chain par ek baar chalta hai.", "Galti: for-each loop ke andar hatana (ConcurrentModificationException). Iterator ya removeIf use karo.", "Galti: jab value hatani ho tab List<Integer> par list.remove(i). Integer.valueOf(x) use karo.", "Galti: IndexOutOfBoundsException. Valid indexes 0 se size() - 1 tak hain.", "Galti: size() (List), length (array) aur length() (String) ko confuse karna.", "Galti: primitive type use karna: ArrayList<int>. ArrayList<Integer> use karo.", "Galti: subList se alag copy ki ummeed. Ye original ka view hai.", "Galti: List.of ya Arrays.asList ke result par add call karna.", "Galti: lists ya items ko == se compare karna. equals() use karo.", "Galti: 'insert O(1) hai' soch kar har jagah LinkedList lagana. ArrayList tez default hai.", "Achhi aadat: List<Type> x = new ArrayList<>() ki tarah declare karo aur size pata ho to expected size do.", "Achhi aadat: apni internal list ko seedha kabhi return mat karo. Unmodifiable view ya copy return karo."]],
+   tip: ["Interview questions: (1) ArrayList vs LinkedList? ArrayList is a resizable array with fast index access, LinkedList is a doubly linked list with fast insertion and removal at the ends. (2) What is the initial capacity of an ArrayList? 10, created on the first add. (3) How does it grow? By about 50 percent, by copying into a bigger array. (4) Is ArrayList thread-safe? No.", "Interview questions: (1) ArrayList vs LinkedList? ArrayList resize hone wala array hai jisme index access tez hai, LinkedList doubly linked list hai jisme ends par insert aur remove tez hai. (2) ArrayList ki initial capacity kya hai? 10, pehle add par banti hai. (3) Ye kaise badhti hai? Lagbhag 50 percent, bade array me copy karke. (4) Kya ArrayList thread-safe hai? Nahi."]}
+ ]},
+46: {
+ def: ["A Set is a collection that does NOT allow duplicates: adding a value that is already there is ignored. Java gives you three main sets. HashSet is the fastest and keeps no particular order. LinkedHashSet keeps the order in which you added items. TreeSet keeps its items always sorted. Sets are the right tool whenever you need unique values or a very fast 'is it present?' check.",
+       "Set aisi collection hai jo duplicates allow NAHI karti: jo value pehle se hai use dobara jodne ko ignore kar diya jata hai. Java teen main sets deta hai. HashSet sabse tez hai aur koi khaas order nahi rakhta. LinkedHashSet wo order rakhta hai jisme tumne items jode. TreeSet apne items hamesha sorted rakhta hai. Jab bhi unique values ya bahut tez 'kya ye maujood hai?' check chahiye, Set sahi tool hai."],
+ secs: [
+  {h: ["The Set idea: no duplicates", "Set ka idea: duplicates nahi"],
+   p: ["A Set models a mathematical set: every value can appear at most once. Think of a list of email addresses where each person may sign up only one time, or the set of distinct words in a book. Unlike a List, a Set has no index, so there is no get(i). You add items, remove items and ask 'is this inside?'. The add() method tells you whether the item was new: it returns true if it was added and false if it was already there.",
+       "Set mathematical set ki tarah hai: har value zyada se zyada ek baar aa sakti hai. Email addresses ki aisi list socho jisme har insaan sirf ek baar sign up kar sake, ya kisi kitab ke alag-alag words ka set. List se alag, Set me index nahi hota, isliye get(i) nahi hai. Tum items jodte ho, hatate ho aur poochte ho 'kya ye andar hai?'. add() method batata hai ki item naya tha ya nahi: jodne par true aur pehle se hone par false return karta hai."],
+   code: `import java.util.*;
+
+public class SetIdea {
+    public static void main(String[] args) {
+        Set<String> emails = new HashSet<>();
+        System.out.println(emails.add("gurleen@mail.com"));   // true   (new)
+        System.out.println(emails.add("mohit@mail.com"));     // true
+        System.out.println(emails.add("gurleen@mail.com"));   // false  (already there, ignored)
+        System.out.println(emails.size());                    // 2
+
+        System.out.println(emails.contains("mohit@mail.com")); // true
+        System.out.println(emails.remove("mohit@mail.com"));   // true  (it was present)
+        System.out.println(emails.remove("nobody@mail.com"));  // false (it was not present)
+
+        // The same data in a list keeps the duplicates
+        List<Integer> list = List.of(3, 1, 3, 2, 1);
+        Set<Integer> unique = new HashSet<>(list);
+        System.out.println(list.size() + " items, " + unique.size() + " unique");   // 5 items, 3 unique
+
+        // No index, no get(i)
+        // emails.get(0);                                      // compile ERROR: Set has no get(int)
+    }
+}`,
+   pts: [["Duplicates are decided by equals() (and hashCode() for hash-based sets), not by position.", "A Set has no get(i), no set(i, x) and no add(i, x), because there is no index.", "To visit all items use for-each or an iterator.", "add(x) returns false for a duplicate, which is the simplest way to detect repeats while reading data.", "Sets can hold null: HashSet and LinkedHashSet allow one null, and TreeSet allows none."],
+         ["Duplicates ka faisla equals() (aur hash-based sets ke liye hashCode()) se hota hai, position se nahi.", "Set me get(i), set(i, x) aur add(i, x) nahi hote, kyunki index nahi hota.", "Saare items dekhne ke liye for-each ya iterator use karo.", "Duplicate par add(x) false deta hai, jo data padhte waqt repeats pakadne ka sabse simple tareeka hai.", "Sets me null aa sakta hai: HashSet aur LinkedHashSet ek null allow karte hain, aur TreeSet koi nahi."]]},
+  {h: ["HashSet: the fast default", "HashSet: tez default"],
+   p: ["HashSet is the one to reach for first. Inside, it uses a hash table: each item's hashCode() decides which 'bucket' it goes into, so add, remove and contains jump straight to the right bucket instead of searching everything. That makes them O(1) on average, even with millions of items. The price is that the order is not defined. It may look sorted for small numbers, but you must never depend on it, and it can change when the set grows.",
+       "HashSet wo hai jise sabse pehle uthana chahiye. Andar ye hash table use karta hai: har item ka hashCode() tay karta hai ki wo kis 'bucket' me jayega, isliye add, remove aur contains sab kuch search kiye bina seedha sahi bucket par kood jate hain. Isse wo average par O(1) hote hain, lakhon items ke saath bhi. Keemat ye hai ki order tay nahi hota. Chhote numbers ke liye sorted dikh sakta hai, par us par kabhi nirbhar mat raho, aur set badhne par wo badal sakta hai."],
+   code: `import java.util.*;
+
+public class HashSetDemo {
+    public static void main(String[] args) {
+        Set<String> set = new HashSet<>();
+        set.add("Shivam");
+        set.add("Himakshi");
+        set.add("Rahul");
+        set.add("Shivam");                         // duplicate: ignored
+        System.out.println(set.size());            // 3
+        System.out.println(set);                   // the order is NOT guaranteed (it may differ from the insertion order)
+
+        System.out.println(set.contains("Rahul")); // true
+        set.remove("Rahul");
+        System.out.println(set.contains("Rahul")); // false
+
+        // Build from another collection: duplicates vanish
+        Set<Integer> nums = new HashSet<>(Arrays.asList(5, 3, 5, 1, 3));
+        System.out.println(nums.size());           // 3
+
+        // Constructors: new HashSet<>(), new HashSet<>(collection), new HashSet<>(initialCapacity)
+        set.addAll(List.of("Mohit", "Gurleen"));
+        for (String s : set) System.out.print(s + " ");     // visits each item once, in an unspecified order
+        System.out.println();
+
+        set.clear();
+        System.out.println(set.isEmpty());         // true
+    }
+}`,
+   pts: [["Speed: add, remove and contains are O(1) on average. Looping over all items is O(capacity + size).", "Order: not guaranteed and not stable. Never write code that depends on it.", "Load factor 0.75 and default capacity 16: when the set is three-quarters full, it doubles its buckets and re-places the items (rehashing).", "A HashSet is backed by a HashMap, using the items as keys.", "Do not change an item in a way that changes its hashCode() while it is inside a HashSet. It becomes impossible to find.", "Not thread-safe."],
+         ["Speed: add, remove aur contains average par O(1) hain. Saare items par loop O(capacity + size) hai.", "Order: guarantee nahi aur stable nahi. Aisa code mat likho jo uspar nirbhar ho.", "Load factor 0.75 aur default capacity 16: set teen-chauthai bhar jaye to wo buckets double karta hai aur items ko dobara rakhta hai (rehashing).", "HashSet ke peeche HashMap hota hai, jisme items keys ki tarah use hote hain.", "Item HashSet ke andar ho tab use aise mat badlo ki uska hashCode() badal jaye. Use dhundhna namumkin ho jata hai.", "Thread-safe nahi hai."]]},
+  {h: ["equals() and hashCode(): sets of your own objects", "equals() aur hashCode(): apne objects ke sets"],
+   p: ["A HashSet asks two questions about your objects. First hashCode(): which bucket? Then equals(): is there already an equal item in that bucket? If you do not override them, Java uses the default versions from Object, which treat every object as different from every other object, even when all their fields are identical. Two identical-looking points then both stay in the set. The fix is to override BOTH methods, using the same fields, and obey the contract: equal objects must give equal hash codes.",
+       "HashSet tumhare objects ke baare me do sawal poochta hai. Pehle hashCode(): kaun sa bucket? Fir equals(): kya us bucket me pehle se koi barabar item hai? Inhe override na karo to Java Object ke default versions use karta hai, jo har object ko har dusre object se alag maante hain, chahe unke saare fields ek jaise hon. Tab do ek jaise dikhne wale points dono set me reh jate hain. Fix DONO methods ko same fields se override karna hai, aur contract maanna hai: barabar objects ka hash code barabar hona chahiye."],
+   code: `import java.util.*;
+
+class RawPoint {                                     // no equals / hashCode
+    final int x, y;
+    RawPoint(int x, int y) { this.x = x; this.y = y; }
+}
+
+class Point {                                        // with equals AND hashCode
+    final int x, y;
+    Point(int x, int y) { this.x = x; this.y = y; }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Point)) return false;
+        Point p = (Point) o;
+        return x == p.x && y == p.y;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);                   // use the SAME fields as equals()
+    }
+
+    @Override
+    public String toString() { return "(" + x + "," + y + ")"; }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Set<RawPoint> bad = new HashSet<>();
+        bad.add(new RawPoint(1, 2));
+        bad.add(new RawPoint(1, 2));
+        System.out.println(bad.size());              // 2   (treated as different objects)
+
+        Set<Point> good = new HashSet<>();
+        good.add(new Point(1, 2));
+        good.add(new Point(1, 2));
+        good.add(new Point(3, 4));
+        System.out.println(good.size());             // 2   (the duplicate was recognised)
+        System.out.println(good.contains(new Point(3, 4)));   // true
+    }
+}`,
+   pts: [["The contract: if a.equals(b) is true, then a.hashCode() == b.hashCode() must be true. The reverse need not hold.", "Override both methods together, with the same fields. Overriding only one breaks sets and maps.", "Use Objects.hash(...) and Objects.equals(...) for simple, null-safe code. IDEs can generate both for you.", "Use immutable fields (final) for the values that go into equals and hashCode, so the hash never changes while the object sits in a set.", "String, Integer, Double, Character and the other wrappers already have correct equals() and hashCode()."],
+         ["Contract: a.equals(b) true ho to a.hashCode() == b.hashCode() true hona chahiye. Ulta zaroori nahi.", "Dono methods ek saath, same fields ke saath override karo. Sirf ek override karne se sets aur maps toot jate hain.", "Simple, null-safe code ke liye Objects.hash(...) aur Objects.equals(...) use karo. IDEs dono tumhare liye bana sakti hain.", "equals aur hashCode me jane wali values ke liye immutable fields (final) use karo, taaki object set me ho tab hash kabhi na badle.", "String, Integer, Double, Character aur baaki wrappers me sahi equals() aur hashCode() pehle se hote hain."]]},
+  {h: ["LinkedHashSet: unique and in insertion order", "LinkedHashSet: unique aur insertion order me"],
+   p: ["LinkedHashSet is a HashSet that also keeps a linked list through its items, remembering the order in which they were first added. It is almost as fast as HashSet. Use it when you need uniqueness AND a predictable order. Its best-known job is removing duplicates from a list while keeping the first-seen order.",
+       "LinkedHashSet aisa HashSet hai jo apne items ke beech ek linked list bhi rakhta hai, aur wo order yaad rakhta hai jisme items pehli baar jode gaye. Ye HashSet jitna hi tez hai. Ise tab use karo jab uniqueness AUR predictable order dono chahiye. Iska sabse mashhoor kaam list se duplicates hatana hai, pehli baar dikhne ke order ko rakhte hue."],
+   code: `import java.util.*;
+
+public class LinkedHashSetDemo {
+    public static void main(String[] args) {
+        Set<String> set = new LinkedHashSet<>();
+        set.add("Shivam");
+        set.add("Gurleen");
+        set.add("Mohit");
+        set.add("Gurleen");                         // duplicate: ignored, the position does not change
+        System.out.println(set);                    // [Shivam, Gurleen, Mohit]   (always this order)
+
+        // Remove duplicates from a list and keep the first-seen order
+        List<Integer> withRepeats = List.of(4, 2, 4, 9, 2, 7, 9);
+        List<Integer> cleaned = new ArrayList<>(new LinkedHashSet<>(withRepeats));
+        System.out.println(cleaned);                // [4, 2, 9, 7]
+
+        // With a plain HashSet the order might change; with TreeSet it would be sorted
+        System.out.println(new TreeSet<>(withRepeats));     // [2, 4, 7, 9]
+    }
+}`},
+  {h: ["TreeSet: always sorted", "TreeSet: hamesha sorted"],
+   p: ["TreeSet keeps its items sorted at all times. Internally it is a balanced tree (a red-black tree), so add, remove and contains take O(log n), a little slower than HashSet but still very fast. The big bonus is the set of navigation methods that rely on the order: smallest item, biggest item, 'the nearest item below or above this value', and slices of the set. Numbers sort from small to big and Strings alphabetically, because those types already know how to compare themselves.",
+       "TreeSet apne items hamesha sorted rakhta hai. Andar ye balanced tree (red-black tree) hota hai, isliye add, remove aur contains O(log n) lete hain, HashSet se thoda slow par phir bhi bahut tez. Bada bonus navigation methods ka set hai jo order par nirbhar hain: sabse chhota item, sabse bada item, 'is value ke neeche ya upar ka sabse paas ka item', aur set ke tukde. Numbers chhote se bade tak aur Strings alphabetical sort hote hain, kyunki ye types khud ko compare karna jaante hain."],
+   code: `import java.util.*;
+
+public class TreeSetDemo {
+    public static void main(String[] args) {
+        TreeSet<Integer> ts = new TreeSet<>(List.of(50, 20, 80, 10, 30));
+        System.out.println(ts);                    // [10, 20, 30, 50, 80]   always sorted
+
+        System.out.println(ts.first());            // 10   smallest
+        System.out.println(ts.last());             // 80   biggest
+
+        // The nearest neighbours of a value, even one that is NOT in the set
+        System.out.println(ts.floor(25));          // 20   greatest item <= 25
+        System.out.println(ts.ceiling(25));        // 30   smallest item >= 25
+        System.out.println(ts.lower(20));          // 10   greatest item <  20
+        System.out.println(ts.higher(20));         // 30   smallest item >  20
+        System.out.println(ts.higher(80));         // null nothing bigger
+
+        // Slices (these are views of the same data)
+        System.out.println(ts.headSet(30));        // [10, 20]          items < 30
+        System.out.println(ts.headSet(30, true));  // [10, 20, 30]      items <= 30
+        System.out.println(ts.tailSet(50));        // [50, 80]          items >= 50
+        System.out.println(ts.subSet(20, 60));     // [20, 30, 50]      from 20 (included) to 60 (excluded)
+        System.out.println(ts.descendingSet());    // [80, 50, 30, 20, 10]
+
+        System.out.println(ts.pollFirst());        // 10   removes and returns the smallest
+        System.out.println(ts.pollLast());         // 80   removes and returns the biggest
+        System.out.println(ts);                    // [20, 30, 50]
+
+        TreeSet<String> names = new TreeSet<>(List.of("Shivam", "Gurleen", "Mohit", "Himakshi"));
+        System.out.println(names);                 // [Gurleen, Himakshi, Mohit, Shivam]
+        System.out.println(names.first());         // Gurleen
+    }
+}`,
+   pts: [["Operations: add, remove, contains are O(log n). first(), last(), pollFirst(), pollLast() are very fast.", "Navigation: floor (<=), ceiling (>=), lower (<), higher (>) return null when no such item exists.", "Strings sort with capital letters BEFORE small letters (\"Zebra\" comes before \"apple\"). Use String.CASE_INSENSITIVE_ORDER for a natural order.", "A TreeSet does NOT allow null: it cannot compare null (NullPointerException).", "Typical uses: a leaderboard of unique scores, 'the next available time slot', ranges of values.", "Not thread-safe."],
+         ["Operations: add, remove, contains O(log n) hain. first(), last(), pollFirst(), pollLast() bahut tez hain.", "Navigation: floor (<=), ceiling (>=), lower (<), higher (>) aisa item na ho to null return karte hain.", "Strings me capital letters small letters se PEHLE aate hain (\"Zebra\", \"apple\" se pehle). Natural order ke liye String.CASE_INSENSITIVE_ORDER use karo.", "TreeSet null allow NAHI karta: wo null ko compare nahi kar sakta (NullPointerException).", "Aam uses: unique scores ka leaderboard, 'agla khali time slot', values ki ranges.", "Thread-safe nahi hai."]]},
+  {h: ["TreeSet with your own order and your own objects", "TreeSet apne order aur apne objects ke saath"],
+   p: ["A TreeSet must know how to compare its items. For your own classes there are two ways: let the class implement Comparable, or pass a Comparator to the TreeSet constructor. Without either, adding the first item throws ClassCastException. An important twist: a TreeSet decides 'duplicate' with the comparison result, NOT with equals(). If the comparator says two items compare as 0 (equal), the second one is dropped, even if the objects are different. (Comparable and Comparator have their own full lesson, number 49.)",
+       "TreeSet ko pata hona chahiye ki apne items ko kaise compare kare. Apni classes ke liye do tareeke hain: class Comparable implement kare, ya TreeSet ke constructor me Comparator do. Dono me se kuch na ho to pehla item jodte hi ClassCastException aata hai. Ek zaroori twist: TreeSet 'duplicate' ka faisla comparison ke result se karta hai, equals() se NAHI. Comparator kehta hai do items 0 (barabar) hain to doosra drop ho jata hai, chahe objects alag hon. (Comparable aur Comparator ka poora alag lesson hai, number 49.)"],
+   code: `import java.util.*;
+
+class Student implements Comparable<Student> {
+    final String name;
+    final int marks;
+    Student(String name, int marks) { this.name = name; this.marks = marks; }
+
+    @Override
+    public int compareTo(Student other) {              // natural order: highest marks first
+        return Integer.compare(other.marks, this.marks);
+    }
+
+    @Override
+    public String toString() { return name + "(" + marks + ")"; }
+}
+
+class Plain { }                                         // does NOT implement Comparable
+
+public class Main {
+    public static void main(String[] args) {
+        // 1) Comparable inside the class
+        TreeSet<Student> board = new TreeSet<>();
+        board.add(new Student("Gurleen", 88));
+        board.add(new Student("Mohit", 95));
+        board.add(new Student("Himakshi", 72));
+        System.out.println(board);                     // [Mohit(95), Gurleen(88), Himakshi(72)]
+
+        // A tie counts as a duplicate here, because compareTo returns 0
+        board.add(new Student("Shivam", 88));
+        System.out.println(board.size());              // 3   (Shivam was dropped: same marks as Gurleen)
+
+        // 2) A Comparator passed to the constructor
+        TreeSet<String> byLength = new TreeSet<>((a, b) -> Integer.compare(a.length(), b.length()));
+        byLength.addAll(List.of("Rahul", "Gurleen", "Mohit", "Himakshi", "Shivam"));
+        System.out.println(byLength);                  // [Rahul, Shivam, Gurleen, Himakshi]
+        // "Mohit" has the same length as "Rahul", so it counted as a duplicate and was not added
+
+        TreeSet<Integer> descending = new TreeSet<>(Collections.reverseOrder());
+        descending.addAll(List.of(3, 9, 1));
+        System.out.println(descending);                // [9, 3, 1]
+
+        // 3) No way to compare: ClassCastException
+        TreeSet<Plain> broken = new TreeSet<>();
+        // broken.add(new Plain());                    // ClassCastException: Plain cannot be cast to Comparable
+    }
+}`,
+   tip: ["Keep the comparison consistent with equals(): add a tie-breaker (for example compare the name when the marks are equal) so that different students are never lost by accident.", "Comparison ko equals() ke saath consistent rakho: tie-breaker jodo (jaise marks barabar hon to naam compare karo), taaki alag students galti se kho na jayein."]},
+  {h: ["Set operations: union, intersection, difference", "Set operations: union, intersection, difference"],
+   p: ["Sets make the classic maths operations very short. Copy the first set, then use addAll for the union (everything in either), retainAll for the intersection (only what is in both) and removeAll for the difference (in the first but not in the second). containsAll checks for a subset. Always work on a COPY, because these methods change the set they are called on.",
+       "Sets classic maths operations ko bahut chhota bana dete hain. Pehle set ki copy lo, fir union (dono me se kisi me bhi) ke liye addAll, intersection (sirf jo dono me ho) ke liye retainAll, aur difference (pehle me ho par doosre me na ho) ke liye removeAll use karo. containsAll subset check karta hai. Hamesha COPY par kaam karo, kyunki ye methods jis set par call hote hain use badal dete hain."],
+   code: `import java.util.*;
+
+public class SetOperations {
+    public static void main(String[] args) {
+        Set<Integer> a = new TreeSet<>(List.of(1, 2, 3, 4, 5));
+        Set<Integer> b = new TreeSet<>(List.of(4, 5, 6, 7));
+
+        Set<Integer> union = new TreeSet<>(a);
+        union.addAll(b);
+        System.out.println(union);              // [1, 2, 3, 4, 5, 6, 7]    in either
+
+        Set<Integer> common = new TreeSet<>(a);
+        common.retainAll(b);
+        System.out.println(common);             // [4, 5]                   in both
+
+        Set<Integer> onlyA = new TreeSet<>(a);
+        onlyA.removeAll(b);
+        System.out.println(onlyA);              // [1, 2, 3]                in a but not in b
+
+        Set<Integer> either = new TreeSet<>(union);
+        either.removeAll(common);
+        System.out.println(either);             // [1, 2, 3, 6, 7]          in exactly one
+
+        System.out.println(a.containsAll(common));          // true   (common is a subset of a)
+        System.out.println(common.containsAll(a));          // false
+        System.out.println(Collections.disjoint(onlyA, b)); // true   (no common item at all)
+
+        // Real use: who attended both classes?
+        Set<String> java = new HashSet<>(List.of("Rahul", "Gurleen", "Mohit"));
+        Set<String> sql  = new HashSet<>(List.of("Mohit", "Himakshi", "Gurleen"));
+        Set<String> both = new TreeSet<>(java);
+        both.retainAll(sql);
+        System.out.println(both);               // [Gurleen, Mohit]
+    }
+}`},
+  {h: ["Practical examples: unique words and duplicate detection", "Practical examples: unique words aur duplicate detection"],
+   p: ["These three jobs appear again and again: find the distinct values, find the repeated values, and test for a duplicate quickly. They all use the fact that add() reports whether the item was new. The HashSet version of a 'contains' check is O(1), so a loop that checks a list item by item (O(n) each time) becomes dramatically faster when it uses a set.",
+       "Ye teen kaam baar-baar aate hain: alag-alag values dhundhna, dohrai hui values dhundhna, aur duplicate ki jaldi jaanch. Teeno is baat ka fayda uthate hain ki add() batata hai ki item naya tha ya nahi. 'contains' check ka HashSet version O(1) hai, isliye list me item-by-item check karne wala loop (har baar O(n)) set use karne par bahut tez ho jata hai."],
+   code: `import java.util.*;
+
+public class Practical {
+    // 1) Does the array contain any duplicate?
+    static boolean hasDuplicate(int[] a) {
+        Set<Integer> seen = new HashSet<>();
+        for (int x : a) {
+            if (!seen.add(x)) return true;          // add returned false: seen before
+        }
+        return false;
+    }
+
+    // 2) Which values repeat?
+    static Set<Integer> repeated(int[] a) {
+        Set<Integer> seen = new HashSet<>();
+        Set<Integer> dup = new TreeSet<>();
+        for (int x : a) {
+            if (!seen.add(x)) dup.add(x);
+        }
+        return dup;
+    }
+
+    // 3) Two sum: do two numbers add up to the target? (one pass, O(n))
+    static boolean twoSum(int[] a, int target) {
+        Set<Integer> seen = new HashSet<>();
+        for (int x : a) {
+            if (seen.contains(target - x)) return true;
+            seen.add(x);
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(hasDuplicate(new int[]{1, 2, 3, 2}));        // true
+        System.out.println(hasDuplicate(new int[]{1, 2, 3}));           // false
+        System.out.println(repeated(new int[]{4, 1, 4, 2, 1, 4}));      // [1, 4]
+        System.out.println(twoSum(new int[]{2, 7, 11, 15}, 9));         // true  (2 + 7)
+
+        // Distinct words, sorted, and how many
+        String text = "to be or not to be that is the question";
+        Set<String> words = new TreeSet<>(Arrays.asList(text.split(" ")));
+        System.out.println(words);                  // [be, is, not, or, question, that, the, to]
+        System.out.println(words.size());           // 8
+
+        // Distinct characters of a word
+        Set<Character> letters = new LinkedHashSet<>();
+        for (char c : "mississippi".toCharArray()) letters.add(c);
+        System.out.println(letters);                // [m, i, s, p]
+
+        // Is a sentence a pangram (uses every letter a to z)?
+        Set<Character> alphabet = new HashSet<>();
+        for (char c : "the quick brown fox jumps over the lazy dog".toCharArray()) {
+            if (Character.isLetter(c)) alphabet.add(c);
+        }
+        System.out.println(alphabet.size() == 26);  // true
+    }
+}`},
+  {h: ["HashSet, LinkedHashSet and TreeSet compared", "HashSet, LinkedHashSet aur TreeSet ki tulna"],
+   p: ["Pick the set by two questions: 'do I need any order?' and 'do I need range or nearest-value searches?'. If both answers are no, HashSet is the right choice and the fastest. The table below lists the facts that decide it, and they are standard interview material.",
+       "Set do sawalon se chuno: 'kya mujhe koi order chahiye?' aur 'kya mujhe range ya nearest-value searches chahiye?'. Dono jawab nahi hon to HashSet sahi choice hai aur sabse tez. Neeche ki list wo facts batati hai jo faisla karte hain, aur ye standard interview material hain."],
+   pts: [["Order: HashSet none. LinkedHashSet insertion order. TreeSet sorted order.", "Speed of add, remove and contains: HashSet O(1), LinkedHashSet O(1), TreeSet O(log n).", "Null: HashSet one null allowed. LinkedHashSet one null allowed. TreeSet no null.", "How duplicates are decided: HashSet and LinkedHashSet use hashCode() and equals(). TreeSet uses compareTo() or the Comparator (0 means duplicate).", "Extra methods: TreeSet has first, last, floor, ceiling, headSet, tailSet, subSet, descendingSet. The other two do not.", "Memory: HashSet lowest, LinkedHashSet a bit more (links), TreeSet the most (tree nodes).", "Internally: HashSet uses a HashMap, LinkedHashSet uses a LinkedHashMap, TreeSet uses a TreeMap.", "None of them is thread-safe. For threads wrap with Collections.synchronizedSet or use ConcurrentHashMap.newKeySet() (Phase 4).", "Set.of(...) gives a small immutable set with no null and no duplicates, and its order is unspecified."],
+         ["Order: HashSet koi nahi. LinkedHashSet insertion order. TreeSet sorted order.", "add, remove aur contains ki speed: HashSet O(1), LinkedHashSet O(1), TreeSet O(log n).", "Null: HashSet ek null allowed. LinkedHashSet ek null allowed. TreeSet koi null nahi.", "Duplicates ka faisla: HashSet aur LinkedHashSet hashCode() aur equals() use karte hain. TreeSet compareTo() ya Comparator use karta hai (0 ka matlab duplicate).", "Extra methods: TreeSet me first, last, floor, ceiling, headSet, tailSet, subSet, descendingSet hain. Baaki do me nahi.", "Memory: HashSet sabse kam, LinkedHashSet thodi zyada (links), TreeSet sabse zyada (tree nodes).", "Andar se: HashSet HashMap use karta hai, LinkedHashSet LinkedHashMap, TreeSet TreeMap.", "Inme se koi thread-safe nahi hai. Threads ke liye Collections.synchronizedSet se lapeto ya ConcurrentHashMap.newKeySet() use karo (Phase 4).", "Set.of(...) chhota immutable set deta hai jisme null aur duplicates nahi hote, aur uska order tay nahi hota."]]},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: depending on the order of a HashSet. It can change between runs and Java versions.", "Mistake: using your own class in a HashSet without equals() and hashCode(), so duplicates stay.", "Mistake: overriding equals() but not hashCode() (or the other way round), which breaks sets and maps.", "Mistake: changing a field that is part of hashCode() after the object is in a HashSet. The object gets lost.", "Mistake: a TreeSet of a class that is not Comparable and has no Comparator (ClassCastException).", "Mistake: expecting a TreeSet to treat two items as different when the comparator returns 0. It keeps only the first.", "Mistake: adding null to a TreeSet (NullPointerException).", "Mistake: trying to use get(i) on a Set. If you need an index, use a List.", "Mistake: using a List and calling contains() in a big loop (O(n squared)) when a HashSet would do it in O(n).", "Mistake: forgetting that retainAll and removeAll change the set. Copy first.", "Good habit: declare as Set<String> x = new HashSet<>() so you can switch to LinkedHashSet or TreeSet with one word.", "Good habit: choose TreeSet only when you truly need sorted order or range queries."],
+         ["Galti: HashSet ke order par nirbhar rehna. Wo runs aur Java versions ke beech badal sakta hai.", "Galti: apni class ko equals() aur hashCode() ke bina HashSet me use karna, jisse duplicates reh jate hain.", "Galti: equals() override karna par hashCode() nahi (ya ulta), jisse sets aur maps toot jate hain.", "Galti: object HashSet me ho tab hashCode() ka hissa wala field badalna. Object kho jata hai.", "Galti: aisi class ka TreeSet jo Comparable nahi aur Comparator bhi nahi (ClassCastException).", "Galti: comparator 0 return kare tab bhi TreeSet se do items ko alag maanne ki ummeed. Wo sirf pehla rakhta hai.", "Galti: TreeSet me null jodna (NullPointerException).", "Galti: Set par get(i) use karne ki koshish. Index chahiye to List use karo.", "Galti: bade loop me List aur contains() (O(n squared)) jab HashSet wahi kaam O(n) me kar deta.", "Galti: ye bhul jana ki retainAll aur removeAll set ko badal dete hain. Pehle copy karo.", "Achhi aadat: Set<String> x = new HashSet<>() ki tarah declare karo taaki ek shabd se LinkedHashSet ya TreeSet par ja sako.", "Achhi aadat: TreeSet tabhi chuno jab sach me sorted order ya range queries chahiye."]],
+   tip: ["Interview questions: (1) How does HashSet find duplicates? By hashCode() to pick the bucket, then equals() to compare inside it. (2) Why must equals() and hashCode() be overridden together? Equal objects must have equal hash codes, or the set looks in the wrong bucket. (3) Difference between HashSet and TreeSet? Hash table, unordered, O(1) versus balanced tree, sorted, O(log n). (4) Can a Set hold null? HashSet and LinkedHashSet one, TreeSet none.", "Interview questions: (1) HashSet duplicates kaise dhundhta hai? hashCode() se bucket chunta hai, fir andar equals() se compare karta hai. (2) equals() aur hashCode() ko saath override kyun karna chahiye? Barabar objects ka hash code barabar hona chahiye, warna set galat bucket me dhundhta hai. (3) HashSet aur TreeSet me fark? Hash table, unordered, O(1) versus balanced tree, sorted, O(log n). (4) Kya Set null rakh sakta hai? HashSet aur LinkedHashSet ek, TreeSet koi nahi."]}
+ ]}
+});
+
+Object.assign(TOPICS, {
+47: {
+ def: ["A Map stores data as KEY-VALUE pairs: you look up a value by its key, like finding a phone number by a name or the marks by a roll number. Every key appears only once, while values may repeat. HashMap is the fast general-purpose map with no order, LinkedHashMap remembers insertion order, and TreeMap keeps its keys sorted. Maps are used in almost every real Java program.",
+       "Map data ko KEY-VALUE jodiyon me store karta hai: value ko uski key se dhundhte ho, jaise naam se phone number ya roll number se marks. Har key sirf ek baar aati hai, jabki values repeat ho sakti hain. HashMap tez general-purpose map hai jisme order nahi hota, LinkedHashMap insertion order yaad rakhta hai, aur TreeMap apni keys sorted rakhta hai. Maps lagbhag har real Java program me use hote hain."],
+ secs: [
+  {h: ["The idea: key to value", "Idea: key se value"],
+   p: ["A List finds items by position and a Set answers 'is it present?'. But many real questions are 'what goes with this?': the marks of roll number 12, the price of a product, the capital of a country. A Map answers exactly these. You give it a KEY and it returns the VALUE connected to that key, very quickly. Think of a dictionary (word to meaning) or the contacts app (name to number).",
+       "List items ko position se dhundhti hai aur Set batata hai 'kya ye maujood hai?'. Par kai asli sawal 'is cheez ke saath kya judta hai?' type ke hote hain: roll number 12 ke marks, kisi product ki keemat, kisi desh ki rajdhani. Map bilkul inhi ka jawab deta hai. Tum use KEY dete ho aur wo us key se jura VALUE bahut tezi se deta hai. Dictionary (word se matlab) ya contacts app (naam se number) socho."],
+   pts: [["A key is unique. Putting an existing key again REPLACES its value.", "Values can repeat and can be null.", "Map<K, V> is its own interface. It does NOT extend Collection, because it stores pairs.", "One key-value pair is called an entry (Map.Entry<K, V>).", "A Map gives three views: keySet() (all keys), values() (all values) and entrySet() (all pairs).", "Main classes: HashMap (fast, unordered), LinkedHashMap (insertion order), TreeMap (sorted keys)."],
+         ["Key unique hoti hai. Maujooda key ko dobara put karne par uski value REPLACE ho jati hai.", "Values repeat ho sakti hain aur null ho sakti hain.", "Map<K, V> apna alag interface hai. Ye Collection ko extend NAHI karta, kyunki ye jodiyan store karta hai.", "Ek key-value jodi ko entry (Map.Entry<K, V>) kehte hain.", "Map teen views deta hai: keySet() (saari keys), values() (saari values) aur entrySet() (saari jodiyan).", "Main classes: HashMap (tez, unordered), LinkedHashMap (insertion order), TreeMap (sorted keys)."]],
+   code: `import java.util.*;
+
+public class MapIdea {
+    public static void main(String[] args) {
+        Map<String, Integer> marks = new HashMap<>();   // K = String (name), V = Integer (marks)
+        marks.put("Rahul", 72);
+        marks.put("Gurleen", 91);
+        marks.put("Mohit", 55);
+
+        System.out.println(marks.get("Gurleen"));    // 91    (look up by key)
+        System.out.println(marks.size());            // 3
+        System.out.println(marks.get("Nobody"));     // null  (no such key)
+
+        Integer old = marks.put("Mohit", 60);        // the key exists: its value is REPLACED
+        System.out.println(old);                     // 55    (put returns the previous value)
+        System.out.println(marks.get("Mohit"));      // 60
+        System.out.println(marks.size());            // 3     (still three keys)
+
+        marks.put("Shivam", 72);                     // a repeated VALUE is fine
+        System.out.println(marks.containsValue(72)); // true
+    }
+}`},
+  {h: ["The everyday HashMap methods", "Roz ke HashMap methods"],
+   p: ["put, get, containsKey and remove are the four methods you will use most. get() returns null both when the key is missing AND when the key is present with a null value, so use containsKey() when the difference matters. Be careful with numbers: assigning the result of get() straight to an int crashes with NullPointerException when the key is missing, because null cannot be unboxed. getOrDefault() is the safe answer.",
+       "put, get, containsKey aur remove wo chaar methods hain jo tum sabse zyada use karoge. get() null tab bhi deta hai jab key hai hi nahi AUR tab bhi jab key hai par uski value null hai, isliye fark matter kare to containsKey() use karo. Numbers ke saath dhyan rakho: get() ke result ko seedha int me assign karne par key na hone par NullPointerException se crash hota hai, kyunki null ko unbox nahi kar sakte. getOrDefault() iska safe jawab hai."],
+   pts: [["put(k, v): adds or replaces. Returns the old value, or null if the key was new.", "get(k): the value, or null. containsKey(k): fast, O(1). containsValue(v): slow, O(n), because it checks every value.", "remove(k): removes the pair and returns the old value. remove(k, v) removes only if the value matches too.", "size(), isEmpty(), clear(), putAll(otherMap) work as in every collection.", "HashMap allows ONE null key and many null values. TreeMap and Hashtable do not allow a null key.", "Never rely on the order of a HashMap. It can change when the map grows."],
+         ["put(k, v): jodta hai ya replace karta hai. Purani value return karta hai, ya key nayi ho to null.", "get(k): value, ya null. containsKey(k): tez, O(1). containsValue(v): slow, O(n), kyunki har value check hoti hai.", "remove(k): jodi hatata hai aur purani value return karta hai. remove(k, v) tabhi hatata hai jab value bhi match kare.", "size(), isEmpty(), clear(), putAll(otherMap) har collection ki tarah kaam karte hain.", "HashMap EK null key aur kai null values allow karta hai. TreeMap aur Hashtable null key allow nahi karte.", "HashMap ke order par kabhi nirbhar mat raho. Map badhne par wo badal sakta hai."]],
+   code: `import java.util.*;
+
+public class MapMethods {
+    public static void main(String[] args) {
+        Map<String, Integer> m = new HashMap<>();
+        m.put("pen", 10);
+        m.put("book", 5);
+        m.put("ink", 2);
+
+        System.out.println(m.containsKey("pen"));     // true   (fast)
+        System.out.println(m.containsValue(5));       // true   (slow: checks every value)
+        System.out.println(m.remove("ink"));          // 2      (the removed value)
+        System.out.println(m.remove("ghost"));        // null   (nothing removed)
+        System.out.println(m.remove("book", 99));     // false  (value does not match, so nothing happens)
+        System.out.println(m.size());                 // 2
+
+        m.putAll(Map.of("cap", 3, "bag", 1));         // add many pairs
+        System.out.println(m.size());                 // 4
+
+        // null handling
+        m.put(null, 0);                               // ONE null key is allowed in a HashMap
+        m.put("blank", null);                         // null values are allowed
+        System.out.println(m.get(null));              // 0
+        System.out.println(m.get("blank"));           // null: missing, or present with null?
+        System.out.println(m.containsKey("blank"));   // true: containsKey answers that question
+
+        // DANGER: unboxing null
+        Map<String, Integer> scores = new HashMap<>();
+        // int s = scores.get("Mohit");               // NullPointerException
+        int safe = scores.getOrDefault("Mohit", 0);   // 0
+        System.out.println(safe);
+    }
+}`},
+  {h: ["Looping over a Map: entrySet, keySet and values", "Map par loop: entrySet, keySet aur values"],
+   p: ["A Map is not Iterable itself, so you loop over one of its three views. entrySet() is the best choice when you need both the key and the value, because every entry gives you both at once. Looping over keySet() and calling get() inside is correct but slower, since every key is looked up a second time. The views are LIVE: removing from the view removes from the map. That is the safe way to delete while looping, instead of calling map.remove() inside the loop (which throws ConcurrentModificationException).",
+       "Map khud Iterable nahi hai, isliye uske teen views me se kisi par loop chalate ho. Jab key aur value dono chahiye ho to entrySet() sabse achha choice hai, kyunki har entry dono ek saath deti hai. keySet() par loop chalakar andar get() call karna sahi hai par slow hai, kyunki har key ko dobara dhundha jata hai. Views LIVE hote hain: view se hatane par map se bhi hat jata hai. Loop ke dauran hatane ka safe tareeka yahi hai, loop ke andar map.remove() call karne ki jagah (jo ConcurrentModificationException deta hai)."],
+   code: `import java.util.*;
+
+public class MapLoops {
+    public static void main(String[] args) {
+        Map<String, Integer> m = new LinkedHashMap<>();   // linked, so the printed order is predictable
+        m.put("Himakshi", 88);
+        m.put("Shivam", 64);
+        m.put("Rahul", 72);
+
+        // 1) entrySet: key and value together (the best way)
+        for (Map.Entry<String, Integer> e : m.entrySet()) {
+            System.out.println(e.getKey() + " -> " + e.getValue());
+        }
+        // Himakshi -> 88
+        // Shivam -> 64
+        // Rahul -> 72
+
+        // 2) keySet: only keys
+        for (String name : m.keySet()) System.out.print(name + " ");   // Himakshi Shivam Rahul
+        System.out.println();
+
+        // 3) values: only values
+        int total = 0;
+        for (int v : m.values()) total += v;
+        System.out.println(total);                          // 224
+
+        // 4) forEach with a lambda (lesson 54)
+        m.forEach((k, v) -> System.out.println(k + "=" + v));
+
+        // Changing values through the entries
+        for (Map.Entry<String, Integer> e : m.entrySet()) {
+            e.setValue(e.getValue() + 5);                   // grace marks
+        }
+        System.out.println(m);                              // {Himakshi=93, Shivam=69, Rahul=77}
+
+        // Removing safely: use the live views
+        m.entrySet().removeIf(e -> e.getValue() < 70);
+        System.out.println(m);                              // {Himakshi=93, Rahul=77}
+        m.keySet().removeIf(k -> k.startsWith("R"));
+        System.out.println(m);                              // {Himakshi=93}
+
+        // WRONG: changing the map itself during the loop
+        // for (String k : m.keySet()) m.remove(k);         // ConcurrentModificationException
+    }
+}`},
+  {h: ["Powerful methods: getOrDefault, putIfAbsent, computeIfAbsent, merge", "Taqatwar methods: getOrDefault, putIfAbsent, computeIfAbsent, merge"],
+   p: ["Since Java 8 a Map has methods that replace the long 'get, check null, then put' code with one call. getOrDefault gives a fallback. putIfAbsent adds only when the key is missing. computeIfAbsent builds a missing value on demand, which is perfect for a map of lists. merge combines a new value with the existing one, the shortest way to count things. Integer::sum is a method reference (you will learn the syntax in lesson 54), and it simply means 'add the two numbers'.",
+       "Java 8 se Map ke paas aise methods hain jo lambe 'get karo, null check karo, fir put karo' code ko ek call me badal dete hain. getOrDefault fallback deta hai. putIfAbsent tabhi jodta hai jab key na ho. computeIfAbsent missing value zaroorat par banata hai, jo lists ke map ke liye perfect hai. merge nayi value ko maujooda value se milata hai, cheezein ginne ka sabse chhota tareeka. Integer::sum method reference hai (syntax lesson 54 me seekhoge), aur iska matlab bas 'do numbers ko jodo' hai."],
+   pts: [["getOrDefault(k, d): the value, or d when the key is missing (and the key is NOT added).", "putIfAbsent(k, v): adds the pair only if the key is missing or maps to null.", "computeIfAbsent(k, f): if the key is missing, runs f to create the value, stores it and returns it.", "computeIfPresent(k, f) and compute(k, f): update the value of an existing key (compute also runs for a missing key).", "merge(k, v, f): puts v if the key is missing, otherwise stores f(oldValue, v). If f returns null the key is removed.", "replace(k, v), replaceAll(f), remove(k, v) are handy too.", "These methods make counting and grouping short and also avoid extra lookups."],
+         ["getOrDefault(k, d): value, ya key na ho to d (aur key add NAHI hoti).", "putIfAbsent(k, v): jodi tabhi jodta hai jab key na ho ya null se map ho.", "computeIfAbsent(k, f): key na ho to f chalakar value banata hai, store karta hai aur return karta hai.", "computeIfPresent(k, f) aur compute(k, f): maujooda key ki value update karte hain (compute missing key par bhi chalta hai).", "merge(k, v, f): key na ho to v rakhta hai, warna f(purani, v) store karta hai. f null return kare to key hat jati hai.", "replace(k, v), replaceAll(f), remove(k, v) bhi kaam ke hain.", "Ye methods counting aur grouping ko chhota banate hain aur extra lookups bhi bachate hain."]],
+   code: `import java.util.*;
+
+public class ModernMapMethods {
+    public static void main(String[] args) {
+        Map<String, Integer> stock = new HashMap<>();
+        stock.put("pen", 10);
+
+        System.out.println(stock.getOrDefault("pen", 0));    // 10
+        System.out.println(stock.getOrDefault("book", 0));   // 0  (and "book" is NOT added)
+
+        stock.putIfAbsent("pen", 99);                        // pen exists: unchanged
+        stock.putIfAbsent("book", 5);                        // added
+        stock.merge("pen", 3, Integer::sum);                 // 10 + 3 = 13
+        stock.merge("ink", 1, Integer::sum);                 // key missing: stores 1
+        stock.compute("book", (k, v) -> v == null ? 1 : v * 2);   // 5 becomes 10
+        stock.computeIfPresent("ink", (k, v) -> v + 100);    // 1 becomes 101
+        stock.computeIfAbsent("eraser", k -> 7);             // added with 7
+        System.out.println(new TreeMap<>(stock));            // {book=10, eraser=7, ink=101, pen=13}
+
+        // Counting words: the classic use of merge
+        String text = "to be or not to be";
+        Map<String, Integer> freq = new TreeMap<>();
+        for (String w : text.split(" ")) {
+            freq.merge(w, 1, Integer::sum);
+        }
+        System.out.println(freq);                            // {be=2, not=1, or=1, to=2}
+
+        // Grouping: a map of lists, built with computeIfAbsent
+        Map<Integer, List<String>> byLength = new TreeMap<>();
+        for (String w : List.of("Rahul", "Mohit", "Gurleen", "Shivam", "Himakshi")) {
+            byLength.computeIfAbsent(w.length(), k -> new ArrayList<>()).add(w);
+        }
+        System.out.println(byLength);
+        // {5=[Rahul, Mohit], 6=[Shivam], 7=[Gurleen], 8=[Himakshi]}
+
+        // The same counting WITHOUT merge (the old, longer way)
+        Map<String, Integer> old = new TreeMap<>();
+        for (String w : text.split(" ")) {
+            if (old.containsKey(w)) old.put(w, old.get(w) + 1);
+            else old.put(w, 1);
+        }
+        System.out.println(old.equals(freq));                // true
+    }
+}`},
+  {h: ["How a HashMap works inside", "HashMap andar se kaise kaam karta hai"],
+   p: ["A HashMap is an array of 'buckets'. When you put a key, Java calls its hashCode(), mixes the bits a little, and uses the result to pick one bucket, so get() can jump straight to the right bucket without searching the whole map. Two different keys can land in the same bucket (a collision). The bucket then holds a small chain of entries, and equals() decides which one is yours. If a chain grows to 8 entries (and the table is large enough), Java turns that bucket into a balanced tree so that even bad collisions stay fast. When the map is 75 percent full (the load factor), it doubles the table and re-places all entries (rehashing).",
+       "HashMap 'buckets' ka array hai. Key put karte ho to Java uska hashCode() call karta hai, bits ko thoda mix karta hai, aur result se ek bucket chunta hai, isliye get() poore map me dhundhe bina seedha sahi bucket par kood jata hai. Do alag keys ek hi bucket me aa sakti hain (collision). Tab bucket me entries ki chhoti chain hoti hai, aur equals() tay karta hai ki kaun si tumhari hai. Chain 8 entries tak badh jaye (aur table kaafi bada ho) to Java us bucket ko balanced tree bana deta hai taaki buri collisions bhi tez rahein. Map 75 percent bhar jaye (load factor) to wo table double karta hai aur saari entries dobara rakhta hai (rehashing)."],
+   pts: [["Default capacity 16 buckets, load factor 0.75. A bigger initial capacity avoids repeated rehashing: new HashMap<>(10000).", "get, put, containsKey and remove are O(1) on average, and O(log n) in the worst case thanks to the tree buckets (Java 8+).", "Both hashCode() and equals() of the KEY class matter. Good hash codes spread keys over many buckets.", "The iteration order depends on the buckets, so it is not the insertion order and may change after a resize.", "HashMap is NOT thread-safe. For threads use ConcurrentHashMap (Phase 4).", "The old Hashtable is synchronized and slow. Do not use it in new code."],
+         ["Default capacity 16 buckets, load factor 0.75. Bada initial capacity baar-baar rehashing bachata hai: new HashMap<>(10000).", "get, put, containsKey aur remove average par O(1) hain, aur tree buckets ki wajah se worst case me O(log n) (Java 8+).", "KEY class ke hashCode() aur equals() dono matter karte hain. Achhe hash codes keys ko kai buckets me failate hain.", "Iteration order buckets par nirbhar hai, isliye wo insertion order nahi hota aur resize ke baad badal sakta hai.", "HashMap thread-safe NAHI hai. Threads ke liye ConcurrentHashMap use karo (Phase 4).", "Purana Hashtable synchronized aur slow hai. Naye code me use mat karo."]],
+   code: `// Inside a HashMap (simplified picture)
+//
+// table (an array of buckets), default length 16:
+//
+//  index:   0      1                          2     3  ...
+//           |      |
+//           v      v
+//          null   [key, value, hash, next] -> [key, value, hash, next] -> null    <- a chain
+//                  (two keys that collided in bucket 1)
+//
+// put("Mohit", 55):
+//   1. h = "Mohit".hashCode()
+//   2. spread the bits: h = h ^ (h >>> 16)
+//   3. index = (table.length - 1) & h          -> which bucket
+//   4. the bucket is empty: place the entry there.
+//      otherwise walk the chain:
+//          equals() is true for a key  -> replace that entry's value
+//          end of the chain reached    -> append a new entry
+//   5. size > capacity * 0.75 ?  -> resize: double the table and re-place every entry
+//
+// get("Mohit"): steps 1 to 3, then walk that one bucket comparing with equals().`},
+  {h: ["Keys of your own class: equals, hashCode and immutability", "Apni class ki keys: equals, hashCode aur immutability"],
+   p: ["Any object can be a key, but the key class must have a correct equals() and hashCode() (the same rule as for HashSet). Even more important: a key must NOT change after it was put into the map. If a field that is used in hashCode() changes, the entry sits in the old bucket while lookups go to the new bucket, and the entry becomes impossible to find, although it still takes up space. That is why String, Integer and other immutable classes are the best keys.",
+       "Koi bhi object key ban sakta hai, par key class me sahi equals() aur hashCode() hona chahiye (HashSet wala hi rule). Isse bhi zaroori: key map me put hone ke BAAD badalni NAHI chahiye. hashCode() me use hone wala field badal jaye to entry purane bucket me padi rehti hai jabki lookups naye bucket me jate hain, aur entry dhundhna namumkin ho jata hai, bhale hi wo jagah gher rahi ho. Isi liye String, Integer aur dusri immutable classes sabse achhi keys hain."],
+   code: `import java.util.*;
+
+class Roll {                                   // a safe key: final field, equals AND hashCode
+    private final int number;
+    Roll(int number) { this.number = number; }
+
+    @Override public boolean equals(Object o) {
+        return o instanceof Roll && ((Roll) o).number == number;
+    }
+    @Override public int hashCode() { return Integer.hashCode(number); }
+    @Override public String toString() { return "Roll#" + number; }
+}
+
+class BadKey {                                 // a dangerous key: the field is NOT final
+    int id;
+    BadKey(int id) { this.id = id; }
+    @Override public boolean equals(Object o) { return o instanceof BadKey && ((BadKey) o).id == id; }
+    @Override public int hashCode() { return Integer.hashCode(id); }
+}
+
+public class CustomKeys {
+    public static void main(String[] args) {
+        Map<Roll, String> students = new HashMap<>();
+        students.put(new Roll(7), "Gurleen");
+        System.out.println(students.get(new Roll(7)));       // Gurleen (a DIFFERENT object, but equal)
+        System.out.println(students.containsKey(new Roll(8)));   // false
+
+        Map<BadKey, String> bad = new HashMap<>();
+        BadKey k = new BadKey(1);
+        bad.put(k, "one");
+        System.out.println(bad.get(new BadKey(1)));          // one
+
+        k.id = 2;                                            // changed AFTER it became a key
+        System.out.println(bad.get(k));                      // null  (looks in the bucket of hash 2)
+        System.out.println(bad.get(new BadKey(1)));          // null  (right bucket, but the stored key now has id 2)
+        System.out.println(bad.size());                      // 1     (the entry is still there, but lost)
+    }
+}`,
+   tip: ["Rule: use immutable keys (String, Integer, enum, or your own class with final fields). If you must use a mutable object as a key, never change it while it is in the map.", "Rule: immutable keys use karo (String, Integer, enum, ya final fields wali apni class). Mutable object ko key banana hi pade to use map me rehte hue kabhi mat badlo."]},
+  {h: ["LinkedHashMap: insertion order and a simple cache", "LinkedHashMap: insertion order aur ek simple cache"],
+   p: ["LinkedHashMap is a HashMap that also links its entries in a chain, so it remembers the order in which keys were first inserted. It is almost as fast as HashMap. Switch it to ACCESS ORDER (a third constructor argument true) and the order changes every time you read or write an entry, with the most recently used entry going to the end. Together with the removeEldestEntry hook, this gives you an LRU cache (least recently used) in about five lines.",
+       "LinkedHashMap aisa HashMap hai jo apni entries ko chain me bhi jodta hai, isliye wo yaad rakhta hai ki keys kis order me pehli baar daali gayi. Ye HashMap jitna hi tez hai. Use ACCESS ORDER par kar do (teesra constructor argument true) to har baar entry padhne ya likhne par order badalta hai, aur sabse haal me use hui entry end me chali jati hai. removeEldestEntry hook ke saath isse LRU cache (least recently used) lagbhag paanch lines me ban jata hai."],
+   code: `import java.util.*;
+
+class LruCache<K, V> extends LinkedHashMap<K, V> {
+    private final int capacity;
+
+    LruCache(int capacity) {
+        super(16, 0.75f, true);                 // true = access order
+        this.capacity = capacity;
+    }
+
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+        return size() > capacity;               // drop the least recently used entry
+    }
+}
+
+public class LinkedMapDemo {
+    public static void main(String[] args) {
+        // Insertion order (the default)
+        Map<String, Integer> m = new LinkedHashMap<>();
+        m.put("Shivam", 3);
+        m.put("Gurleen", 1);
+        m.put("Mohit", 2);
+        m.put("Gurleen", 9);                    // the key exists: its position does not change
+        System.out.println(m);                  // {Shivam=3, Gurleen=9, Mohit=2}
+
+        // LRU cache with room for 2 entries
+        LruCache<String, String> cache = new LruCache<>(2);
+        cache.put("a", "apple");
+        cache.put("b", "banana");
+        cache.get("a");                         // "a" is now the most recently used
+        cache.put("c", "cherry");               // too many: the eldest entry, "b", is dropped
+        System.out.println(cache.keySet());     // [a, c]
+    }
+}`},
+  {h: ["TreeMap: keys always sorted", "TreeMap: keys hamesha sorted"],
+   p: ["TreeMap keeps its keys in sorted order at all times. It is a balanced tree (a red-black tree) inside, so put, get, containsKey and remove take O(log n), a little slower than HashMap but still very fast. Its great strength is the navigation methods that rely on the order: the smallest and biggest key, the nearest key below or above a value (even a value that is not in the map), and slices of the map. Keys must be comparable (like String and Integer) or you must pass a Comparator, and a null key is not allowed.",
+       "TreeMap apni keys ko hamesha sorted order me rakhta hai. Andar ye balanced tree (red-black tree) hota hai, isliye put, get, containsKey aur remove O(log n) lete hain, HashMap se thoda slow par phir bhi bahut tez. Iski badi taqat navigation methods hain jo order par nirbhar hain: sabse chhoti aur sabse badi key, kisi value ke neeche ya upar ki sabse paas wali key (wo value map me na ho tab bhi), aur map ke tukde. Keys comparable honi chahiye (jaise String aur Integer) ya Comparator dena padega, aur null key allowed nahi hai."],
+   pts: [["firstKey(), lastKey(), firstEntry(), lastEntry(): the ends. pollFirstEntry() and pollLastEntry() also remove.", "floorKey(k): greatest key <= k. ceilingKey(k): smallest key >= k. lowerKey(k): greatest key < k. higherKey(k): smallest key > k. They return null when nothing fits.", "headMap(k): keys < k. tailMap(k): keys >= k. subMap(from, to): from included, to excluded. These are VIEWS of the same data.", "descendingMap() and descendingKeySet() give the reverse order.", "A TreeMap decides that two keys are 'the same' using compareTo or the Comparator (0 means the same), not equals().", "Not thread-safe. No null keys (null values are allowed)."],
+         ["firstKey(), lastKey(), firstEntry(), lastEntry(): dono ends. pollFirstEntry() aur pollLastEntry() hatate bhi hain.", "floorKey(k): sabse badi key <= k. ceilingKey(k): sabse chhoti key >= k. lowerKey(k): sabse badi key < k. higherKey(k): sabse chhoti key > k. Kuch fit na ho to null return karte hain.", "headMap(k): keys < k. tailMap(k): keys >= k. subMap(from, to): from shamil, to shamil nahi. Ye usi data ke VIEWS hain.", "descendingMap() aur descendingKeySet() ulta order dete hain.", "TreeMap do keys ko 'same' maanne ka faisla compareTo ya Comparator se karta hai (0 ka matlab same), equals() se nahi.", "Thread-safe nahi hai. Null keys nahi (null values allowed hain)."]],
+   code: `import java.util.*;
+
+public class TreeMapDemo {
+    public static void main(String[] args) {
+        TreeMap<String, Integer> tm = new TreeMap<>();
+        tm.put("Shivam", 64);
+        tm.put("Gurleen", 91);
+        tm.put("Mohit", 55);
+        tm.put("Himakshi", 88);
+        System.out.println(tm);                       // {Gurleen=91, Himakshi=88, Mohit=55, Shivam=64}
+
+        System.out.println(tm.firstKey());            // Gurleen
+        System.out.println(tm.lastKey());             // Shivam
+        System.out.println(tm.firstEntry());          // Gurleen=91
+
+        // Nearest keys of a value that is NOT in the map
+        System.out.println(tm.floorKey("Kabir"));     // Himakshi  (greatest key <= "Kabir")
+        System.out.println(tm.ceilingKey("Kabir"));   // Mohit     (smallest key >= "Kabir")
+        System.out.println(tm.higherKey("Shivam"));   // null      (nothing after Shivam)
+
+        System.out.println(tm.headMap("Mohit"));      // {Gurleen=91, Himakshi=88}
+        System.out.println(tm.tailMap("Mohit"));      // {Mohit=55, Shivam=64}
+        System.out.println(tm.subMap("Himakshi", "Shivam"));   // {Himakshi=88, Mohit=55}
+        System.out.println(tm.descendingMap());       // {Shivam=64, Mohit=55, Himakshi=88, Gurleen=91}
+
+        System.out.println(tm.pollFirstEntry());      // Gurleen=91   (removed)
+        System.out.println(tm.size());                // 3
+
+        // A comparator changes the order
+        TreeMap<String, Integer> ci = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);
+        ci.put("banana", 1);
+        ci.put("Apple", 2);
+        ci.put("cherry", 3);
+        ci.put("APPLE", 99);                          // same key as "Apple" for this comparator
+        System.out.println(ci);                       // {Apple=99, banana=1, cherry=3}
+
+        // A real use: a grade table. floorEntry finds the right band.
+        TreeMap<Integer, String> grades = new TreeMap<>();
+        grades.put(0, "F");
+        grades.put(40, "C");
+        grades.put(60, "B");
+        grades.put(75, "A");
+        grades.put(90, "A+");
+        System.out.println(grades.floorEntry(82).getValue());   // A
+        System.out.println(grades.floorEntry(39).getValue());   // F
+        System.out.println(grades.floorEntry(90).getValue());   // A+
+    }
+}`},
+  {h: ["HashMap vs LinkedHashMap vs TreeMap, and immutable maps", "HashMap vs LinkedHashMap vs TreeMap, aur immutable maps"],
+   p: ["Choose by two questions: do I need an order, and do I need range or nearest-key searches? If both answers are no, use HashMap. The facts below are standard interview material. Map.of(...) (Java 9+) builds a small read-only map in one line: no nulls, no duplicate keys, and the iteration order is unspecified. Map.copyOf makes an immutable copy.",
+       "Do sawalon se chuno: kya mujhe order chahiye, aur kya mujhe range ya nearest-key searches chahiye? Dono jawab nahi hon to HashMap use karo. Neeche ke facts standard interview material hain. Map.of(...) (Java 9+) ek line me chhota read-only map banata hai: null nahi, duplicate keys nahi, aur iteration order tay nahi. Map.copyOf immutable copy banata hai."],
+   pts: [["Order: HashMap none, LinkedHashMap insertion (or access) order, TreeMap sorted by key.", "Speed of get and put: HashMap and LinkedHashMap O(1), TreeMap O(log n).", "Null key: HashMap one, LinkedHashMap one, TreeMap none, Hashtable none, Map.of none.", "Keys are compared with: hashCode() and equals() (Hash and Linked), compareTo or Comparator (TreeMap).", "Extra methods: only TreeMap has the navigation methods (floor, ceiling, headMap, and so on).", "Memory: HashMap lowest, LinkedHashMap a bit more, TreeMap the most.", "Thread safety: none of the three. Use ConcurrentHashMap, or wrap with Collections.synchronizedMap.", "Hashtable and Vector are legacy classes. Prefer HashMap and ArrayList.", "EnumMap is a very fast map when the keys are the values of one enum."],
+         ["Order: HashMap koi nahi, LinkedHashMap insertion (ya access) order, TreeMap key se sorted.", "get aur put ki speed: HashMap aur LinkedHashMap O(1), TreeMap O(log n).", "Null key: HashMap ek, LinkedHashMap ek, TreeMap koi nahi, Hashtable koi nahi, Map.of koi nahi.", "Keys ki tulna: hashCode() aur equals() (Hash aur Linked), compareTo ya Comparator (TreeMap).", "Extra methods: navigation methods (floor, ceiling, headMap waghera) sirf TreeMap me hain.", "Memory: HashMap sabse kam, LinkedHashMap thodi zyada, TreeMap sabse zyada.", "Thread safety: teeno me nahi. ConcurrentHashMap use karo, ya Collections.synchronizedMap se lapeto.", "Hashtable aur Vector purani classes hain. HashMap aur ArrayList prefer karo.", "EnumMap bahut tez map hai jab keys ek enum ki values ho."]],
+   code: `import java.util.*;
+
+public class ImmutableMaps {
+    public static void main(String[] args) {
+        Map<String, Integer> limits = Map.of("small", 10, "medium", 50, "large", 100);
+        System.out.println(limits.get("medium"));          // 50
+        // limits.put("huge", 500);                         // UnsupportedOperationException
+        // Map.of("a", 1, "a", 2);                          // IllegalArgumentException: duplicate key
+        // Map.of("a", null);                               // NullPointerException
+
+        // More than 10 pairs: use ofEntries
+        Map<Integer, String> days = Map.ofEntries(
+            Map.entry(1, "Mon"), Map.entry(2, "Tue"), Map.entry(3, "Wed"));
+        System.out.println(days.get(2));                    // Tue
+
+        // A changeable copy
+        Map<String, Integer> mine = new HashMap<>(limits);
+        mine.put("huge", 500);
+        System.out.println(mine.size());                    // 4
+
+        Map<String, Integer> frozen = Map.copyOf(mine);     // an immutable copy
+        System.out.println(frozen.size());                  // 4
+
+        // Same data, three different maps
+        Map<String, Integer> sorted = new TreeMap<>(mine);
+        System.out.println(sorted);                         // {huge=500, large=100, medium=50, small=10}
+    }
+}`},
+  {h: ["Practical examples", "Practical examples"],
+   p: ["These five jobs cover most of what maps are used for: counting, finding a pair in one pass, remembering the first of something, sorting by value and a phone book. Notice how each one turns a slow nested loop (O(n squared)) into a single pass (O(n)) by trading a little memory for speed.",
+       "Ye paanch kaam maps ke zyadatar use cover karte hain: ginna, ek hi pass me jodi dhundhna, kisi cheez ka pehla yaad rakhna, value se sort karna aur phone book. Dhyan do ki har ek slow nested loop (O(n squared)) ko thodi memory dekar ek pass (O(n)) me badal deta hai."],
+   code: `import java.util.*;
+
+public class MapExamples {
+    // 1) Two sum in ONE pass: remember each value and its index
+    static int[] twoSum(int[] a, int target) {
+        Map<Integer, Integer> seen = new HashMap<>();       // value -> index
+        for (int i = 0; i < a.length; i++) {
+            Integer j = seen.get(target - a[i]);
+            if (j != null) return new int[]{j, i};
+            seen.put(a[i], i);
+        }
+        return new int[]{-1, -1};
+    }
+
+    // 2) First character that appears only once
+    static char firstUnique(String s) {
+        Map<Character, Integer> count = new LinkedHashMap<>();   // keeps the first-seen order
+        for (char c : s.toCharArray()) count.merge(c, 1, Integer::sum);
+        for (Map.Entry<Character, Integer> e : count.entrySet()) {
+            if (e.getValue() == 1) return e.getKey();
+        }
+        return '-';
+    }
+
+    // 3) Anagram groups: words with the same sorted letters share a key
+    static Map<String, List<String>> groupAnagrams(List<String> words) {
+        Map<String, List<String>> groups = new TreeMap<>();
+        for (String w : words) {
+            char[] letters = w.toCharArray();
+            Arrays.sort(letters);
+            groups.computeIfAbsent(new String(letters), k -> new ArrayList<>()).add(w);
+        }
+        return groups;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(Arrays.toString(twoSum(new int[]{2, 7, 11, 15}, 9)));   // [0, 1]
+        System.out.println(firstUnique("swiss"));                                   // w
+        System.out.println(groupAnagrams(List.of("listen", "silent", "enlist", "google", "gogole")));
+        // {eggloo=[google, gogole], eilnst=[listen, silent, enlist]}
+
+        // 4) Sort a map BY VALUE (a map itself cannot be sorted by value, so use a list of entries)
+        Map<String, Integer> marks = new HashMap<>();
+        marks.put("Rahul", 72);
+        marks.put("Gurleen", 91);
+        marks.put("Mohit", 55);
+        marks.put("Himakshi", 88);
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(marks.entrySet());
+        entries.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));   // highest first
+        for (Map.Entry<String, Integer> e : entries) {
+            System.out.println(e.getKey() + " " + e.getValue());
+        }
+        // Gurleen 91
+        // Himakshi 88
+        // Rahul 72
+        // Mohit 55
+
+        // 5) A phone book: TreeMap keeps the names sorted, ready for printing
+        Map<String, String> book = new TreeMap<>();
+        book.put("Shivam", "98100 11111");
+        book.put("Mohit", "98100 22222");
+        book.put("Gurleen", "98100 33333");
+        book.forEach((name, number) -> System.out.println(name + ": " + number));
+        // Gurleen: 98100 33333
+        // Mohit: 98100 22222
+        // Shivam: 98100 11111
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: int x = map.get(key); when the key may be missing. It throws NullPointerException. Use getOrDefault or check containsKey.", "Mistake: treating a null from get() as 'missing' when the value itself may be null. Use containsKey.", "Mistake: expecting a HashMap to keep insertion order. Use LinkedHashMap.", "Mistake: using a key class without equals() and hashCode(), so lookups with an equal object fail.", "Mistake: changing a key object after it was put into the map. The entry becomes lost.", "Mistake: calling map.remove() or map.put() of a new key inside a loop over the map (ConcurrentModificationException). Use removeIf or an iterator.", "Mistake: looping over keySet() and calling get() for every key. Loop over entrySet().", "Mistake: using containsValue() in a loop. It is O(n). Keep a second map or a set if you need fast value lookups.", "Mistake: putting null as a key into a TreeMap, Hashtable or Map.of (NullPointerException).", "Mistake: using a mutable list as a key.", "Good habit: declare as Map<K, V> m = new HashMap<>() so you can switch the class by changing one word.", "Good habit: use merge for counting and computeIfAbsent for grouping. They are shorter and faster than get, check and put."],
+         ["Galti: key na ho sakti ho tab int x = map.get(key);. Ye NullPointerException deta hai. getOrDefault ya containsKey use karo.", "Galti: get() ke null ko 'missing' maan lena jabki value khud null ho sakti hai. containsKey use karo.", "Galti: HashMap se insertion order ki ummeed. LinkedHashMap use karo.", "Galti: equals() aur hashCode() ke bina key class use karna, jisse barabar object se lookup fail ho jata hai.", "Galti: key object ko map me put karne ke baad badalna. Entry kho jati hai.", "Galti: map par loop ke andar map.remove() ya nayi key ka put() call karna (ConcurrentModificationException). removeIf ya iterator use karo.", "Galti: keySet() par loop chalakar har key ke liye get() call karna. entrySet() par loop chalao.", "Galti: loop me containsValue() use karna. Ye O(n) hai. Tez value lookups chahiye to doosra map ya set rakho.", "Galti: TreeMap, Hashtable ya Map.of me null key daalna (NullPointerException).", "Galti: mutable list ko key banana.", "Achhi aadat: Map<K, V> m = new HashMap<>() ki tarah declare karo taaki ek shabd se class badal sako.", "Achhi aadat: ginne ke liye merge aur grouping ke liye computeIfAbsent use karo. Ye get, check aur put se chhote aur tez hain."]],
+   tip: ["Interview questions: (1) How does HashMap work internally? hashCode picks a bucket, equals finds the key inside it, collisions form a chain that becomes a tree at 8 entries, and the table doubles at 75 percent full. (2) HashMap vs Hashtable? HashMap is not synchronized and allows one null key, Hashtable is synchronized and allows no null. (3) Why should keys be immutable? A changed hash code loses the entry. (4) HashMap vs TreeMap? Unordered O(1) versus sorted O(log n).", "Interview questions: (1) HashMap andar se kaise kaam karta hai? hashCode bucket chunta hai, equals andar key dhundhta hai, collisions chain banati hain jo 8 entries par tree ban jati hai, aur table 75 percent bharne par double hota hai. (2) HashMap vs Hashtable? HashMap synchronized nahi hai aur ek null key allow karta hai, Hashtable synchronized hai aur null allow nahi karta. (3) Keys immutable kyun hone chahiye? Hash code badalne se entry kho jati hai. (4) HashMap vs TreeMap? Unordered O(1) versus sorted O(log n)."]}
+ ]},
+48: {
+ def: ["An Iterator is an object that walks through the elements of a collection one at a time. It has three core methods: hasNext() (is there another element?), next() (give me the next element and move forward) and remove() (delete the element that next() just returned). Any class that implements the Iterable interface can be used in a for-each loop, because the for-each loop is only a neat way of writing an iterator loop.",
+       "Iterator ek object hai jo collection ke elements par ek-ek karke chalta hai. Iske teen core methods hain: hasNext() (kya aur element hai?), next() (agla element do aur aage badho) aur remove() (wo element hatao jo next() ne abhi diya). Jo bhi class Iterable interface implement kare wo for-each loop me use ho sakti hai, kyunki for-each loop sirf iterator loop likhne ka saaf tareeka hai."],
+ secs: [
+  {h: ["Why iterators exist", "Iterators kyun hain"],
+   p: ["An ArrayList keeps items in an array, a LinkedList in a chain of nodes, a TreeSet in a tree and a HashSet in a hash table. Walking through each of them needs different code. An Iterator hides that difference: you ask the collection for an iterator, and then you use the same three methods on every kind of collection, without knowing how the data is stored inside. The interface that promises 'I can give you an iterator' is called Iterable, and Collection extends it, so every list, set and queue is Iterable.",
+       "ArrayList items ko array me, LinkedList nodes ki chain me, TreeSet tree me aur HashSet hash table me rakhta hai. Inme se har ek par chalne ke liye alag code chahiye hota. Iterator ye farak chhupa deta hai: tum collection se iterator maangte ho, aur fir har kisam ki collection par wahi teen methods use karte ho, ye jaane bina ki data andar kaise store hai. Jo interface vaada karta hai 'main tumhe iterator de sakta hoon' wo Iterable hai, aur Collection use extend karta hai, isliye har list, set aur queue Iterable hai."],
+   pts: [["Iterable<T> has one method: Iterator<T> iterator(). Anything Iterable works in a for-each loop.", "Iterator<T> has hasNext(), next() and remove() (plus forEachRemaining() since Java 8).", "An iterator is a ONE-WAY, ONE-USE cursor: it moves forward only and cannot be reset. Ask the collection for a new iterator to start again.", "Maps are not Iterable. You iterate over map.keySet(), map.values() or map.entrySet().", "Arrays are not Iterable either, but the for-each loop has special support for them."],
+         ["Iterable<T> ka ek method hai: Iterator<T> iterator(). Jo bhi Iterable ho wo for-each loop me chalta hai.", "Iterator<T> ke paas hasNext(), next() aur remove() hain (saath me Java 8 se forEachRemaining()).", "Iterator ek EK-TARAFA, EK BAAR USE hone wala cursor hai: sirf aage badhta hai aur reset nahi hota. Dobara shuru karne ke liye collection se naya iterator maango.", "Maps Iterable nahi hain. map.keySet(), map.values() ya map.entrySet() par iterate karte ho.", "Arrays bhi Iterable nahi hain, par for-each loop ko unke liye khaas support milta hai."]],
+   code: `import java.util.*;
+
+public class SameLoopEverywhere {
+    // ONE method that works for a list, a set, a queue... any Iterable
+    static <T> void printAll(Iterable<T> items) {
+        for (T item : items) System.out.print(item + " ");
+        System.out.println();
+    }
+
+    public static void main(String[] args) {
+        printAll(new ArrayList<>(List.of("Rahul", "Gurleen")));      // Rahul Gurleen
+        printAll(new LinkedList<>(List.of(1, 2, 3)));                // 1 2 3
+        printAll(new TreeSet<>(List.of(30, 10, 20)));                // 10 20 30
+        printAll(new ArrayDeque<>(List.of('a', 'b')));               // a b
+        printAll(new HashMap<>(Map.of("k", 1)).keySet());            // k
+    }
+}`},
+  {h: ["The three methods in action", "Teeno methods action me"],
+   p: ["The pattern is always the same: while (it.hasNext()) { x = it.next(); ... }. hasNext() asks without moving. next() returns the item and moves forward, and it throws NoSuchElementException if there is no item left, so always check hasNext() first. Call next() only ONCE per round: calling it twice in one round skips an item, which is a very common bug.",
+       "Pattern hamesha wahi hota hai: while (it.hasNext()) { x = it.next(); ... }. hasNext() bina hile poochta hai. next() item deta hai aur aage badhta hai, aur koi item na bacha ho to NoSuchElementException deta hai, isliye pehle hamesha hasNext() check karo. next() ko ek round me sirf EK baar call karo: ek round me do baar call karne se ek item skip ho jata hai, jo bahut common bug hai."],
+   code: `import java.util.*;
+
+public class IteratorBasics {
+    public static void main(String[] args) {
+        List<String> names = new ArrayList<>(List.of("Himakshi", "Mohit", "Shivam"));
+
+        Iterator<String> it = names.iterator();
+        while (it.hasNext()) {
+            String n = it.next();                    // call next() only ONCE per round
+            System.out.println(n.toUpperCase());     // HIMAKSHI, MOHIT, SHIVAM
+        }
+        System.out.println(it.hasNext());            // false: the iterator is used up
+
+        // it.next();                                // NoSuchElementException
+        // An iterator cannot go back or restart. Ask for a new one:
+        Iterator<String> again = names.iterator();
+        System.out.println(again.next());            // Himakshi
+
+        // forEachRemaining: process whatever is left
+        again.forEachRemaining(s -> System.out.print(s + " "));   // Mohit Shivam
+        System.out.println();
+
+        // BUG: two next() calls in one round skip an item
+        Iterator<String> bug = names.iterator();
+        while (bug.hasNext()) {
+            if (bug.next().startsWith("H")) {
+                System.out.println("found " + bug.next());   // prints Mohit, but Mohit is skipped by the test
+            }
+        }
+    }
+}`},
+  {h: ["The for-each loop is an iterator in disguise", "for-each loop bhesh badla hua iterator hai"],
+   p: ["When you write for (String s : list), the compiler rewrites it into an iterator loop for you. Knowing this explains two facts. First, for-each works only on Iterable things and arrays. Second, the loop variable is just a copy of the reference returned by next(), so reassigning it does not change the collection. And because the loop hides the iterator, you cannot call remove() on it, which is why removing inside a for-each loop is a problem.",
+       "for (String s : list) likhte ho to compiler use tumhare liye iterator loop me badal deta hai. Ye jaanne se do baatein samajh aati hain. Pehli, for-each sirf Iterable cheezon aur arrays par chalta hai. Doosri, loop variable next() se mile reference ki sirf copy hai, isliye use dobara assign karne se collection nahi badalta. Aur loop iterator ko chhupa deta hai, isliye uspar remove() call nahi kar sakte, isi wajah se for-each loop me hatana problem hai."],
+   code: `// What you write:
+for (String s : list) {
+    System.out.println(s);
+}
+
+// What the compiler turns it into (roughly):
+for (Iterator<String> it = list.iterator(); it.hasNext(); ) {
+    String s = it.next();
+    System.out.println(s);
+}
+
+// For an ARRAY the compiler uses an index loop instead:
+for (int x : numbers) { }
+// becomes: for (int i = 0; i < numbers.length; i++) { int x = numbers[i]; }`},
+  {h: ["Removing safely with Iterator.remove()", "Iterator.remove() se safely hatana"],
+   p: ["remove() deletes the item that next() returned LAST. It is the only safe way to delete from a collection while you walk through it with an iterator. There are two rules. You must call next() before each remove(), and you can call remove() only once per next(). Breaking either rule throws IllegalStateException. Some collections do not support remove() at all (for example the ones made by List.of), and then you get UnsupportedOperationException.",
+       "remove() wo item hatata hai jo next() ne AAKHRI baar diya. Iterator se chalte hue collection se hatane ka ye akela safe tareeka hai. Do rules hain. Har remove() se pehle next() call karna zaroori hai, aur ek next() ke baad remove() sirf ek baar call kar sakte ho. Koi bhi rule todne par IllegalStateException aata hai. Kuch collections remove() support hi nahi karti (jaise List.of se bani), tab UnsupportedOperationException milta hai."],
+   code: `import java.util.*;
+
+public class SafeRemove {
+    public static void main(String[] args) {
+        List<Integer> marks = new ArrayList<>(List.of(35, 80, 28, 91, 50, 12));
+
+        // Remove every failing mark (below 40)
+        Iterator<Integer> it = marks.iterator();
+        while (it.hasNext()) {
+            if (it.next() < 40) {
+                it.remove();                     // removes the item next() just returned
+            }
+        }
+        System.out.println(marks);               // [80, 91, 50]
+
+        Iterator<Integer> bad = marks.iterator();
+        // bad.remove();                         // IllegalStateException: next() was not called yet
+        bad.next();
+        bad.remove();                            // fine: removes 80
+        // bad.remove();                         // IllegalStateException: already removed for this next()
+        System.out.println(marks);               // [91, 50]
+
+        // The modern shortcut for "remove everything that matches"
+        marks.removeIf(m -> m > 60);             // remove marks above 60
+        System.out.println(marks);               // [50]
+
+        // Immutable collections do not allow it
+        Iterator<String> frozen = List.of("a", "b").iterator();
+        frozen.next();
+        // frozen.remove();                      // UnsupportedOperationException
+    }
+}`},
+  {h: ["Fail-fast iterators and ConcurrentModificationException", "Fail-fast iterators aur ConcurrentModificationException"],
+   p: ["Most iterators in java.util are FAIL-FAST. The collection counts its structural changes (adds and removes) in a hidden counter called modCount, and the iterator remembers the count it saw at the start. On every next() it compares the two. If the collection was changed in any way other than through the iterator's own remove(), the numbers differ and the iterator immediately throws ConcurrentModificationException. It is a safety alarm that says 'the data changed under me, my position may be wrong'. It is not related to threads only: you get it in a single thread too when you remove inside a for-each loop.",
+       "java.util ke zyadatar iterators FAIL-FAST hote hain. Collection apne structural badlavon (add aur remove) ko modCount naam ke chhupe counter me ginti hai, aur iterator shuru me dekhi hui ginti yaad rakhta hai. Har next() par wo dono ko compare karta hai. Collection iterator ke apne remove() ke alawa kisi aur tareeke se badli ho to ginti alag hoti hai aur iterator turant ConcurrentModificationException deta hai. Ye safety alarm hai jo kehta hai 'mere neeche data badal gaya, meri position galat ho sakti hai'. Ye sirf threads se jura nahi hai: ek hi thread me for-each loop ke andar hatane par bhi milta hai."],
+   code: `import java.util.*;
+
+public class FailFast {
+    public static void main(String[] args) {
+        List<Integer> list = new ArrayList<>(List.of(1, 2, 3, 4));
+
+        try {
+            for (int x : list) {
+                if (x == 2) list.remove(Integer.valueOf(x));   // changes the list behind the iterator's back
+            }
+        } catch (ConcurrentModificationException e) {
+            System.out.println("Caught: " + e.getClass().getSimpleName());
+        }
+        // Caught: ConcurrentModificationException
+
+        // A famous quirk: removing the SECOND-TO-LAST item does NOT throw,
+        // because hasNext() becomes false before next() can notice the change.
+        List<Integer> quirk = new ArrayList<>(List.of(1, 2, 3, 4));
+        for (int x : quirk) {
+            if (x == 3) quirk.remove(Integer.valueOf(x));
+        }
+        System.out.println(quirk);               // [1, 2, 4]  (no exception, but the loop skipped item 4!)
+
+        // Four correct ways to remove while looping
+        List<Integer> a = new ArrayList<>(List.of(1, 2, 3, 4));
+        a.removeIf(x -> x % 2 == 0);                              // 1) removeIf
+        System.out.println(a);                                    // [1, 3]
+
+        List<Integer> b = new ArrayList<>(List.of(1, 2, 3, 4));
+        Iterator<Integer> it = b.iterator();                      // 2) Iterator.remove()
+        while (it.hasNext()) if (it.next() % 2 == 0) it.remove();
+        System.out.println(b);                                    // [1, 3]
+
+        List<Integer> c = new ArrayList<>(List.of(1, 2, 3, 4));
+        for (int x : new ArrayList<>(c)) {                        // 3) loop over a COPY
+            if (x % 2 == 0) c.remove(Integer.valueOf(x));
+        }
+        System.out.println(c);                                    // [1, 3]
+
+        List<Integer> d = new ArrayList<>(List.of(1, 2, 3, 4));
+        List<Integer> toRemove = new ArrayList<>();               // 4) collect first, remove after
+        for (int x : d) if (x % 2 == 0) toRemove.add(x);
+        d.removeAll(toRemove);
+        System.out.println(d);                                    // [1, 3]
+    }
+}`,
+   pts: [["Structural changes are add, remove and clear. Changing an item with set(i, x) is NOT structural and is safe.", "Never rely on the quirk where no exception appears. The exception is not guaranteed, it is only a best-effort alarm.", "Fail-fast iterators: ArrayList, LinkedList, HashSet, HashMap, TreeMap and similar.", "Fail-safe (weakly consistent) iterators never throw it: CopyOnWriteArrayList and ConcurrentHashMap iterate over a snapshot or tolerate changes (Phase 4, Multithreading).", "For a Map, change the map through the entrySet() or keySet() view (removeIf), or through the iterator."],
+         ["Structural changes add, remove aur clear hain. set(i, x) se item badalna structural NAHI hai aur safe hai.", "Us quirk par kabhi bharosa mat karo jisme exception nahi aata. Exception ki guarantee nahi hai, wo sirf best-effort alarm hai.", "Fail-fast iterators: ArrayList, LinkedList, HashSet, HashMap, TreeMap aur aise hi.", "Fail-safe (weakly consistent) iterators kabhi ye nahi dete: CopyOnWriteArrayList aur ConcurrentHashMap snapshot par chalte hain ya badlav sahte hain (Phase 4, Multithreading).", "Map ke liye, map ko entrySet() ya keySet() view (removeIf) se, ya iterator se badlo."]]},
+  {h: ["Iterating sets, maps, queues and in reverse", "Sets, maps, queues aur ulta iterate karna"],
+   p: ["The iterator of each collection follows its own order: a List gives insertion order, a TreeSet gives sorted order, a LinkedHashSet gives insertion order and a HashSet gives no promised order. A map is walked through one of its views, and the entry iterator can also remove safely. Deque and TreeSet offer descendingIterator() for reverse order, and a List has listIterator for going backwards.",
+       "Har collection ka iterator apne order ko follow karta hai: List insertion order deti hai, TreeSet sorted order, LinkedHashSet insertion order aur HashSet koi order ka vaada nahi karta. Map ko uske views me se ek se chalte hain, aur entry iterator safely hata bhi sakta hai. Deque aur TreeSet ulte order ke liye descendingIterator() dete hain, aur List ke paas peeche jane ke liye listIterator hai."],
+   code: `import java.util.*;
+
+public class OtherCollections {
+    public static void main(String[] args) {
+        // TreeSet: sorted order, and a reverse iterator
+        TreeSet<Integer> ts = new TreeSet<>(List.of(30, 10, 20));
+        for (int x : ts) System.out.print(x + " ");                  // 10 20 30
+        System.out.println();
+        Iterator<Integer> down = ts.descendingIterator();
+        while (down.hasNext()) System.out.print(down.next() + " ");  // 30 20 10
+        System.out.println();
+
+        // Deque: iterate from the front, or from the back
+        Deque<String> dq = new ArrayDeque<>(List.of("a", "b", "c"));
+        Iterator<String> back = dq.descendingIterator();
+        while (back.hasNext()) System.out.print(back.next() + " ");  // c b a
+        System.out.println();
+
+        // Map: walk the entries and remove some, safely
+        Map<String, Integer> stock = new HashMap<>(Map.of("pen", 0, "book", 4, "ink", 0, "cap", 9));
+        Iterator<Map.Entry<String, Integer>> it = stock.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<String, Integer> e = it.next();
+            if (e.getValue() == 0) {
+                it.remove();                                         // remove the sold-out items
+            }
+        }
+        System.out.println(new TreeMap<>(stock));                    // {book=4, cap=9}
+
+        // PriorityQueue: the iterator does NOT give sorted order, only poll() does
+        PriorityQueue<Integer> pq = new PriorityQueue<>(List.of(5, 1, 4, 2, 3));
+        StringBuilder sb = new StringBuilder();
+        while (!pq.isEmpty()) sb.append(pq.poll()).append(' ');
+        System.out.println(sb.toString().trim());                    // 1 2 3 4 5
+    }
+}`},
+  {h: ["ListIterator: both directions, and changing the list", "ListIterator: dono taraf, aur list badalna"],
+   p: ["ListIterator is a stronger iterator available only for lists. It can move forward AND backward (hasPrevious, previous), tells you the position (nextIndex, previousIndex), and can change the list while walking: set() replaces the item last returned, add() inserts at the cursor, and remove() deletes the item last returned. Think of the cursor as sitting BETWEEN two items: next() jumps over the item after it, previous() jumps over the item before it.",
+       "ListIterator ek zyada taqatwar iterator hai jo sirf lists ke liye hai. Ye aage AUR peeche dono taraf chal sakta hai (hasPrevious, previous), position batata hai (nextIndex, previousIndex), aur chalte hue list badal sakta hai: set() aakhri baar mile item ko replace karta hai, add() cursor par insert karta hai, aur remove() aakhri baar mile item ko hatata hai. Cursor ko do items ke BEECH me baitha socho: next() uske baad wale item par se kood jata hai, previous() uske pehle wale item par se."],
+   code: `import java.util.*;
+
+public class ListIteratorDemo {
+    public static void main(String[] args) {
+        List<String> names = new ArrayList<>(List.of("Rahul", "Gurleen", "Shivam"));
+
+        ListIterator<String> li = names.listIterator();
+        while (li.hasNext()) {
+            int index = li.nextIndex();              // the index of the item next() will return
+            String n = li.next();
+            if (n.equals("Gurleen")) {
+                li.set("GURLEEN");                   // replace the last returned item
+                li.add("Himakshi");                  // insert right after it
+            }
+            System.out.println(index + " " + n);
+        }
+        // 0 Rahul
+        // 1 Gurleen
+        // 2 Shivam
+        System.out.println(names);                   // [Rahul, GURLEEN, Himakshi, Shivam]
+
+        // Walk BACKWARD from the end
+        ListIterator<String> back = names.listIterator(names.size());
+        while (back.hasPrevious()) {
+            System.out.print(back.previous() + " ");     // Shivam Himakshi GURLEEN Rahul
+        }
+        System.out.println();
+
+        // Double every number in place
+        List<Integer> nums = new ArrayList<>(List.of(1, 2, 3));
+        ListIterator<Integer> dbl = nums.listIterator();
+        while (dbl.hasNext()) dbl.set(dbl.next() * 2);
+        System.out.println(nums);                    // [2, 4, 6]
+
+        // Insert a separator between items
+        List<String> words = new ArrayList<>(List.of("a", "b", "c"));
+        ListIterator<String> sep = words.listIterator();
+        while (sep.hasNext()) {
+            sep.next();
+            if (sep.hasNext()) sep.add("-");         // add only BETWEEN items
+        }
+        System.out.println(words);                   // [a, -, b, -, c]
+    }
+}`},
+  {h: ["Writing your own Iterable", "Apna Iterable likhna"],
+   p: ["To make your own class work in a for-each loop, implement Iterable<T> and write the iterator() method, which returns an object that implements Iterator<T>. The iterator keeps its own position (a cursor field). It needs hasNext() and next(), and next() should throw NoSuchElementException when nothing is left. The iterator is often written as an anonymous class or an inner class that can see the outer class's fields. This is exactly how the Java library does it, and it is a very popular interview exercise.",
+       "Apni class ko for-each loop me chalane ke liye Iterable<T> implement karo aur iterator() method likho, jo Iterator<T> implement karne wala object return kare. Iterator apni position (cursor field) khud rakhta hai. Use hasNext() aur next() chahiye, aur kuch na bacha ho to next() ko NoSuchElementException dena chahiye. Iterator aksar anonymous class ya inner class ki tarah likha jata hai jo outer class ke fields dekh sake. Java library bilkul aise hi karti hai, aur ye interview ka bahut popular exercise hai."],
+   code: `import java.util.*;
+
+// 1) A range of numbers that works in a for-each loop (it stores no list at all)
+class Range implements Iterable<Integer> {
+    private final int start, end;                       // end is excluded
+
+    Range(int start, int end) {
+        this.start = start;
+        this.end = end;
+    }
+
+    @Override
+    public Iterator<Integer> iterator() {
+        return new Iterator<Integer>() {                // an anonymous class
+            private int current = start;                // each iterator has its own cursor
+
+            @Override public boolean hasNext() { return current < end; }
+
+            @Override public Integer next() {
+                if (!hasNext()) throw new NoSuchElementException();
+                return current++;
+            }
+        };
+    }
+}
+
+// 2) A small collection of our own, backed by an array
+class Playlist implements Iterable<String> {
+    private final String[] songs;
+    private int count = 0;
+
+    Playlist(int capacity) { songs = new String[capacity]; }
+
+    void add(String song) { songs[count++] = song; }
+
+    @Override
+    public Iterator<String> iterator() {
+        return new Iterator<String>() {
+            private int index = 0;
+            @Override public boolean hasNext() { return index < count; }
+            @Override public String next() {
+                if (!hasNext()) throw new NoSuchElementException();
+                return songs[index++];
+            }
+        };
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        for (int n : new Range(1, 6)) System.out.print(n + " ");   // 1 2 3 4 5
+        System.out.println();
+
+        Playlist p = new Playlist(10);
+        p.add("Song A");
+        p.add("Song B");
+        p.add("Song C");
+        for (String s : p) System.out.println(s);                  // Song A, Song B, Song C
+
+        // Two independent iterators over the same object do not disturb each other
+        Iterator<Integer> i1 = new Range(0, 3).iterator();
+        Iterator<Integer> i2 = new Range(0, 3).iterator();
+        System.out.println(i1.next() + " " + i1.next() + " " + i2.next());   // 0 1 0
+    }
+}`,
+   tip: ["An iterator does not have to read from stored data. It can calculate each next value on demand (a generator), such as the next Fibonacci number, which also lets a collection be infinite as long as the loop stops by itself.", "Iterator ko stored data se padhna zaroori nahi. Wo har agli value maang par calculate kar sakta hai (generator), jaise agla Fibonacci number, aur isse collection infinite bhi ho sakti hai bas loop khud ruk jaye."]},
+  {h: ["Iterator, for-each, forEach and an indexed loop: which one?", "Iterator, for-each, forEach aur indexed loop: kaun sa?"],
+   p: ["You have four ways to walk through a list, and each has a best use. The old Enumeration class (from Vector and Hashtable) is a legacy cousin of Iterator with no remove(), so you will mostly see it in old code.",
+       "List par chalne ke chaar tareeke hain, aur har ek ka apna best use hai. Purani Enumeration class (Vector aur Hashtable se) Iterator ki legacy rishtedaar hai jisme remove() nahi hai, isliye wo zyadatar purane code me milti hai."],
+   pts: [["for-each: the simplest. Use it when you only READ every item. You cannot remove, and you have no index.", "Iterator: when you need to REMOVE items while looping, or want a loop that you can pause and resume.", "ListIterator: when you need to go backward, know the position, or replace or insert items while walking a List.", "Indexed for loop: when you need the index, want to go backward or skip, or compare neighbours. It is fast on ArrayList but slow on LinkedList (every get(i) walks the chain).", "forEach(lambda) and streams (lessons 54 and 55): short and readable for 'do this to every item', and good for chaining filter and map steps.", "removeIf: the shortest way to 'remove everything that matches'.", "All of them visit items in the collection's own order."],
+         ["for-each: sabse simple. Tab use karo jab sirf har item PADHNA ho. Hata nahi sakte, aur index nahi milta.", "Iterator: jab loop ke dauran items HATANE ho, ya aisa loop chahiye jise rok kar dobara chala sako.", "ListIterator: jab peeche jana ho, position jaanni ho, ya List par chalte hue items replace ya insert karne ho.", "Indexed for loop: jab index chahiye ho, peeche jana ho ya skip karna ho, ya padosiyon ko compare karna ho. ArrayList par tez hai par LinkedList par slow (har get(i) chain par chalta hai).", "forEach(lambda) aur streams (lessons 54 aur 55): 'har item par ye karo' ke liye chhote aur padhne me aasan, aur filter aur map steps jodne ke liye achhe.", "removeIf: 'jo match kare sab hatao' ka sabse chhota tareeka.", "Sab collection ke apne order me items dekhte hain."]],
+   code: `import java.util.*;
+
+public class WhichLoop {
+    public static void main(String[] args) {
+        List<Integer> nums = new ArrayList<>(List.of(4, 7, 1, 9, 3));
+
+        // READ everything               -> for-each
+        int sum = 0;
+        for (int n : nums) sum += n;
+        System.out.println(sum);                          // 24
+
+        // Need the INDEX or neighbours  -> indexed for
+        for (int i = 1; i < nums.size(); i++) {
+            if (nums.get(i) > nums.get(i - 1)) System.out.print(nums.get(i) + " ");   // 7 9
+        }
+        System.out.println();
+
+        // REMOVE while looping          -> iterator (or removeIf)
+        Iterator<Integer> it = nums.iterator();
+        while (it.hasNext()) if (it.next() < 4) it.remove();
+        System.out.println(nums);                         // [4, 7, 9]
+
+        // Do something to every item    -> forEach with a lambda
+        nums.forEach(n -> System.out.print(n * n + " "));  // 16 49 81
+        System.out.println();
+
+        // Old style: Enumeration (legacy, no remove)
+        Vector<String> v = new Vector<>(List.of("x", "y"));
+        Enumeration<String> en = v.elements();
+        while (en.hasMoreElements()) System.out.print(en.nextElement() + " ");   // x y
+        System.out.println();
+    }
+}`},
+  {h: ["Practical examples", "Practical examples"],
+   p: ["These helpers use iterators the way real code does: removing while walking, working on two sequences at once, and processing items in pairs. Because they take Iterable or Iterator parameters, each one works for any kind of collection.",
+       "Ye helpers iterators ko waise use karte hain jaise real code karta hai: chalte hue hatana, ek saath do sequences par kaam karna, aur items ko jodiyon me process karna. Kyunki wo Iterable ya Iterator parameters lete hain, har ek kisi bhi tarah ki collection par chalta hai."],
+   code: `import java.util.*;
+
+public class IteratorExamples {
+    // 1) Remove duplicates but keep the first copy of each value
+    static <T> void removeDuplicates(Collection<T> items) {
+        Set<T> seen = new HashSet<>();
+        Iterator<T> it = items.iterator();
+        while (it.hasNext()) {
+            if (!seen.add(it.next())) it.remove();       // add() is false for a repeat
+        }
+    }
+
+    // 2) Interleave two lists: a1, b1, a2, b2, ...
+    static <T> List<T> interleave(List<T> a, List<T> b) {
+        List<T> out = new ArrayList<>();
+        Iterator<T> ia = a.iterator(), ib = b.iterator();
+        while (ia.hasNext() || ib.hasNext()) {
+            if (ia.hasNext()) out.add(ia.next());
+            if (ib.hasNext()) out.add(ib.next());
+        }
+        return out;
+    }
+
+    // 3) Sum of any Iterable of numbers, using the wildcard from the Generics lesson
+    static double total(Iterable<? extends Number> numbers) {
+        double t = 0;
+        for (Number n : numbers) t += n.doubleValue();
+        return t;
+    }
+
+    // 4) Print items in pairs, and handle an odd leftover
+    static <T> void pairs(Iterable<T> items) {
+        Iterator<T> it = items.iterator();
+        while (it.hasNext()) {
+            T first = it.next();
+            if (it.hasNext()) System.out.println("(" + first + ", " + it.next() + ")");
+            else System.out.println("(" + first + ", -)");
+        }
+    }
+
+    public static void main(String[] args) {
+        List<Integer> data = new ArrayList<>(List.of(3, 1, 3, 2, 1));
+        removeDuplicates(data);
+        System.out.println(data);                                     // [3, 1, 2]
+
+        System.out.println(interleave(List.of(1, 2, 3), List.of(10, 20)));   // [1, 10, 2, 20, 3]
+        System.out.println(total(List.of(1, 2.5, 3L)));                // 6.5
+        System.out.println(total(new TreeSet<>(List.of(5, 10))));      // 15.0
+
+        pairs(List.of("Rahul", "Gurleen", "Mohit", "Shivam", "Himakshi"));
+        // (Rahul, Gurleen)
+        // (Mohit, Shivam)
+        // (Himakshi, -)
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: calling list.remove() or list.add() inside a for-each loop (ConcurrentModificationException). Use it.remove(), removeIf or a copy.", "Mistake: calling next() twice in one round, which skips an item. Store the value in a variable.", "Mistake: calling next() without checking hasNext() (NoSuchElementException).", "Mistake: calling it.remove() before next(), or twice after one next() (IllegalStateException).", "Mistake: expecting an iterator to restart. It is one-use. Call iterator() again.", "Mistake: reusing one iterator for two loops, so the second loop finds nothing left.", "Mistake: using get(i) in a loop on a LinkedList (O(n squared)). Use for-each.", "Mistake: trusting the iteration order of a HashSet or HashMap.", "Mistake: modifying a collection from another thread while iterating (Phase 4). Use a concurrent collection.", "Mistake: forgetting that a for-each loop variable is only a copy of the reference. Reassigning it does nothing to the collection.", "Good habit: prefer removeIf over a hand-written iterator loop when the condition is simple.", "Good habit: accept Iterable<T> or Collection<T> in method parameters, not ArrayList<T>, so your method works for every collection."],
+         ["Galti: for-each loop ke andar list.remove() ya list.add() call karna (ConcurrentModificationException). it.remove(), removeIf ya copy use karo.", "Galti: ek round me do baar next() call karna, jisse ek item skip hota hai. Value ko variable me rakho.", "Galti: hasNext() check kiye bina next() call karna (NoSuchElementException).", "Galti: next() se pehle it.remove() call karna, ya ek next() ke baad do baar (IllegalStateException).", "Galti: iterator ke restart hone ki ummeed. Wo ek baar ka hai. Dobara iterator() call karo.", "Galti: ek hi iterator do loops me reuse karna, jisse doosre loop ko kuch bacha hua nahi milta.", "Galti: LinkedList par loop me get(i) use karna (O(n squared)). for-each use karo.", "Galti: HashSet ya HashMap ke iteration order par bharosa karna.", "Galti: iterate karte hue doosre thread se collection badalna (Phase 4). Concurrent collection use karo.", "Galti: ye bhul jana ki for-each loop variable sirf reference ki copy hai. Use dobara assign karne se collection par kuch asar nahi padta.", "Achhi aadat: condition simple ho to hath se likhe iterator loop ki jagah removeIf prefer karo.", "Achhi aadat: method parameters me ArrayList<T> ki jagah Iterable<T> ya Collection<T> lo, taaki tumhara method har collection par chale."]],
+   tip: ["Interview questions: (1) Iterator vs ListIterator? Iterator goes forward on any collection, ListIterator works only on lists and goes both ways and can add and set. (2) What is fail-fast? The iterator throws ConcurrentModificationException when the collection is changed during iteration. (3) How do you remove safely while looping? it.remove() or removeIf. (4) Iterator vs Iterable? Iterable produces iterators and enables for-each, Iterator is the cursor that does the walking.", "Interview questions: (1) Iterator vs ListIterator? Iterator kisi bhi collection par aage chalta hai, ListIterator sirf lists par chalta hai, dono taraf jata hai aur add aur set kar sakta hai. (2) Fail-fast kya hai? Iteration ke dauran collection badalne par iterator ConcurrentModificationException deta hai. (3) Loop me safely kaise hatate hain? it.remove() ya removeIf. (4) Iterator vs Iterable? Iterable iterators banata hai aur for-each chalata hai, Iterator wo cursor hai jo chalne ka kaam karta hai."]}
+ ]},
+49: {
+ def: ["Comparable and Comparator are the two ways to tell Java how to ORDER objects. Comparable is implemented by the class itself and defines its single natural order through compareTo(). Comparator is a separate object that defines any other order through compare(), so you can sort the same objects by name, by marks, or by anything else. Sorting, TreeSet, TreeMap and PriorityQueue all depend on them.",
+       "Comparable aur Comparator Java ko ye batane ke do tareeke hain ki objects ko kaise ORDER karna hai. Comparable class khud implement karti hai aur compareTo() se apna ek natural order define karti hai. Comparator alag object hai jo compare() se koi bhi aur order define karta hai, isliye wahi objects ko naam se, marks se ya kisi bhi aur cheez se sort kar sakte ho. Sorting, TreeSet, TreeMap aur PriorityQueue sab inhi par nirbhar hain."],
+ secs: [
+  {h: ["The problem: how does Java know which object comes first?", "Problem: Java ko kaise pata ki kaun sa object pehle aayega?"],
+   p: ["Numbers and Strings already know their order, so Collections.sort(list) just works for them. But Java has no idea whether a Student should come before another one by name, by marks or by roll number. Without a rule, the compiler refuses Collections.sort(list), Arrays.sort on an object array throws ClassCastException, and adding to a TreeSet fails at the very first item. You must supply the rule, and there are two ways to do it.",
+       "Numbers aur Strings apna order pehle se jaante hain, isliye unke liye Collections.sort(list) seedha chalta hai. Par Java ko pata nahi ki Student dusre se pehle naam ke hisaab se aaye, marks ke hisaab se ya roll number ke hisaab se. Rule ke bina compiler Collections.sort(list) ko mana kar deta hai, object array par Arrays.sort ClassCastException deta hai, aur TreeSet me pehla item jodte hi fail ho jata hai. Rule tumhe dena padta hai, aur iske do tareeke hain."],
+   code: `import java.util.*;
+
+class Plain {                              // knows nothing about ordering
+    int x;
+    Plain(int x) { this.x = x; }
+}
+
+public class WhyOrdering {
+    public static void main(String[] args) {
+        // Built-in types already know their order
+        List<String> names = new ArrayList<>(List.of("Shivam", "Gurleen", "Mohit"));
+        Collections.sort(names);
+        System.out.println(names);                 // [Gurleen, Mohit, Shivam]
+
+        List<Plain> items = new ArrayList<>(List.of(new Plain(2), new Plain(1)));
+        // Collections.sort(items);                // compile ERROR: Plain does not implement Comparable
+
+        Plain[] array = { new Plain(2), new Plain(1) };
+        // Arrays.sort(array);                     // ClassCastException: Plain cannot be cast to Comparable
+
+        // new TreeSet<Plain>().add(new Plain(1)); // ClassCastException on the very first add
+    }
+}
+
+// The two ways to give the rule:
+//   1) Comparable  : the CLASS has one built-in "natural" order      (compareTo)
+//   2) Comparator  : a SEPARATE object gives any order you like      (compare)`},
+  {h: ["Comparable: the natural order with compareTo()", "Comparable: compareTo() se natural order"],
+   p: ["Make the class implement Comparable<T> and write compareTo(T other). It compares THIS object with the other one and returns a number: negative if this should come BEFORE other, zero if they are equal for ordering, and positive if this should come AFTER other. Only the sign matters, not the size. Once a class is Comparable, Collections.sort, Arrays.sort, TreeSet, TreeMap and Collections.max and min all work on it without any extra argument. Use it for the ONE obvious, default order, such as roll number for a student.",
+       "Class ko Comparable<T> implement karwao aur compareTo(T other) likho. Ye THIS object ko other se compare karta hai aur ek number return karta hai: negative agar this other se PEHLE aana chahiye, zero agar ordering ke liye barabar hain, aur positive agar this other ke BAAD aana chahiye. Sirf sign matter karta hai, size nahi. Class Comparable ban jaye to Collections.sort, Arrays.sort, TreeSet, TreeMap aur Collections.max aur min bina kisi extra argument ke us par chalte hain. Ise EK saaf, default order ke liye use karo, jaise student ke liye roll number."],
+   code: `import java.util.*;
+
+class Student implements Comparable<Student> {      // this Student class is used in the next sections too
+    private final int roll;
+    private final String name;
+    private final int marks;
+
+    Student(int roll, String name, int marks) {
+        this.roll = roll;
+        this.name = name;
+        this.marks = marks;
+    }
+
+    int getRoll()    { return roll; }
+    String getName() { return name; }
+    int getMarks()   { return marks; }
+
+    @Override
+    public int compareTo(Student other) {            // natural order: by roll number, smallest first
+        return Integer.compare(this.roll, other.roll);
+    }
+
+    @Override
+    public String toString() { return roll + ":" + name + "(" + marks + ")"; }
+}
+
+public class ComparableDemo {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+        list.add(new Student(3, "Mohit", 72));
+        list.add(new Student(1, "Gurleen", 91));
+        list.add(new Student(2, "Rahul", 72));
+        list.add(new Student(4, "Himakshi", 88));
+        list.add(new Student(5, "Shivam", 55));
+
+        Collections.sort(list);                      // uses compareTo
+        System.out.println(list);
+        // [1:Gurleen(91), 2:Rahul(72), 3:Mohit(72), 4:Himakshi(88), 5:Shivam(55)]
+
+        Student[] array = list.toArray(new Student[0]);
+        Arrays.sort(array);                          // also works on arrays
+
+        System.out.println(Collections.min(list));   // 1:Gurleen(91)  (smallest by natural order)
+        System.out.println(Collections.max(list));   // 5:Shivam(55)
+
+        System.out.println(new TreeSet<>(list).first());   // 1:Gurleen(91)
+
+        Student a = new Student(10, "A", 0), b = new Student(20, "B", 0);
+        System.out.println(a.compareTo(b));          // -1  (negative: a comes first)
+        System.out.println(b.compareTo(a));          // 1   (positive)
+        System.out.println(a.compareTo(a));          // 0
+    }
+}`,
+   pts: [["Implement Comparable<Student>, not the raw Comparable, so compareTo receives a Student and not an Object.", "The return value is a sign: negative, zero or positive. -1, 0 and 1 are only a convention.", "String, Integer, Double, Character, LocalDate and many library classes are already Comparable.", "A class can have only ONE natural order, because it can implement compareTo only once.", "compareTo(null) should throw NullPointerException."],
+         ["Raw Comparable ki jagah Comparable<Student> implement karo, taaki compareTo ko Object nahi Student mile.", "Return value ek sign hai: negative, zero ya positive. -1, 0 aur 1 sirf convention hain.", "String, Integer, Double, Character, LocalDate aur kai library classes pehle se Comparable hain.", "Class ka sirf EK natural order ho sakta hai, kyunki wo compareTo sirf ek baar implement kar sakti hai.", "compareTo(null) ko NullPointerException dena chahiye."]]},
+  {h: ["Writing a correct compareTo", "Sahi compareTo likhna"],
+   p: ["Delegate to the comparison methods of the field's own type instead of doing arithmetic yourself. For int fields use Integer.compare(a, b), for doubles Double.compare(a, b), and for Strings a.compareTo(b). The tempting shortcut this.marks - other.marks is a famous bug: the subtraction can overflow for large or negative numbers and give the WRONG sign. To order by several fields, compare the first field and return its result when it is not zero, and only then look at the next field.",
+       "Khud arithmetic karne ki jagah field ke apne type ke comparison methods ko kaam do. int fields ke liye Integer.compare(a, b), doubles ke liye Double.compare(a, b), aur Strings ke liye a.compareTo(b). Lalchi shortcut this.marks - other.marks ek mashhoor bug hai: bade ya negative numbers me subtraction overflow karke GALAT sign de sakta hai. Kai fields se order karna ho to pehle field ko compare karo aur uska result tab return karo jab wo zero na ho, aur tabhi agla field dekho."],
+   code: `import java.util.*;
+
+public class CompareToRules {
+    public static void main(String[] args) {
+        // The subtraction trap
+        int a = Integer.MAX_VALUE, b = -1;
+        System.out.println(a - b);                       // -2147483648  (overflow! it looks SMALLER than 0)
+        System.out.println(Integer.compare(a, b));       // 1            (correct: a is bigger)
+
+        // Library compare methods
+        System.out.println(Integer.compare(5, 9));       // -1
+        System.out.println(Double.compare(2.5, 2.5));    // 0
+        System.out.println("apple".compareTo("banana")); // -1  (a comes before b)
+        System.out.println("b".compareTo("a"));          // 1
+        System.out.println("Zebra".compareTo("apple"));  // negative: capital letters come first
+        System.out.println("apple".compareToIgnoreCase("APPLE"));   // 0
+    }
+}
+
+// Several fields: marks first (highest first), then name (A to Z)
+class Result implements Comparable<Result> {
+    final String name;
+    final int marks;
+    Result(String name, int marks) { this.name = name; this.marks = marks; }
+
+    @Override
+    public int compareTo(Result o) {
+        int byMarks = Integer.compare(o.marks, this.marks);   // swapped arguments = descending
+        if (byMarks != 0) return byMarks;                     // marks differ: decided
+        return this.name.compareTo(o.name);                   // tie: look at the name
+    }
+}`,
+   pts: [["The contract: sgn(a.compareTo(b)) must equal -sgn(b.compareTo(a)). If a is before b, then b must be after a.", "Transitive: if a is before b and b is before c, then a is before c.", "If a.compareTo(b) == 0, then a and b must give the same result against every other object.", "Strongly recommended: consistent with equals(), meaning compareTo is 0 exactly when equals() is true. If not, sorted collections and hash collections will treat the same data differently (see the pitfalls section).", "To reverse an order, swap the two sides (compare(o.x, this.x)), do not negate the result: the negation of Integer.MIN_VALUE is still negative."],
+         ["Contract: sgn(a.compareTo(b)) ko -sgn(b.compareTo(a)) ke barabar hona chahiye. a b se pehle ho to b a ke baad hona chahiye.", "Transitive: a b se pehle aur b c se pehle ho to a c se pehle hona chahiye.", "a.compareTo(b) == 0 ho to a aur b ko har dusre object ke saath same result dena chahiye.", "Zor se salah: equals() ke saath consistent rakho, yaani compareTo tabhi 0 ho jab equals() true ho. Warna sorted collections aur hash collections ek hi data ko alag tarah se dekhenge (pitfalls section dekho).", "Order ulta karne ke liye dono sides badal do (compare(o.x, this.x)), result ko negate mat karo: Integer.MIN_VALUE ka negation bhi negative hi rehta hai."]]},
+  {h: ["Comparator: any order you want", "Comparator: koi bhi order jo chaho"],
+   p: ["A Comparator is a separate object with one method, compare(a, b), which compares TWO objects and returns negative, zero or positive just like compareTo. The class does not need to change at all, so you can write many comparators for the same class: by name, by marks, by age. You can pass one to Collections.sort(list, cmp), list.sort(cmp), Arrays.sort(array, cmp), and to the constructors of TreeSet, TreeMap and PriorityQueue. Comparator is a functional interface, so a short lambda (lesson 54) is the usual way to write one. Java's sort is STABLE: items that compare equal keep their original relative order.",
+       "Comparator ek alag object hai jiska ek method compare(a, b) hai, jo DO objects ko compare karke compareTo ki tarah negative, zero ya positive return karta hai. Class ko bilkul badalna nahi padta, isliye ek hi class ke liye kai comparators likh sakte ho: naam se, marks se, age se. Ek ko Collections.sort(list, cmp), list.sort(cmp), Arrays.sort(array, cmp), aur TreeSet, TreeMap aur PriorityQueue ke constructors me de sakte ho. Comparator functional interface hai, isliye chhota lambda (lesson 54) use likhne ka aam tareeka hai. Java ka sort STABLE hai: jo items barabar compare hote hain wo apna original relative order rakhte hain."],
+   code: `import java.util.*;
+
+// the Student class from the previous sections (roll, name, marks, with getters and compareTo by roll)
+
+public class ComparatorDemo {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>();
+        list.add(new Student(3, "Mohit", 72));
+        list.add(new Student(1, "Gurleen", 91));
+        list.add(new Student(2, "Rahul", 72));
+        list.add(new Student(4, "Himakshi", 88));
+        list.add(new Student(5, "Shivam", 55));
+
+        // 1) A Comparator written as a separate (anonymous) class: by name
+        Comparator<Student> byName = new Comparator<Student>() {
+            @Override
+            public int compare(Student a, Student b) {
+                return a.getName().compareTo(b.getName());
+            }
+        };
+        list.sort(byName);
+        System.out.println(list);
+        // [1:Gurleen(91), 4:Himakshi(88), 3:Mohit(72), 2:Rahul(72), 5:Shivam(55)]
+
+        // 2) The same idea as a lambda: by marks, highest first
+        Collections.sort(list);                                  // back to the natural order (roll) first
+        list.sort((a, b) -> Integer.compare(b.getMarks(), a.getMarks()));
+        System.out.println(list);
+        // [1:Gurleen(91), 4:Himakshi(88), 2:Rahul(72), 3:Mohit(72), 5:Shivam(55)]
+        // Rahul and Mohit both have 72, and Rahul stays before Mohit: the sort is STABLE.
+
+        // 3) Arrays need an array of objects
+        Student[] array = list.toArray(new Student[0]);
+        Arrays.sort(array, byName);
+        System.out.println(array[0]);                            // 1:Gurleen(91)
+
+        // 4) A different Comparator in a TreeSet changes the order of the whole set
+        TreeSet<Student> byMarks = new TreeSet<>(Comparator.comparingInt(Student::getMarks));
+        byMarks.addAll(list);
+        System.out.println(byMarks.size());                      // 4  (Mohit was dropped: same marks as Rahul)
+    }
+}`,
+   tip: ["Look at the last line. A TreeSet with a comparator by marks treats two students with equal marks as DUPLICATES and keeps only one. Always add a tie-breaker (the next section) when different items could compare as 0.", "Aakhri line dekho. Marks wale comparator ke saath TreeSet barabar marks wale do students ko DUPLICATE maanta hai aur sirf ek rakhta hai. Alag items 0 compare ho sakte hon to hamesha tie-breaker jodo (agla section)."]},
+  {h: ["Comparator helper methods (Java 8+)", "Comparator ke helper methods (Java 8+)"],
+   p: ["Writing compare() by hand gets repetitive, so Comparator has ready-made builders. Comparator.comparing(keyExtractor) sorts by whatever the extractor returns, and comparingInt, comparingDouble and comparingLong avoid boxing for numbers. Chain thenComparing(...) to add tie-breakers, and call reversed() to flip the whole order. The extractor is usually a method reference such as Student::getName (lesson 54). naturalOrder() and reverseOrder() give the natural order and its reverse, and nullsFirst and nullsLast tell a comparator where to put nulls.",
+       "compare() hath se likhna dohrane wala ho jata hai, isliye Comparator ke paas ready-made builders hain. Comparator.comparing(keyExtractor) extractor jo return kare uske hisaab se sort karta hai, aur comparingInt, comparingDouble aur comparingLong numbers ke liye boxing bachate hain. Tie-breakers jodne ke liye thenComparing(...) chain karo, aur poora order ulta karne ke liye reversed() call karo. Extractor aam taur par Student::getName jaisa method reference hota hai (lesson 54). naturalOrder() aur reverseOrder() natural order aur uska ulta dete hain, aur nullsFirst aur nullsLast comparator ko batate hain ki null kahan rakhna hai."],
+   code: `import java.util.*;
+
+public class ComparatorBuilders {
+    public static void main(String[] args) {
+        List<Student> list = new ArrayList<>(List.of(
+            new Student(3, "Mohit", 72), new Student(1, "Gurleen", 91),
+            new Student(2, "Rahul", 72), new Student(4, "Himakshi", 88),
+            new Student(5, "Shivam", 55)));
+
+        Comparator<Student> byName  = Comparator.comparing(Student::getName);
+        Comparator<Student> byMarks = Comparator.comparingInt(Student::getMarks);
+
+        list.sort(byName);
+        System.out.println(list.get(0));                  // 1:Gurleen(91)
+
+        list.sort(byMarks.reversed());                    // highest marks first
+        System.out.println(list.get(0));                  // 1:Gurleen(91)
+
+        // Marks high to low, and when equal, name A to Z: a tie-breaker with thenComparing
+        list.sort(byMarks.reversed().thenComparing(byName));
+        System.out.println(list);
+        // [1:Gurleen(91), 4:Himakshi(88), 3:Mohit(72), 2:Rahul(72), 5:Shivam(55)]
+
+        // Strings: by length first, then alphabetically
+        List<String> names = new ArrayList<>(List.of("Rahul", "Mohit", "Gurleen", "Shivam", "Himakshi"));
+        names.sort(Comparator.comparingInt(String::length).thenComparing(Comparator.naturalOrder()));
+        System.out.println(names);                        // [Mohit, Rahul, Shivam, Gurleen, Himakshi]
+
+        names.sort(Comparator.reverseOrder());
+        System.out.println(names);                        // [Shivam, Rahul, Mohit, Himakshi, Gurleen]
+
+        names.sort(String.CASE_INSENSITIVE_ORDER);
+        System.out.println(names);                        // [Gurleen, Himakshi, Mohit, Rahul, Shivam]
+
+        // null-safe sorting
+        List<String> withNull = new ArrayList<>(Arrays.asList("b", null, "a"));
+        withNull.sort(Comparator.nullsFirst(Comparator.naturalOrder()));
+        System.out.println(withNull);                     // [null, a, b]
+        withNull.sort(Comparator.nullsLast(Comparator.naturalOrder()));
+        System.out.println(withNull);                     // [a, b, null]
+    }
+}`,
+   pts: [["comparing(Student::getName) sorts by the name. comparingInt(Student::getMarks) does the same for an int without boxing.", "thenComparing adds the next sort key and is used only when all earlier keys are equal.", "reversed() flips everything built so far. Write byMarks.reversed().thenComparing(byName) to reverse ONLY the marks.", "A known trap: Comparator.comparing(s -> s.getMarks()).reversed() fails to compile, because Java cannot work out the type of s. Use a method reference (Student::getMarks) or write the type: (Student s) -> s.getMarks().", "Comparator.comparing(Student::getName, String.CASE_INSENSITIVE_ORDER) compares names ignoring case.", "Collections.reverseOrder() and Comparator.reverseOrder() both give the reverse of the natural order."],
+         ["comparing(Student::getName) naam se sort karta hai. comparingInt(Student::getMarks) int ke liye wahi boxing ke bina karta hai.", "thenComparing agli sort key jodta hai aur tabhi use hota hai jab pichhli saari keys barabar ho.", "reversed() ab tak ka banaya sab ulta kar deta hai. SIRF marks ulta karne ke liye byMarks.reversed().thenComparing(byName) likho.", "Ek jaana-pehchana trap: Comparator.comparing(s -> s.getMarks()).reversed() compile nahi hota, kyunki Java s ka type nahi nikal pata. Method reference (Student::getMarks) use karo ya type likho: (Student s) -> s.getMarks().", "Comparator.comparing(Student::getName, String.CASE_INSENSITIVE_ORDER) naamon ko case ignore karke compare karta hai.", "Collections.reverseOrder() aur Comparator.reverseOrder() dono natural order ka ulta dete hain."]]},
+  {h: ["Comparable versus Comparator: which one?", "Comparable vs Comparator: kaun sa?"],
+   p: ["Both decide the order of objects, but they live in different places. A simple rule: give a class a Comparable order when there is ONE obvious, default order that every user of the class would expect, and use Comparators for every other order, for orders that depend on the situation, and for classes you cannot edit (such as library classes).",
+       "Dono objects ka order tay karte hain, par alag jagah rehte hain. Simple rule: class ko Comparable order tab do jab EK saaf, default order ho jise class ka har user maanega, aur baaki har order ke liye, situation par nirbhar orders ke liye aur un classes ke liye jinhe edit nahi kar sakte (jaise library classes), Comparator use karo."],
+   pts: [["Where it lives: Comparable is INSIDE the class (this versus other). Comparator is OUTSIDE, a separate object (a versus b).", "Method: compareTo(T other) versus compare(T a, T b).", "Package: java.lang.Comparable (no import) versus java.util.Comparator (import needed).", "Number of orders: only one natural order versus as many comparators as you like.", "Changing the class: Comparable needs you to edit it. A Comparator needs no change to the class, so it works for classes you do not own.", "Used automatically: Comparable is used when you pass NO comparator (Collections.sort(list), new TreeSet<>()). A Comparator is used only when you pass it in.", "Typical choice: roll number or id as the natural order, and Comparators for name, marks, price and date.", "A class can have a natural order and still be sorted by comparators at the same time."],
+         ["Kahan rehta hai: Comparable class ke ANDAR hai (this versus other). Comparator BAHAR hai, alag object (a versus b).", "Method: compareTo(T other) versus compare(T a, T b).", "Package: java.lang.Comparable (import nahi) versus java.util.Comparator (import chahiye).", "Orders ki ginti: sirf ek natural order versus jitne chaho utne comparators.", "Class badalna: Comparable ke liye class edit karni padti hai. Comparator ke liye class badalni nahi padti, isliye wo un classes ke liye bhi chalta hai jo tumhari nahi hain.", "Apne aap use hota hai: Comparable tab use hota hai jab koi comparator NA do (Collections.sort(list), new TreeSet<>()). Comparator tabhi use hota hai jab use do.", "Aam choice: natural order ke liye roll number ya id, aur naam, marks, price aur date ke liye Comparators.", "Class ka natural order ho tab bhi use ek saath comparators se sort kar sakte ho."]],
+   code: `// Comparable: the class decides (one order)
+class Product implements Comparable<Product> {
+    String name; double price;
+    @Override public int compareTo(Product other) {
+        return this.name.compareTo(other.name);          // natural order: by name
+    }
+}
+
+// Comparator: the caller decides (any order, even for classes you cannot edit)
+// List<Product> list = ...;
+// Collections.sort(list);                                      // natural: by name (Comparable)
+// list.sort(Comparator.comparingDouble(p -> p.price));         // by price (Comparator)
+// list.sort(Comparator.comparingDouble((Product p) -> p.price).reversed());   // most expensive first
+
+// A class you cannot edit: String has ONE natural order (alphabetical), so for another order use a Comparator
+// words.sort(Comparator.comparingInt(String::length));`},
+  {h: ["Comparators in TreeSet, TreeMap, PriorityQueue and more", "TreeSet, TreeMap, PriorityQueue aur baaki me Comparators"],
+   p: ["Every structure that keeps items in order accepts a Comparator in its constructor. TreeSet and TreeMap use it to sort and to decide what counts as a duplicate key. PriorityQueue uses it to decide which item comes out first: its poll() always returns the smallest item according to the comparator, so a max-heap is just a reversed comparator. Collections.max, Collections.min and Collections.binarySearch also have versions that take a comparator.",
+       "Jo bhi structure items ko order me rakhta hai uske constructor me Comparator accept hota hai. TreeSet aur TreeMap use sort karne aur duplicate key kise maana jaye ye tay karne ke liye use karte hain. PriorityQueue use ye tay karne ke liye karta hai ki kaun sa item pehle niklega: uska poll() comparator ke hisaab se hamesha sabse chhota item deta hai, isliye max-heap bas ulta comparator hai. Collections.max, Collections.min aur Collections.binarySearch ke bhi aise versions hain jo comparator lete hain."],
+   code: `import java.util.*;
+
+public class SortedStructures {
+    public static void main(String[] args) {
+        List<Student> students = List.of(
+            new Student(3, "Mohit", 72), new Student(1, "Gurleen", 91),
+            new Student(2, "Rahul", 72), new Student(4, "Himakshi", 88),
+            new Student(5, "Shivam", 55));
+
+        // PriorityQueue: the highest marks come out first (a "max-heap")
+        PriorityQueue<Student> pq = new PriorityQueue<>(
+            Comparator.comparingInt(Student::getMarks).reversed());
+        pq.addAll(students);
+        System.out.println(pq.poll());                  // 1:Gurleen(91)
+        System.out.println(pq.poll());                  // 4:Himakshi(88)
+        System.out.println(pq.peek().getMarks());       // 72
+        // Printing the queue itself does NOT show a sorted order. Only poll() gives the order.
+
+        // TreeSet with a tie-breaker: nobody is lost by accident
+        Comparator<Student> rank = Comparator.comparingInt(Student::getMarks).reversed()
+                                             .thenComparing(Student::getName);
+        TreeSet<Student> board = new TreeSet<>(rank);
+        board.addAll(students);
+        System.out.println(board.size());               // 5   (all kept)
+        System.out.println(board.first());              // 1:Gurleen(91)
+
+        // TreeMap: students grouped by marks, from high to low
+        TreeMap<Integer, List<String>> byMarks = new TreeMap<>(Comparator.reverseOrder());
+        for (Student s : students) {
+            byMarks.computeIfAbsent(s.getMarks(), k -> new ArrayList<>()).add(s.getName());
+        }
+        System.out.println(byMarks);                    // {91=[Gurleen], 88=[Himakshi], 72=[Mohit, Rahul], 55=[Shivam]}
+
+        // Highest and lowest by any rule
+        System.out.println(Collections.max(students, Comparator.comparingInt(Student::getMarks)));   // 1:Gurleen(91)
+        System.out.println(Collections.min(students, Comparator.comparing(Student::getName)));       // 1:Gurleen(91)
+
+        // Binary search needs a list sorted by the SAME comparator
+        List<Student> sorted = new ArrayList<>(students);
+        sorted.sort(Comparator.comparing(Student::getName));
+        int at = Collections.binarySearch(sorted, new Student(0, "Rahul", 0), Comparator.comparing(Student::getName));
+        System.out.println(at);                         // 3
+    }
+}`},
+  {h: ["Sorting arrays, 2D arrays and maps", "Arrays, 2D arrays aur maps ko sort karna"],
+   p: ["Arrays.sort(int[]) sorts primitives in ascending order only, and it takes NO comparator. For a custom order you need an array of objects (Integer[], String[], int[][] and so on). A 2D int[][] is an array of int[] OBJECTS, so a comparator on the rows works, and this is the usual way to sort pairs and intervals. A Map cannot be sorted by value in place, so you copy its entries into a list and sort that list.",
+       "Arrays.sort(int[]) primitives ko sirf ascending order me sort karta hai, aur ise koi comparator NAHI milta. Custom order ke liye objects ka array chahiye (Integer[], String[], int[][] waghera). 2D int[][] int[] OBJECTS ka array hai, isliye rows par comparator chalta hai, aur pairs aur intervals ko sort karne ka aam tareeka yahi hai. Map ko value se usi jagah sort nahi kar sakte, isliye uski entries ko list me copy karke us list ko sort karte hain."],
+   code: `import java.util.*;
+
+public class SortingVariety {
+    public static void main(String[] args) {
+        // Primitives: ascending only. For descending, sort and then reverse
+        int[] prim = {5, 2, 9, 1};
+        Arrays.sort(prim);
+        for (int i = 0, j = prim.length - 1; i < j; i++, j--) {
+            int t = prim[i]; prim[i] = prim[j]; prim[j] = t;
+        }
+        System.out.println(Arrays.toString(prim));           // [9, 5, 2, 1]
+
+        // Wrapper arrays accept a comparator
+        Integer[] boxed = {5, 2, 9, 1};
+        Arrays.sort(boxed, Collections.reverseOrder());
+        System.out.println(Arrays.toString(boxed));          // [9, 5, 2, 1]
+
+        // Strings by length (the sort is stable: pear stays before kiwi)
+        String[] words = {"pear", "fig", "banana", "kiwi"};
+        Arrays.sort(words, Comparator.comparingInt(String::length));
+        System.out.println(Arrays.toString(words));          // [fig, pear, kiwi, banana]
+
+        // 2D array: sort the rows by the first number, then by the second
+        int[][] pairs = {{3, 9}, {1, 5}, {2, 7}, {1, 2}};
+        Arrays.sort(pairs, (a, b) -> a[0] != b[0] ? Integer.compare(a[0], b[0])
+                                                  : Integer.compare(a[1], b[1]));
+        System.out.println(Arrays.deepToString(pairs));      // [[1, 2], [1, 5], [2, 7], [3, 9]]
+
+        // Sort a range only: indexes 1 up to (not including) 4
+        int[] part = {9, 8, 7, 6, 5, 4};
+        Arrays.sort(part, 1, 4);
+        System.out.println(Arrays.toString(part));           // [9, 6, 7, 8, 5, 4]
+
+        // Sort a Map by value, highest first
+        Map<String, Integer> marks = new HashMap<>();
+        marks.put("Rahul", 72);
+        marks.put("Gurleen", 91);
+        marks.put("Mohit", 55);
+        marks.put("Himakshi", 88);
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(marks.entrySet());
+        entries.sort((a, b) -> Integer.compare(b.getValue(), a.getValue()));
+        System.out.println(entries);                         // [Gurleen=91, Himakshi=88, Rahul=72, Mohit=55]
+
+        // Keep that order in a LinkedHashMap
+        Map<String, Integer> ranked = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> e : entries) ranked.put(e.getKey(), e.getValue());
+        System.out.println(ranked);                          // {Gurleen=91, Himakshi=88, Rahul=72, Mohit=55}
+    }
+}`},
+  {h: ["Pitfalls: consistency with equals and broken comparators", "Pitfalls: equals ke saath consistency aur tooti comparators"],
+   p: ["Hash-based and tree-based collections decide 'same item' in different ways. HashSet and HashMap use equals() and hashCode(). TreeSet and TreeMap use only compareTo or the Comparator, where 0 means the same. When the two disagree, the same data gives different results. The classic proof is BigDecimal: 1.0 and 1.00 are NOT equal by equals() (the scale differs), but compareTo says 0. A comparator that breaks the rules (not symmetric, not transitive) can make sorting throw IllegalArgumentException with the message 'Comparison method violates its general contract!' or sort wrongly without any warning.",
+       "Hash-based aur tree-based collections 'same item' ka faisla alag tareeke se karti hain. HashSet aur HashMap equals() aur hashCode() use karte hain. TreeSet aur TreeMap sirf compareTo ya Comparator use karte hain, jahan 0 ka matlab same. Dono me mel na ho to wahi data alag results deta hai. Classic saboot BigDecimal hai: 1.0 aur 1.00 equals() ke hisaab se barabar NAHI hain (scale alag hai), par compareTo 0 kehta hai. Rules todne wala comparator (symmetric nahi, transitive nahi) sorting ko 'Comparison method violates its general contract!' message ke saath IllegalArgumentException dene par majboor kar sakta hai, ya bina warning ke galat sort kar sakta hai."],
+   code: `import java.math.BigDecimal;
+import java.util.*;
+
+public class Pitfalls {
+    public static void main(String[] args) {
+        BigDecimal a = new BigDecimal("1.0");
+        BigDecimal b = new BigDecimal("1.00");
+        System.out.println(a.equals(b));                       // false  (different scale)
+        System.out.println(a.compareTo(b));                    // 0      (same value)
+
+        System.out.println(new HashSet<>(List.of(a, b)).size());   // 2   (hash set uses equals)
+        System.out.println(new TreeSet<>(List.of(a, b)).size());   // 1   (tree set uses compareTo)
+
+        // A BROKEN comparator: it never returns 0 and is not symmetric
+        // list.sort((x, y) -> x < y ? -1 : 1);   // equal items give 1 both ways: can throw or sort wrongly
+
+        // A comparator that returns a boolean-like value is also wrong. Always return a proper sign.
+        List<Integer> nums = new ArrayList<>(List.of(3, 1, 2));
+        nums.sort((x, y) -> Integer.compare(x, y));            // correct
+        System.out.println(nums);                              // [1, 2, 3]
+
+        // Null elements crash a plain comparison
+        List<String> withNull = new ArrayList<>(Arrays.asList("b", null, "a"));
+        // Collections.sort(withNull);                         // NullPointerException
+        withNull.sort(Comparator.nullsLast(Comparator.naturalOrder()));
+        System.out.println(withNull);                          // [a, b, null]
+    }
+}`,
+   pts: [["Keep compareTo and equals() in agreement, or document clearly that your class is not consistent.", "A comparator must return a proper sign. Never return a boolean converted to 1 or 0.", "Never subtract to compare (a - b). Use Integer.compare, Double.compare or Long.compare.", "Do not compare doubles with a cast to int: (int) (a - b) turns 0.4 into 0 and loses the difference. Use Double.compare.", "Strings are compared by character codes, so capital letters sort before small ones. Use String.CASE_INSENSITIVE_ORDER or a Collator for human-friendly sorting.", "Sorting is stable for objects (List.sort, Collections.sort, Arrays.sort on objects). Sorting primitives uses a different algorithm, which does not matter because equal primitives are identical.", "When you sort a list of nulls or of mixed types, you get NullPointerException or ClassCastException. Clean the data or use nullsFirst and nullsLast.", "compareTo on a String returns the difference of characters or lengths. Check only its sign, never compare it to exactly 1 or -1."],
+         ["compareTo aur equals() ko ek dusre se mel me rakho, ya saaf likho ki tumhari class consistent nahi hai.", "Comparator ko sahi sign return karna chahiye. Boolean ko 1 ya 0 me badalkar kabhi return mat karo.", "Compare karne ke liye kabhi subtract mat karo (a - b). Integer.compare, Double.compare ya Long.compare use karo.", "Doubles ko int me cast karke compare mat karo: (int) (a - b) 0.4 ko 0 bana deta hai aur fark kho deta hai. Double.compare use karo.", "Strings character codes se compare hoti hain, isliye capital letters small letters se pehle sort hote hain. Insaan ke liye achhi sorting ke liye String.CASE_INSENSITIVE_ORDER ya Collator use karo.", "Objects ke liye sorting stable hai (objects par List.sort, Collections.sort, Arrays.sort). Primitives ki sorting alag algorithm use karti hai, jo matter nahi karta kyunki barabar primitives bilkul ek jaise hote hain.", "Nulls ya mixed types ki list sort karne par NullPointerException ya ClassCastException aata hai. Data saaf karo ya nullsFirst aur nullsLast use karo.", "String par compareTo characters ya lengths ka difference return karta hai. Sirf uska sign dekho, use kabhi theek 1 ya -1 se compare mat karo."]]},
+  {h: ["Practical example: a leaderboard", "Practical example: leaderboard"],
+   p: ["A leaderboard needs a rule with tie-breakers: highest score first, then fewest attempts, then name A to Z. This example builds the comparator, sorts, and prints ranks where tied players share the same rank (1, 2, 2, 4), exactly as in sports tables. It combines Comparator.comparing, thenComparing, a stable sort and a small loop.",
+       "Leaderboard ko tie-breakers wala rule chahiye: pehle sabse zyada score, fir sabse kam attempts, fir naam A se Z. Ye example comparator banata hai, sort karta hai, aur ranks print karta hai jahan barabar players ki rank same hoti hai (1, 2, 2, 4), bilkul sports tables ki tarah. Ye Comparator.comparing, thenComparing, stable sort aur ek chhota loop milata hai."],
+   code: `import java.util.*;
+
+class Player {
+    private final String name;
+    private final int score;
+    private final int attempts;
+
+    Player(String name, int score, int attempts) {
+        this.name = name;
+        this.score = score;
+        this.attempts = attempts;
+    }
+
+    String getName()  { return name; }
+    int getScore()    { return score; }
+    int getAttempts() { return attempts; }
+}
+
+public class Leaderboard {
+    public static void main(String[] args) {
+        List<Player> players = new ArrayList<>(List.of(
+            new Player("Rahul", 80, 3),
+            new Player("Gurleen", 95, 2),
+            new Player("Mohit", 80, 3),
+            new Player("Himakshi", 80, 2),
+            new Player("Shivam", 60, 1)));
+
+        Comparator<Player> rule = Comparator
+            .comparingInt(Player::getScore).reversed()          // 1) highest score first
+            .thenComparingInt(Player::getAttempts)              // 2) fewer attempts first
+            .thenComparing(Player::getName);                    // 3) then name A to Z
+
+        players.sort(rule);
+
+        int rank = 0;
+        Player previous = null;
+        for (int i = 0; i < players.size(); i++) {
+            Player p = players.get(i);
+            // a new rank only when the score AND attempts differ from the previous player
+            if (previous == null || p.getScore() != previous.getScore()
+                                  || p.getAttempts() != previous.getAttempts()) {
+                rank = i + 1;
+            }
+            System.out.printf("%d. %-9s score %d, attempts %d%n", rank, p.getName(), p.getScore(), p.getAttempts());
+            previous = p;
+        }
+        // 1. Gurleen   score 95, attempts 2
+        // 2. Himakshi  score 80, attempts 2
+        // 3. Mohit     score 80, attempts 3
+        // 3. Rahul     score 80, attempts 3
+        // 5. Shivam    score 60, attempts 1
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: calling Collections.sort(list) on your own class without implementing Comparable (compile error) or passing a Comparator.", "Mistake: writing implements Comparable (raw type) and then compareTo(Object o) with a cast. Write Comparable<Student> and compareTo(Student other).", "Mistake: comparing with subtraction (this.marks - other.marks), which overflows. Use Integer.compare.", "Mistake: comparing Strings with == or by subtracting, instead of compareTo.", "Mistake: forgetting that reversing is done by swapping the two arguments or by reversed(), and not by negating compareTo.", "Mistake: using Comparator.comparing(s -> ...).reversed() with a lambda and getting a type error. Use a method reference.", "Mistake: a TreeSet or TreeMap losing items because the comparator returns 0 for different objects. Add a tie-breaker.", "Mistake: sorting an int[] with a Comparator (not allowed). Use Integer[] or sort and reverse.", "Mistake: a comparator that changes what it compares between calls, or depends on random values, which breaks the sorting contract.", "Good habit: write the order as a named Comparator constant when you use it in several places (static final Comparator<Student> BY_MARKS = ...).", "Good habit: use the builders (comparing, thenComparing, reversed) instead of long if-else comparators.", "Good habit: always add a final tie-breaker on a unique field (id or name) so the order is fully predictable."],
+         ["Galti: apni class par Comparable implement kiye bina Collections.sort(list) call karna (compile error) ya Comparator na dena.", "Galti: implements Comparable (raw type) likhkar compareTo(Object o) me cast lagana. Comparable<Student> aur compareTo(Student other) likho.", "Galti: subtraction (this.marks - other.marks) se compare karna, jo overflow karta hai. Integer.compare use karo.", "Galti: Strings ko == se ya subtract karke compare karna, compareTo ki jagah.", "Galti: ye bhul jana ki ulta karna dono arguments badalkar ya reversed() se hota hai, compareTo ko negate karke nahi.", "Galti: lambda ke saath Comparator.comparing(s -> ...).reversed() likhkar type error pana. Method reference use karo.", "Galti: comparator alag objects ke liye 0 return kare aur TreeSet ya TreeMap items kho de. Tie-breaker jodo.", "Galti: int[] ko Comparator se sort karna (allowed nahi). Integer[] use karo ya sort karke reverse karo.", "Galti: aisa comparator jo calls ke beech jo compare karta hai wo badal de, ya random values par nirbhar ho, jisse sorting ka contract tootta hai.", "Achhi aadat: order ko kai jagah use karna ho to named Comparator constant likho (static final Comparator<Student> BY_MARKS = ...).", "Achhi aadat: lambe if-else comparators ki jagah builders (comparing, thenComparing, reversed) use karo.", "Achhi aadat: hamesha aakhir me unique field (id ya naam) par tie-breaker jodo taaki order poori tarah predictable ho."]],
+   tip: ["Interview questions: (1) Comparable vs Comparator? Comparable is the class's own natural order through compareTo (one order, inside the class). Comparator is an external order through compare (many orders, no change to the class). (2) How do you sort by several fields? Use thenComparing, or compare the next field when the first result is 0. (3) What happens if a class is not Comparable and you put it in a TreeSet? ClassCastException. (4) Is Java's sort stable? Yes, for objects.", "Interview questions: (1) Comparable vs Comparator? Comparable class ka apna natural order hai compareTo se (ek order, class ke andar). Comparator compare se bahar ka order hai (kai orders, class me badlav nahi). (2) Kai fields se sort kaise karte hain? thenComparing use karo, ya pehla result 0 ho to agla field compare karo. (3) Class Comparable na ho aur TreeSet me daalo to kya hota hai? ClassCastException. (4) Kya Java ka sort stable hai? Haan, objects ke liye."]}
+ ]},
+50: {
+ def: ["File handling means reading data from files and writing data to files, so that information survives after the program ends. Java does this with streams: a Reader or InputStream brings data IN from a file, and a Writer or OutputStream sends data OUT to it. The classes live in java.io (the classic API) and java.nio.file (the modern API with Path and Files). Because files can be missing or locked, almost every file operation can throw an IOException.",
+       "File handling ka matlab files se data padhna aur files me data likhna hai, taaki jaankari program khatam hone ke baad bhi bachi rahe. Java ye streams se karta hai: Reader ya InputStream file se data ANDAR laata hai, aur Writer ya OutputStream use file me BAHAR bhejta hai. Classes java.io (classic API) aur java.nio.file (Path aur Files wala modern API) me hain. Files missing ya locked ho sakti hain, isliye lagbhag har file operation IOException de sakta hai."],
+ secs: [
+  {h: ["Why files, and the big picture", "Files kyun, aur bada picture"],
+   p: ["Variables live in memory and vanish when the program stops. A file on the disk keeps the data: saved marks, a to-do list, settings, a log of what happened. In Java there are two families of file classes. The classic java.io has File, FileReader, FileWriter, BufferedReader, PrintWriter and the byte streams. The modern java.nio.file (since Java 7) has Path and the utility class Files, which do common jobs in one line. Learn both: new code prefers java.nio.file, but you will meet java.io everywhere.",
+       "Variables memory me rehte hain aur program ruka to gayab ho jate hain. Disk par ki file data ko bachaye rakhti hai: save kiye marks, to-do list, settings, kya hua uska log. Java me file classes ke do families hain. Classic java.io me File, FileReader, FileWriter, BufferedReader, PrintWriter aur byte streams hain. Modern java.nio.file (Java 7 se) me Path aur utility class Files hain, jo aam kaam ek line me kar dete hain. Dono seekho: naya code java.nio.file prefer karta hai, par java.io tumhe har jagah milega."],
+   pts: [["Text files hold characters (txt, csv, java, html, json). Use Reader and Writer classes, or Files.readString and Files.writeString.", "Binary files hold raw bytes (images, pdf, zip, mp3). Use InputStream and OutputStream classes, or Files.copy.", "A stream is a flow of data in ONE direction. It must be CLOSED after use, or the file stays locked and the last data may never be saved. try-with-resources closes it for you.", "Buffered classes (BufferedReader, BufferedWriter) collect data in memory and read or write in big chunks, which is much faster.", "File operations can fail for many reasons, so the checked IOException (and FileNotFoundException, NoSuchFileException) must be caught or declared.", "Serialization, which saves whole objects to a file, is the next lesson."],
+         ["Text files characters rakhti hain (txt, csv, java, html, json). Reader aur Writer classes, ya Files.readString aur Files.writeString use karo.", "Binary files raw bytes rakhti hain (images, pdf, zip, mp3). InputStream aur OutputStream classes, ya Files.copy use karo.", "Stream data ka EK taraf ka flow hai. Use ke baad BAND karna zaroori hai, warna file locked rehti hai aur aakhri data shayad kabhi save na ho. try-with-resources tumhare liye band kar deta hai.", "Buffered classes (BufferedReader, BufferedWriter) data memory me jama karke bade tukdon me padhti ya likhti hain, jo bahut tez hai.", "File operations kai wajah se fail ho sakte hain, isliye checked IOException (aur FileNotFoundException, NoSuchFileException) ko catch ya declare karna padta hai.", "Serialization, jo poore objects ko file me save karta hai, agla lesson hai."]],
+   code: `// The main classes at a glance
+//
+//                      TEXT (characters)                 BINARY (bytes)
+//  read   :  FileReader, BufferedReader, Scanner       FileInputStream, BufferedInputStream
+//  write  :  FileWriter, BufferedWriter, PrintWriter   FileOutputStream, BufferedOutputStream
+//
+//  Modern one-liners (java.nio.file.Files):
+//     Files.readString(path)        Files.readAllLines(path)       Files.writeString(path, text)
+//     Files.write(path, lines)      Files.copy(a, b)               Files.move(a, b)
+//     Files.delete(path)            Files.exists(path)             Files.size(path)
+//
+//  Paths and information:
+//     File (java.io)  : name, size, exists, isFile, isDirectory, list, mkdir, delete
+//     Path (java.nio) : a location. Build it with Path.of("data", "notes.txt")`},
+  {h: ["Paths and the working directory", "Paths aur working directory"],
+   p: ["A relative path such as notes.txt or data/notes.txt is measured from the WORKING DIRECTORY, the folder the program was started from. In VS Code, the Run button starts the program in the folder you opened (the project folder). If you run java from a terminal, it is the folder where you typed the command. This single fact explains most 'file not found' errors: the file exists, but not in the working directory. An absolute path (C:/Users/you/notes.txt) starts from the root and does not depend on where you run the program. Use forward slashes in Java strings: they work on Windows too. A single backslash is an escape character, so a Windows path in a string needs a double backslash.",
+       "Relative path jaise notes.txt ya data/notes.txt WORKING DIRECTORY se naapa jata hai, yaani us folder se jahan se program shuru hua. VS Code me Run button program ko us folder me shuru karta hai jo tumne kholi hai (project folder). Terminal se java chalate ho to wo folder jahan tumne command type ki. Yahi ek baat zyadatar 'file not found' errors samjha deti hai: file hai, par working directory me nahi hai. Absolute path (C:/Users/you/notes.txt) root se shuru hota hai aur isse farak nahi padta ki program kahan se chalaya. Java strings me forward slashes use karo: wo Windows par bhi chalte hain. Ek backslash escape character hota hai, isliye string me Windows path ke liye double backslash chahiye."],
+   code: `import java.io.File;
+import java.io.IOException;
+import java.nio.file.Path;
+
+public class PathsDemo {
+    public static void main(String[] args) throws IOException {
+        System.out.println(System.getProperty("user.dir"));   // the working directory
+
+        File f = new File("data/notes.txt");                  // only a PATH object: nothing is created on disk
+        System.out.println(f.getName());                      // notes.txt
+        System.out.println(f.getParent());                    // data
+        System.out.println(f.getPath());                      // data/notes.txt   (data\\notes.txt on Windows)
+        System.out.println(f.getAbsolutePath());              // working directory + /data/notes.txt
+        System.out.println(f.exists());                       // false (unless it is really there)
+        System.out.println(File.separator);                   // the separator of this operating system
+
+        // The modern Path
+        Path p = Path.of("data", "reports", "may.txt");       // builds the path with the right separator
+        System.out.println(p);                                // data/reports/may.txt
+        System.out.println(p.getFileName());                  // may.txt
+        System.out.println(p.getParent());                    // data/reports
+        System.out.println(p.toAbsolutePath());               // full path
+        System.out.println(p.resolveSibling("june.txt"));     // data/reports/june.txt
+        System.out.println(Path.of("data").resolve("a.txt")); // data/a.txt
+    }
+}
+
+// Writing a Windows path inside a String:
+//   "C:/Users/Gurleen/notes.txt"            works (forward slashes)
+//   "C:\\\\Users\\\\Gurleen\\\\notes.txt"        also works (every backslash doubled)
+//   "C:\\Users\\Gurleen\\notes.txt"            WRONG: the single backslash starts an escape like a tab or a new line`,
+   tip: ["If a file is 'not found', print new File(name).getAbsolutePath() first. It shows exactly where Java is looking.", "File 'not found' ho to pehle new File(name).getAbsolutePath() print karo. Ye bilkul dikha deta hai ki Java kahan dhundh raha hai."]},
+  {h: ["The File class: information and housekeeping", "File class: jaankari aur housekeeping"],
+   p: ["A File object represents a PATH, not the file's content. Creating new File(\"x.txt\") does not create anything on the disk. You use it to ask questions (does it exist, is it a file or a folder, how big is it) and to do housekeeping (create a file or folder, rename, delete). It cannot read or write the content. For that you need a stream or reader. Note that mkdir creates one folder and fails if the parent is missing, while mkdirs creates the whole chain.",
+       "File object ek PATH ko dikhata hai, file ke content ko nahi. new File(\"x.txt\") likhne se disk par kuch nahi banta. Isse sawal poochhte ho (kya ye hai, file hai ya folder, kitni badi hai) aur housekeeping karte ho (file ya folder banana, rename, delete). Ye content padh ya likh nahi sakta. Uske liye stream ya reader chahiye. Dhyan do ki mkdir ek folder banata hai aur parent na ho to fail ho jata hai, jabki mkdirs poori chain banata hai."],
+   code: `import java.io.File;
+import java.io.IOException;
+
+public class FileClassDemo {
+    public static void main(String[] args) throws IOException {
+        File folder = new File("demo/backup");
+        System.out.println(folder.mkdirs());           // true: creates demo and demo/backup
+        System.out.println(folder.isDirectory());      // true
+
+        File f = new File("demo/notes.txt");
+        System.out.println(f.exists());                // false
+        System.out.println(f.createNewFile());         // true: an empty file now exists
+        System.out.println(f.createNewFile());         // false: it already existed
+        System.out.println(f.isFile());                // true
+        System.out.println(f.length());                // 0   (size in bytes)
+        System.out.println(f.canRead() + " " + f.canWrite());   // true true
+        System.out.println(f.lastModified() > 0);      // true (time in milliseconds)
+
+        File renamed = new File("demo/ideas.txt");
+        System.out.println(f.renameTo(renamed));       // true  (rename or move)
+        System.out.println(f.exists());                // false (the old name is gone)
+
+        System.out.println(renamed.delete());          // true
+        System.out.println(folder.delete());           // true  (a folder can be deleted only when it is EMPTY)
+        System.out.println(new File("demo").delete()); // true
+    }
+}`,
+   pts: [["exists(), isFile(), isDirectory(), length(), canRead(), canWrite(), getName(), getParent(), getAbsolutePath().", "createNewFile() makes an empty file. mkdir() makes one folder. mkdirs() makes all missing folders.", "delete() removes a file or an EMPTY folder, and returns false (instead of throwing) when it fails. Check the result.", "list() returns the names in a folder. listFiles() returns File objects.", "The old File methods mostly return true or false and give no reason when they fail. The newer Files class throws an exception with the reason."],
+         ["exists(), isFile(), isDirectory(), length(), canRead(), canWrite(), getName(), getParent(), getAbsolutePath().", "createNewFile() khali file banata hai. mkdir() ek folder banata hai. mkdirs() saare missing folders banata hai.", "delete() file ya KHALI folder hatata hai, aur fail hone par exception ki jagah false return karta hai. Result check karo.", "list() folder ke andar ke naam deta hai. listFiles() File objects deta hai.", "Purane File methods zyadatar true ya false dete hain aur fail hone par wajah nahi batate. Naya Files class wajah ke saath exception deta hai."]]},
+  {h: ["Writing text: FileWriter, BufferedWriter and PrintWriter", "Text likhna: FileWriter, BufferedWriter aur PrintWriter"],
+   p: ["FileWriter writes characters to a file. By default it OVERWRITES an existing file (the old content is lost the moment you open it), and passing true as the second argument switches to APPEND mode, which adds to the end. PrintWriter is the friendliest, because it has print, println and printf exactly like System.out. Wrapping the writer in a BufferedWriter makes writing faster. Always use try-with-resources: closing the writer also flushes (empties) the buffer, so the last lines are really saved.",
+       "FileWriter characters ko file me likhta hai. Default me wo maujooda file ko OVERWRITE karta hai (kholte hi purana content kho jata hai), aur doosre argument me true dene se APPEND mode ho jata hai, jo end me jodta hai. PrintWriter sabse dostana hai, kyunki isme System.out jaise hi print, println aur printf hain. Writer ko BufferedWriter me lapetne se likhna tez ho jata hai. Hamesha try-with-resources use karo: writer band karne se buffer flush (khali) bhi hota hai, isliye aakhri lines sach me save hoti hain."],
+   code: `import java.io.*;
+
+public class WriteText {
+    public static void main(String[] args) {
+        // 1) FileWriter: creates the file, or OVERWRITES it
+        try (FileWriter fw = new FileWriter("hello.txt")) {
+            fw.write("Hello from Java");
+            fw.write(System.lineSeparator());              // a portable new line
+            fw.write("Second line" + System.lineSeparator());
+        } catch (IOException e) {
+            System.out.println("Could not write: " + e.getMessage());
+        }
+
+        // 2) Append mode: the second argument true keeps the old content
+        try (FileWriter fw = new FileWriter("hello.txt", true)) {
+            fw.write("Third line (appended)" + System.lineSeparator());
+        } catch (IOException e) {
+            System.out.println("Could not append: " + e.getMessage());
+        }
+
+        // 3) BufferedWriter: fast, and newLine() writes the right line break
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("list.txt"))) {
+            for (String name : new String[]{"Rahul", "Gurleen", "Himakshi"}) {
+                bw.write(name);
+                bw.newLine();
+            }
+        } catch (IOException e) {
+            System.out.println("Could not write: " + e.getMessage());
+        }
+
+        // 4) PrintWriter: print, println and printf like System.out (the friendliest)
+        try (PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter("report.txt")))) {
+            pw.println("Marks report");
+            pw.printf("%-10s %d%n", "Gurleen", 91);
+            pw.printf("%-10s %d%n", "Mohit", 72);
+            pw.println("End");
+        } catch (IOException e) {
+            System.out.println("Could not write: " + e.getMessage());
+        }
+
+        System.out.println("Files written. Open hello.txt, list.txt and report.txt to check.");
+    }
+}`,
+   pts: [["new FileWriter(name) overwrites. new FileWriter(name, true) appends. The file is created if it is missing.", "Close the writer (try-with-resources). Without close() or flush(), the buffered text may never reach the disk.", "System.lineSeparator() (or newLine() or println) gives the correct line break for the operating system. A hard-coded line break may look wrong on Windows.", "PrintWriter never throws IOException from print and println. Call checkError() if you must know.", "To choose the text encoding, use new FileWriter(name, StandardCharsets.UTF_8) (Java 11+). Without it, the default of your system is used."],
+         ["new FileWriter(name) overwrite karta hai. new FileWriter(name, true) append karta hai. File na ho to ban jati hai.", "Writer ko band karo (try-with-resources). close() ya flush() ke bina buffer ka text shayad disk tak kabhi na pahunche.", "System.lineSeparator() (ya newLine() ya println) operating system ke liye sahi line break deta hai. Hard-code kiya hua line break Windows par galat dikh sakta hai.", "PrintWriter ke print aur println IOException kabhi nahi dete. Jaanna ho to checkError() call karo.", "Text encoding chunne ke liye new FileWriter(name, StandardCharsets.UTF_8) use karo (Java 11+). Iske bina tumhare system ka default use hota hai."]]},
+  {h: ["Reading text: Scanner, BufferedReader and FileReader", "Text padhna: Scanner, BufferedReader aur FileReader"],
+   p: ["Scanner is the easiest way to read a file, because you already know it from keyboard input: hasNextLine and nextLine. BufferedReader.readLine() is faster and is the standard way for big files: it returns one line at a time and returns null at the end of the file. FileReader alone reads single characters, which is slow, so wrap it in a BufferedReader. If the file does not exist, both throw FileNotFoundException when you open them.",
+       "Scanner file padhne ka sabse aasan tareeka hai, kyunki tum use keyboard input se pehle se jaante ho: hasNextLine aur nextLine. BufferedReader.readLine() tez hai aur bade files ke liye standard tareeka hai: ye ek baar me ek line deta hai aur file khatam hone par null return karta hai. Akela FileReader single characters padhta hai, jo slow hai, isliye use BufferedReader me lapeto. File maujood na ho to dono kholte hi FileNotFoundException dete hain."],
+   code: `import java.io.*;
+import java.util.Scanner;
+
+public class ReadText {
+    public static void main(String[] args) {
+        // 1) Scanner: the same methods you used for the keyboard
+        try (Scanner sc = new Scanner(new File("hello.txt"))) {
+            while (sc.hasNextLine()) {
+                System.out.println(sc.nextLine());
+            }
+        } catch (FileNotFoundException e) {
+            System.out.println("File not found: " + e.getMessage());
+        }
+
+        // 2) BufferedReader: the standard way, readLine() returns null at the end
+        try (BufferedReader br = new BufferedReader(new FileReader("hello.txt"))) {
+            String line;
+            int number = 0;
+            while ((line = br.readLine()) != null) {
+                number++;
+                System.out.println(number + ": " + line);
+            }
+            System.out.println("Total lines: " + number);
+        } catch (IOException e) {
+            System.out.println("Read failed: " + e.getMessage());
+        }
+
+        // 3) Reading numbers from a file with Scanner (numbers.txt: 10 20 30 on one or many lines)
+        try (Scanner sc = new Scanner(new File("numbers.txt"))) {
+            int sum = 0;
+            while (sc.hasNextInt()) sum += sc.nextInt();
+            System.out.println("Sum = " + sum);
+        } catch (FileNotFoundException e) {
+            System.out.println("numbers.txt is missing");
+        }
+    }
+}`,
+   pts: [["readLine() returns the line WITHOUT the line break, and null at the end. Do not call it twice in one loop round.", "Scanner is convenient for words and numbers (next, nextInt). BufferedReader is better for plain lines and large files.", "Opening a missing file throws FileNotFoundException, a kind of IOException. Catch the specific one first when you want a special message.", "Use the same Scanner or reader for the whole file. Creating a new one for every line starts from the beginning each time.", "Always close readers. try-with-resources does it even when an exception happens."],
+         ["readLine() line ko line break ke BINA deta hai, aur end par null. Ek loop round me use do baar call mat karo.", "Words aur numbers (next, nextInt) ke liye Scanner aasan hai. Seedhi lines aur bade files ke liye BufferedReader behtar hai.", "Missing file kholne par FileNotFoundException aata hai, jo IOException ki ek kisam hai. Khaas message chahiye to specific wala pehle catch karo.", "Poori file ke liye wahi Scanner ya reader use karo. Har line ke liye naya banane se har baar shuru se padhta hai.", "Readers hamesha band karo. try-with-resources exception hone par bhi karta hai."]]},
+  {h: ["The modern way: Path and Files (java.nio.file)", "Modern tareeka: Path aur Files (java.nio.file)"],
+   p: ["The Files class does common jobs in a single line and, when something goes wrong, throws an exception that says why (NoSuchFileException, AccessDeniedException, FileAlreadyExistsException). Files.readString and Files.writeString (Java 11+) handle a whole text file as one String, and readAllLines and write handle it as a list of lines. Use them for small and medium files, because they load everything into memory. For huge files use Files.newBufferedReader and read line by line. Careful with options: if you pass only APPEND and the file does not exist, it fails, so combine CREATE and APPEND.",
+       "Files class aam kaam ek line me karti hai aur kuch galat ho to aisa exception deti hai jo wajah batata hai (NoSuchFileException, AccessDeniedException, FileAlreadyExistsException). Files.readString aur Files.writeString (Java 11+) poori text file ko ek String ki tarah sambhalte hain, aur readAllLines aur write use lines ki list ki tarah. Inhe chhoti aur medium files ke liye use karo, kyunki ye sab kuch memory me load karte hain. Bahut badi files ke liye Files.newBufferedReader use karke line by line padho. Options me dhyan rakho: sirf APPEND do aur file na ho to fail hota hai, isliye CREATE aur APPEND ko milao."],
+   code: `import java.io.IOException;
+import java.nio.file.*;
+import java.util.List;
+
+public class NioDemo {
+    public static void main(String[] args) throws IOException {
+        Path dir = Path.of("data");
+        Files.createDirectories(dir);                          // no error if it already exists
+        Path file = dir.resolve("todo.txt");                   // data/todo.txt
+
+        // Write a whole text in one call (creates or overwrites)
+        Files.writeString(file, "Write notes" + System.lineSeparator()
+                              + "Practice arrays" + System.lineSeparator());
+
+        // Append: combine CREATE and APPEND, so it also works when the file does not exist yet
+        Files.writeString(file, "Solve 3 problems" + System.lineSeparator(),
+                          StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+
+        // Read it back
+        String all = Files.readString(file);
+        System.out.println(all);
+        List<String> lines = Files.readAllLines(file);
+        System.out.println(lines.size() + " lines, first: " + lines.get(0));   // 3 lines, first: Write notes
+
+        // Write a list of lines
+        Files.write(dir.resolve("names.txt"), List.of("Rahul", "Gurleen", "Mohit"));
+
+        // Information
+        System.out.println(Files.exists(file));                // true
+        System.out.println(Files.isDirectory(dir));            // true
+        System.out.println(Files.size(file) > 0);              // true
+
+        // Copy, move, delete
+        Path backup = dir.resolve("todo-backup.txt");
+        Files.copy(file, backup, StandardCopyOption.REPLACE_EXISTING);
+        Files.move(backup, dir.resolve("old-todo.txt"), StandardCopyOption.REPLACE_EXISTING);
+        Files.delete(dir.resolve("old-todo.txt"));             // throws if the file is missing
+        System.out.println(Files.deleteIfExists(dir.resolve("old-todo.txt")));   // false: already gone
+
+        // A big file: read line by line instead of loading everything
+        try (var reader = Files.newBufferedReader(file)) {     // UTF-8 by default
+            String line;
+            while ((line = reader.readLine()) != null) System.out.println("> " + line);
+        }
+    }
+}`,
+   pts: [["Path.of(...) (Java 11+) or Paths.get(...) builds a Path. resolve joins paths. getFileName, getParent and toAbsolutePath describe them.", "Files methods use UTF-8 by default for text, which avoids the encoding surprises of FileReader on older Java versions.", "Files.readString and readAllLines load the WHOLE file into memory. For a multi-gigabyte log use newBufferedReader or Files.lines (a stream, lesson 55).", "Files.copy and Files.move fail if the target exists, unless you pass REPLACE_EXISTING.", "Files.delete throws NoSuchFileException when the file is missing. deleteIfExists returns false instead.", "Files.createDirectories creates a whole chain of folders and does not complain if they exist."],
+         ["Path.of(...) (Java 11+) ya Paths.get(...) Path banata hai. resolve paths ko jodta hai. getFileName, getParent aur toAbsolutePath unhe describe karte hain.", "Files ke methods text ke liye default me UTF-8 use karte hain, jisse purane Java versions me FileReader ke encoding surprises se bachte ho.", "Files.readString aur readAllLines POORI file memory me load karte hain. Kai gigabyte ke log ke liye newBufferedReader ya Files.lines (stream, lesson 55) use karo.", "Files.copy aur Files.move tab fail hote hain jab target maujood ho, jab tak REPLACE_EXISTING na do.", "Files.delete file missing ho to NoSuchFileException deta hai. deleteIfExists uski jagah false return karta hai.", "Files.createDirectories folders ki poori chain banata hai aur pehle se hone par shikayat nahi karta."]]},
+  {h: ["Binary files: byte streams and copying", "Binary files: byte streams aur copy karna"],
+   p: ["Images, PDFs, music and zip files must NOT be read with a Reader, because a Reader tries to decode the bytes as characters and corrupts them. Use FileInputStream and FileOutputStream, which move raw bytes. Reading one byte at a time is very slow, so read into a byte array (a buffer, 8 KB is a good size) and write exactly the number of bytes that were read. The DataOutputStream and DataInputStream pair stores primitive values compactly, and you must read them back in the SAME order in which you wrote them.",
+       "Images, PDFs, music aur zip files ko Reader se padhna NAHI chahiye, kyunki Reader bytes ko characters ki tarah decode karne ki koshish karta hai aur unhe kharab kar deta hai. FileInputStream aur FileOutputStream use karo, jo raw bytes ghumate hain. Ek-ek byte padhna bahut slow hai, isliye byte array (buffer, 8 KB achha size hai) me padho aur utne hi bytes likho jitne padhe the. DataOutputStream aur DataInputStream ki jodi primitive values ko compact tareeke se store karti hai, aur unhe usi ORDER me wapas padhna padta hai jisme likha tha."],
+   code: `import java.io.*;
+import java.nio.file.*;
+
+public class BinaryDemo {
+    // Copy ANY file (text, image, pdf) byte by byte, through a buffer
+    static void copy(String from, String to) throws IOException {
+        try (InputStream in = new BufferedInputStream(new FileInputStream(from));
+             OutputStream out = new BufferedOutputStream(new FileOutputStream(to))) {
+            byte[] buffer = new byte[8192];
+            int n;
+            while ((n = in.read(buffer)) != -1) {        // -1 means the end of the file
+                out.write(buffer, 0, n);                 // write only the n bytes that were read
+            }
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        // Make a small file first, then copy it
+        Files.writeString(Path.of("source.txt"), "Some data to copy");
+        copy("source.txt", "copy.txt");
+        System.out.println(Files.readString(Path.of("copy.txt")));     // Some data to copy
+
+        // The one-line version
+        Files.copy(Path.of("source.txt"), Path.of("copy2.txt"), StandardCopyOption.REPLACE_EXISTING);
+
+        // Primitive values: write, then read back in the SAME order
+        try (DataOutputStream out = new DataOutputStream(
+                new BufferedOutputStream(new FileOutputStream("data.bin")))) {
+            out.writeInt(42);
+            out.writeDouble(3.5);
+            out.writeUTF("Shivam");
+            out.writeBoolean(true);
+        }
+        try (DataInputStream in = new DataInputStream(
+                new BufferedInputStream(new FileInputStream("data.bin")))) {
+            int a = in.readInt();
+            double b = in.readDouble();
+            String c = in.readUTF();
+            boolean d = in.readBoolean();
+            System.out.println(a + " " + b + " " + c + " " + d);       // 42 3.5 Shivam true
+        }
+        System.out.println(Files.size(Path.of("data.bin")));           // 23 bytes (4 + 8 + 2 + 6 + 1 + 2 for the text length)
+    }
+}`,
+   pts: [["read(buffer) returns how many bytes were read, or -1 at the end. Always write out.write(buffer, 0, n) with that n, never the whole buffer.", "Reader and Writer are for CHARACTERS (text). InputStream and OutputStream are for BYTES (anything).", "InputStreamReader and OutputStreamWriter bridge the two worlds and let you choose the encoding.", "A data file can be read back only if you know exactly what was written and in which order.", "For text-only files prefer the character classes. For copying any file prefer Files.copy."],
+         ["read(buffer) batata hai ki kitne bytes padhe, ya end par -1. Hamesha usi n ke saath out.write(buffer, 0, n) likho, poora buffer kabhi nahi.", "Reader aur Writer CHARACTERS (text) ke liye hain. InputStream aur OutputStream BYTES (kuch bhi) ke liye hain.", "InputStreamReader aur OutputStreamWriter dono duniya ke beech pul hain aur encoding chunne dete hain.", "Data file tabhi wapas padhi ja sakti hai jab pata ho ki kya likha tha aur kis order me.", "Sirf text files ke liye character classes prefer karo. Kisi bhi file ko copy karne ke liye Files.copy prefer karo."]]},
+  {h: ["Exceptions: what can go wrong, and how to handle it", "Exceptions: kya galat ho sakta hai, aur kaise sambhalein"],
+   p: ["Files are outside your program, so failures are normal: the file may be missing, the folder may not exist, you may not have permission, the disk may be full, or another program may have the file open. The classic classes throw FileNotFoundException or a general IOException. The Files class throws more precise subclasses of FileSystemException. Catch the specific ones first and give the user a helpful message. Never leave a catch block empty. Checking exists() before opening is a good friendly check, but it is not a guarantee, because the file can disappear a moment later, so you still need the catch.",
+       "Files tumhare program ke bahar ki cheezein hain, isliye failures normal hain: file missing ho sakti hai, folder maujood na ho, permission na ho, disk bhari ho, ya koi dusra program file kholkar baitha ho. Classic classes FileNotFoundException ya general IOException deti hain. Files class FileSystemException ke zyada precise subclasses deti hai. Specific wale pehle catch karo aur user ko kaam ka message do. Catch block kabhi khali mat chhodo. Kholne se pehle exists() check karna achha dostana check hai, par guarantee nahi, kyunki file ek pal baad gayab ho sakti hai, isliye catch phir bhi chahiye."],
+   code: `import java.io.*;
+import java.nio.file.*;
+import java.util.List;
+
+public class FileErrors {
+    // Returns the lines of a file, or an empty list when something goes wrong
+    static List<String> safeRead(String name) {
+        try {
+            return Files.readAllLines(Path.of(name));
+        } catch (NoSuchFileException e) {                      // specific first
+            System.out.println("There is no file named " + e.getFile());
+        } catch (AccessDeniedException e) {
+            System.out.println("No permission to read " + e.getFile());
+        } catch (IOException e) {                              // the general safety net, last
+            System.out.println("Could not read the file: " + e.getMessage());
+        }
+        return List.of();
+    }
+
+    public static void main(String[] args) {
+        System.out.println(safeRead("missing.txt").size());    // message, then 0
+
+        // The classic style
+        try (BufferedReader br = new BufferedReader(new FileReader("missing.txt"))) {
+            System.out.println(br.readLine());
+        } catch (FileNotFoundException e) {
+            System.out.println("Please check the file name");  // a friendly message
+        } catch (IOException e) {
+            System.out.println("Read error: " + e.getMessage());
+        }
+
+        // Ask again until the file exists
+        java.util.Scanner keyboard = new java.util.Scanner(System.in);
+        File f;
+        do {
+            System.out.print("File name: ");
+            f = new File(keyboard.nextLine().trim());
+            if (!f.isFile()) System.out.println("Not found: " + f.getAbsolutePath());
+        } while (!f.isFile());
+        System.out.println("Opening " + f.getName());
+    }
+}`,
+   pts: [["FileNotFoundException: opening a missing file for reading, or a folder in place of a file, or a path that cannot be created.", "NoSuchFileException, AccessDeniedException, FileAlreadyExistsException, DirectoryNotEmptyException: precise errors from the Files class. All extend IOException.", "IOException is the general parent. Catch it last.", "A FileWriter creates a missing FILE but not a missing FOLDER. Create the folder first with mkdirs() or Files.createDirectories().", "Do not swallow exceptions silently. At least print e.getMessage().", "Close what you open. With try-with-resources the close happens even when an exception is thrown."],
+         ["FileNotFoundException: missing file padhne ke liye kholna, file ki jagah folder, ya aisa path jo ban nahi sakta.", "NoSuchFileException, AccessDeniedException, FileAlreadyExistsException, DirectoryNotEmptyException: Files class ki precise errors. Sab IOException ko extend karti hain.", "IOException general parent hai. Use sabse aakhir me catch karo.", "FileWriter missing FILE banata hai par missing FOLDER nahi. Pehle mkdirs() ya Files.createDirectories() se folder banao.", "Exceptions ko chupchap mat nigalo. Kam se kam e.getMessage() print karo.", "Jo kholo use band karo. try-with-resources me exception hone par bhi close hota hai."]]},
+  {h: ["Practical example: saving and loading a list of students (CSV)", "Practical example: students ki list save aur load karna (CSV)"],
+   p: ["CSV (comma separated values) is the simplest way to store a table in a text file: one record per line, fields separated by commas. The program below saves a list of objects, loads them back, and skips blank or damaged lines instead of crashing. This save-then-load pattern is the heart of every small app that must remember its data, such as the library project from Phase 3. (A real CSV with commas inside the values needs quoting. For now our names have no commas.)",
+       "CSV (comma separated values) table ko text file me store karne ka sabse simple tareeka hai: ek line me ek record, fields comma se alag. Neeche ka program objects ki list save karta hai, unhe wapas load karta hai, aur khali ya kharab lines ko crash hone ki jagah skip karta hai. Ye save-phir-load pattern har chhote app ka dil hai jo apna data yaad rakhta hai, jaise Phase 3 ka library project. (Values ke andar commas wale asli CSV me quoting chahiye. Abhi hamare naamon me comma nahi hai.)"],
+   code: `import java.io.*;
+import java.util.*;
+
+class Student {
+    final String name;
+    final int marks;
+    Student(String name, int marks) { this.name = name; this.marks = marks; }
+    @Override public String toString() { return name + " (" + marks + ")"; }
+}
+
+public class StudentFile {
+    static void save(List<Student> list, String file) throws IOException {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(file))) {
+            for (Student s : list) {
+                pw.println(s.name + "," + s.marks);          // one record per line
+            }
+        }
+    }
+
+    static List<Student> load(String file) throws IOException {
+        List<Student> list = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(file))) {
+            String line;
+            int lineNumber = 0;
+            while ((line = br.readLine()) != null) {
+                lineNumber++;
+                if (line.isBlank()) continue;                // skip empty lines
+                String[] p = line.split(",");
+                if (p.length != 2) {
+                    System.out.println("Skipping line " + lineNumber + ": " + line);
+                    continue;
+                }
+                try {
+                    list.add(new Student(p[0].trim(), Integer.parseInt(p[1].trim())));
+                } catch (NumberFormatException e) {
+                    System.out.println("Bad marks on line " + lineNumber + ": " + p[1]);
+                }
+            }
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>(List.of(
+            new Student("Gurleen", 91), new Student("Mohit", 72), new Student("Himakshi", 88)));
+
+        try {
+            save(students, "students.csv");
+            System.out.println("Saved " + students.size() + " students");     // Saved 3 students
+
+            // Simulate a damaged file by appending two bad lines
+            try (FileWriter fw = new FileWriter("students.csv", true)) {
+                fw.write("Rahul,abc" + System.lineSeparator());
+                fw.write("just-a-name" + System.lineSeparator());
+            }
+
+            List<Student> loaded = load("students.csv");
+            System.out.println(loaded);                                         // [Gurleen (91), Mohit (72), Himakshi (88)]
+            // Bad marks on line 4: abc
+            // Skipping line 5: just-a-name
+        } catch (IOException e) {
+            System.out.println("File problem: " + e.getMessage());
+        }
+    }
+}`},
+  {h: ["Practical example: counting lines, words and a word frequency", "Practical example: lines, words aur word frequency ginna"],
+   p: ["Reading a text file and processing it line by line is the base of log analysers, search tools and word counters. This example writes a small story file, then counts lines, words and characters, builds a frequency table with a TreeMap (alphabetical order), and searches for a word and prints the line numbers (like the grep tool). The text is split on anything that is not a letter, using the regular expression non-word characters.",
+       "Text file padhkar use line by line process karna log analysers, search tools aur word counters ka aadhar hai. Ye example ek chhoti kahani ki file likhta hai, fir lines, words aur characters ginta hai, TreeMap (alphabetical order) se frequency table banata hai, aur ek word dhundhkar line numbers print karta hai (grep tool ki tarah). Text ko un sab par todte hain jo letter nahi hai, non-word characters ke regular expression se."],
+   code: `import java.io.*;
+import java.nio.file.*;
+import java.util.*;
+
+public class TextAnalyser {
+    public static void main(String[] args) throws IOException {
+        Path file = Path.of("story.txt");
+        Files.write(file, List.of(
+            "Shivam wrote a program.",
+            "The program read a file.",
+            "Then Shivam read the program again!"));
+
+        int lines = 0, words = 0, chars = 0;
+        Map<String, Integer> freq = new TreeMap<>();
+        List<Integer> hits = new ArrayList<>();                 // line numbers that contain "program"
+
+        try (BufferedReader br = Files.newBufferedReader(file)) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                lines++;
+                chars += line.length();
+                for (String w : line.toLowerCase().split("\\\\W+")) {   // split on non-letters
+                    if (w.isEmpty()) continue;
+                    words++;
+                    freq.merge(w, 1, Integer::sum);
+                }
+                if (line.toLowerCase().contains("program")) hits.add(lines);
+            }
+        }
+
+        System.out.println("Lines: " + lines);                  // 3
+        System.out.println("Words: " + words);                  // 15
+        System.out.println("Characters (without line breaks): " + chars);
+        System.out.println(freq);
+        // {a=2, again=1, file=1, program=3, read=2, shivam=2, the=2, then=1, wrote=1}
+        System.out.println("'program' appears on lines " + hits);   // [1, 2, 3]
+
+        // The most frequent word
+        String best = null;
+        for (Map.Entry<String, Integer> e : freq.entrySet()) {
+            if (best == null || e.getValue() > freq.get(best)) best = e.getKey();
+        }
+        System.out.println(best + " -> " + freq.get(best));     // program -> 3
+    }
+}`},
+  {h: ["Practical example: a simple log file (append mode)", "Practical example: simple log file (append mode)"],
+   p: ["A log is a file that only grows: every event is added to the end with a timestamp. This is exactly what append mode is for. Opening and closing the file for each message keeps the code simple and makes sure nothing is lost if the program crashes later (for a very busy program you would keep one writer open). The date and time classes (java.time) are covered in lesson 56, so here we use LocalDateTime.now() just to print the time.",
+       "Log ek aisi file hai jo sirf badhti hai: har event timestamp ke saath end me jodi jati hai. Append mode isi ke liye hai. Har message ke liye file kholna aur band karna code ko simple rakhta hai aur ye pakka karta hai ki program baad me crash ho to bhi kuch na khoye (bahut busy program me ek writer khula rakhte). Date aur time classes (java.time) lesson 56 me hain, isliye yahan sirf time print karne ke liye LocalDateTime.now() use karte hain."],
+   code: `import java.io.*;
+import java.nio.file.*;
+import java.time.LocalDateTime;
+import java.util.List;
+
+public class Logger {
+    private final Path file;
+
+    Logger(String name) { this.file = Path.of(name); }
+
+    void log(String level, String message) {
+        String line = LocalDateTime.now() + " [" + level + "] " + message + System.lineSeparator();
+        try {
+            Files.writeString(file, line, StandardOpenOption.CREATE, StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            System.out.println("Could not write the log: " + e.getMessage());   // logging must never crash the program
+        }
+    }
+
+    void info(String m)  { log("INFO", m); }
+    void error(String m) { log("ERROR", m); }
+
+    List<String> lastLines(int n) throws IOException {
+        List<String> all = Files.readAllLines(file);
+        return all.subList(Math.max(0, all.size() - n), all.size());
+    }
+
+    public static void main(String[] args) throws IOException {
+        Logger logger = new Logger("app.log");
+        logger.info("Program started");
+        logger.info("User Gurleen logged in");
+        logger.error("Could not open settings.txt");
+        logger.info("Program finished");
+
+        for (String line : logger.lastLines(2)) {
+            System.out.println(line);
+        }
+        // 2026-10-30T10:15:42.123 [ERROR] Could not open settings.txt
+        // 2026-10-30T10:15:42.125 [INFO] Program finished      (your date and time will differ)
+    }
+}`},
+  {h: ["Working with folders: listing, filtering and walking", "Folders ke saath kaam: list, filter aur walk"],
+   p: ["list() and listFiles() show what is inside one folder, and listFiles can take a filter so you only get, say, .java files. Always check the result for null, because it is null when the path is not a folder or cannot be read. To visit a folder AND all its sub-folders (a recursive walk), write a small recursive method, or use Files.walk, which gives a stream of paths that must also be closed with try-with-resources (streams are lesson 55). A folder can be deleted only when it is empty, so deleting a whole tree means deleting the children first.",
+       "list() aur listFiles() ek folder ke andar ki cheezein dikhate hain, aur listFiles filter le sakta hai taaki sirf, maan lo, .java files milein. Result ko hamesha null ke liye check karo, kyunki path folder na ho ya padha na ja sake to wo null hota hai. Folder AUR uske saare sub-folders par chalne ke liye (recursive walk) chhota recursive method likho, ya Files.walk use karo, jo paths ka stream deta hai aur use bhi try-with-resources se band karna padta hai (streams lesson 55). Folder tabhi delete hota hai jab wo khali ho, isliye poora tree delete karne ka matlab pehle bachchon ko delete karna."],
+   code: `import java.io.*;
+import java.nio.file.*;
+import java.util.stream.Stream;
+
+public class Folders {
+    // Total size of a folder, including everything inside (recursion)
+    static long folderSize(File f) {
+        if (f.isFile()) return f.length();
+        long total = 0;
+        File[] kids = f.listFiles();
+        if (kids != null) {                                  // null: not a folder, or cannot be read
+            for (File k : kids) total += folderSize(k);
+        }
+        return total;
+    }
+
+    // Delete a whole folder tree: children first, then the folder itself
+    static void deleteTree(File f) {
+        File[] kids = f.listFiles();
+        if (kids != null) {
+            for (File k : kids) deleteTree(k);
+        }
+        f.delete();
+    }
+
+    public static void main(String[] args) throws IOException {
+        File dir = new File("playground/sub");
+        dir.mkdirs();
+        Files.writeString(Path.of("playground/a.txt"), "hello");
+        Files.writeString(Path.of("playground/b.java"), "class B {}");
+        Files.writeString(Path.of("playground/sub/c.txt"), "deeper");
+
+        // 1) names in one folder
+        String[] names = new File("playground").list();
+        if (names != null) for (String n : names) System.out.println(n);      // a.txt, b.java, sub (any order)
+
+        // 2) File objects, with a marker for folders
+        File[] all = new File("playground").listFiles();
+        if (all != null) {
+            for (File f : all) System.out.println((f.isDirectory() ? "[DIR]  " : "[FILE] ") + f.getName());
+        }
+
+        // 3) a filter: only .txt files in this folder (the lambda is explained in lesson 54)
+        File[] texts = new File("playground").listFiles((d, name) -> name.endsWith(".txt"));
+        System.out.println(texts == null ? 0 : texts.length);                 // 1
+
+        // 4) recursion
+        System.out.println(folderSize(new File("playground")) + " bytes");    // 21 bytes (5 + 10 + 6)
+
+        // 5) Files.walk visits every file and folder below (close the stream!)
+        try (Stream<Path> paths = Files.walk(Path.of("playground"))) {
+            paths.filter(Files::isRegularFile)
+                 .forEach(p -> System.out.println("found " + p));
+        }
+
+        deleteTree(new File("playground"));                                    // clean up
+        System.out.println(new File("playground").exists());                   // false
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: 'file not found' because the working directory is not where you think. Print getAbsolutePath() and check.", "Mistake: new FileWriter(name) overwrites the old content. Use append mode (true) when you want to add.", "Mistake: not closing the stream. Data stays in the buffer, the file stays locked and the last lines are lost. Use try-with-resources.", "Mistake: using a Reader or Writer for binary files (images, pdf). Use byte streams or Files.copy.", "Mistake: a single backslash in a Windows path. Use forward slashes or a double backslash.", "Mistake: assuming FileWriter creates missing folders. It creates the file only. Create the folder first.", "Mistake: reading a huge file with readAllLines or readString and running out of memory. Read line by line.", "Mistake: forgetting that readLine() returns null at the end, and calling a method on that null.", "Mistake: an empty catch block that hides the real problem.", "Mistake: depending on the default charset. Choose UTF-8 explicitly when the text has accents or other scripts.", "Mistake: calling file.delete() and ignoring the false result. Check it, or use Files.delete to get the exact reason.", "Good habit: prefer java.nio.file (Path and Files) in new code, build paths with Path.of, and keep file names in constants.", "Good habit: test the unhappy paths: missing file, empty file, a damaged line, and a read-only folder."],
+         ["Galti: 'file not found' kyunki working directory wahan nahi hai jahan tum sochte ho. getAbsolutePath() print karo aur check karo.", "Galti: new FileWriter(name) purana content overwrite karta hai. Jodna ho to append mode (true) use karo.", "Galti: stream band na karna. Data buffer me rehta hai, file locked rehti hai aur aakhri lines kho jati hain. try-with-resources use karo.", "Galti: binary files (images, pdf) ke liye Reader ya Writer use karna. Byte streams ya Files.copy use karo.", "Galti: Windows path me ek backslash. Forward slashes ya double backslash use karo.", "Galti: FileWriter ke missing folders banane ki ummeed. Wo sirf file banata hai. Pehle folder banao.", "Galti: bahut badi file ko readAllLines ya readString se padhna aur memory khatam ho jana. Line by line padho.", "Galti: ye bhul jana ki readLine() end par null deta hai, aur us null par method call karna.", "Galti: khali catch block jo asli problem chhupa deta hai.", "Galti: default charset par nirbhar rehna. Text me accents ya dusri scripts ho to UTF-8 khud chuno.", "Galti: file.delete() call karke false result ignore karna. Use check karo, ya exact wajah ke liye Files.delete use karo.", "Achhi aadat: naye code me java.nio.file (Path aur Files) prefer karo, Path.of se paths banao, aur file names ko constants me rakho.", "Achhi aadat: unhappy paths test karo: missing file, khali file, kharab line aur read-only folder."]],
+   tip: ["Interview questions: (1) FileReader vs BufferedReader? FileReader reads characters one by one from a file, BufferedReader wraps it, reads big chunks and adds readLine(). (2) Why close a stream? To release the file and flush the buffer. try-with-resources does it automatically. (3) Reader vs InputStream? Reader is for characters (text), InputStream is for bytes (any data). (4) How do you append to a file? new FileWriter(name, true) or StandardOpenOption.APPEND. (5) What is the difference between File and Path? File is the old java.io class with weak error reporting, Path (with Files) is the modern API that throws precise exceptions.", "Interview questions: (1) FileReader vs BufferedReader? FileReader file se characters ek-ek karke padhta hai, BufferedReader use lapetta hai, bade tukde padhta hai aur readLine() jodta hai. (2) Stream band kyun karte hain? File chhodne aur buffer flush karne ke liye. try-with-resources ye apne aap karta hai. (3) Reader vs InputStream? Reader characters (text) ke liye hai, InputStream bytes (koi bhi data) ke liye. (4) File me append kaise karte hain? new FileWriter(name, true) ya StandardOpenOption.APPEND. (5) File aur Path me kya fark hai? File purani java.io class hai jisme error reporting kamzor hai, Path (Files ke saath) modern API hai jo precise exceptions deta hai."]}
+ ]}
+});
+
+Object.assign(TOPICS, {
+51: {
+ def: ["Serialization is the process of converting a Java object, with all the objects it refers to, into a stream of bytes so that it can be saved to a file, sent over a network or stored in a database. Deserialization is the reverse: it rebuilds a living object from those bytes. A class opts in by implementing the marker interface java.io.Serializable.",
+       "Serialization wo process hai jisme Java object ko, uske saath jude saare objects ke saath, bytes ke stream me badla jata hai taaki use file me save kiya ja sake, network par bheja ja sake ya database me rakha ja sake. Deserialization iska ulta hai: wo un bytes se wapas zinda object bana deta hai. Class Serializable marker interface (java.io.Serializable) implement karke is me shamil hoti hai."],
+ secs: [
+  {h: ["The idea: freezing an object", "Idea: object ko jama dena"],
+   p: ["In the File Handling lesson you saved text. But a program works with objects: a Student with a name and marks, a Game with a score and a list of players. Saving such an object as text means writing code to split every field into a line and to parse it back. Serialization does this work for you. You hand a whole object to an ObjectOutputStream, and Java writes its class, its field values and everything it refers to. Later an ObjectInputStream reads the bytes and gives you back an equal object. Typical uses: saving a game, caching data on the disk, sending objects between two Java programs, and copying an object deeply.",
+       "File Handling lesson me tumne text save kiya tha. Par program objects ke saath kaam karta hai: naam aur marks wala Student, score aur players ki list wala Game. Aise object ko text me save karne ka matlab har field ko line me todne aur wapas parse karne ka code likhna hai. Serialization ye kaam tumhare liye karta hai. Tum poora object ObjectOutputStream ko dete ho, aur Java uski class, uske fields ki values aur jo kuch wo refer karta hai sab likh deta hai. Baad me ObjectInputStream bytes padhta hai aur tumhe barabar object wapas deta hai. Aam uses: game save karna, data ko disk par cache karna, do Java programs ke beech objects bhejna, aur object ki deep copy banana."],
+   pts: [["Serializable is a MARKER interface: it has no methods. It only tells Java 'this class may be turned into bytes'.", "Serialization writes the object's non-transient instance fields, the class name and a version id. It does not write methods or static fields.", "ObjectOutputStream.writeObject(obj) serializes. ObjectInputStream.readObject() deserializes and returns an Object that you cast.", "The bytes are in a Java-specific binary format. Other languages cannot read them easily. For data shared with other systems use JSON or XML instead.", "Deserialization creates a NEW object. It is equal in content to the original but it is a different object (== is false)."],
+         ["Serializable ek MARKER interface hai: isme koi method nahi hota. Ye bas Java ko batata hai ki 'is class ko bytes me badla ja sakta hai'.", "Serialization object ke non-transient instance fields, class ka naam aur ek version id likhta hai. Methods ya static fields nahi likhta.", "ObjectOutputStream.writeObject(obj) serialize karta hai. ObjectInputStream.readObject() deserialize karta hai aur Object return karta hai jise tum cast karte ho.", "Bytes Java ke khaas binary format me hote hain. Dusri languages unhe aasani se nahi padh sakti. Dusre systems ke saath data share karna ho to uski jagah JSON ya XML use karo.", "Deserialization NAYA object banata hai. Wo content me original ke barabar hota hai par alag object hota hai (== false)."]],
+   code: `// The journey of an object
+//
+//   Student object in memory
+//        |   ObjectOutputStream.writeObject(student)
+//        v
+//   bytes:  class name + version id + field values  (name = "Gurleen", marks = 91)
+//        |   written to a file, a network socket, a byte array ...
+//        v
+//        |   ObjectInputStream.readObject()
+//        v
+//   a NEW Student object with the same field values`},
+  {h: ["Your first save and load", "Tumhara pehla save aur load"],
+   p: ["Make the class implement Serializable, open an ObjectOutputStream around a FileOutputStream, and call writeObject. To load, open an ObjectInputStream around a FileInputStream, call readObject and cast the result. readObject can throw ClassNotFoundException (the class is not on the classpath) besides IOException, so catch both. Always use try-with-resources so the stream is closed. The file extension is free; people often use .ser or .dat.",
+       "Class ko Serializable implement karwao, FileOutputStream ke upar ObjectOutputStream kholo aur writeObject call karo. Load karne ke liye FileInputStream ke upar ObjectInputStream kholo, readObject call karo aur result cast karo. readObject IOException ke alawa ClassNotFoundException (class classpath par nahi hai) bhi de sakta hai, isliye dono catch karo. Hamesha try-with-resources use karo taaki stream band ho. File ka extension tumhari marzi hai; log aksar .ser ya .dat use karte hain."],
+   code: `import java.io.*;
+
+class Student implements Serializable {
+    private static final long serialVersionUID = 1L;
+    String name;
+    int marks;
+
+    Student(String name, int marks) {
+        this.name = name;
+        this.marks = marks;
+        System.out.println("constructor ran for " + name);
+    }
+
+    @Override
+    public String toString() { return name + " (" + marks + ")"; }
+}
+
+public class SaveLoad {
+    public static void main(String[] args) {
+        Student original = new Student("Gurleen", 91);          // prints: constructor ran for Gurleen
+
+        // SAVE
+        try (ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("student.ser"))) {
+            out.writeObject(original);
+            System.out.println("Saved");
+        } catch (IOException e) {
+            System.out.println("Could not save: " + e.getMessage());
+        }
+
+        // LOAD
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("student.ser"))) {
+            Student loaded = (Student) in.readObject();          // NO constructor message appears here
+            System.out.println("Loaded " + loaded);              // Loaded Gurleen (91)
+            System.out.println(loaded == original);              // false: a different object
+            System.out.println(loaded.name.equals(original.name));   // true: same content
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Could not load: " + e.getMessage());
+        }
+    }
+}`,
+   pts: [["Deserialization does NOT call the constructor of a Serializable class. The object is rebuilt directly from the bytes.", "Do not forget to cast: (Student) in.readObject(). A wrong cast throws ClassCastException.", "Opening ObjectInputStream on a file that is not a serialized stream throws StreamCorruptedException.", "Several objects can be written one after another into one stream. Read them back in the SAME order.", "The class file must still be available (and compatible) when you load, or you get ClassNotFoundException or InvalidClassException."],
+         ["Deserialization Serializable class ka constructor call NAHI karta. Object seedha bytes se banta hai.", "Cast karna mat bhulo: (Student) in.readObject(). Galat cast ClassCastException deta hai.", "Jo file serialized stream nahi hai us par ObjectInputStream kholne se StreamCorruptedException aata hai.", "Kai objects ek stream me ek ke baad ek likh sakte ho. Unhe SAME order me wapas padho.", "Load karte waqt class file maujood (aur compatible) honi chahiye, warna ClassNotFoundException ya InvalidClassException milta hai."]]},
+  {h: ["serialVersionUID: the version check", "serialVersionUID: version ki jaanch"],
+   p: ["Every serializable class has a version number called serialVersionUID. It is stored in the bytes. When you load, Java compares the number in the bytes with the number of the class that is currently on your computer. If they differ, it throws InvalidClassException, because the class may have changed so much that the old bytes no longer fit. If you do not write the number yourself, Java computes one from the class details (name, fields, methods), so even a harmless change such as adding a method produces a new number and breaks all your old saved files. That is why you declare it yourself: private static final long serialVersionUID = 1L; Then compatible changes (such as adding a field) keep working, and you increase the number only when a change is truly incompatible.",
+       "Har serializable class ka ek version number hota hai jise serialVersionUID kehte hain. Ye bytes me store hota hai. Load karte waqt Java bytes ke number ko tumhare computer par abhi maujood class ke number se compare karta hai. Alag hon to wo InvalidClassException deta hai, kyunki class itni badal gayi ho sakti hai ki purane bytes ab fit nahi baithte. Number khud na likho to Java use class ki details (naam, fields, methods) se calculate karta hai, isliye method jodne jaisa bekaar badlav bhi naya number bana deta hai aur tumhari saari purani saved files tod deta hai. Isi liye use khud declare karte ho: private static final long serialVersionUID = 1L; Tab compatible badlav (jaise ek field jodna) chalte rehte hain, aur number tabhi badhate ho jab badlav sach me incompatible ho."],
+   code: `// An experiment you can do yourself
+//
+// Step 1: class WITHOUT serialVersionUID. Save a Student to student.ser.
+//
+//    class Student implements Serializable {
+//        String name;
+//    }
+//
+// Step 2: add a harmless method to the class and run only the LOAD part:
+//
+//    class Student implements Serializable {
+//        String name;
+//        void hello() { }                 // new method: Java computes a different default number
+//    }
+//
+// Result: java.io.InvalidClassException: Student; local class incompatible:
+//         stream classdesc serialVersionUID = 123..., local class serialVersionUID = 456...
+//
+// The fix: write the number yourself, and keep it the same.
+//
+//    class Student implements Serializable {
+//        private static final long serialVersionUID = 1L;
+//        String name;
+//        String city;                      // a NEW field is fine now: loading old files sets city to null
+//    }`,
+   pts: [["Declare it as private static final long. The value itself does not matter, only that it stays the same.", "IDEs can generate a long value for you. 1L is fine for learning.", "Compatible changes (loading still works): adding a field, adding or changing methods, adding a class to the hierarchy. The new fields get default values (0, false, null) for old data.", "Incompatible changes (change the number): removing a field you still need, changing the type of a field, changing the class hierarchy in a big way, or moving the class to another package.", "If the class has no serialVersionUID, the compiler may show a warning in an IDE. That warning is a hint, not an error."],
+         ["Ise private static final long declare karo. Value matter nahi karti, sirf ye ki wo wahi rahe.", "IDEs tumhare liye long value bana sakti hain. Seekhne ke liye 1L theek hai.", "Compatible badlav (load phir bhi chalta hai): field jodna, methods jodna ya badalna, hierarchy me class jodna. Purane data ke liye naye fields ko default values (0, false, null) milti hain.", "Incompatible badlav (number badlo): jo field abhi chahiye use hatana, field ka type badalna, class hierarchy bahut badalna, ya class ko dusre package me le jana.", "Class me serialVersionUID na ho to IDE me compiler warning dikha sakta hai. Wo warning ek ishara hai, error nahi."]]},
+  {h: ["transient and static: fields that are not saved", "transient aur static: wo fields jo save nahi hote"],
+   p: ["Some fields should not be saved: a password, a cache that can be rebuilt, a database connection, a Thread or an open file (these are not serializable anyway). Mark such a field transient, and serialization skips it. After loading, a transient field has its default value (0, false or null) because the constructor did not run. Static fields belong to the class, not to the object, so they are never part of the saved bytes either. If you need a transient value restored, set it again yourself in a custom readObject method (see the section on custom serialization).",
+       "Kuch fields save nahi hone chahiye: password, wo cache jo dobara ban sakta hai, database connection, Thread ya khuli file (ye waise bhi serializable nahi hote). Aise field ko transient mark karo, aur serialization use chhod deta hai. Load hone ke baad transient field ki default value (0, false ya null) hoti hai kyunki constructor chala hi nahi. Static fields class ke hote hain, object ke nahi, isliye wo bhi saved bytes ka hissa kabhi nahi hote. Transient value wapas chahiye ho to use khud custom readObject method me dobara set karo (custom serialization wala section dekho)."],
+   code: `import java.io.*;
+
+class Account implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    static String bank = "CodeBank";            // static: NOT saved, belongs to the class
+    String owner;
+    transient String password;                  // transient: NOT saved
+    transient int loginCount;                   // transient: NOT saved
+    double balance;                             // normal: saved
+
+    Account(String owner, String password, double balance) {
+        this.owner = owner;
+        this.password = password;
+        this.balance = balance;
+        this.loginCount = 5;
+    }
+
+    @Override
+    public String toString() {
+        return bank + " | " + owner + " | password=" + password + " | logins=" + loginCount + " | " + balance;
+    }
+}
+
+public class TransientDemo {
+    public static void main(String[] args) throws Exception {
+        Account a = new Account("Mohit", "secret123", 2500);
+        System.out.println(a);          // CodeBank | Mohit | password=secret123 | logins=5 | 2500.0
+
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();   // save into memory instead of a file
+        try (ObjectOutputStream out = new ObjectOutputStream(bytes)) {
+            out.writeObject(a);
+        }
+
+        Account.bank = "ChangedBank";   // the static field is not in the bytes, so it keeps this new value
+
+        try (ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bytes.toByteArray()))) {
+            Account b = (Account) in.readObject();
+            System.out.println(b);      // ChangedBank | Mohit | password=null | logins=0 | 2500.0
+        }
+    }
+}`},
+  {h: ["Objects inside objects: the object graph", "Objects ke andar objects: object graph"],
+   p: ["When you serialize an object, Java also serializes every object it refers to, and every object THOSE refer to, and so on. This whole web of objects is called the object graph. The rule is strict: EVERY object in the graph must be Serializable (or the field must be transient), otherwise writeObject throws NotSerializableException and names the guilty class. Most library classes you use for data (String, the wrapper classes, ArrayList, HashMap, LocalDate) are already serializable, and so are arrays of serializable items. Java also remembers objects it has already written: if two fields point to the SAME object, the loaded graph again has ONE shared object, and even circular references are handled.",
+       "Object ko serialize karte ho to Java wo har object bhi serialize karta hai jise wo refer karta hai, aur jise UNKE refer karte hain, aur aise hi aage. Objects ke is poore jaal ko object graph kehte hain. Rule sakht hai: graph ka HAR object Serializable hona chahiye (ya field transient ho), warna writeObject NotSerializableException deta hai aur doshi class ka naam batata hai. Data ke liye jo library classes tum use karte ho (String, wrapper classes, ArrayList, HashMap, LocalDate) unme se zyadatar pehle se serializable hain, aur serializable items ke arrays bhi. Java un objects ko bhi yaad rakhta hai jo wo pehle hi likh chuka ho: do fields EK hi object ko point karte hon to load hue graph me bhi ek hi shared object hota hai, aur circular references bhi sambhal liye jate hain."],
+   code: `import java.io.*;
+import java.util.*;
+
+class Address implements Serializable {            // must be Serializable too
+    private static final long serialVersionUID = 1L;
+    String city;
+    Address(String city) { this.city = city; }
+}
+
+class Teacher {                                    // NOT Serializable
+    String name = "Shivam";
+}
+
+class Course implements Serializable {
+    private static final long serialVersionUID = 1L;
+    String title;
+    Address address;                               // an object inside
+    List<String> students = new ArrayList<>();    // ArrayList is Serializable
+    Teacher teacher = new Teacher();               // PROBLEM: Teacher is not Serializable
+
+    Course(String title, Address address) { this.title = title; this.address = address; }
+}
+
+public class GraphDemo {
+    static byte[] save(Object o) throws IOException {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        try (ObjectOutputStream out = new ObjectOutputStream(bytes)) {
+            out.writeObject(o);
+        }
+        return bytes.toByteArray();
+    }
+
+    static Object load(byte[] data) throws IOException, ClassNotFoundException {
+        try (ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(data))) {
+            return in.readObject();
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        Course c = new Course("Java", new Address("Delhi"));
+        c.students.add("Rahul");
+        try {
+            save(c);
+        } catch (NotSerializableException e) {
+            System.out.println("Not serializable: " + e.getMessage());   // Not serializable: Teacher
+        }
+        // Fix 1: make Teacher implement Serializable.   Fix 2: mark the field transient.
+
+        // Shared references stay shared
+        Address shared = new Address("Pune");
+        List<Address> list = new ArrayList<>(List.of(shared, shared));
+        @SuppressWarnings("unchecked")
+        List<Address> back = (List<Address>) load(save(list));
+        System.out.println(back.get(0) == back.get(1));    // true: still ONE shared object
+        System.out.println(back.get(0) == shared);         // false: but a different object than the original
+    }
+}`,
+   tip: ["Read the message of NotSerializableException: it contains the name of the class that blocks the whole save. Fix that one class and try again.", "NotSerializableException ka message padho: usme us class ka naam hota hai jo poora save rok rahi hai. Wahi ek class theek karo aur dobara try karo."]},
+  {h: ["Inheritance and serialization", "Inheritance aur serialization"],
+   p: ["If a parent class is Serializable, all its children are too, and the parent's fields are saved with them. The tricky case is a parent that is NOT Serializable while the child is. The fields of the non-serializable parent are not saved. Instead, when loading, Java calls the parent's no-argument constructor to build that part again, so those fields get whatever that constructor sets, not the values the object had when it was saved. If the parent has no accessible no-argument constructor, loading fails with InvalidClassException ('no valid constructor'). So the safe rules are: make the whole hierarchy Serializable, or give the non-serializable parent a no-argument constructor that sets sensible defaults.",
+       "Parent class Serializable ho to uske saare children bhi hote hain, aur parent ke fields unke saath save hote hain. Mushkil case wo hai jab parent Serializable NAHI hai par child hai. Non-serializable parent ke fields save nahi hote. Uski jagah load karte waqt Java us hisse ko dobara banane ke liye parent ka no-argument constructor call karta hai, isliye un fields ko wo milta hai jo wo constructor set kare, wo values nahi jo object ke save hone ke waqt thi. Parent ka koi accessible no-argument constructor na ho to load InvalidClassException ('no valid constructor') ke saath fail hota hai. Isliye safe rules ye hain: poori hierarchy Serializable banao, ya non-serializable parent ko sahi defaults set karne wala no-argument constructor do."],
+   code: `import java.io.*;
+
+class Animal {                                       // NOT Serializable
+    String type = "unknown";
+    Animal() {                                       // the no-argument constructor
+        System.out.println("Animal() ran");
+    }
+}
+
+class Dog extends Animal implements Serializable {   // the child IS Serializable
+    private static final long serialVersionUID = 1L;
+    String name;
+    Dog(String name) { this.name = name; }
+}
+
+public class InheritanceDemo {
+    public static void main(String[] args) throws Exception {
+        Dog d = new Dog("Bruno");                    // prints: Animal() ran
+        d.type = "dog";
+        System.out.println(d.type + " " + d.name);   // dog Bruno
+
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        try (ObjectOutputStream out = new ObjectOutputStream(bytes)) {
+            out.writeObject(d);
+        }
+
+        try (ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bytes.toByteArray()))) {
+            Dog back = (Dog) in.readObject();        // prints: Animal() ran  (the parent constructor runs again)
+            System.out.println(back.type + " " + back.name);   // unknown Bruno
+            // 'type' was NOT saved (it belongs to the non-serializable parent) and was reset by Animal()
+        }
+    }
+}
+
+// Reminder: if Animal had only Animal(String type) and no no-argument constructor,
+// loading would fail with: java.io.InvalidClassException: Dog; no valid constructor`},
+  {h: ["Custom serialization: writeObject, readObject and readResolve", "Custom serialization: writeObject, readObject aur readResolve"],
+   p: ["Sometimes the default behaviour is not enough. You may want to restore a transient field after loading, validate the data that comes in, or store a field in a different form. A serializable class can declare two PRIVATE methods with an exact signature, and Java calls them automatically: private void writeObject(ObjectOutputStream out) and private void readObject(ObjectInputStream in). Inside, call out.defaultWriteObject() and in.defaultReadObject() to handle the normal fields, then add your own steps. The method readResolve() lets you replace the freshly loaded object with another one. It is the standard way to keep a singleton or an enum-like class a single instance after loading.",
+       "Kabhi-kabhi default behaviour kaafi nahi hota. Tum load ke baad transient field wapas set karna, aane wale data ko validate karna, ya kisi field ko alag roop me store karna chahoge. Serializable class bilkul sahi signature ke saath do PRIVATE methods declare kar sakti hai, aur Java unhe apne aap call karta hai: private void writeObject(ObjectOutputStream out) aur private void readObject(ObjectInputStream in). Andar normal fields ke liye out.defaultWriteObject() aur in.defaultReadObject() call karo, fir apne steps jodo. readResolve() method tumhe abhi load hue object ko kisi dusre object se badalne deta hai. Load ke baad singleton ya enum jaisi class ko ek hi instance rakhne ka ye standard tareeka hai."],
+   code: `import java.io.*;
+
+class Session implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    private String user;
+    private int minutes;
+    private transient long loadedAt;                 // not saved, rebuilt after loading
+
+    Session(String user, int minutes) {
+        this.user = user;
+        this.minutes = minutes;
+        this.loadedAt = System.currentTimeMillis();
+    }
+
+    private void writeObject(ObjectOutputStream out) throws IOException {
+        out.defaultWriteObject();                    // writes user and minutes
+        // extra steps could go here, for example writing a checksum
+    }
+
+    private void readObject(ObjectInputStream in) throws IOException, ClassNotFoundException {
+        in.defaultReadObject();                      // reads user and minutes
+        if (minutes < 0) {                           // validate the incoming data
+            throw new InvalidObjectException("minutes cannot be negative");
+        }
+        loadedAt = System.currentTimeMillis();       // restore the transient field
+    }
+
+    long getLoadedAt() { return loadedAt; }
+    String getUser()   { return user; }
+}
+
+class Settings implements Serializable {             // a singleton that stays a singleton
+    private static final long serialVersionUID = 1L;
+    static final Settings INSTANCE = new Settings();
+    private Settings() { }
+
+    private Object readResolve() {                   // replace the loaded copy with the real instance
+        return INSTANCE;
+    }
+}
+
+public class CustomDemo {
+    public static void main(String[] args) throws Exception {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        try (ObjectOutputStream out = new ObjectOutputStream(bytes)) {
+            out.writeObject(new Session("Himakshi", 30));
+            out.writeObject(Settings.INSTANCE);
+        }
+        try (ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bytes.toByteArray()))) {
+            Session s = (Session) in.readObject();
+            Settings st = (Settings) in.readObject();
+            System.out.println(s.getUser() + " " + (s.getLoadedAt() > 0));   // Himakshi true
+            System.out.println(st == Settings.INSTANCE);                     // true (thanks to readResolve)
+        }
+    }
+}`,
+   pts: [["The hook methods must be exactly private void writeObject(ObjectOutputStream) and private void readObject(ObjectInputStream), or Java will not find them.", "Always call defaultWriteObject and defaultReadObject first, unless you really write every field yourself.", "Externalizable is an older, fully manual alternative: you write both writeExternal and readExternal and the class needs a public no-argument constructor.", "Enums are serialized by name, and a record can implement Serializable (the record's constructor is used to rebuild it). Both are safe for singletons and simple data.", "Without readResolve, loading a singleton creates a SECOND instance, which breaks the singleton idea."],
+         ["Hook methods bilkul private void writeObject(ObjectOutputStream) aur private void readObject(ObjectInputStream) hone chahiye, warna Java unhe dhundh nahi paata.", "defaultWriteObject aur defaultReadObject hamesha pehle call karo, jab tak tum sach me har field khud na likho.", "Externalizable purana, poora manual vikalp hai: tum writeExternal aur readExternal dono likhte ho aur class ko public no-argument constructor chahiye.", "Enums naam se serialize hote hain, aur record Serializable implement kar sakta hai (record ka constructor use hokar wo dobara banta hai). Dono singletons aur simple data ke liye safe hain.", "readResolve ke bina singleton load karne par DOOSRA instance ban jata hai, jo singleton ke idea ko tod deta hai."]]},
+  {h: ["A deep copy using serialization", "Serialization se deep copy"],
+   p: ["A deep copy duplicates an object and everything it refers to, so changing the copy never touches the original. Writing a copy constructor for a big graph is tedious. A shortcut is to serialize the object into a byte array in memory and read it straight back. No file is involved. It is slower than hand-written copying, so use it for convenience, not in hot loops.",
+       "Deep copy object aur jo kuch wo refer karta hai sab ko duplicate karti hai, isliye copy badalne se original kabhi nahi chhuta. Bade graph ke liye copy constructor likhna thakane wala hai. Ek shortcut ye hai ki object ko memory ke byte array me serialize karo aur seedha wapas padh lo. Isme koi file nahi lagti. Ye hath se likhi copy se slow hai, isliye suvidha ke liye use karo, tez loops me nahi."],
+   code: `import java.io.*;
+import java.util.*;
+
+class Team implements Serializable {
+    private static final long serialVersionUID = 1L;
+    String name;
+    List<String> members = new ArrayList<>();
+    Team(String name) { this.name = name; }
+}
+
+public class DeepCopy {
+    @SuppressWarnings("unchecked")
+    static <T extends Serializable> T deepCopy(T original) throws IOException, ClassNotFoundException {
+        ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+        try (ObjectOutputStream out = new ObjectOutputStream(bytes)) {
+            out.writeObject(original);
+        }
+        try (ObjectInputStream in = new ObjectInputStream(new ByteArrayInputStream(bytes.toByteArray()))) {
+            return (T) in.readObject();
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
+        Team a = new Team("Alpha");
+        a.members.add("Rahul");
+        a.members.add("Gurleen");
+
+        Team shallow = new Team(a.name);
+        shallow.members = a.members;                 // a shallow copy: the SAME list
+        Team deep = deepCopy(a);                     // a deep copy: an independent list
+
+        a.members.add("Mohit");
+        System.out.println(shallow.members);         // [Rahul, Gurleen, Mohit]  (changed too!)
+        System.out.println(deep.members);            // [Rahul, Gurleen]         (untouched)
+    }
+}`},
+  {h: ["Security and the alternatives", "Security aur vikalp"],
+   p: ["Deserialization is a famous source of security bugs. When you read bytes, Java may create objects and run code in those classes before you even get the result. If an attacker can send you the bytes, they can pick classes that do harm. So the golden rule is: NEVER deserialize data from a source you do not fully trust (a network request, an upload, a file from a stranger). Since Java 9 you can add an ObjectInputFilter that lists the only classes allowed. For data that leaves your program, most modern projects choose a text format such as JSON (with libraries like Jackson or Gson), which is readable, works across languages and is easier to keep compatible over time. Java serialization is mostly kept for simple local saving and for older systems.",
+       "Deserialization security bugs ka mashhoor source hai. Bytes padhte waqt Java tumhe result milne se pehle hi objects bana sakta hai aur un classes ka code chala sakta hai. Attacker bytes bhej sake to wo nuksan karne wali classes chun sakta hai. Isliye sunehri rule hai: aise source ka data KABHI deserialize mat karo jis par poora bharosa na ho (network request, upload, ajnabi ki file). Java 9 se tum ObjectInputFilter laga sakte ho jo sirf allowed classes ki list deta hai. Jo data tumhare program se bahar jata hai uske liye zyadatar modern projects JSON jaisa text format (Jackson ya Gson jaisi libraries ke saath) chunte hain, jo padhne layak hai, languages ke beech chalta hai aur samay ke saath compatible rakhna aasan hai. Java serialization zyadatar simple local saving aur purane systems ke liye rakhi jati hai."],
+   code: `import java.io.*;
+import java.util.ArrayList;
+
+public class SafeLoading {
+    public static void main(String[] args) throws Exception {
+        try (ObjectInputStream in = new ObjectInputStream(new FileInputStream("students.ser"))) {
+
+            // Only these classes may be loaded. Everything else (!*) is rejected. (Java 9+)
+            ObjectInputFilter filter = ObjectInputFilter.Config.createFilter(
+                "Student;java.util.ArrayList;java.lang.*;!*");
+            in.setObjectInputFilter(filter);
+
+            Object o = in.readObject();
+            System.out.println(o);
+        } catch (InvalidClassException e) {
+            System.out.println("Blocked or incompatible class: " + e.getMessage());
+        } catch (FileNotFoundException e) {
+            System.out.println("Save a file first");
+        }
+    }
+}
+
+// The same data as JSON text (what many projects prefer today):
+// {"name":"Gurleen","marks":91}
+// It can be opened in any editor and read by Python, JavaScript or any other language.`,
+   pts: [["Never deserialize untrusted data. It is the number-one rule.", "Use an ObjectInputFilter (Java 9+) when you must read data that came from outside.", "Do not serialize secrets (passwords, keys). Mark them transient.", "Serialized bytes are not encrypted. Anyone with the file can read the field values.", "Alternatives: JSON (Jackson, Gson), XML, Protocol Buffers, databases. Choose a text or schema-based format for data that lives long or crosses systems.", "Serialization ties your saved data to the exact shape of your class, so every change to the class has to be planned."],
+         ["Untrusted data ko kabhi deserialize mat karo. Ye number-ek rule hai.", "Jo data bahar se aaya ho use padhna ho to ObjectInputFilter (Java 9+) use karo.", "Secrets (passwords, keys) serialize mat karo. Unhe transient mark karo.", "Serialized bytes encrypted nahi hote. File jiske paas ho wo fields ki values padh sakta hai.", "Vikalp: JSON (Jackson, Gson), XML, Protocol Buffers, databases. Jo data lamba chalta hai ya systems ke beech jata hai uske liye text ya schema-based format chuno.", "Serialization tumhare saved data ko class ke bilkul aakar se bandh deti hai, isliye class ke har badlav ki planning karni padti hai."]]},
+  {h: ["Practical example: saving and loading a game", "Practical example: game save aur load karna"],
+   p: ["A game keeps its state in objects: the player, a score, an inventory and the level. One save method writes the whole GameState, and one load method rebuilds it, even in a later run of the program. The code handles the first run (no save file yet), a damaged file and an old incompatible save, and it writes to a temporary file first, so a crash during saving can never destroy the previous good save.",
+       "Game apni state objects me rakhta hai: player, score, inventory aur level. Ek save method poora GameState likhta hai, aur ek load method use dobara banata hai, program ke agle run me bhi. Code pehle run (abhi koi save file nahi), kharab file aur purani incompatible save ko sambhalta hai, aur pehle temporary file me likhta hai, taaki save ke dauran crash hone par pichhli achhi save kabhi na bigde."],
+   code: `import java.io.*;
+import java.nio.file.*;
+import java.util.*;
+
+class GameState implements Serializable {
+    private static final long serialVersionUID = 1L;
+
+    String player;
+    int level;
+    int score;
+    List<String> inventory = new ArrayList<>();
+    transient boolean paused;                        // runtime only, never saved
+
+    GameState(String player) {
+        this.player = player;
+        this.level = 1;
+    }
+
+    @Override
+    public String toString() {
+        return player + " | level " + level + " | score " + score + " | items " + inventory;
+    }
+}
+
+public class GameSave {
+    static final Path FILE = Path.of("game.sav");
+
+    static void save(GameState state) throws IOException {
+        Path temp = Path.of("game.sav.tmp");
+        try (ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(temp))) {
+            out.writeObject(state);
+        }
+        Files.move(temp, FILE, StandardCopyOption.REPLACE_EXISTING);   // replace the old save only when the new one is complete
+    }
+
+    static GameState load() {
+        if (!Files.exists(FILE)) {
+            System.out.println("No save found, starting a new game");
+            return new GameState("Shivam");
+        }
+        try (ObjectInputStream in = new ObjectInputStream(Files.newInputStream(FILE))) {
+            return (GameState) in.readObject();
+        } catch (IOException | ClassNotFoundException e) {
+            System.out.println("Save file is damaged or outdated (" + e.getClass().getSimpleName() + "), starting a new game");
+            return new GameState("Shivam");
+        }
+    }
+
+    public static void main(String[] args) throws IOException {
+        GameState game = load();
+        System.out.println("Loaded: " + game);
+
+        game.level++;                                // play a little
+        game.score += 250;
+        game.inventory.add("sword #" + game.level);
+        save(game);
+        System.out.println("Saved:  " + game);
+        // Run the program again: the level, score and inventory carry on from the last run.
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: forgetting implements Serializable. You get NotSerializableException at the first save.", "Mistake: one field whose class is not Serializable. The exception names the class. Fix it or mark the field transient.", "Mistake: no serialVersionUID, then adding a method and being unable to load old files (InvalidClassException).", "Mistake: expecting transient or static fields to come back with their old values.", "Mistake: reading objects in a different order from the one used to write them (ClassCastException or wrong data).", "Mistake: expecting the constructor to run on loading. It does not (only the first non-serializable parent's no-argument constructor runs).", "Mistake: writing the same object twice, changing it, and writing it again in the same stream. The second write is only a back-reference to the first, so the change is not saved. Use reset() or write a fresh object.", "Mistake: deserializing data from outside without a filter.", "Mistake: not closing the stream, so the last bytes never reach the disk. Use try-with-resources.", "Mistake: storing Thread, Socket, Connection or Scanner fields. They cannot be serialized. Mark them transient and rebuild them in readObject.", "Good habit: always declare serialVersionUID and keep it stable.", "Good habit: save to a temporary file first and rename it, so a crash never destroys the old save.", "Good habit: keep serialized classes small and simple. Consider JSON for long-lived data."],
+         ["Galti: implements Serializable bhul jana. Pehli save par NotSerializableException milta hai.", "Galti: ek field jiski class Serializable nahi hai. Exception us class ka naam batata hai. Use theek karo ya field ko transient mark karo.", "Galti: serialVersionUID nahi, fir ek method jodna aur purani files load na kar pana (InvalidClassException).", "Galti: transient ya static fields ke purani values ke saath wapas aane ki ummeed.", "Galti: objects ko us order se alag order me padhna jisme likhe the (ClassCastException ya galat data).", "Galti: load par constructor chalne ki ummeed. Wo nahi chalta (sirf pehle non-serializable parent ka no-argument constructor chalta hai).", "Galti: ek hi object ko do baar likhna, use badalna aur usi stream me fir likhna. Doosri baar sirf pehle ka back-reference likha jata hai, isliye badlav save nahi hota. reset() use karo ya naya object likho.", "Galti: bahar ka data bina filter ke deserialize karna.", "Galti: stream band na karna, jisse aakhri bytes disk tak nahi pahunchte. try-with-resources use karo.", "Galti: Thread, Socket, Connection ya Scanner fields store karna. Ye serialize nahi hote. Unhe transient mark karo aur readObject me dobara banao.", "Achhi aadat: serialVersionUID hamesha declare karo aur use stable rakho.", "Achhi aadat: pehle temporary file me save karo aur rename karo, taaki crash purani save ko kabhi na bigade.", "Achhi aadat: serialized classes ko chhoti aur simple rakho. Lambi chalne wale data ke liye JSON socho."]],
+   tip: ["Interview questions: (1) What is serialization? Converting an object into a byte stream so it can be saved or sent, and rebuilding it later. (2) What is transient? A modifier that excludes a field from serialization. (3) What is serialVersionUID for? It checks that the saved bytes and the loaded class have a compatible version. (4) Are static fields serialized? No. (5) Does the constructor run when loading? Not for the Serializable class, only for the first non-serializable parent.", "Interview questions: (1) Serialization kya hai? Object ko byte stream me badalna taaki save ya send ho sake, aur baad me wapas banana. (2) transient kya hai? Ek modifier jo field ko serialization se bahar rakhta hai. (3) serialVersionUID kis liye hai? Ye check karta hai ki saved bytes aur load hone wali class ka version compatible hai. (4) Kya static fields serialize hote hain? Nahi. (5) Load par kya constructor chalta hai? Serializable class ke liye nahi, sirf pehle non-serializable parent ke liye."]}
+ ]},
+52: {
+ def: ["Multithreading means running several threads inside one program at the same time (or seemingly at the same time). A thread is an independent path of execution with its own call stack, and all threads of a program share the same heap memory. Threads let a program stay responsive while it waits (for a file, a network or the user), use several CPU cores at once and handle many tasks together.",
+       "Multithreading ka matlab ek hi program ke andar kai threads ko ek saath (ya ek saath dikhte hue) chalana hai. Thread execution ka ek swatantra raasta hai jiska apna call stack hota hai, aur ek program ke saare threads wahi heap memory share karte hain. Threads program ko tab bhi responsive rakhte hain jab wo intezaar kar raha ho (file, network ya user ka), ek saath kai CPU cores use karte hain aur kai tasks ek saath sambhalte hain."],
+ secs: [
+  {h: ["Process, thread, and why we need threads", "Process, thread aur threads ki zarurat"],
+   p: ["A process is a running program with its own memory, for example your browser. A thread is a lighter unit INSIDE a process: the browser has one thread for the user interface, others for downloads and others for each tab. Without threads, a long task freezes everything: while a program downloads a big file in the only thread, the window cannot even be moved. With threads, the download runs in the background. Every Java program already starts with one thread called main, which runs your main method. Concurrency means many tasks making progress by taking turns. Parallelism means several tasks really running at the same instant on different CPU cores. Java threads give you both.",
+       "Process ek chalta hua program hai jiski apni memory hoti hai, jaise tumhara browser. Thread process ke ANDAR ki halki ikai hai: browser me user interface ke liye ek thread, downloads ke liye aur threads, aur har tab ke liye aur. Threads ke bina lamba task sab kuch freeze kar deta hai: program akele thread me bada file download kare to window hilai bhi nahi ja sakti. Threads ke saath download background me chalta hai. Har Java program pehle se main naam ke ek thread se shuru hota hai, jo tumhara main method chalata hai. Concurrency ka matlab hai kai tasks baari-baari se progress karte hain. Parallelism ka matlab hai kai tasks sach me ek hi pal me alag CPU cores par chalte hain. Java threads dono dete hain."],
+   pts: [["Process: its own memory, heavy to create, isolated from other processes.", "Thread: lives inside a process, shares its heap with the other threads, has its own stack, light to create.", "Shared memory is powerful and dangerous: threads can easily see each other's data, so they can also easily damage it (next lesson).", "Why use threads: keep a user interface responsive, do slow work (files, network, database) in the background, use all CPU cores for heavy calculations, and serve many users at once (a web server).", "The thread scheduler of the operating system decides which thread runs when. You cannot control the exact order, so never write code that depends on it."],
+         ["Process: apni memory, banana bhaari, dusre processes se alag.", "Thread: process ke andar rehta hai, baaki threads ke saath heap share karta hai, apna stack hota hai, banana halka.", "Shared memory taqatwar bhi hai aur khatarnak bhi: threads ek dusre ka data aasani se dekh sakte hain, isliye aasani se bigaad bhi sakte hain (agla lesson).", "Threads kyun: user interface responsive rakhna, slow kaam (files, network, database) background me karna, bhaari calculations ke liye saare CPU cores use karna, aur kai users ko ek saath serve karna (web server).", "Operating system ka thread scheduler tay karta hai ki kaun sa thread kab chalega. Tum exact order control nahi kar sakte, isliye aisa code mat likho jo uspar nirbhar ho."]],
+   code: `public class MainThread {
+    public static void main(String[] args) {
+        Thread t = Thread.currentThread();             // the thread that is running this line
+        System.out.println(t.getName());               // main
+        System.out.println(t.getId() > 0);             // true
+        System.out.println(t.getPriority());           // 5   (the default, from 1 to 10)
+        System.out.println(t.isDaemon());              // false
+        System.out.println(t.getState());              // RUNNABLE
+
+        // How many CPU cores can the program use?
+        System.out.println(Runtime.getRuntime().availableProcessors());
+    }
+}`},
+  {h: ["Creating a thread: Thread, Runnable and lambda", "Thread banana: Thread, Runnable aur lambda"],
+   p: ["There are three common ways. First, extend the Thread class and override run(). Second, write a class that implements Runnable (an interface with one method, run()) and give it to a Thread. Third, give a lambda (lesson 54) to the Thread constructor, which is the shortest form. The Runnable styles are better than extending Thread, because your class stays free to extend something else, and the TASK (what to do) is separated from the THREAD (how it runs). In every style, the code inside run() is what the new thread executes. The thread starts only when you call start().",
+       "Teen aam tareeke hain. Pehla, Thread class ko extend karo aur run() override karo. Doosra, Runnable (ek method run() wala interface) implement karne wali class likho aur use Thread ko do. Teesra, Thread ke constructor ko lambda (lesson 54) do, jo sabse chhota rup hai. Runnable wale style Thread extend karne se behtar hain, kyunki tumhari class kuch aur extend karne ke liye azaad rehti hai, aur TASK (kya karna hai) THREAD (kaise chalega) se alag rehta hai. Har style me run() ke andar ka code wahi hai jo naya thread chalata hai. Thread tabhi shuru hota hai jab tum start() call karo."],
+   code: `class Hello extends Thread {                            // style 1: extend Thread
+    @Override
+    public void run() {
+        System.out.println("Hello from " + getName());
+    }
+}
+
+class Task implements Runnable {                        // style 2: implement Runnable
+    @Override
+    public void run() {
+        System.out.println("Task running in " + Thread.currentThread().getName());
+    }
+}
+
+public class CreateThreads {
+    public static void main(String[] args) {
+        Thread t1 = new Hello();                                       // named Thread-0 automatically
+        Thread t2 = new Thread(new Task(), "worker-1");                // a name for easier debugging
+        Thread t3 = new Thread(() -> System.out.println(               // style 3: a lambda
+            "Lambda running in " + Thread.currentThread().getName()), "worker-2");
+
+        t1.start();
+        t2.start();
+        t3.start();
+
+        System.out.println("main finished its own work");
+        // The order of these four lines is NOT fixed. One possible output:
+        // main finished its own work
+        // Hello from Thread-0
+        // Task running in worker-1
+        // Lambda running in worker-2
+    }
+}`,
+   pts: [["Give your threads names. They appear in stack traces and logs, and make debugging much easier.", "A thread object can be started only ONCE. Calling start() again throws IllegalThreadStateException. Create a new Thread for a new run.", "The program ends when all non-daemon threads have finished, not when main ends.", "Runnable has no return value and cannot throw checked exceptions. For a result, use Callable (see Executors).", "The same Runnable object can be given to many threads, and they will all run the same code (careful with shared fields)."],
+         ["Threads ko naam do. Ye stack traces aur logs me dikhte hain aur debugging bahut aasan banate hain.", "Thread object sirf EK baar start ho sakta hai. Dobara start() call karne par IllegalThreadStateException aata hai. Naye run ke liye naya Thread banao.", "Program tab khatam hota hai jab saare non-daemon threads khatam ho jayein, main ke khatam hone par nahi.", "Runnable ka koi return value nahi hota aur wo checked exceptions nahi fenk sakta. Result ke liye Callable use karo (Executors dekho).", "Ek hi Runnable object kai threads ko diya ja sakta hai, aur wo sab wahi code chalayenge (shared fields me dhyan rakho)."]]},
+  {h: ["start() versus run(): the most common beginner mistake", "start() vs run(): beginners ki sabse common galti"],
+   p: ["start() asks the JVM to create a NEW thread, and that new thread then calls run() for you. Calling run() yourself is just an ordinary method call: it runs in the CURRENT thread, one after another, and no new thread exists at all. The program compiles and prints the right text, so the mistake is silent, but there is no multithreading. Print Thread.currentThread().getName() inside run() to see which thread is really doing the work.",
+       "start() JVM se NAYA thread banane ko kehta hai, aur wo naya thread tumhare liye run() call karta hai. Khud run() call karna bas ek aam method call hai: wo CURRENT thread me, ek ke baad ek chalta hai, aur koi naya thread hai hi nahi. Program compile hota hai aur sahi text print karta hai, isliye galti chupchap rehti hai, par multithreading hoti hi nahi. Andar Thread.currentThread().getName() print karke dekho ki asal me kaun sa thread kaam kar raha hai."],
+   code: `public class StartVsRun {
+    public static void main(String[] args) throws InterruptedException {
+        Runnable job = () -> System.out.println("running in " + Thread.currentThread().getName());
+
+        Thread a = new Thread(job, "worker");
+        a.run();                          // WRONG: an ordinary call, runs in main
+        // running in main
+
+        Thread b = new Thread(job, "worker");
+        b.start();                        // RIGHT: a new thread runs it
+        b.join();
+        // running in worker
+
+        // b.start();                     // IllegalThreadStateException: a thread cannot be started twice
+    }
+}`},
+  {h: ["The life cycle of a thread", "Thread ka life cycle"],
+   p: ["A thread moves through states, and Thread.getState() tells you the current one. NEW: created but start() not called. RUNNABLE: running, or ready to run and waiting for the CPU. BLOCKED: waiting to enter a synchronized block that another thread holds. WAITING: waiting without a time limit for another thread (wait(), join()). TIMED_WAITING: waiting for a limited time (sleep(ms), join(ms)). TERMINATED: run() has finished or ended with an exception, and the thread can never run again.",
+       "Thread states se guzarta hai, aur Thread.getState() batata hai ki abhi kaun si hai. NEW: bana hai par start() call nahi hua. RUNNABLE: chal raha hai, ya chalne ko taiyar hai aur CPU ka intezaar kar raha hai. BLOCKED: kisi aise synchronized block me ghusne ka intezaar jo dusre thread ke paas hai. WAITING: bina time limit ke dusre thread ka intezaar (wait(), join()). TIMED_WAITING: limited samay ka intezaar (sleep(ms), join(ms)). TERMINATED: run() khatam ho gaya ya exception se khatam hua, aur thread kabhi dobara nahi chal sakta."],
+   code: `public class LifeCycle {
+    public static void main(String[] args) throws InterruptedException {
+        Thread t = new Thread(() -> {
+            try {
+                Thread.sleep(300);                       // keeps the thread in TIMED_WAITING for a while
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        });
+
+        System.out.println(t.getState());                // NEW
+        t.start();
+        System.out.println(t.getState());                // RUNNABLE (or TIMED_WAITING if it is already sleeping)
+        Thread.sleep(100);
+        System.out.println(t.getState());                // TIMED_WAITING   (it is sleeping now)
+        System.out.println(t.isAlive());                 // true
+        t.join();                                        // wait until it finishes
+        System.out.println(t.getState());                // TERMINATED
+        System.out.println(t.isAlive());                 // false
+    }
+}
+
+//   NEW --start()--> RUNNABLE <--------------------------+
+//                       |  |  |                           |
+//                       |  |  +-- wait for a lock ------> BLOCKED
+//                       |  +----- wait(), join() -------> WAITING
+//                       +-------- sleep(ms), join(ms) --> TIMED_WAITING
+//                       |
+//                  run() ends
+//                       v
+//                  TERMINATED`},
+  {h: ["sleep, join, daemon threads and priority", "sleep, join, daemon threads aur priority"],
+   p: ["Thread.sleep(ms) pauses the CURRENT thread for at least that time without using the CPU, and it throws the checked InterruptedException. t.join() makes the calling thread wait until t has finished, which is how you collect results. A daemon thread is a background helper (like the garbage collector): the JVM does not wait for it, and exits as soon as all normal threads are done. Mark a thread as daemon with setDaemon(true) BEFORE start(). Priority (1 to 10, default 5) is only a hint to the scheduler and is not reliable, so never use it for correctness. Thread.yield() is also just a hint.",
+       "Thread.sleep(ms) CURRENT thread ko kam se kam utne samay ke liye rok deta hai bina CPU use kiye, aur ye checked InterruptedException deta hai. t.join() call karne wale thread ko tab tak rukwata hai jab tak t khatam na ho jaye, isi se results jama karte ho. Daemon thread background madadgar hai (garbage collector ki tarah): JVM uska intezaar nahi karta, aur saare normal threads khatam hote hi band ho jata hai. Thread ko daemon banane ke liye start() se PEHLE setDaemon(true) karo. Priority (1 se 10, default 5) scheduler ke liye sirf ek sanket hai aur bharose layak nahi, isliye use sahi chalne ke liye kabhi use mat karo. Thread.yield() bhi sirf sanket hai."],
+   code: `public class SleepJoin {
+    static void work(String name, int ms) {
+        try {
+            System.out.println(name + " started");
+            Thread.sleep(ms);                           // pretend to work
+            System.out.println(name + " finished");
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread a = new Thread(() -> work("A", 400));
+        Thread b = new Thread(() -> work("B", 200));
+
+        long begin = System.currentTimeMillis();
+        a.start();
+        b.start();
+        a.join();                                       // main waits for A
+        b.join();                                       // and for B (already finished by now)
+        long took = System.currentTimeMillis() - begin;
+        System.out.println("both done after about " + took + " ms");   // about 400, NOT 600: they ran together
+
+        // A daemon thread does not keep the program alive
+        Thread ticker = new Thread(() -> {
+            while (true) {
+                System.out.println("tick");
+                try { Thread.sleep(150); } catch (InterruptedException e) { return; }
+            }
+        });
+        ticker.setDaemon(true);                         // must be set BEFORE start()
+        ticker.start();
+        Thread.sleep(400);                              // tick appears about 3 times
+        System.out.println("main ends, the daemon is stopped automatically");
+
+        Thread t = new Thread(() -> { });
+        t.setPriority(Thread.MAX_PRIORITY);             // 10: only a hint
+        t.setName("my-thread");
+    }
+}`,
+   pts: [["sleep is a static method: it always puts the CURRENT thread to sleep, even if you write t.sleep(100).", "sleep keeps any locks the thread holds. wait() (next lesson) releases them.", "join(ms) waits at most that long. Use it to avoid waiting forever.", "A daemon thread can be stopped abruptly while it works, so never use it for work that must finish (such as saving a file).", "Threads created by a daemon thread are daemon too, by default."],
+         ["sleep static method hai: ye hamesha CURRENT thread ko sulata hai, chahe tum t.sleep(100) likho.", "sleep thread ke paas jo locks hain unhe rakhta hai. wait() (agla lesson) unhe chhod deta hai.", "join(ms) zyada se zyada utna intezaar karta hai. Hamesha ke intezaar se bachne ke liye use karo.", "Daemon thread kaam karte hue achanak roka ja sakta hai, isliye use aise kaam ke liye mat use karo jo poora hona zaroori hai (jaise file save karna).", "Daemon thread ke banaye threads bhi default me daemon hote hain."]]},
+  {h: ["Interrupting a thread: how to stop work politely", "Thread ko interrupt karna: kaam shaleenta se rokna"],
+   p: ["Java has no safe way to kill a thread from outside (the old stop() method was removed because it left objects half-changed). Instead you ask politely with t.interrupt(), which sets the thread's interrupt flag. If the thread is sleeping or waiting, it wakes at once with an InterruptedException (and the flag is cleared). A thread that does a long loop must check isInterrupted() itself. The correct reaction to an interrupt is to clean up and finish, and if you catch InterruptedException but cannot finish right there, restore the flag with Thread.currentThread().interrupt() so that the code above you can still notice it. A volatile boolean stop flag (next lesson) is the other common way.",
+       "Java me bahar se thread ko maarne ka koi safe tareeka nahi hai (purana stop() method hata diya gaya kyunki wo objects ko aadha badla chhod deta tha). Uski jagah t.interrupt() se shaleenta se kehte ho, jo thread ka interrupt flag set karta hai. Thread so raha ho ya wait kar raha ho to wo turant InterruptedException ke saath jag jata hai (aur flag saaf ho jata hai). Lamba loop chalane wale thread ko isInterrupted() khud check karna padta hai. Interrupt par sahi reaction safai karke khatam ho jana hai, aur InterruptedException pakadkar bhi wahin khatam na kar sako to flag ko Thread.currentThread().interrupt() se wapas set karo taaki tumhare upar ka code use phir bhi dekh sake. Volatile boolean stop flag (agla lesson) doosra aam tareeka hai."],
+   code: `public class InterruptDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Thread worker = new Thread(() -> {
+            int round = 0;
+            while (!Thread.currentThread().isInterrupted()) {       // check the flag
+                round++;
+                System.out.println("working, round " + round);
+                try {
+                    Thread.sleep(200);
+                } catch (InterruptedException e) {
+                    System.out.println("woken up by interrupt while sleeping");
+                    Thread.currentThread().interrupt();             // restore the flag: the loop ends now
+                }
+            }
+            System.out.println("cleaning up and stopping");
+        }, "worker");
+
+        worker.start();
+        Thread.sleep(700);
+        worker.interrupt();                                         // ask politely
+        worker.join();
+        System.out.println("worker state: " + worker.getState());   // TERMINATED
+    }
+}
+// working, round 1
+// working, round 2
+// working, round 3
+// working, round 4
+// woken up by interrupt while sleeping
+// cleaning up and stopping
+// worker state: TERMINATED`,
+   pts: [["interrupt() only sets a flag (and wakes sleep, wait and join). It does not stop the code by itself.", "Thread.interrupted() (static) reads AND clears the flag. isInterrupted() only reads it.", "Never swallow InterruptedException silently with an empty catch block. Either stop, or restore the flag.", "Blocking methods that throw InterruptedException: Thread.sleep, join, wait, BlockingQueue.put and take, and many more.", "ExecutorService.shutdownNow() interrupts all its running tasks."],
+         ["interrupt() sirf flag set karta hai (aur sleep, wait aur join ko jagata hai). Ye khud code ko nahi rokta.", "Thread.interrupted() (static) flag padhta AUR saaf karta hai. isInterrupted() sirf padhta hai.", "InterruptedException ko khali catch block se chupchap mat nigalo. Ya to ruk jao, ya flag wapas set karo.", "InterruptedException dene wale blocking methods: Thread.sleep, join, wait, BlockingQueue.put aur take, aur bahut se.", "ExecutorService.shutdownNow() apne saare chalte tasks ko interrupt karta hai."]]},
+  {h: ["Thread pools: ExecutorService", "Thread pools: ExecutorService"],
+   p: ["Creating a thread for every little task is wasteful: a thread costs memory and time to start, and thousands of them can crash the program. A thread pool keeps a small number of worker threads alive and gives them tasks from a queue. You create it with the Executors helper class, submit tasks, and finally call shutdown(), which lets the running tasks finish and then closes the pool. Without shutdown() the worker threads keep the program alive forever. awaitTermination waits until everything is done. In real programs you will nearly always prefer an executor to creating Thread objects by hand.",
+       "Har chhote task ke liye thread banana bekar hai: thread ko memory aur shuru hone me samay lagta hai, aur hazaron threads program ko crash kar sakte hain. Thread pool kam ginti ke worker threads ko zinda rakhta hai aur unhe queue se tasks deta hai. Use Executors helper class se banate ho, tasks submit karte ho, aur aakhir me shutdown() call karte ho, jo chalte tasks ko poora hone deta hai aur fir pool band karta hai. shutdown() ke bina worker threads program ko hamesha zinda rakhte hain. awaitTermination tab tak intezaar karta hai jab tak sab khatam na ho. Real programs me tum lagbhag hamesha Thread objects hath se banane ki jagah executor prefer karoge."],
+   code: `import java.util.concurrent.*;
+
+public class PoolDemo {
+    public static void main(String[] args) throws InterruptedException {
+        ExecutorService pool = Executors.newFixedThreadPool(3);      // 3 worker threads
+
+        for (int i = 1; i <= 6; i++) {
+            int id = i;                                              // a lambda may only use variables that do not change
+            pool.submit(() -> {
+                System.out.println("Task " + id + " on " + Thread.currentThread().getName());
+                try { Thread.sleep(200); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+            });
+        }
+        // 6 tasks, but only 3 threads: pool-1-thread-1, pool-1-thread-2 and pool-1-thread-3 are reused
+
+        pool.shutdown();                                             // no new tasks; running ones may finish
+        boolean finished = pool.awaitTermination(5, TimeUnit.SECONDS);
+        System.out.println("all tasks finished: " + finished);       // true
+    }
+}`,
+   pts: [["newFixedThreadPool(n): exactly n threads. Good default for CPU-heavy work (use about the number of CPU cores).", "newCachedThreadPool(): creates threads as needed and reuses idle ones. Good for many short tasks.", "newSingleThreadExecutor(): one thread, tasks run one after another in order.", "newScheduledThreadPool(n): runs tasks later or repeatedly (schedule, scheduleAtFixedRate).", "shutdown() is polite (finish the queue). shutdownNow() interrupts and drops the waiting tasks.", "Always shut an executor down, or the program may never exit. Since Java 19 ExecutorService is AutoCloseable and can be used in try-with-resources.", "Java 21 adds virtual threads: Executors.newVirtualThreadPerTaskExecutor() or Thread.startVirtualThread(runnable). They are very cheap, so you can have a million of them for waiting-heavy work."],
+         ["newFixedThreadPool(n): theek n threads. CPU-heavy kaam ke liye achha default (lagbhag CPU cores jitne use karo).", "newCachedThreadPool(): zaroorat par threads banata hai aur khali threads dobara use karta hai. Bahut saare chhote tasks ke liye achha.", "newSingleThreadExecutor(): ek thread, tasks ek ke baad ek order me chalte hain.", "newScheduledThreadPool(n): tasks ko baad me ya baar-baar chalata hai (schedule, scheduleAtFixedRate).", "shutdown() shaleen hai (queue khatam karo). shutdownNow() interrupt karta hai aur intezaar karte tasks ko hata deta hai.", "Executor ko hamesha shut down karo, warna program shayad kabhi exit na ho. Java 19 se ExecutorService AutoCloseable hai aur try-with-resources me use ho sakta hai.", "Java 21 virtual threads jodta hai: Executors.newVirtualThreadPerTaskExecutor() ya Thread.startVirtualThread(runnable). Ye bahut sasti hain, isliye intezaar-bhaari kaam ke liye das lakh tak ho sakti hain."]]},
+  {h: ["Callable, Future and CompletableFuture: getting results", "Callable, Future aur CompletableFuture: results lena"],
+   p: ["A Runnable returns nothing. A Callable<T> returns a value and may throw checked exceptions. When you submit a Callable, the executor gives back a Future<T>, a ticket for a result that is not ready yet. future.get() waits until the result is ready and returns it. If the task threw an exception, get() throws an ExecutionException whose cause is the real exception. get(timeout) avoids waiting forever. invokeAll runs a whole list of Callables. CompletableFuture is the modern, more powerful Future: you chain steps (thenApply, thenAccept, thenCombine) that run when the previous one is done, without blocking a thread to wait.",
+       "Runnable kuch return nahi karta. Callable<T> value return karta hai aur checked exceptions de sakta hai. Callable submit karte ho to executor Future<T> wapas deta hai, ek aise result ki parchi jo abhi taiyar nahi hai. future.get() tab tak intezaar karta hai jab tak result taiyar na ho aur use return karta hai. Task ne exception fenka ho to get() ExecutionException deta hai jiska cause asli exception hota hai. get(timeout) hamesha ke intezaar se bachata hai. invokeAll Callables ki poori list chalata hai. CompletableFuture modern, zyada taqatwar Future hai: tum steps (thenApply, thenAccept, thenCombine) chain karte ho jo pichhla khatam hote hi chalte hain, wait karne ke liye thread roke bina."],
+   code: `import java.util.*;
+import java.util.concurrent.*;
+
+public class FutureDemo {
+    static int sumTo(int n) {
+        int s = 0;
+        for (int i = 1; i <= n; i++) s += i;
+        return s;
+    }
+
+    public static void main(String[] args) throws Exception {
+        ExecutorService pool = Executors.newFixedThreadPool(2);
+
+        // 1) One Callable and its Future
+        Callable<Integer> task = () -> sumTo(100);
+        Future<Integer> future = pool.submit(task);
+        System.out.println("doing other work while the task runs...");
+        System.out.println(future.get());                    // 5050  (waits if it is not ready yet)
+        System.out.println(future.isDone());                 // true
+
+        // 2) A whole list of tasks
+        List<Callable<Integer>> jobs = List.of(() -> sumTo(10), () -> sumTo(20), () -> sumTo(30));
+        List<Future<Integer>> results = pool.invokeAll(jobs);     // waits for ALL
+        for (Future<Integer> f : results) System.out.print(f.get() + " ");   // 55 210 465
+        System.out.println();
+
+        // 3) An exception inside the task arrives wrapped in ExecutionException
+        Future<Integer> bad = pool.submit(() -> {
+            if (true) throw new IllegalStateException("task failed");
+            return 1;
+        });
+        try {
+            bad.get();
+        } catch (ExecutionException e) {
+            System.out.println("cause: " + e.getCause().getMessage());      // cause: task failed
+        }
+
+        // 4) A timeout instead of waiting forever
+        Future<String> slow = pool.submit(() -> { Thread.sleep(2000); return "late"; });
+        try {
+            slow.get(300, TimeUnit.MILLISECONDS);
+        } catch (TimeoutException e) {
+            System.out.println("too slow, giving up");
+            slow.cancel(true);                                // interrupts the task
+        }
+        pool.shutdown();
+
+        // 5) CompletableFuture: chain the steps, no blocking in between
+        CompletableFuture<Integer> price = CompletableFuture.supplyAsync(() -> 200)       // runs in another thread
+                                                           .thenApply(p -> p + 18);       // then adds tax
+        CompletableFuture<Integer> total = price.thenCombine(
+            CompletableFuture.supplyAsync(() -> 50), Integer::sum);                       // joins two results
+        System.out.println(total.join());                    // 268
+    }
+}`,
+   pts: [["Runnable: no result, no checked exception. Callable<T>: returns T, may throw Exception.", "future.get() blocks. Call it only when you really need the result, and prefer the version with a timeout.", "future.cancel(true) tries to stop the task by interrupting it.", "invokeAll waits for all the tasks. invokeAny returns the result of the first one that succeeds.", "CompletableFuture runs by default on a shared pool of DAEMON threads. A tiny program can end before the work finishes, so call join() or get() at the end.", "thenApply transforms the result, thenAccept consumes it, thenCompose chains another future, thenCombine merges two, exceptionally and handle deal with errors, and allOf waits for many."],
+         ["Runnable: result nahi, checked exception nahi. Callable<T>: T return karta hai, Exception de sakta hai.", "future.get() block karta hai. Use tabhi call karo jab result sach me chahiye, aur timeout wala version prefer karo.", "future.cancel(true) task ko interrupt karke rokne ki koshish karta hai.", "invokeAll saare tasks ka intezaar karta hai. invokeAny pehle safal hone wale ka result return karta hai.", "CompletableFuture default me DAEMON threads ke shared pool par chalta hai. Chhota program kaam khatam hone se pehle end ho sakta hai, isliye end me join() ya get() call karo.", "thenApply result badalta hai, thenAccept use leta hai, thenCompose dusra future chain karta hai, thenCombine do ko milata hai, exceptionally aur handle errors sambhalte hain, aur allOf kai ka intezaar karta hai."]]},
+  {h: ["Exceptions inside threads", "Threads ke andar exceptions"],
+   p: ["An exception that is thrown inside a thread and not caught ends THAT thread only. The other threads, including main, carry on, and a try-catch around thread.start() in main cannot catch it, because the code runs somewhere else. The default handler just prints the stack trace. To react, catch inside run(), or install an UncaughtExceptionHandler on the thread. With an executor, an exception thrown from a submit()ted task is silently stored in the Future and you only see it when you call get(), so a failing task can seem to do nothing. Always look at the Future, or log inside the task.",
+       "Thread ke andar throw hua aur na pakda gaya exception SIRF USI thread ko khatam karta hai. Baaki threads, main samet, chalte rehte hain, aur main me thread.start() ke aas-paas ka try-catch use nahi pakad sakta, kyunki code kahin aur chal raha hai. Default handler bas stack trace print karta hai. React karne ke liye run() ke andar catch karo, ya thread par UncaughtExceptionHandler lagao. Executor ke saath submit() kiye task ka fenka hua exception chupchap Future me store ho jata hai aur tabhi dikhta hai jab get() call karo, isliye fail hota task kuch na karta dikh sakta hai. Hamesha Future dekho, ya task ke andar log karo."],
+   code: `import java.util.concurrent.*;
+
+public class ThreadErrors {
+    public static void main(String[] args) throws Exception {
+        // 1) main's try-catch does NOT see an exception from another thread
+        try {
+            Thread t = new Thread(() -> { throw new RuntimeException("boom in " + Thread.currentThread().getName()); }, "bad-thread");
+            t.start();
+        } catch (RuntimeException e) {
+            System.out.println("never printed: the exception is not thrown in main");
+        }
+        Thread.sleep(200);
+        System.out.println("main is still alive");
+        // Exception in thread "bad-thread" java.lang.RuntimeException: boom in bad-thread
+
+        // 2) An UncaughtExceptionHandler reacts to it
+        Thread t2 = new Thread(() -> { throw new IllegalStateException("second failure"); }, "worker-9");
+        t2.setUncaughtExceptionHandler((thread, ex) ->
+            System.out.println("LOG: " + thread.getName() + " died with " + ex.getMessage()));
+        t2.start();
+        t2.join();                                      // LOG: worker-9 died with second failure
+
+        // 3) With an executor, submit() hides the exception inside the Future
+        ExecutorService pool = Executors.newSingleThreadExecutor();
+        pool.submit(() -> { throw new RuntimeException("hidden"); });       // nothing is printed!
+        pool.execute(() -> { throw new RuntimeException("visible"); });     // execute() lets the handler print it
+        Thread.sleep(200);
+        pool.shutdown();
+    }
+}`},
+  {h: ["A taste of the danger: shared data", "Khatre ka swad: shared data"],
+   p: ["Everything so far worked because every thread used its own data or the threads were only waiting. Trouble starts when several threads change the SAME variable. count++ looks like one step, but it is three: read the value, add one, write it back. If two threads read the same old value at the same time, both write the same new value, and one increment is lost. This is called a race condition. The result changes from run to run, and it often shows up only under load, which makes it a very hard bug. The next lesson (Synchronization) explains the cures. Here is the problem, so you can see it with your own eyes.",
+       "Ab tak sab kuch isliye chala kyunki har thread apna data use karta tha ya sirf intezaar karta tha. Mushkil tab shuru hoti hai jab kai threads SAME variable badalte hain. count++ ek step lagta hai, par asal me teen hain: value padho, ek jodo, wapas likho. Do threads ek hi samay me wahi purani value padhein to dono wahi nayi value likhte hain, aur ek increment kho jata hai. Ise race condition kehte hain. Result har run me badalta hai, aur aksar sirf load me dikhta hai, jo ise bahut mushkil bug banata hai. Agla lesson (Synchronization) ilaaj samjhata hai. Yahan problem hai, taaki tum use apni aankhon se dekh sako."],
+   code: `public class RaceTaste {
+    static int count = 0;                              // shared by both threads
+
+    public static void main(String[] args) throws InterruptedException {
+        Runnable job = () -> {
+            for (int i = 0; i < 100_000; i++) {
+                count++;                               // read, add 1, write: NOT one step
+            }
+        };
+
+        Thread a = new Thread(job);
+        Thread b = new Thread(job);
+        a.start();
+        b.start();
+        a.join();
+        b.join();
+
+        System.out.println("expected 200000, got " + count);
+        // A typical output: expected 200000, got 143286   (a different wrong number each run)
+    }
+}`,
+   tip: ["A race condition is a bug that may hide for months, because the wrong interleaving of threads is rare. Never say 'it worked when I ran it'. Threaded code must be correct by design.", "Race condition aisa bug hai jo mahino chhupa reh sakta hai, kyunki threads ka galat interleaving kam hota hai. Kabhi mat kaho 'mere run me chal gaya'. Threaded code design se hi sahi hona chahiye."]},
+  {h: ["Practical example: a parallel sum", "Practical example: parallel sum"],
+   p: ["A classic use of threads is to split one big job into parts and let several threads work on the parts at the same time. Here the array is cut into four chunks. Every thread sums its own chunk and writes the answer into its OWN slot of the partial array, so no two threads touch the same variable and there is no race. The main thread waits with join() and then adds the four partial sums. This pattern (split, work, join, combine) is the base of parallel programming. A real program would first measure whether threads help, because for a small array the cost of creating threads is bigger than the saving.",
+       "Threads ka classic use ek bade kaam ko hisson me todkar kai threads se ek saath karwana hai. Yahan array ko chaar tukdon me kaata gaya hai. Har thread apna tukda jodta hai aur jawab partial array ke apne HI slot me likhta hai, isliye koi do threads ek variable nahi chhute aur race nahi hoti. Main thread join() se intezaar karta hai aur fir chaaron partial sums jodta hai. Ye pattern (split, work, join, combine) parallel programming ka aadhar hai. Real program pehle naapega ki threads madad karte hain ya nahi, kyunki chhote array ke liye threads banane ki keemat bachat se zyada hoti hai."],
+   code: `public class ParallelSum {
+    public static void main(String[] args) throws InterruptedException {
+        int[] data = new int[8_000_000];
+        for (int i = 0; i < data.length; i++) data[i] = i % 10;       // numbers 0 to 9 repeated
+
+        int parts = 4;
+        long[] partial = new long[parts];                              // one slot per thread: no sharing
+        Thread[] threads = new Thread[parts];
+        int chunk = data.length / parts;
+
+        for (int p = 0; p < parts; p++) {
+            final int part = p;
+            final int from = p * chunk;
+            final int to = (p == parts - 1) ? data.length : from + chunk;   // the last part takes the leftover
+            threads[p] = new Thread(() -> {
+                long s = 0;
+                for (int i = from; i < to; i++) s += data[i];
+                partial[part] = s;                                     // each thread writes only its own slot
+            }, "sum-" + p);
+            threads[p].start();
+        }
+
+        for (Thread t : threads) t.join();                             // wait for all the parts
+
+        long total = 0;
+        for (long s : partial) total += s;
+        System.out.println("total = " + total);                        // 36000000
+
+        long check = 0;
+        for (int x : data) check += x;                                 // the single-thread answer
+        System.out.println("same as single thread: " + (check == total));   // true
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: calling run() instead of start(). It runs in the current thread and nothing is parallel.", "Mistake: starting the same Thread object twice (IllegalThreadStateException).", "Mistake: not calling join() and using the result before the thread has finished.", "Mistake: forgetting executor.shutdown(). The program never ends.", "Mistake: an empty catch for InterruptedException. Stop, or restore the flag.", "Mistake: depending on the order in which threads print or finish. It is not fixed.", "Mistake: sharing a variable between threads without any protection (race condition).", "Mistake: creating thousands of Thread objects by hand. Use a pool.", "Mistake: using sleep() to 'wait until the other thread is done'. Use join(), a Future or a latch.", "Mistake: calling future.get() right after every submit, which makes the work sequential again. Submit all tasks first, then collect.", "Mistake: using a daemon thread for work that must complete.", "Mistake: forgetting that exceptions in a thread do not reach main.", "Good habit: name your threads and pools (a ThreadFactory) so logs are readable.", "Good habit: prefer executors and CompletableFuture to raw threads, and prefer immutable data or thread confinement over sharing.", "Good habit: test threaded code many times and with different loads. One good run proves nothing."],
+         ["Galti: start() ki jagah run() call karna. Wo current thread me chalta hai aur kuch parallel nahi hota.", "Galti: ek hi Thread object ko do baar start karna (IllegalThreadStateException).", "Galti: join() na karna aur thread khatam hone se pehle result use karna.", "Galti: executor.shutdown() bhul jana. Program kabhi khatam nahi hota.", "Galti: InterruptedException ke liye khali catch. Ruk jao, ya flag wapas set karo.", "Galti: us order par nirbhar rehna jisme threads print karte ya khatam hote hain. Wo tay nahi hota.", "Galti: threads ke beech variable bina kisi suraksha ke share karna (race condition).", "Galti: hath se hazaron Thread objects banana. Pool use karo.", "Galti: 'dusra thread khatam hone tak ruko' ke liye sleep() use karna. join(), Future ya latch use karo.", "Galti: har submit ke turant baad future.get() call karna, jisse kaam phir sequential ho jata hai. Pehle saare tasks submit karo, fir collect karo.", "Galti: aise kaam ke liye daemon thread jo poora hona zaroori hai.", "Galti: ye bhul jana ki thread ke exceptions main tak nahi pahunchte.", "Achhi aadat: threads aur pools ko naam do (ThreadFactory) taaki logs padhne layak rahein.", "Achhi aadat: raw threads ki jagah executors aur CompletableFuture prefer karo, aur share karne ki jagah immutable data ya thread confinement prefer karo.", "Achhi aadat: threaded code ko kai baar aur alag loads ke saath test karo. Ek achha run kuch sabit nahi karta."]],
+   tip: ["Interview questions: (1) start() vs run()? start() creates a new thread that calls run(), calling run() directly is an ordinary call in the same thread. (2) Runnable vs Thread? Implement Runnable so your class can still extend another class and the task is separate from the thread. (3) Runnable vs Callable? Callable returns a value and can throw checked exceptions. (4) What does join() do? The caller waits until that thread finishes. (5) Why use a thread pool? It reuses threads and limits their number.", "Interview questions: (1) start() vs run()? start() naya thread banata hai jo run() call karta hai, run() seedha call karna usi thread me aam call hai. (2) Runnable vs Thread? Runnable implement karo taaki tumhari class dusri class extend kar sake aur task thread se alag rahe. (3) Runnable vs Callable? Callable value return karta hai aur checked exceptions de sakta hai. (4) join() kya karta hai? Call karne wala us thread ke khatam hone tak intezaar karta hai. (5) Thread pool kyun? Ye threads reuse karta hai aur unki ginti limit karta hai."]}
+ ]},
+53: {
+ def: ["Synchronization is the set of tools that make threads cooperate safely when they share data. Its main job is to guarantee mutual exclusion (only one thread at a time inside a critical section, the code that touches shared data), visibility (a change made by one thread becomes visible to others) and ordering. Java offers the synchronized keyword, volatile, the atomic classes, explicit locks and thread-safe collections.",
+       "Synchronization un tools ka set hai jo threads ko share kiye data par safely saath kaam karwate hain. Iska main kaam mutual exclusion (ek samay me sirf ek thread critical section ke andar, wo code jo shared data chhuta hai), visibility (ek thread ka kiya badlav dusron ko dikhe) aur ordering ki guarantee dena hai. Java synchronized keyword, volatile, atomic classes, explicit locks aur thread-safe collections deta hai."],
+ secs: [
+  {h: ["The problem: race conditions and the critical section", "Problem: race conditions aur critical section"],
+   p: ["Look at what count++ really does: (1) read count from memory, (2) add one, (3) write the result back. These three steps are not atomic, which means another thread can slip in between them. If thread A and thread B both read 5, both compute 6 and both write 6, then two increments produced only one. A race condition exists whenever the result depends on the unlucky timing of threads. The cure is to make sure that the block of code touching the shared data, the critical section, is run by only ONE thread at a time. Java gives each object a hidden lock (a monitor), and the keyword synchronized uses it.",
+       "Dekho count++ asal me kya karta hai: (1) memory se count padho, (2) ek jodo, (3) result wapas likho. Ye teen steps atomic nahi hain, yaani beech me koi dusra thread ghus sakta hai. Thread A aur B dono 5 padhein, dono 6 calculate karein aur dono 6 likhein, to do increments se sirf ek hua. Race condition tab hoti hai jab result threads ke badqismat timing par nirbhar kare. Ilaaj ye pakka karna hai ki shared data chhune wala code ka block, critical section, ek samay me sirf EK thread chalaye. Java har object ko ek chhupa lock (monitor) deta hai, aur synchronized keyword use istemal karta hai."],
+   code: `class Counter {
+    private int count = 0;
+
+    void increment() {
+        count++;                     // 1) read  2) add 1  3) write  : three steps, NOT atomic
+    }
+
+    int get() { return count; }
+}
+
+public class RaceDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Counter c = new Counter();
+        Runnable job = () -> {
+            for (int i = 0; i < 100_000; i++) c.increment();
+        };
+        Thread a = new Thread(job), b = new Thread(job);
+        a.start(); b.start();
+        a.join(); b.join();
+        System.out.println(c.get());          // expected 200000, usually LESS (for example 156874)
+    }
+}
+
+// How one increment gets lost:
+//   count = 5
+//   Thread A: reads 5
+//   Thread B: reads 5                (before A has written)
+//   Thread A: writes 6
+//   Thread B: writes 6               (B overwrites with the same value: one increment lost)`},
+  {h: ["synchronized methods", "synchronized methods"],
+   p: ["Put the word synchronized in a method's signature, and a thread must first take the lock of the object (this) before it may run the method, and it releases the lock when the method ends, even if an exception is thrown. While one thread holds the lock, every other thread that wants to run ANY synchronized method of the SAME object waits (it is in the BLOCKED state). The fix for the counter is one word. Notice that read-only methods that look at the shared data must be synchronized as well, otherwise they may see half-finished or stale data.",
+       "Method ke signature me synchronized shabd lagao, aur thread ko method chalane se pehle object (this) ka lock lena padta hai, aur method khatam hone par wo lock chhodta hai, exception hone par bhi. Ek thread lock rakhta hai to usi object ke KISI BHI synchronized method ko chalana chahne wala har dusra thread intezaar karta hai (wo BLOCKED state me hota hai). Counter ka fix ek shabd hai. Dhyan do ki shared data ko sirf dekhne wale methods bhi synchronized hone chahiye, warna wo aadhe-poore ya purane data dekh sakte hain."],
+   code: `class SafeCounter {
+    private int count = 0;
+
+    synchronized void increment() {      // takes the lock of THIS object
+        count++;
+    }
+
+    synchronized int get() {             // readers need the lock too
+        return count;
+    }
+}
+
+public class SynchronizedMethods {
+    public static void main(String[] args) throws InterruptedException {
+        SafeCounter c = new SafeCounter();
+        Runnable job = () -> {
+            for (int i = 0; i < 100_000; i++) c.increment();
+        };
+        Thread a = new Thread(job), b = new Thread(job);
+        a.start(); b.start();
+        a.join(); b.join();
+        System.out.println(c.get());     // 200000, every time
+    }
+}`,
+   pts: [["The lock belongs to the OBJECT. Two threads using DIFFERENT objects of the same class do not block each other.", "All synchronized instance methods of one object share the same lock, so only one of them can run at a time on that object.", "The lock is reentrant: a thread that already holds it may enter another synchronized method of the same object without waiting for itself.", "The lock is always released when the method ends, even through an exception. You cannot forget to unlock.", "Synchronized has a cost (waiting, and less speed), so protect only what needs protection."],
+         ["Lock OBJECT ka hota hai. Ek hi class ke ALAG objects use karne wale do threads ek dusre ko block nahi karte.", "Ek object ke saare synchronized instance methods ek hi lock share karte hain, isliye us object par unme se ek hi chal sakta hai.", "Lock reentrant hai: jo thread use pehle se rakhta hai wo usi object ke dusre synchronized method me khud ka intezaar kiye bina ghus sakta hai.", "Lock hamesha method khatam hone par chhoot jata hai, exception se bhi. Unlock karna bhulna namumkin hai.", "Synchronized ki keemat hoti hai (intezaar, aur kam speed), isliye sirf wahi bachao jise bachane ki zaroorat ho."]]},
+  {h: ["synchronized blocks and choosing the lock", "synchronized blocks aur lock chunna"],
+   p: ["A synchronized block protects only the few lines that need it, and it lets you choose WHICH object to lock: synchronized (lockObject) { ... }. A small critical section keeps the other threads waiting for less time. Using a private final lock object is a good habit, because outside code cannot lock it by accident. A static synchronized method locks the Class object (Counter.class), a different lock from the one used by instance methods, so a static and an instance synchronized method do NOT block each other.",
+       "Synchronized block sirf un kuch lines ko bachata hai jinhe zaroorat ho, aur tumhe chunne deta hai ki KAUN SA object lock karna hai: synchronized (lockObject) { ... }. Chhota critical section baaki threads ko kam der rokta hai. Private final lock object use karna achhi aadat hai, kyunki bahar ka code use galti se lock nahi kar sakta. Static synchronized method Class object (Counter.class) ko lock karta hai, jo instance methods ke lock se alag hai, isliye static aur instance synchronized method ek dusre ko block NAHI karte."],
+   code: `import java.util.*;
+
+class Bank {
+    private final Object balanceLock = new Object();     // a private lock object
+    private final List<String> log = new ArrayList<>();
+    private long balance = 1000;
+
+    void deposit(long amount) {
+        validate(amount);                                // slow work OUTSIDE the lock
+        synchronized (balanceLock) {                     // a short critical section
+            balance += amount;
+        }
+        synchronized (log) {                             // the list itself is the lock for the list
+            log.add("deposit " + amount);
+        }
+    }
+
+    boolean withdraw(long amount) {
+        synchronized (balanceLock) {
+            if (amount > balance) return false;          // check AND update inside one critical section
+            balance -= amount;
+            return true;
+        }
+    }
+
+    long getBalance() {
+        synchronized (balanceLock) { return balance; }
+    }
+
+    private void validate(long amount) {
+        if (amount <= 0) throw new IllegalArgumentException("amount must be positive");
+    }
+
+    // The two kinds of synchronized methods use DIFFERENT locks
+    static int created = 0;
+    static synchronized void countOne() { created++; }   // locks Bank.class
+    synchronized void touch() { }                        // locks this object: does not block countOne()
+}
+
+public class BlockDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Bank bank = new Bank();
+        Thread[] t = new Thread[4];
+        for (int i = 0; i < t.length; i++) {
+            t[i] = new Thread(() -> { for (int j = 0; j < 1000; j++) bank.deposit(10); });
+            t[i].start();
+        }
+        for (Thread th : t) th.join();
+        System.out.println(bank.getBalance());           // 41000 (1000 + 4 x 1000 x 10)
+    }
+}`,
+   pts: [["check-then-act must happen in ONE critical section. In withdraw, checking the balance and subtracting are protected together. Locking only the subtraction would still allow two threads to overdraw.", "Never lock on a String literal, a boxed Integer or any shared public object: unrelated code may lock the same object and cause strange waits.", "Do not lock on 'this' in a class whose objects other code may lock, unless that is intended.", "Keep the critical section short, and never call slow or unknown code (a network call, a callback) while holding a lock.", "synchronized (this) is the same as a synchronized method. A synchronized block can protect only a part of a method."],
+         ["check-then-act EK hi critical section me hona chahiye. withdraw me balance check karna aur ghatana saath bachaye gaye hain. Sirf ghatane ko lock karne se bhi do threads overdraw kar sakte hain.", "String literal, boxed Integer ya kisi shared public object par kabhi lock mat karo: bekaar ka code wahi object lock kar sakta hai aur ajeeb waits la sakta hai.", "Aisi class me 'this' par lock mat karo jiske objects ko dusra code lock kar sakta ho, jab tak wo irada na ho.", "Critical section chhota rakho, aur lock rakhte hue slow ya anjaana code (network call, callback) kabhi call mat karo.", "synchronized (this) synchronized method ke barabar hai. Synchronized block method ka sirf ek hissa bacha sakta hai."]]},
+  {h: ["wait(), notify() and notifyAll(): threads that talk", "wait(), notify() aur notifyAll(): baat karte threads"],
+   p: ["Sometimes a thread has to wait for a CONDITION, not just for a lock: a consumer waits until a producer has put something in the box. wait() releases the lock and puts the thread to sleep until another thread calls notify() or notifyAll() on the same object. These three methods may be called only inside a synchronized block of that same object, or you get IllegalMonitorStateException. Three rules make wait/notify correct: always call wait() in a WHILE loop that rechecks the condition (a thread can wake up without a real reason, called a spurious wakeup, or another thread may have taken the item first), change the state BEFORE you notify, and prefer notifyAll() unless you are sure only one waiter can proceed.",
+       "Kabhi-kabhi thread ko sirf lock ka nahi, ek CONDITION ka intezaar karna padta hai: consumer tab tak rukta hai jab tak producer dibbe me kuch na rakh de. wait() lock chhod deta hai aur thread ko tab tak sula deta hai jab tak koi dusra thread usi object par notify() ya notifyAll() call na kare. Ye teen methods sirf usi object ke synchronized block ke andar call ho sakte hain, warna IllegalMonitorStateException aata hai. Teen rules wait/notify ko sahi banate hain: wait() ko hamesha WHILE loop me call karo jo condition dobara check kare (thread bina asli wajah ke bhi jag sakta hai, ise spurious wakeup kehte hain, ya koi dusra thread item pehle le gaya ho), notify karne se PEHLE state badlo, aur notifyAll() prefer karo jab tak pakka na ho ki sirf ek waiter aage badh sakta hai."],
+   code: `class Box {                                      // a box that holds ONE number
+    private int value;
+    private boolean full = false;
+
+    synchronized void put(int v) throws InterruptedException {
+        while (full) {                           // WHILE, not if: recheck after every wake-up
+            wait();                              // releases the lock and sleeps
+        }
+        value = v;
+        full = true;                             // change the state first...
+        notifyAll();                             // ...then wake the waiting threads
+    }
+
+    synchronized int take() throws InterruptedException {
+        while (!full) {
+            wait();
+        }
+        full = false;
+        notifyAll();
+        return value;
+    }
+}
+
+public class ProducerConsumer {
+    public static void main(String[] args) throws InterruptedException {
+        Box box = new Box();
+
+        Thread producer = new Thread(() -> {
+            try {
+                for (int i = 1; i <= 5; i++) {
+                    box.put(i);
+                    System.out.println("put  " + i);
+                }
+            } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+        });
+
+        Thread consumer = new Thread(() -> {
+            try {
+                for (int i = 1; i <= 5; i++) {
+                    System.out.println("took " + box.take());
+                }
+            } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+        });
+
+        producer.start();
+        consumer.start();
+        producer.join();
+        consumer.join();
+        // The put and took lines may interleave differently, but the numbers always arrive in the order 1 2 3 4 5.
+    }
+}`,
+   pts: [["sleep() keeps the lock. wait() releases it. That is the big difference.", "wait() and notify() belong to Object (every object has them), not to Thread.", "notify() wakes ONE waiting thread (no choice which). notifyAll() wakes all of them, and they compete for the lock again.", "A woken thread must first get the lock back, so it continues only after the notifier leaves its synchronized block.", "Lost notification: if notify happens before the other thread starts waiting, the signal is lost. The boolean condition (full) saves you, because the waiter checks it BEFORE waiting.", "Today you will mostly use BlockingQueue (later in this lesson) instead of writing wait and notify yourself."],
+         ["sleep() lock rakhta hai. wait() use chhod deta hai. Yahi bada fark hai.", "wait() aur notify() Object ke hain (har object ke paas hote hain), Thread ke nahi.", "notify() EK waiting thread ko jagata hai (kaun sa, ye choice nahi). notifyAll() sabko jagata hai, aur wo lock ke liye dobara muqabla karte hain.", "Jaga hua thread pehle lock wapas pata hai, isliye wo notifier ke synchronized block se nikalne ke baad hi aage badhta hai.", "Lost notification: notify us se pehle ho jaye jab dusra thread wait karna shuru kare to signal kho jata hai. Boolean condition (full) tumhe bachati hai, kyunki waiter wait se PEHLE use check karta hai.", "Aaj tum zyadatar khud wait aur notify likhne ki jagah BlockingQueue (is lesson me aage) use karoge."]]},
+  {h: ["volatile: visibility between threads", "volatile: threads ke beech visibility"],
+   p: ["Locks are not the only problem. For speed, a CPU core and the compiler may keep a copy of a variable in a register or cache, so one thread can change a variable and another thread may NOT see the change for a long time, or ever. This is the visibility problem. Marking a field volatile tells Java: always read it from and write it to the main memory, and a write by one thread is visible to every later read by any thread. It is perfect for a simple flag, such as 'please stop'. But volatile gives NO mutual exclusion: volatile int count; count++ is still three steps and still loses updates. Use volatile only when one thread writes and others only read, or when the new value does not depend on the old value.",
+       "Sirf locks hi problem nahi hain. Speed ke liye CPU core aur compiler variable ki copy register ya cache me rakh sakte hain, isliye ek thread variable badle aur dusra thread us badlav ko bahut der tak, ya kabhi, NA dekhe. Ye visibility problem hai. Field ko volatile mark karne se Java ko batate ho: ise hamesha main memory se padho aur usi me likho, aur ek thread ka write baad ke har thread ke har read ko dikhta hai. Ye simple flag, jaise 'ab ruk jao', ke liye perfect hai. Par volatile koi mutual exclusion NAHI deta: volatile int count; count++ phir bhi teen steps hai aur phir bhi updates khota hai. volatile tabhi use karo jab ek thread likhe aur baaki sirf padhein, ya jab nayi value purani value par nirbhar na ho."],
+   code: `class Worker implements Runnable {
+    private volatile boolean running = true;        // try removing 'volatile': the program may never stop
+    private long loops = 0;
+
+    @Override
+    public void run() {
+        while (running) {                           // reads the latest value every time
+            loops++;
+        }
+        System.out.println("worker stopped after some loops: " + (loops > 0));
+    }
+
+    void stop() { running = false; }                // written by ANOTHER thread
+}
+
+public class VolatileDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Worker w = new Worker();
+        Thread t = new Thread(w);
+        t.start();
+        Thread.sleep(200);
+        w.stop();                                   // the worker sees this because of volatile
+        t.join();
+        System.out.println("main done");
+    }
+}
+
+// volatile does NOT make read-modify-write safe:
+//     volatile int counter;
+//     counter++;               // still 3 steps: two threads can still lose an update
+// For that, use synchronized or AtomicInteger.`,
+   pts: [["volatile guarantees visibility and ordering of that one variable. It does not guarantee atomicity of count++ or of check-then-act.", "Typical good uses: a stop flag, a 'ready' flag, publishing an immutable object by assigning a volatile reference.", "Reads and writes of a volatile long and double are atomic (a plain long may be written in two halves on some old systems).", "synchronized gives visibility AND mutual exclusion, so it covers what volatile does, but it is heavier.", "The Java Memory Model defines 'happens-before': an unlock happens-before the next lock of the same monitor, a volatile write happens-before the next read of it, and start() and join() also create such edges."],
+         ["volatile us ek variable ki visibility aur ordering ki guarantee deta hai. Ye count++ ya check-then-act ki atomicity ki guarantee nahi deta.", "Aam achhe uses: stop flag, 'ready' flag, volatile reference assign karke immutable object publish karna.", "Volatile long aur double ke read aur write atomic hote hain (kuch purane systems me simple long do aadhe hisson me likha ja sakta hai).", "synchronized visibility AUR mutual exclusion dono deta hai, isliye wo volatile ka kaam bhi cover karta hai, par bhaari hai.", "Java Memory Model 'happens-before' define karta hai: unlock, usi monitor ke agle lock se pehle hota hai, volatile write usi ke agle read se pehle hota hai, aur start() aur join() bhi aise edges banate hain."]]},
+  {h: ["Atomic classes: lock-free counters", "Atomic classes: bina lock ke counters"],
+   p: ["For a simple shared number, a lock is more than you need. The classes in java.util.concurrent.atomic (AtomicInteger, AtomicLong, AtomicBoolean, AtomicReference) do the whole read-modify-write as ONE indivisible step using a special CPU instruction called compare-and-swap (CAS), and they are also volatile. They never block a thread, and they are usually faster than locks when there is little to moderate competition. When many threads hammer the same counter, LongAdder is even faster, because it spreads the count over several cells and adds them up when you ask for the total.",
+       "Simple shared number ke liye lock zaroorat se zyada hai. java.util.concurrent.atomic ki classes (AtomicInteger, AtomicLong, AtomicBoolean, AtomicReference) poora read-modify-write EK anbatwara step me karti hain, compare-and-swap (CAS) naam ke khaas CPU instruction se, aur wo volatile bhi hoti hain. Ye kisi thread ko block nahi karti, aur kam se madhyam muqable me aam taur par locks se tez hoti hain. Bahut saare threads ek hi counter par toot padein to LongAdder aur bhi tez hai, kyunki wo ginti ko kai cells me baant deta hai aur total maangne par unhe jod deta hai."],
+   code: `import java.util.concurrent.atomic.*;
+
+public class AtomicDemo {
+    public static void main(String[] args) throws InterruptedException {
+        AtomicInteger counter = new AtomicInteger(0);
+        LongAdder adder = new LongAdder();
+
+        Runnable job = () -> {
+            for (int i = 0; i < 100_000; i++) {
+                counter.incrementAndGet();               // atomic: read, add 1, write as one step
+                adder.increment();
+            }
+        };
+        Thread a = new Thread(job), b = new Thread(job);
+        a.start(); b.start();
+        a.join(); b.join();
+        System.out.println(counter.get());               // 200000, every time
+        System.out.println(adder.sum());                 // 200000
+
+        // The useful methods
+        AtomicInteger n = new AtomicInteger(10);
+        System.out.println(n.getAndIncrement());         // 10  (returns the OLD value, then n is 11)
+        System.out.println(n.incrementAndGet());         // 12  (adds first, returns the NEW value)
+        System.out.println(n.addAndGet(8));              // 20
+        System.out.println(n.updateAndGet(x -> x * 2));  // 40  (apply any function atomically)
+        System.out.println(n.compareAndSet(40, 100));    // true: it WAS 40, so it is now 100
+        System.out.println(n.compareAndSet(40, 7));      // false: it is not 40 any more, nothing changes
+        System.out.println(n.get());                     // 100
+
+        // A one-time flag: only ONE thread can win
+        AtomicBoolean started = new AtomicBoolean(false);
+        System.out.println(started.compareAndSet(false, true));   // true  (this caller won)
+        System.out.println(started.compareAndSet(false, true));   // false (too late)
+
+        // AtomicReference for a whole object
+        AtomicReference<String> status = new AtomicReference<>("IDLE");
+        status.compareAndSet("IDLE", "RUNNING");
+        System.out.println(status.get());                // RUNNING
+    }
+}`,
+   pts: [["Each single method is atomic. Two separate calls in a row are NOT atomic together: if (n.get() < 10) n.incrementAndGet(); can still go wrong. Use updateAndGet or a compareAndSet loop for such logic.", "compareAndSet(expected, new) is the building block: it writes only if the current value is still what you expected, and returns whether it did.", "Atomics protect ONE variable. When several variables must change together, use a lock.", "LongAdder is for counters and statistics. Use AtomicLong when you need a value that is exact at every moment and update it with compareAndSet.", "There are also AtomicIntegerArray, AtomicLongArray and the field updaters for special cases."],
+         ["Har ek method atomic hai. Ek ke baad ek do alag calls saath me atomic NAHI hain: if (n.get() < 10) n.incrementAndGet(); phir bhi galat ho sakta hai. Aisi logic ke liye updateAndGet ya compareAndSet loop use karo.", "compareAndSet(expected, new) building block hai: wo tabhi likhta hai jab maujooda value ab bhi wahi ho jo tumne socha tha, aur batata hai ki likha ya nahi.", "Atomics EK variable ko bachate hain. Kai variables ko saath badalna ho to lock use karo.", "LongAdder counters aur statistics ke liye hai. Jab har pal exact value chahiye aur compareAndSet se update karni ho to AtomicLong use karo.", "Khaas cases ke liye AtomicIntegerArray, AtomicLongArray aur field updaters bhi hain."]]},
+  {h: ["Explicit locks: ReentrantLock and ReadWriteLock", "Explicit locks: ReentrantLock aur ReadWriteLock"],
+   p: ["The synchronized keyword is simple but limited: you cannot give up waiting, you cannot ask 'is the lock free?', and a lock is always tied to a block. ReentrantLock (java.util.concurrent.locks) gives you the same protection as a normal object lock plus more control. The price is that YOU must unlock, always inside finally, or an exception leaves the lock held forever. tryLock() returns at once (or after a timeout) instead of waiting, which is the cure for deadlocks. lockInterruptibly() lets another thread interrupt the waiting. A ReentrantReadWriteLock allows MANY readers at the same time, but a writer gets exclusive access, which is faster for data that is read often and written rarely.",
+       "synchronized keyword simple hai par seemit: tum intezaar chhod nahi sakte, poochh nahi sakte 'kya lock khali hai?', aur lock hamesha block se bandha hota hai. ReentrantLock (java.util.concurrent.locks) normal object lock jaisi suraksha deta hai, saath me zyada control. Keemat ye hai ki unlock TUMHE karna padta hai, hamesha finally ke andar, warna exception lock ko hamesha ke liye pakde rakhta hai. tryLock() intezaar karne ki jagah turant (ya timeout ke baad) return karta hai, jo deadlocks ka ilaaj hai. lockInterruptibly() dusre thread ko intezaar interrupt karne deta hai. ReentrantReadWriteLock KAI readers ko ek saath allow karta hai, par writer ko exclusive access milta hai, jo aise data ke liye tez hai jo aksar padha aur kam likha jata ho."],
+   code: `import java.util.*;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.locks.*;
+
+class Wallet {
+    private final ReentrantLock lock = new ReentrantLock();
+    private long balance = 500;
+
+    void deposit(long amount) {
+        lock.lock();
+        try {                                   // ALWAYS unlock in finally
+            balance += amount;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    // Give up after a short wait instead of blocking forever
+    boolean tryWithdraw(long amount) throws InterruptedException {
+        if (!lock.tryLock(200, TimeUnit.MILLISECONDS)) {
+            return false;                       // somebody else holds the lock: do something else
+        }
+        try {
+            if (amount > balance) return false;
+            balance -= amount;
+            return true;
+        } finally {
+            lock.unlock();
+        }
+    }
+
+    long getBalance() {
+        lock.lock();
+        try { return balance; } finally { lock.unlock(); }
+    }
+}
+
+class Cache {                                    // read often, write rarely
+    private final Map<String, String> data = new HashMap<>();
+    private final ReentrantReadWriteLock rw = new ReentrantReadWriteLock();
+
+    String get(String key) {
+        rw.readLock().lock();                    // many readers may hold this at once
+        try { return data.get(key); } finally { rw.readLock().unlock(); }
+    }
+
+    void put(String key, String value) {
+        rw.writeLock().lock();                   // a writer is alone
+        try { data.put(key, value); } finally { rw.writeLock().unlock(); }
+    }
+}
+
+public class LockDemo {
+    public static void main(String[] args) throws Exception {
+        Wallet w = new Wallet();
+        w.deposit(250);
+        System.out.println(w.tryWithdraw(100));  // true
+        System.out.println(w.tryWithdraw(9999)); // false
+        System.out.println(w.getBalance());      // 650
+
+        Cache c = new Cache();
+        c.put("city", "Pune");
+        System.out.println(c.get("city"));       // Pune
+    }
+}`,
+   pts: [["The pattern is always: lock(); try { ... } finally { unlock(); }. Without finally, an exception leaves the lock held and every other thread waits forever.", "ReentrantLock is reentrant: the same thread may lock it again, and must unlock it the same number of times.", "tryLock(), tryLock(time, unit), lockInterruptibly() and isLocked() give control that synchronized does not have.", "new ReentrantLock(true) makes the lock fair (the longest waiter goes first), at some cost in speed.", "A Condition (lock.newCondition()) with await and signal is the explicit-lock version of wait and notify, and one lock can have several conditions.", "Prefer synchronized when it is enough (it is simpler and cannot be forgotten). Use ReentrantLock when you need tryLock, timeouts, fairness or several conditions."],
+         ["Pattern hamesha ye hai: lock(); try { ... } finally { unlock(); }. finally ke bina exception lock ko pakde rakhta hai aur baaki saare threads hamesha intezaar karte rehte hain.", "ReentrantLock reentrant hai: wahi thread use dobara lock kar sakta hai, aur utni hi baar unlock karna padta hai.", "tryLock(), tryLock(time, unit), lockInterruptibly() aur isLocked() wo control dete hain jo synchronized me nahi hai.", "new ReentrantLock(true) lock ko fair banata hai (sabse der se intezaar karne wala pehle), speed ki thodi keemat par.", "Condition (lock.newCondition()) await aur signal ke saath wait aur notify ka explicit-lock version hai, aur ek lock ki kai conditions ho sakti hain.", "Kaafi ho to synchronized prefer karo (wo simple hai aur bhulna namumkin hai). tryLock, timeouts, fairness ya kai conditions chahiye to ReentrantLock use karo."]]},
+  {h: ["Deadlock: when threads wait for each other forever", "Deadlock: jab threads ek dusre ka hamesha intezaar karte hain"],
+   p: ["A deadlock is a situation where two or more threads each hold a lock that another one needs, and none can go on. Thread 1 holds lock A and waits for B, while thread 2 holds B and waits for A. The program does not crash, it simply freezes, which makes it hard to notice. Four conditions must all be true: mutual exclusion, hold-and-wait, no preemption (a lock cannot be taken away) and circular wait. Break any one of them and deadlock cannot happen. The most practical cure is a fixed lock ORDER: every thread must take the locks in the same global order (for example always the lock of the smaller id first). Other cures: take only one lock at a time, use tryLock with a timeout and back off, or use higher-level tools.",
+       "Deadlock aisi situation hai jisme do ya zyada threads me se har ek wo lock rakhta hai jo dusre ko chahiye, aur koi aage nahi badh pata. Thread 1 lock A rakhta hai aur B ka intezaar karta hai, jabki thread 2 B rakhta hai aur A ka intezaar karta hai. Program crash nahi hota, bas freeze ho jata hai, isliye notice karna mushkil hai. Chaaron conditions ek saath sach honi chahiye: mutual exclusion, hold-and-wait, no preemption (lock chheena nahi ja sakta) aur circular wait. Inme se koi ek tod do to deadlock nahi ho sakta. Sabse vyavaharik ilaaj fixed lock ORDER hai: har thread ko locks ek hi global order me lene chahiye (jaise hamesha chhoti id wala lock pehle). Aur ilaaj: ek samay me sirf ek lock lo, timeout ke saath tryLock use karo aur peeche hato, ya high-level tools use karo."],
+   code: `public class Deadlock {
+    static final Object A = new Object();
+    static final Object B = new Object();
+
+    static void pause() {
+        try { Thread.sleep(200); } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+    }
+
+    public static void main(String[] args) {
+        // THIS PROGRAM FREEZES ON PURPOSE. Press Ctrl + C to stop it.
+        Thread t1 = new Thread(() -> {
+            synchronized (A) {
+                System.out.println("T1 has A, wants B");
+                pause();                                   // gives T2 time to take B
+                synchronized (B) {
+                    System.out.println("T1 has both");     // never printed
+                }
+            }
+        }, "T1");
+
+        Thread t2 = new Thread(() -> {
+            synchronized (B) {
+                System.out.println("T2 has B, wants A");
+                pause();
+                synchronized (A) {                         // the OPPOSITE order: the cause of the deadlock
+                    System.out.println("T2 has both");     // never printed
+                }
+            }
+        }, "T2");
+
+        t1.start();
+        t2.start();
+        // Output:  T1 has A, wants B
+        //          T2 has B, wants A
+        //          ... and then nothing, forever.
+        //
+        // To SEE the deadlock: open another terminal, run  jps  to find the process id,
+        // then run  jstack <id>.  It prints: "Found one Java-level deadlock".
+        //
+        // THE FIX: both threads take the locks in the SAME order (A first, then B).
+        //   synchronized (A) { synchronized (B) { ... } }   in T1 AND in T2.
+    }
+}`,
+   pts: [["Symptoms: the program hangs, CPU use is near zero, and threads stay BLOCKED or WAITING forever.", "Detect: jstack (or the thread dump in your IDE) lists the deadlocked threads and the locks they wait for.", "Prevent: one global lock order, short critical sections, no calls to unknown code while holding a lock, and tryLock with a timeout.", "Livelock: threads are not blocked but keep reacting to each other without progress (two people who step aside in the same direction again and again).", "Starvation: a thread never gets the lock or the CPU because others keep winning. Fair locks reduce it."],
+         ["Lakshan: program atak jata hai, CPU use lagbhag zero hota hai, aur threads hamesha BLOCKED ya WAITING rehte hain.", "Pehchan: jstack (ya IDE ka thread dump) deadlock hue threads aur wo kin locks ka intezaar kar rahe hain ye list karta hai.", "Roktham: ek global lock order, chhote critical sections, lock rakhte hue anjaana code call na karna, aur timeout ke saath tryLock.", "Livelock: threads block nahi hote par ek dusre ko react karte rehte hain bina progress ke (do log jo baar-baar ek hi disha me hatte hain).", "Starvation: thread ko lock ya CPU kabhi nahi milta kyunki dusre jeette rehte hain. Fair locks isse kam karte hain."]]},
+  {h: ["Thread-safe collections and BlockingQueue", "Thread-safe collections aur BlockingQueue"],
+   p: ["ArrayList, HashMap and HashSet are NOT thread-safe: two threads changing one of them can corrupt it or lose items. You have three choices. Wrap it with Collections.synchronizedList (or synchronizedMap), which locks every method, but you must still lock manually while iterating. Use the java.util.concurrent collections, which are built for threads: ConcurrentHashMap (fine-grained locking, atomic merge and compute), CopyOnWriteArrayList (every write copies the array, so readers and iterators never block, best for rarely-changed lists) and ConcurrentLinkedQueue. Or use a BlockingQueue, the best tool for producer-consumer work: put() waits when the queue is full, take() waits when it is empty, so you never write wait and notify yourself.",
+       "ArrayList, HashMap aur HashSet thread-safe NAHI hain: unme se ek ko do threads badlein to wo kharab ho sakta hai ya items kho sakte hain. Teen choices hain. Use Collections.synchronizedList (ya synchronizedMap) se lapeto, jo har method ko lock karta hai, par iterate karte waqt tumhe phir bhi hath se lock karna padta hai. java.util.concurrent collections use karo jo threads ke liye bani hain: ConcurrentHashMap (fine-grained locking, atomic merge aur compute), CopyOnWriteArrayList (har write array ki copy banata hai, isliye readers aur iterators kabhi block nahi hote, kam badalne wali lists ke liye best) aur ConcurrentLinkedQueue. Ya BlockingQueue use karo, producer-consumer kaam ka sabse achha tool: put() queue bhari ho to intezaar karta hai, take() khali ho to intezaar karta hai, isliye tumhe wait aur notify khud likhne nahi padte."],
+   code: `import java.util.*;
+import java.util.concurrent.*;
+
+public class SafeCollections {
+    public static void main(String[] args) throws Exception {
+        // 1) ConcurrentHashMap: four threads count hits without losing any
+        ConcurrentHashMap<String, Integer> hits = new ConcurrentHashMap<>();
+        ExecutorService pool = Executors.newFixedThreadPool(4);
+        for (int t = 0; t < 4; t++) {
+            pool.submit(() -> {
+                for (int i = 0; i < 10_000; i++) hits.merge("page", 1, Integer::sum);   // atomic
+            });
+        }
+        pool.shutdown();
+        pool.awaitTermination(10, TimeUnit.SECONDS);
+        System.out.println(hits.get("page"));                // 40000  (a plain HashMap would give a wrong number or break)
+
+        // 2) CopyOnWriteArrayList: iterating while another thread adds is safe
+        List<String> listeners = new CopyOnWriteArrayList<>(List.of("a", "b"));
+        for (String s : listeners) {
+            listeners.add(s + "!");                          // no ConcurrentModificationException: the loop sees a snapshot
+        }
+        System.out.println(listeners);                       // [a, b, a!, b!]
+
+        // 3) synchronizedList: iteration still needs a manual lock
+        List<Integer> shared = Collections.synchronizedList(new ArrayList<>());
+        shared.add(1);
+        synchronized (shared) {                              // required while looping
+            for (int x : shared) System.out.print(x + " ");
+        }
+        System.out.println();
+
+        // 4) BlockingQueue: a producer and a consumer, no wait or notify needed
+        BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(3);   // room for 3 items
+        Thread producer = new Thread(() -> {
+            try {
+                for (int i = 1; i <= 6; i++) {
+                    queue.put(i);                            // waits when the queue is full
+                    System.out.println("produced " + i);
+                }
+                queue.put(-1);                               // a "poison pill": tells the consumer to stop
+            } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+        });
+        Thread consumer = new Thread(() -> {
+            try {
+                while (true) {
+                    int v = queue.take();                    // waits when the queue is empty
+                    if (v == -1) break;
+                    System.out.println("   consumed " + v);
+                    Thread.sleep(100);                       // a slow consumer makes the producer wait
+                }
+            } catch (InterruptedException e) { Thread.currentThread().interrupt(); }
+        });
+        producer.start();
+        consumer.start();
+        producer.join();
+        consumer.join();
+    }
+}`,
+   pts: [["Thread-safe collection does not mean thread-safe program. Two separate calls (if (!map.containsKey(k)) map.put(k, v)) can still race. Use the atomic methods: putIfAbsent, computeIfAbsent, merge.", "ConcurrentHashMap does not allow null keys or null values.", "BlockingQueue types: ArrayBlockingQueue (fixed size), LinkedBlockingQueue (optional limit), PriorityBlockingQueue, SynchronousQueue (hand-off, no storage).", "offer(x, time, unit) and poll(time, unit) give up after a timeout instead of waiting for ever.", "Synchronizers: CountDownLatch (wait until N events happened), CyclicBarrier (all threads meet at a point), Semaphore (at most N threads inside at once)."],
+         ["Thread-safe collection ka matlab thread-safe program nahi hai. Do alag calls (if (!map.containsKey(k)) map.put(k, v)) phir bhi race kar sakti hain. Atomic methods use karo: putIfAbsent, computeIfAbsent, merge.", "ConcurrentHashMap null keys ya null values allow nahi karta.", "BlockingQueue ke types: ArrayBlockingQueue (fixed size), LinkedBlockingQueue (optional limit), PriorityBlockingQueue, SynchronousQueue (hand-off, storage nahi).", "offer(x, time, unit) aur poll(time, unit) hamesha ke intezaar ki jagah timeout ke baad chhod dete hain.", "Synchronizers: CountDownLatch (N events hone tak intezaar), CyclicBarrier (saare threads ek point par milte hain), Semaphore (ek samay me zyada se zyada N threads andar)."]],
+   code: `import java.util.concurrent.*;
+
+public class Latches {
+    public static void main(String[] args) throws InterruptedException {
+        int workers = 3;
+        CountDownLatch done = new CountDownLatch(workers);       // starts at 3
+        Semaphore twoAtATime = new Semaphore(2);                 // at most 2 threads inside
+
+        for (int i = 1; i <= workers; i++) {
+            int id = i;
+            new Thread(() -> {
+                try {
+                    twoAtATime.acquire();                        // take a permit (waits if none is free)
+                    try {
+                        System.out.println("worker " + id + " working");
+                        Thread.sleep(200);
+                    } finally {
+                        twoAtATime.release();                    // give the permit back
+                    }
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                } finally {
+                    done.countDown();                            // one worker is done
+                }
+            }).start();
+        }
+
+        done.await();                                            // main waits until the count reaches 0
+        System.out.println("all workers finished");
+    }
+}`},
+  {h: ["Immutability and thread confinement: avoiding the problem", "Immutability aur thread confinement: problem se bachna"],
+   p: ["The safest shared data is data that CANNOT change. An immutable object (all fields private and final, no setters, any inner mutable parts copied) can be used by any number of threads without a single lock, because nobody can ever modify it. String, Integer and LocalDate are immutable. The second strategy is thread confinement: each thread has its OWN data and shares nothing, like the parallel sum from the last lesson where every thread wrote to its own slot. ThreadLocal gives every thread its own private copy of a variable, which is how a SimpleDateFormat-like helper or a per-request context is made safe. The best synchronization code is the code you did not have to write.",
+       "Sabse safe shared data wo hai jo badal HI NAHI sakta. Immutable object (saare fields private aur final, koi setter nahi, andar ke mutable hisson ki copy) bina ek bhi lock ke kitne bhi threads use kar sakte hain, kyunki use koi kabhi badal nahi sakta. String, Integer aur LocalDate immutable hain. Doosri strategy thread confinement hai: har thread ka APNA data hai aur kuch share nahi karta, jaise pichhle lesson ka parallel sum jahan har thread apne slot me likhta tha. ThreadLocal har thread ko variable ki apni private copy deta hai, isi se SimpleDateFormat jaisa helper ya per-request context safe banta hai. Sabse achha synchronization code wo hai jise tumhe likhna hi nahi pada."],
+   code: `import java.util.*;
+
+final class Point {                                  // immutable: safe to share with any thread
+    private final int x, y;
+    Point(int x, int y) { this.x = x; this.y = y; }
+    int getX() { return x; }
+    int getY() { return y; }
+    Point moveBy(int dx, int dy) { return new Point(x + dx, y + dy); }    // returns a NEW object
+}
+
+public class Confinement {
+    // Each thread gets its OWN StringBuilder: nothing is shared, so no lock is needed
+    static final ThreadLocal<StringBuilder> BUFFER = ThreadLocal.withInitial(StringBuilder::new);
+
+    static String describe(String word) {
+        StringBuilder sb = BUFFER.get();             // this thread's private builder
+        sb.setLength(0);
+        return sb.append("[").append(word).append("]").toString();
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Point origin = new Point(0, 0);
+        Runnable r = () -> {
+            Point p = origin.moveBy(3, 4);           // every thread reads 'origin' freely
+            System.out.println(Thread.currentThread().getName() + " -> " + p.getX() + "," + p.getY());
+        };
+        Thread a = new Thread(r, "A"), b = new Thread(r, "B");
+        a.start(); b.start(); a.join(); b.join();
+
+        Thread t1 = new Thread(() -> System.out.println(describe("one")));     // [one]
+        Thread t2 = new Thread(() -> System.out.println(describe("two")));     // [two]
+        t1.start(); t2.start(); t1.join(); t2.join();
+    }
+}`},
+  {h: ["Practical example: safe money transfers", "Practical example: paise ke safe transfers"],
+   p: ["A bank transfer has to subtract from one account and add to another as ONE step, so both accounts must be locked together. But two threads moving money in opposite directions (Rahul to Gurleen and Gurleen to Rahul) would lock the accounts in opposite orders and deadlock. The fix is the global lock order from the deadlock section: always lock the account with the smaller id first. The test runs thousands of random transfers from several threads, and the total amount of money must stay exactly the same. If it changes, the code has a race.",
+       "Bank transfer ko ek account se ghatana aur dusre me jodna EK hi step me karna padta hai, isliye dono accounts ko saath lock karna padta hai. Par ulti disha me paise bhejne wale do threads (Rahul se Gurleen aur Gurleen se Rahul) accounts ko ulte order me lock karenge aur deadlock ho jayega. Fix deadlock section ka global lock order hai: hamesha chhoti id wale account ko pehle lock karo. Test kai threads se hazaron random transfers chalata hai, aur paise ki kul rakam bilkul same rehni chahiye. Wo badal jaye to code me race hai."],
+   code: `import java.util.concurrent.*;
+
+class Account {
+    private final int id;
+    private final String owner;
+    private long balance;
+
+    Account(int id, String owner, long balance) {
+        this.id = id;
+        this.owner = owner;
+        this.balance = balance;
+    }
+
+    synchronized long getBalance() { return balance; }
+    String getOwner() { return owner; }
+
+    // Both accounts are locked, always in the same order (smaller id first): no deadlock
+    static boolean transfer(Account from, Account to, long amount) {
+        if (from == to || amount <= 0) return false;
+        Account first  = from.id < to.id ? from : to;
+        Account second = (first == from) ? to : from;
+
+        synchronized (first) {
+            synchronized (second) {
+                if (from.balance < amount) return false;     // not enough money: refuse
+                from.balance -= amount;
+                to.balance   += amount;
+                return true;
+            }
+        }
+    }
+}
+
+public class SafeBank {
+    public static void main(String[] args) throws Exception {
+        Account[] accounts = {
+            new Account(1, "Rahul", 1000),
+            new Account(2, "Gurleen", 1000),
+            new Account(3, "Himakshi", 1000)
+        };
+        long before = 0;
+        for (Account a : accounts) before += a.getBalance();
+
+        ExecutorService pool = Executors.newFixedThreadPool(8);
+        for (int t = 0; t < 8; t++) {
+            pool.submit(() -> {
+                ThreadLocalRandom rnd = ThreadLocalRandom.current();
+                for (int i = 0; i < 20_000; i++) {
+                    Account from = accounts[rnd.nextInt(accounts.length)];
+                    Account to   = accounts[rnd.nextInt(accounts.length)];
+                    Account.transfer(from, to, rnd.nextInt(1, 200));
+                }
+            });
+        }
+        pool.shutdown();
+        if (!pool.awaitTermination(30, TimeUnit.SECONDS)) {
+            System.out.println("Timed out: possible deadlock!");
+            return;
+        }
+
+        long after = 0;
+        for (Account a : accounts) {
+            System.out.println(a.getOwner() + ": " + a.getBalance());
+            after += a.getBalance();
+        }
+        System.out.println("money before: " + before + ", after: " + after);   // both 3000: no money created or lost
+    }
+}`},
+  {h: ["Choosing the right tool", "Sahi tool chunna"],
+   pts: [["Nothing is shared, or the data is immutable: no synchronization needed. Prefer this whenever you can.", "One shared counter or flag: AtomicInteger, AtomicLong, LongAdder, AtomicBoolean, or a volatile flag when one thread writes.", "One shared object with several fields that change together: synchronized methods or blocks, or a ReentrantLock.", "Need tryLock, timeouts, fairness or several conditions: ReentrantLock. Read-mostly data: ReentrantReadWriteLock (or StampedLock).", "A shared map, list or queue: ConcurrentHashMap, CopyOnWriteArrayList, ConcurrentLinkedQueue.", "Producer and consumer: BlockingQueue.", "Wait until N tasks are done: CountDownLatch, or Future and invokeAll.", "Limit how many threads use a resource: Semaphore, or a fixed thread pool.", "Run many independent tasks and gather results: ExecutorService with Callable and Future, or CompletableFuture."],
+         ["Kuch share nahi hota, ya data immutable hai: synchronization ki zaroorat nahi. Jab bhi ho sake ise prefer karo.", "Ek shared counter ya flag: AtomicInteger, AtomicLong, LongAdder, AtomicBoolean, ya ek thread likhta ho to volatile flag.", "Ek shared object jiske kai fields saath badalte hain: synchronized methods ya blocks, ya ReentrantLock.", "tryLock, timeouts, fairness ya kai conditions chahiye: ReentrantLock. Zyadatar padhne wala data: ReentrantReadWriteLock (ya StampedLock).", "Shared map, list ya queue: ConcurrentHashMap, CopyOnWriteArrayList, ConcurrentLinkedQueue.", "Producer aur consumer: BlockingQueue.", "N tasks khatam hone tak intezaar: CountDownLatch, ya Future aur invokeAll.", "Kitne threads ek resource use karein ye limit karna: Semaphore, ya fixed thread pool.", "Kai swatantra tasks chalana aur results jama karna: Callable aur Future ke saath ExecutorService, ya CompletableFuture."]]},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: synchronizing the writes but not the reads. Both need the same lock.", "Mistake: using different lock objects for the same data. Then nothing is protected.", "Mistake: assuming volatile makes count++ safe. It does not.", "Mistake: protecting only the update and not the check (check-then-act), so two threads can both pass the check.", "Mistake: locking on a String literal, an Integer, or a public object.", "Mistake: wait() in an if instead of a while loop, or notify() without changing any state.", "Mistake: forgetting unlock() in finally with ReentrantLock.", "Mistake: taking two locks in different orders in different places (deadlock).", "Mistake: calling unknown code (callbacks, listeners) while holding a lock.", "Mistake: holding a lock during slow work (network, disk, sleep).", "Mistake: assuming a thread-safe collection makes a sequence of calls on it safe.", "Mistake: believing that 'it passed once' proves the code is correct.", "Good habit: first try to avoid sharing (immutable objects, one thread per data, ThreadLocal).", "Good habit: use the high-level java.util.concurrent tools instead of wait and notify, and document which lock guards which field.", "Good habit: keep critical sections tiny and test with many threads, many loops and different machines."],
+         ["Galti: writes synchronize karna par reads nahi. Dono ko wahi lock chahiye.", "Galti: ek hi data ke liye alag lock objects use karna. Tab kuch bhi protected nahi hota.", "Galti: volatile se count++ safe maan lena. Wo safe nahi karta.", "Galti: sirf update bachana aur check nahi (check-then-act), jisse do threads dono check paar kar sakte hain.", "Galti: String literal, Integer ya public object par lock lagana.", "Galti: wait() ko while loop ki jagah if me likhna, ya state badle bina notify() karna.", "Galti: ReentrantLock ke saath finally me unlock() bhul jana.", "Galti: alag jagahon par do locks ko alag order me lena (deadlock).", "Galti: lock rakhte hue anjaana code (callbacks, listeners) call karna.", "Galti: slow kaam (network, disk, sleep) ke dauran lock pakde rakhna.", "Galti: thread-safe collection par calls ke sequence ko bhi safe maan lena.", "Galti: ye maanna ki 'ek baar pass ho gaya' ka matlab code sahi hai.", "Achhi aadat: pehle share karna avoid karne ki koshish karo (immutable objects, har data ke liye ek thread, ThreadLocal).", "Achhi aadat: wait aur notify ki jagah high-level java.util.concurrent tools use karo, aur likho ki kaun sa lock kaun se field ko bachata hai.", "Achhi aadat: critical sections bahut chhote rakho aur kai threads, kai loops aur alag machines par test karo."]],
+   tip: ["Interview questions: (1) What is a race condition? A bug where the result depends on the timing of threads that share data. (2) synchronized method vs block? A method locks this for the whole method, a block locks a chosen object for a few lines. (3) volatile vs synchronized? volatile gives visibility only, synchronized gives visibility and mutual exclusion. (4) wait() vs sleep()? wait releases the lock and needs notify, sleep keeps the lock and ends by time. (5) What is a deadlock and how do you avoid it? Threads wait for each other's locks forever, avoid it with a fixed lock order or tryLock timeouts. (6) What is a thread-safe class? One that behaves correctly when used from many threads without extra locking.", "Interview questions: (1) Race condition kya hai? Aisa bug jisme result data share karne wale threads ki timing par nirbhar karta hai. (2) synchronized method vs block? Method poore method ke liye this lock karta hai, block kuch lines ke liye chuna hua object lock karta hai. (3) volatile vs synchronized? volatile sirf visibility deta hai, synchronized visibility aur mutual exclusion dono. (4) wait() vs sleep()? wait lock chhodta hai aur notify chahiye, sleep lock rakhta hai aur samay se khatam hota hai. (5) Deadlock kya hai aur kaise bachte hain? Threads ek dusre ke locks ka hamesha intezaar karte hain, fixed lock order ya tryLock timeouts se bachte hain. (6) Thread-safe class kya hai? Jo kai threads se bina extra locking ke sahi behave kare."]}
+ ]},
+54: {
+ def: ["A lambda expression is a short, anonymous function: a block of code with parameters that you can store in a variable, pass to a method or return from a method. It was added in Java 8 and it has a compact syntax, (parameters) -> body. A lambda can be used wherever the expected type is a functional interface, an interface that has exactly one abstract method, such as Runnable, Comparator or Predicate. Lambdas make code about behaviour (what to do) short and readable.",
+       "Lambda expression ek chhota, anonymous function hai: parameters wala code ka ek block jise tum variable me rakh sakte ho, method ko pass kar sakte ho ya method se return kar sakte ho. Ye Java 8 me jodi gayi thi aur iska compact syntax hai, (parameters) -> body. Lambda wahan use ho sakta hai jahan expected type functional interface ho, yaani aisa interface jisme bilkul ek abstract method ho, jaise Runnable, Comparator ya Predicate. Lambdas behaviour (kya karna hai) wale code ko chhota aur padhne layak banate hain."],
+ secs: [
+  {h: ["Why lambdas? From anonymous classes to one line", "Lambdas kyun? Anonymous classes se ek line tak"],
+   p: ["Before Java 8, passing a piece of behaviour to a method meant writing an anonymous class: five lines of ceremony to say one useful thing. In the example you only care about 'compare two Strings by length', yet you had to write new Comparator<String>(), the method signature, the braces and the return. A lambda keeps only the useful part. The compiler knows from the context (the method expects a Comparator<String>) which interface you mean and which method you are implementing, so you do not have to write them.",
+       "Java 8 se pehle method ko behaviour ka tukda dene ka matlab anonymous class likhna tha: ek kaam ki baat kehne ke liye paanch lines ka dikhawa. Example me tumhe sirf 'do Strings ko length se compare karo' ki parwah hai, phir bhi new Comparator<String>(), method signature, braces aur return likhna padta tha. Lambda sirf kaam ka hissa rakhta hai. Compiler context se (method Comparator<String> maangta hai) jaanta hai ki tum kaun sa interface aur kaun sa method implement kar rahe ho, isliye unhe likhna nahi padta."],
+   code: `import java.util.*;
+
+public class WhyLambda {
+    public static void main(String[] args) {
+        List<String> names = new ArrayList<>(List.of("Himakshi", "Mohit", "Rahul", "Gurleen"));
+
+        // Before Java 8: an anonymous class
+        names.sort(new Comparator<String>() {
+            @Override
+            public int compare(String a, String b) {
+                return Integer.compare(a.length(), b.length());
+            }
+        });
+        System.out.println(names);          // [Mohit, Rahul, Gurleen, Himakshi]
+
+        // With a lambda: the same behaviour in one line
+        names.sort((a, b) -> Integer.compare(b.length(), a.length()));
+        System.out.println(names);          // [Himakshi, Gurleen, Mohit, Rahul]
+
+        // A thread, before and after
+        Thread t1 = new Thread(new Runnable() {
+            @Override public void run() { System.out.println("old style"); }
+        });
+        Thread t2 = new Thread(() -> System.out.println("lambda style"));
+        t1.start();
+        t2.start();
+    }
+}`},
+  {h: ["The syntax in all its forms", "Syntax apne saare rupon me"],
+   p: ["A lambda has three parts: the parameter list, the arrow ->, and the body. The parameter types can be left out because the compiler knows them from the functional interface. One parameter needs no brackets, and zero or several parameters need them. When the body is a single expression, no braces and no return are needed, and the value of the expression is the result. When the body is a block in braces, you write return yourself if a value is expected. If you give a type to one parameter, you must give it to all of them.",
+       "Lambda ke teen hisse hote hain: parameter list, arrow ->, aur body. Parameter types chhod sakte ho kyunki compiler unhe functional interface se jaanta hai. Ek parameter ko brackets nahi chahiye, aur zero ya kai parameters ko chahiye. Body ek hi expression ho to braces aur return nahi chahiye, aur expression ki value hi result hoti hai. Body braces me block ho to value chahiye ho tab return khud likhna padta hai. Ek parameter ko type do to sabko dena padta hai."],
+   code: `import java.util.function.*;
+
+public class Syntax {
+    public static void main(String[] args) {
+        // no parameters
+        Runnable hello = () -> System.out.println("Hello!");
+        hello.run();                                        // Hello!
+
+        // one parameter: brackets are optional
+        Function<Integer, Integer> square = x -> x * x;
+        Function<Integer, Integer> square2 = (x) -> x * x;  // the same thing
+        System.out.println(square.apply(7));                // 49
+
+        // two parameters: brackets are required
+        BinaryOperator<Integer> add = (a, b) -> a + b;
+        System.out.println(add.apply(3, 4));                // 7
+
+        // explicit types (all or none)
+        BinaryOperator<Integer> mul = (Integer a, Integer b) -> a * b;
+        // BinaryOperator<Integer> bad = (Integer a, b) -> a * b;    // ERROR: mixed styles
+
+        // a block body: use braces, and write 'return' when a value is expected
+        BinaryOperator<Integer> max = (a, b) -> {
+            if (a > b) return a;
+            return b;
+        };
+        System.out.println(max.apply(8, 5));                // 8
+
+        // a block body for a void method: no return value
+        Consumer<String> shout = s -> {
+            String loud = s.toUpperCase() + "!";
+            System.out.println(loud);
+        };
+        shout.accept("rahul");                              // RAHUL!
+
+        // returning a lambda from a method is also allowed (see the examples later)
+    }
+}`,
+   pts: [["(a, b) -> a + b is an EXPRESSION lambda. The value of a + b is returned automatically.", "(a, b) -> { return a + b; } is a BLOCK lambda. With braces you need return (and semicolons).", "x -> { x * x; } is an error: with braces, an expression alone is not a statement. Write { return x * x; } or remove the braces.", "A lambda has no name and no modifiers, and it cannot declare its own checked exceptions beyond what the interface allows.", "The parameter names of a lambda cannot reuse the name of a local variable that is already in scope."],
+         ["(a, b) -> a + b EXPRESSION lambda hai. a + b ki value apne aap return ho jati hai.", "(a, b) -> { return a + b; } BLOCK lambda hai. Braces ke saath return (aur semicolons) chahiye.", "x -> { x * x; } error hai: braces ke saath akela expression statement nahi hota. { return x * x; } likho ya braces hata do.", "Lambda ka koi naam aur modifiers nahi hote, aur wo interface jitna allow kare usse zyada checked exceptions declare nahi kar sakta.", "Lambda ke parameter ke naam kisi aise local variable ka naam dobara use nahi kar sakte jo pehle se scope me ho."]]},
+  {h: ["Functional interfaces: where a lambda can be used", "Functional interfaces: lambda kahan use ho sakta hai"],
+   p: ["A lambda needs a target type, and that type must be a functional interface: an interface with exactly ONE abstract method (called its single abstract method, SAM). The lambda is the body of that one method, which is why the compiler can leave out the method name. Default methods, static methods and the methods that repeat those of Object (such as equals) do not count. You can mark your own interface with @FunctionalInterface, and the compiler will then refuse to compile it if a second abstract method sneaks in. Runnable, Comparator, Callable and ActionListener were already functional interfaces before Java 8, which is why lambdas work with older libraries.",
+       "Lambda ko target type chahiye, aur wo type functional interface hona chahiye: aisa interface jisme bilkul EK abstract method ho (jise single abstract method, SAM, kehte hain). Lambda us ek method ki body hai, isi liye compiler method ka naam chhod sakta hai. Default methods, static methods aur Object ke methods ko dohrane wale methods (jaise equals) ginti me nahi aate. Apne interface par @FunctionalInterface laga sakte ho, aur tab dusra abstract method ghus aaye to compiler use compile karne se mana kar dega. Runnable, Comparator, Callable aur ActionListener Java 8 se pehle bhi functional interfaces the, isi liye lambdas purani libraries ke saath bhi chalte hain."],
+   code: `@FunctionalInterface
+interface Validator {
+    boolean isValid(String text);                    // the ONE abstract method
+
+    default Validator and(Validator other) {         // a default method does not count
+        return s -> this.isValid(s) && other.isValid(s);
+    }
+
+    static Validator notEmpty() {                    // a static method does not count either
+        return s -> s != null && !s.isEmpty();
+    }
+}
+
+// @FunctionalInterface
+// interface Broken {
+//     void a();
+//     void b();                                     // ERROR: two abstract methods, not a functional interface
+// }
+
+public class FunctionalDemo {
+    static void check(String text, Validator v) {    // the parameter type is the functional interface
+        System.out.println("'" + text + "' valid? " + v.isValid(text));
+    }
+
+    public static void main(String[] args) {
+        Validator hasAt = s -> s.contains("@");
+        Validator longEnough = s -> s.length() >= 6;
+
+        check("mohit@mail.com", hasAt);                          // valid? true
+        check("abc", hasAt.and(longEnough));                     // valid? false
+        check("gurleen@x.in", hasAt.and(longEnough));            // valid? true
+        check("", Validator.notEmpty());                         // valid? false
+
+        // The SAME lambda text can be different types, depending on the target
+        Runnable r = () -> System.out.println("run");
+        java.util.concurrent.Callable<String> c = () -> "call";
+        // Object o = () -> "x";                                 // ERROR: Object is not a functional interface
+    }
+}`},
+  {h: ["The built-in functional interfaces (java.util.function)", "Built-in functional interfaces (java.util.function)"],
+   p: ["You rarely need to write your own interface, because java.util.function already has a family that covers almost every shape. Predicate<T> takes a value and answers true or false. Function<T, R> turns a T into an R. Consumer<T> takes a value and returns nothing (it does something with it). Supplier<T> takes nothing and gives a value. The Bi versions take two arguments. UnaryOperator<T> and BinaryOperator<T> are special cases where the types are the same. There are also versions for int, long and double (IntPredicate, IntFunction, ToIntFunction, IntBinaryOperator, ...) that avoid the cost of boxing numbers into Integer objects.",
+       "Tumhe apna interface likhne ki kam hi zaroorat padti hai, kyunki java.util.function me pehle se ek family hai jo lagbhag har shape cover karti hai. Predicate<T> ek value leta hai aur true ya false batata hai. Function<T, R> T ko R me badalta hai. Consumer<T> ek value leta hai aur kuch return nahi karta (uske saath kuch karta hai). Supplier<T> kuch nahi leta aur ek value deta hai. Bi versions do arguments lete hain. UnaryOperator<T> aur BinaryOperator<T> wo khaas cases hain jahan types same hote hain. int, long aur double ke versions bhi hain (IntPredicate, IntFunction, ToIntFunction, IntBinaryOperator, ...) jo numbers ko Integer objects me box karne ki keemat bachate hain."],
+   code: `import java.util.function.*;
+
+public class BuiltIns {
+    public static void main(String[] args) {
+        // Predicate<T>: T -> boolean          method: test
+        Predicate<String> isEmpty = s -> s.isEmpty();
+        System.out.println(isEmpty.test(""));                      // true
+
+        // Function<T, R>: T -> R              method: apply
+        Function<String, Integer> length = s -> s.length();
+        System.out.println(length.apply("Himakshi"));              // 8
+
+        // Consumer<T>: T -> nothing           method: accept
+        Consumer<String> printer = s -> System.out.println("Hello " + s);
+        printer.accept("Shivam");                                  // Hello Shivam
+
+        // Supplier<T>: nothing -> T           method: get
+        Supplier<Double> half = () -> 0.5;
+        System.out.println(half.get());                            // 0.5
+
+        // the Bi versions take two arguments
+        BiFunction<Integer, Integer, Integer> power = (b, e) -> (int) Math.pow(b, e);
+        System.out.println(power.apply(2, 10));                    // 1024
+        BiPredicate<String, String> sameIgnoringCase = (a, b) -> a.equalsIgnoreCase(b);
+        System.out.println(sameIgnoringCase.test("JAVA", "java")); // true
+        BiConsumer<String, Integer> show = (k, v) -> System.out.println(k + "=" + v);
+        show.accept("marks", 91);                                  // marks=91
+
+        // UnaryOperator<T> is Function<T, T>.  BinaryOperator<T> is BiFunction<T, T, T>.
+        UnaryOperator<String> trim = s -> s.trim();
+        BinaryOperator<Integer> sum = (a, b) -> a + b;
+        System.out.println("[" + trim.apply("  hi  ") + "] " + sum.apply(20, 22));   // [hi] 42
+
+        // Primitive versions: no boxing
+        IntPredicate even = n -> n % 2 == 0;
+        IntUnaryOperator twice = n -> n * 2;
+        IntBinaryOperator maxOf = (a, b) -> Math.max(a, b);
+        ToIntFunction<String> len = String::length;
+        IntFunction<String> stars = n -> "*".repeat(n);
+        IntSupplier answer = () -> 42;
+        System.out.println(even.test(10) + " " + twice.applyAsInt(21) + " " + maxOf.applyAsInt(3, 9));   // true 42 9
+        System.out.println(len.applyAsInt("Mohit") + " " + stars.apply(4) + " " + answer.getAsInt());    // 5 **** 42
+    }
+}`,
+   pts: [["Runnable: () -> void. Callable<T>: () -> T that may throw. Comparator<T>: (T, T) -> int. These come from other packages.", "Predicate<T>: test. Function<T, R>: apply. Consumer<T>: accept. Supplier<T>: get. BiFunction: apply. UnaryOperator and BinaryOperator: apply.", "Each interface has its own method name, so remember the table: test, apply, accept and get.", "Prefer IntPredicate, IntFunction, ToIntFunction and friends when the data are primitive numbers, to avoid boxing.", "If none of these fits (for example three parameters), write your own @FunctionalInterface."],
+         ["Runnable: () -> void. Callable<T>: () -> T jo throw kar sakta hai. Comparator<T>: (T, T) -> int. Ye dusre packages se aate hain.", "Predicate<T>: test. Function<T, R>: apply. Consumer<T>: accept. Supplier<T>: get. BiFunction: apply. UnaryOperator aur BinaryOperator: apply.", "Har interface ka apna method naam hai, isliye table yaad rakho: test, apply, accept aur get.", "Data primitive numbers ho to boxing bachane ke liye IntPredicate, IntFunction, ToIntFunction aur saathi prefer karo.", "Inme se koi fit na ho (jaise teen parameters) to apna @FunctionalInterface likho."]]},
+  {h: ["Lambdas with collections and everyday APIs", "Collections aur roz ki APIs ke saath lambdas"],
+   p: ["Since Java 8 most collection methods that 'do something for each item' take a lambda. forEach visits every item, removeIf deletes the items that match, replaceAll changes each item, sort orders a list, and the Map methods forEach, merge, compute, computeIfAbsent and replaceAll let you handle values in one line. You have already used several of them in the earlier lessons. Lambdas are also the standard way to start a thread or give a callback to an executor. And in the next lesson they will be the heart of the Stream API.",
+       "Java 8 se zyadatar collection methods jo 'har item ke liye kuch karo' karte hain lambda lete hain. forEach har item par jata hai, removeIf match hone wale items hatata hai, replaceAll har item badalta hai, sort list ko order karta hai, aur Map ke methods forEach, merge, compute, computeIfAbsent aur replaceAll values ko ek line me sambhalne dete hain. Inme se kai tum pichhle lessons me pehle hi use kar chuke ho. Thread shuru karne ya executor ko callback dene ka standard tareeka bhi lambda hai. Aur agle lesson me ye Stream API ka dil honge."],
+   code: `import java.util.*;
+
+public class CollectionLambdas {
+    public static void main(String[] args) {
+        List<Integer> nums = new ArrayList<>(List.of(5, 12, 7, 20, 3, 18));
+
+        nums.forEach(n -> System.out.print(n + " "));            // 5 12 7 20 3 18
+        System.out.println();
+
+        nums.removeIf(n -> n < 6);                               // delete what matches
+        System.out.println(nums);                                // [12, 7, 20, 18]
+
+        nums.replaceAll(n -> n * 10);                            // change every item
+        System.out.println(nums);                                // [120, 70, 200, 180]
+
+        nums.sort((a, b) -> b - a);                              // descending (fine for small numbers; Integer.compare is safer)
+        System.out.println(nums);                                // [200, 180, 120, 70]
+
+        // Maps
+        Map<String, Integer> marks = new TreeMap<>(Map.of("Rahul", 72, "Gurleen", 91, "Mohit", 55));
+        marks.forEach((name, m) -> System.out.println(name + " -> " + m));
+        marks.replaceAll((name, m) -> m + 5);                    // grace marks for everybody
+        marks.merge("Mohit", 10, Integer::sum);                  // add to one entry
+        marks.computeIfAbsent("Shivam", name -> name.length() * 10);
+        marks.entrySet().removeIf(e -> e.getValue() < 65);       // remove the weak entries
+        System.out.println(marks);                               // {Gurleen=96, Mohit=70, Rahul=77, Shivam=60}... see below
+        // After removeIf: Shivam (60) is removed, so the real output is {Gurleen=96, Mohit=70, Rahul=77}
+
+        // Threads and callbacks
+        new Thread(() -> System.out.println("in a thread")).start();
+        Optional<String> maybe = Optional.of("Himakshi");
+        maybe.ifPresent(n -> System.out.println("found " + n));  // found Himakshi
+        System.out.println(maybe.map(String::length).orElse(0)); // 8
+    }
+}`},
+  {h: ["Capturing variables: effectively final", "Variables capture karna: effectively final"],
+   p: ["A lambda can use the local variables and parameters of the method that creates it. This is called capturing. The lambda takes a COPY of the value when it is created. To keep that copy honest, Java requires the captured variable to be effectively final: it must never be changed after it gets its value (you do not need to write the word final, but the compiler checks that you never reassign it). Fields are different: a lambda can freely read and change instance and static fields, because it reaches them through an object or the class. If you really need a changing counter inside a lambda, use a one-element array, an AtomicInteger or a field, and remember that these need care when several threads are involved.",
+       "Lambda us method ke local variables aur parameters ko use kar sakta hai jo use banata hai. Ise capture karna kehte hain. Lambda banate waqt value ki COPY le leta hai. Is copy ko imaandar rakhne ke liye Java captured variable ko effectively final hone ko kehta hai: value milne ke baad use kabhi badalna nahi chahiye (final shabd likhna zaroori nahi, par compiler check karta hai ki tumne use kabhi dobara assign nahi kiya). Fields alag hain: lambda instance aur static fields ko khule me padh aur badal sakta hai, kyunki wo unhe object ya class ke through pahunchta hai. Lambda ke andar badalta counter sach me chahiye ho to ek-element array, AtomicInteger ya field use karo, aur yaad rakho ki kai threads ho to inme dhyan rakhna padta hai."],
+   code: `import java.util.*;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.function.*;
+
+public class Capture {
+    private int total = 0;                           // a field: a lambda may change it
+
+    void demo() {
+        int base = 100;                              // effectively final: never reassigned
+        Function<Integer, Integer> addBase = x -> x + base;
+        System.out.println(addBase.apply(5));        // 105
+
+        // base++;                                   // ERROR if you uncomment: the lambda above would break ("local variables
+                                                     // referenced from a lambda expression must be final or effectively final")
+
+        List<Integer> data = List.of(3, 4, 5);
+
+        // int sum = 0;
+        // data.forEach(n -> sum += n);              // ERROR: sum is changed inside the lambda
+
+        int[] sumBox = {0};                          // a one-element array: the array is final, its content may change
+        data.forEach(n -> sumBox[0] += n);
+        System.out.println(sumBox[0]);               // 12
+
+        AtomicInteger counter = new AtomicInteger(); // the better box, also safe with threads
+        data.forEach(n -> counter.addAndGet(n));
+        System.out.println(counter.get());           // 12
+
+        data.forEach(n -> total += n);               // a FIELD can be changed freely
+        System.out.println(total);                   // 12
+
+        // A loop variable is a classic trap
+        List<Runnable> jobs = new ArrayList<>();
+        for (int i = 0; i < 3; i++) {
+            // jobs.add(() -> System.out.println(i));   // ERROR: i keeps changing
+            int copy = i;                               // a fresh variable for each round
+            jobs.add(() -> System.out.println("job " + copy));
+        }
+        jobs.forEach(Runnable::run);                    // job 0, job 1, job 2
+    }
+
+    public static void main(String[] args) {
+        new Capture().demo();
+    }
+}`,
+   pts: [["Effectively final = assigned exactly once and never changed afterwards, even if you did not write the word final.", "The reason: the lambda may run later or in another thread, long after the method has returned. It could not safely share a changing local variable, so it keeps a copy.", "Inside a lambda, this means the OUTER object (the class that contains the lambda), unlike an anonymous class where this is the anonymous object itself.", "A lambda does NOT create a new scope for names: a lambda parameter or a variable declared inside it cannot have the same name as a local variable of the enclosing method.", "A lambda that captures nothing is created once and reused by the JVM, so it is cheap."],
+         ["Effectively final = bilkul ek baar assign hua aur baad me kabhi nahi badla, chahe tumne final shabd na likha ho.", "Wajah: lambda baad me ya dusre thread me, method ke return hone ke bahut baad, chal sakta hai. Wo badalte local variable ko safely share nahi kar sakta, isliye copy rakhta hai.", "Lambda ke andar this ka matlab BAHAR WALA object hai (jis class me lambda hai), anonymous class se alag jahan this khud anonymous object hota hai.", "Lambda naamon ke liye naya scope NAHI banata: lambda ka parameter ya uske andar declare kiya variable enclosing method ke local variable ke naam jaisa nahi ho sakta.", "Jo lambda kuch capture nahi karta wo ek baar banta hai aur JVM use dobara use karta hai, isliye sasta hai."]]},
+  {h: ["Method references: lambdas without the arrow", "Method references: bina arrow ke lambdas"],
+   p: ["When a lambda does nothing except call one existing method, you can name that method directly with ::, which is shorter and often clearer. There are four kinds. A reference to a STATIC method (Integer::parseInt) passes the lambda's parameters to that method. A reference to an instance method of a SPECIFIC object (System.out::println) calls the method on that very object. A reference to an instance method of an ARBITRARY object of a type (String::toUpperCase) uses the first parameter as the receiver, so s -> s.toUpperCase() becomes String::toUpperCase. A reference to a CONSTRUCTOR (ArrayList::new, Student::new) creates objects.",
+       "Jab lambda sirf ek maujooda method ko call karne ke alawa kuch nahi karta, to us method ka naam seedhe :: se likh sakte ho, jo chhota aur aksar saaf hota hai. Chaar kisame hain. STATIC method ka reference (Integer::parseInt) lambda ke parameters ko us method ko deta hai. Kisi KHAAS object ke instance method ka reference (System.out::println) usi object par method call karta hai. Kisi type ke KISI BHI object ke instance method ka reference (String::toUpperCase) pehle parameter ko receiver banata hai, isliye s -> s.toUpperCase() String::toUpperCase ban jata hai. CONSTRUCTOR ka reference (ArrayList::new, Student::new) objects banata hai."],
+   code: `import java.util.*;
+import java.util.function.*;
+
+class Student {
+    String name;
+    Student(String name) { this.name = name; }
+    String getName() { return name; }
+    static int compareByName(Student a, Student b) { return a.name.compareTo(b.name); }
+    @Override public String toString() { return name; }
+}
+
+public class MethodRefs {
+    public static void main(String[] args) {
+        // 1) STATIC method:  Class::staticMethod
+        Function<String, Integer> p1 = s -> Integer.parseInt(s);
+        Function<String, Integer> p2 = Integer::parseInt;                  // the same
+        System.out.println(p2.apply("42") + 1);                            // 43
+
+        // 2) A SPECIFIC object:  object::method
+        Consumer<String> c1 = s -> System.out.println(s);
+        Consumer<String> c2 = System.out::println;                         // the same
+        c2.accept("printed");
+
+        String prefix = "Hello, ";
+        Function<String, String> greet = prefix::concat;                   // prefix.concat(x)
+        System.out.println(greet.apply("Gurleen"));                        // Hello, Gurleen
+
+        // 3) An ARBITRARY object of a type:  Type::instanceMethod (the first parameter is the receiver)
+        Function<String, String> u1 = s -> s.toUpperCase();
+        Function<String, String> u2 = String::toUpperCase;                 // the same
+        System.out.println(u2.apply("mohit"));                             // MOHIT
+        BiFunction<String, String, Boolean> startsWith = String::startsWith;   // (a, b) -> a.startsWith(b)
+        System.out.println(startsWith.apply("Himakshi", "Him"));           // true
+
+        // 4) A CONSTRUCTOR:  Class::new
+        Supplier<List<String>> newList = ArrayList::new;                   // () -> new ArrayList<>()
+        List<String> list = newList.get();
+        Function<String, Student> create = Student::new;                   // s -> new Student(s)
+        System.out.println(create.apply("Rahul"));                         // Rahul
+        Function<Integer, int[]> newArray = int[]::new;                    // n -> new int[n]
+        System.out.println(newArray.apply(4).length);                      // 4
+
+        // In real code
+        List<Student> students = new ArrayList<>(List.of(new Student("Shivam"), new Student("Gurleen")));
+        students.sort(Student::compareByName);                             // (a, b) -> Student.compareByName(a, b)
+        System.out.println(students);                                      // [Gurleen, Shivam]
+        students.sort(Comparator.comparing(Student::getName).reversed());
+        System.out.println(students);                                      // [Shivam, Gurleen]
+    }
+}`,
+   pts: [["Use a method reference when the lambda only forwards its parameters to one method. If you need to change the arguments or do more, keep the lambda.", "Static: Class::method. Bound instance: object::method. Unbound instance: Class::method (first parameter becomes the receiver). Constructor: Class::new.", "The compiler picks the matching overload from the target type. If it cannot decide, write a lambda.", "this::method and super::method refer to methods of the current object or of the parent.", "Method references are not slower or faster than lambdas. Choose the one that reads better."],
+         ["Method reference tab use karo jab lambda sirf apne parameters ek method ko forward karta ho. Arguments badalne ho ya zyada karna ho to lambda rakho.", "Static: Class::method. Bound instance: object::method. Unbound instance: Class::method (pehla parameter receiver ban jata hai). Constructor: Class::new.", "Compiler target type se matching overload chunta hai. Wo tay na kar sake to lambda likho.", "this::method aur super::method current object ya parent ke methods ko refer karte hain.", "Method references lambdas se tez ya slow nahi hote. Jo behtar padhe wo chuno."]]},
+  {h: ["Composing and combining functions", "Functions ko jodna aur milana"],
+   p: ["The functional interfaces come with default methods that build bigger behaviour from small pieces, like Lego. Predicate has and, or, negate and the static Predicate.not (Java 11). Function has andThen (this first, then the other) and compose (the other first, then this), and the static identity. Consumer has andThen. Comparator has the builders you saw in the Comparator lesson. A method can also RETURN a lambda, which lets you create configurable behaviour, and a function can return another function (currying).",
+       "Functional interfaces ke saath default methods aate hain jo chhote tukdon se bada behaviour banate hain, Lego ki tarah. Predicate ke paas and, or, negate aur static Predicate.not (Java 11) hain. Function ke paas andThen (pehle ye, fir dusra) aur compose (pehle dusra, fir ye), aur static identity hain. Consumer ke paas andThen hai. Comparator ke paas wo builders hain jo tumne Comparator lesson me dekhe. Method lambda RETURN bhi kar sakta hai, jisse configurable behaviour banta hai, aur function dusra function return kar sakta hai (currying)."],
+   code: `import java.util.*;
+import java.util.function.*;
+
+public class Composition {
+    // A method that RETURNS a lambda: a configurable behaviour
+    static Predicate<Integer> greaterThan(int limit) {
+        return n -> n > limit;
+    }
+
+    static Function<Double, Double> withTax(double rate) {
+        return price -> price * (1 + rate);
+    }
+
+    public static void main(String[] args) {
+        // Predicate: and, or, negate, not
+        Predicate<String> notEmpty = s -> !s.isEmpty();
+        Predicate<String> shortWord = s -> s.length() <= 5;
+        Predicate<String> goodName = notEmpty.and(shortWord);
+        System.out.println(goodName.test("Mohit"));                  // true
+        System.out.println(goodName.test("Himakshi"));               // false
+        System.out.println(shortWord.negate().test("Himakshi"));     // true
+        System.out.println(shortWord.or(s -> s.startsWith("H")).test("Himakshi"));   // true
+        System.out.println(Predicate.not(String::isBlank).test("x"));                // true (Java 11+)
+
+        List<Integer> nums = new ArrayList<>(List.of(4, 15, 8, 23, 42));
+        nums.removeIf(greaterThan(10));                              // the limit is chosen by the caller
+        System.out.println(nums);                                    // [4, 8]
+
+        // Function: andThen runs this first, compose runs the other first
+        Function<Integer, Integer> plus2 = x -> x + 2;
+        Function<Integer, Integer> times3 = x -> x * 3;
+        System.out.println(plus2.andThen(times3).apply(5));          // (5 + 2) * 3 = 21
+        System.out.println(plus2.compose(times3).apply(5));          // (5 * 3) + 2 = 17
+
+        Function<Double, Double> gst = withTax(0.18);
+        System.out.println(gst.apply(100.0));                        // 118.0
+
+        // A whole pipeline in a list, applied one after another
+        List<Function<String, String>> steps = List.of(String::trim, String::toLowerCase, s -> s.replace(' ', '-'));
+        String text = "  Learn Java Fast  ";
+        for (Function<String, String> step : steps) text = step.apply(text);
+        System.out.println(text);                                    // learn-java-fast
+
+        // Consumer: andThen does both actions
+        Consumer<String> log = s -> System.out.println("log: " + s);
+        Consumer<String> save = s -> System.out.println("save: " + s);
+        log.andThen(save).accept("order 7");                         // log: order 7, then save: order 7
+
+        // Currying: a function that returns a function
+        Function<Integer, Function<Integer, Integer>> adder = a -> b -> a + b;
+        System.out.println(adder.apply(10).apply(5));                // 15
+        Function<Integer, Integer> add10 = adder.apply(10);
+        System.out.println(add10.apply(1));                          // 11
+
+        // Comparator builders (the Comparator lesson)
+        List<String> names = new ArrayList<>(List.of("Rahul", "Himakshi", "Mohit"));
+        names.sort(Comparator.comparingInt(String::length).thenComparing(Comparator.naturalOrder()));
+        System.out.println(names);                                   // [Mohit, Rahul, Himakshi]
+    }
+}`},
+  {h: ["Lambda versus anonymous class", "Lambda vs anonymous class"],
+   p: ["A lambda is not just short syntax for an anonymous class. They differ in important ways. The meaning of this is different: inside a lambda it refers to the enclosing object, inside an anonymous class it refers to the anonymous object itself. A lambda can implement only a functional interface, while an anonymous class can implement any interface, extend a class and have fields and several methods. A lambda has no state of its own. Every anonymous class produces its own .class file, but a lambda is created through a special JVM mechanism (invokedynamic), which is lighter. Use a lambda for a single piece of behaviour, and an anonymous class (or a named class) when you need state, several methods or a class to extend.",
+       "Lambda sirf anonymous class ka chhota syntax nahi hai. Dono me zaroori farak hain. this ka matlab alag hai: lambda ke andar wo bahar wale object ko refer karta hai, anonymous class ke andar khud anonymous object ko. Lambda sirf functional interface implement kar sakta hai, jabki anonymous class koi bhi interface implement kar sakti hai, class extend kar sakti hai aur fields aur kai methods rakh sakti hai. Lambda ki apni koi state nahi hoti. Har anonymous class apni .class file banati hai, par lambda ek khaas JVM mechanism (invokedynamic) se banta hai, jo halka hai. Behaviour ke ek tukde ke liye lambda use karo, aur state, kai methods ya extend karne wali class chahiye to anonymous class (ya named class) use karo."],
+   code: `import java.util.function.*;
+
+public class LambdaVsAnonymous {
+    private String name = "outer object";
+
+    void run() {
+        Runnable lambda = () -> System.out.println("lambda this.name   = " + this.name);   // outer object
+
+        Runnable anonymous = new Runnable() {
+            private String name = "anonymous object";          // an anonymous class can have fields
+            @Override
+            public void run() {
+                System.out.println("anonymous this.name = " + this.name);                   // anonymous object
+                System.out.println("outer name          = " + LambdaVsAnonymous.this.name); // reach the outer one
+            }
+        };
+
+        lambda.run();
+        anonymous.run();
+    }
+
+    // Only an anonymous (or named) class can have state or several methods
+    interface Stack2 { void push(int x); int pop(); }          // TWO methods: not a functional interface
+
+    public static void main(String[] args) {
+        new LambdaVsAnonymous().run();
+        // lambda this.name   = outer object
+        // anonymous this.name = anonymous object
+        // outer name          = outer object
+
+        Stack2 stack = new Stack2() {                          // a lambda cannot do this
+            private final int[] data = new int[10];
+            private int top = 0;
+            @Override public void push(int x) { data[top++] = x; }
+            @Override public int pop() { return data[--top]; }
+        };
+        stack.push(7);
+        stack.push(9);
+        System.out.println(stack.pop());                       // 9
+    }
+}`,
+   pts: [["this: the outer object in a lambda, the anonymous object itself in an anonymous class.", "Targets: a lambda only for functional interfaces. An anonymous class for any interface or class.", "State: a lambda has no fields of its own. An anonymous class can have fields and methods.", "Names: a lambda parameter cannot shadow a local variable. An anonymous class creates a new scope and may shadow.", "Class files: each anonymous class is compiled to its own file (Outer$1.class). Lambdas are created at run time.", "Rule of thumb: one short piece of behaviour means a lambda. Anything bigger or stateful means a named class."],
+         ["this: lambda me bahar wala object, anonymous class me khud anonymous object.", "Targets: lambda sirf functional interfaces ke liye. Anonymous class kisi bhi interface ya class ke liye.", "State: lambda ke apne fields nahi hote. Anonymous class me fields aur methods ho sakte hain.", "Names: lambda parameter local variable ko shadow nahi kar sakta. Anonymous class naya scope banati hai aur shadow kar sakti hai.", "Class files: har anonymous class apni file me compile hoti hai (Outer$1.class). Lambdas run time par banate hain.", "Thumb rule: behaviour ka ek chhota tukda matlab lambda. Kuch bhi bada ya state wala matlab named class."]]},
+  {h: ["Exceptions and recursion in lambdas", "Lambdas me exceptions aur recursion"],
+   p: ["A lambda can throw unchecked exceptions freely. But a CHECKED exception is allowed only if the functional interface method declares it. Function.apply declares none, so a body that calls Files.readString (which throws IOException) does not compile. You have three options: catch the exception inside the lambda body, wrap it in a RuntimeException, or write your own functional interface whose method declares throws. Callable.call() does declare throws Exception, which is why it is the right interface for tasks that can fail. A lambda also cannot call itself by name, because it has no name. For recursion, store it in a field or use a helper method.",
+       "Lambda unchecked exceptions khule me fenk sakta hai. Par CHECKED exception tabhi allowed hai jab functional interface ka method use declare kare. Function.apply koi declare nahi karta, isliye jis body me Files.readString (jo IOException deta hai) call ho wo compile nahi hota. Teen options hain: exception ko lambda body ke andar catch karo, use RuntimeException me lapeto, ya apna functional interface likho jiska method throws declare kare. Callable.call() throws Exception declare karta hai, isi liye wo un tasks ke liye sahi interface hai jo fail ho sakte hain. Lambda khud ko naam se call bhi nahi kar sakta, kyunki uska koi naam nahi hota. Recursion ke liye use field me rakho ya helper method use karo."],
+   code: `import java.io.IOException;
+import java.nio.file.*;
+import java.util.*;
+import java.util.function.*;
+
+@FunctionalInterface
+interface ThrowingFunction<T, R> {
+    R apply(T t) throws Exception;                       // this one MAY throw
+}
+
+public class LambdaExceptions {
+    // Turns a throwing function into an ordinary Function by wrapping the checked exception
+    static <T, R> Function<T, R> unchecked(ThrowingFunction<T, R> f) {
+        return t -> {
+            try {
+                return f.apply(t);
+            } catch (Exception e) {
+                throw new RuntimeException(e);           // keep the original as the cause
+            }
+        };
+    }
+
+    // For recursion, the lambda is kept in a static field and refers to it by that name
+    static Function<Integer, Long> factorial;
+    static {
+        factorial = n -> n <= 1 ? 1L : n * factorial.apply(n - 1);
+    }
+
+    public static void main(String[] args) {
+        // Option 1: catch inside the lambda
+        List<String> files = List.of("README.txt", "missing.txt");
+        files.forEach(name -> {
+            try {
+                System.out.println(name + ": " + Files.size(Path.of(name)) + " bytes");
+            } catch (IOException e) {
+                System.out.println(name + ": cannot read (" + e.getClass().getSimpleName() + ")");
+            }
+        });
+
+        // Option 2: wrap it, then use it like a normal Function
+        Function<String, String> read = unchecked(path -> Files.readString(Path.of(path)));
+        try {
+            read.apply("missing.txt");
+        } catch (RuntimeException e) {
+            System.out.println("wrapped: " + e.getCause().getClass().getSimpleName());   // NoSuchFileException
+        }
+
+        // Unchecked exceptions need nothing special
+        Function<String, Integer> parse = Integer::parseInt;
+        try {
+            parse.apply("abc");
+        } catch (NumberFormatException e) {
+            System.out.println("bad number");
+        }
+
+        System.out.println(factorial.apply(10));                                            // 3628800
+    }
+}`},
+  {h: ["Practical examples: strategy, callbacks and lazy values", "Practical examples: strategy, callbacks aur lazy values"],
+   p: ["Lambdas shine when behaviour has to be chosen, stored or delayed. A Map from a name to a BinaryOperator replaces a long switch (the strategy pattern). A list of Consumers turns a class into an event source (listeners). A Supplier delays work until it is really needed: a log message that is built only when logging is on. A retry helper takes any action as a Supplier and repeats it on failure. In every case the code that owns the problem does not know the details of the behaviour, it just runs what it was given.",
+       "Lambdas tab chamakte hain jab behaviour chunna, store karna ya der se chalana ho. Naam se BinaryOperator ka Map lambi switch ki jagah leta hai (strategy pattern). Consumers ki list class ko event source (listeners) bana deti hai. Supplier kaam ko tab tak rokta hai jab tak sach me zaroorat na ho: aisa log message jo tabhi banta hai jab logging on ho. Retry helper kisi bhi action ko Supplier ki tarah leta hai aur fail hone par dohrata hai. Har case me jis code ke paas problem hai use behaviour ki details pata nahi hoti, wo bas wahi chalata hai jo use diya gaya."],
+   code: `import java.util.*;
+import java.util.function.*;
+
+class Button {                                           // an event source
+    private final List<Consumer<String>> listeners = new ArrayList<>();
+
+    void onClick(Consumer<String> listener) { listeners.add(listener); }
+
+    void click(String who) {
+        for (Consumer<String> l : listeners) l.accept(who);
+    }
+}
+
+public class Practical {
+    // 1) A retry helper: any action, any result
+    static <T> T retry(int times, Supplier<T> action) {
+        RuntimeException last = null;
+        for (int attempt = 1; attempt <= times; attempt++) {
+            try {
+                return action.get();
+            } catch (RuntimeException e) {
+                last = e;
+                System.out.println("attempt " + attempt + " failed: " + e.getMessage());
+            }
+        }
+        throw last;
+    }
+
+    // 2) Lazy logging: the message is built only when it is really needed
+    static boolean debugOn = false;
+    static void debug(Supplier<String> message) {
+        if (debugOn) System.out.println("DEBUG " + message.get());
+    }
+
+    static int calls = 0;
+
+    public static void main(String[] args) {
+        // Strategy: a map of operations replaces a long switch
+        Map<String, BinaryOperator<Double>> ops = new LinkedHashMap<>();
+        ops.put("+", (a, b) -> a + b);
+        ops.put("-", (a, b) -> a - b);
+        ops.put("*", (a, b) -> a * b);
+        ops.put("/", (a, b) -> b == 0 ? Double.NaN : a / b);
+        ops.forEach((symbol, op) -> System.out.println("12 " + symbol + " 4 = " + op.apply(12.0, 4.0)));
+        // 12 + 4 = 16.0, 12 - 4 = 8.0, 12 * 4 = 48.0, 12 / 4 = 3.0
+        ops.put("^", (a, b) -> Math.pow(a, b));                       // a new operation: nothing else changes
+        System.out.println(ops.get("^").apply(2.0, 8.0));              // 256.0
+
+        // Callbacks: several listeners on one event
+        Button button = new Button();
+        button.onClick(who -> System.out.println("clicked by " + who));
+        button.onClick(who -> System.out.println("saved the click of " + who));
+        button.click("Himakshi");
+
+        // Retry: fails twice, succeeds on the third attempt
+        String result = retry(3, () -> {
+            calls++;
+            if (calls < 3) throw new IllegalStateException("server busy");
+            return "data received";
+        });
+        System.out.println(result);                                    // data received
+
+        // Lazy: the expensive text is NOT built while debug is off
+        debug(() -> "state = " + expensiveReport());                   // nothing printed, expensiveReport() never ran
+        debugOn = true;
+        debug(() -> "state = " + expensiveReport());                   // DEBUG state = report
+
+        // A pipeline built from a list of steps (the idea behind the Stream API of the next lesson)
+        List<Function<Integer, Integer>> pipeline = List.of(x -> x + 1, x -> x * 2, x -> x - 3);
+        int value = 5;
+        for (Function<Integer, Integer> step : pipeline) value = step.apply(value);
+        System.out.println(value);                                     // ((5 + 1) * 2) - 3 = 9
+    }
+
+    static String expensiveReport() {
+        System.out.println("(building the report...)");
+        return "report";
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: changing a captured local variable inside a lambda ('must be final or effectively final'). Use an AtomicInteger, an array box or a field.", "Mistake: capturing a loop variable that keeps changing. Copy it into a new variable inside the loop.", "Mistake: using a lambda for an interface with two abstract methods (not a functional interface).", "Mistake: a lambda parameter with the same name as a local variable ('already defined').", "Mistake: writing x -> { x * 2; } (a statement is expected). Write x -> x * 2 or { return x * 2; }.", "Mistake: a checked exception inside a lambda for an interface that does not declare it. Catch it or wrap it.", "Mistake: expecting this to mean the lambda. It means the enclosing object.", "Mistake: Comparator.comparing(s -> s.getX()).reversed() failing to compile because the type of s cannot be inferred. Use a method reference or write the type.", "Mistake: a very long lambda body. Move it into a named method and use a method reference.", "Mistake: ambiguity between Runnable and Callable in executor.submit(() -> { ... }). A body that returns a value is a Callable, a body that does not is a Runnable.", "Mistake: boxing in hot loops with Function<Integer, Integer>. Use IntUnaryOperator and friends.", "Mistake: doing heavy or blocking work inside a lambda that runs on a shared pool (such as the one used by parallel code).", "Good habit: keep lambdas to one to three lines, and give a name (a method or a variable) to anything longer.", "Good habit: prefer method references when they read better, and the standard functional interfaces instead of your own.", "Good habit: keep lambdas free of side effects when you can, so they are easy to test and safe in threads."],
+         ["Galti: lambda ke andar captured local variable badalna ('must be final or effectively final'). AtomicInteger, array box ya field use karo.", "Galti: badalte loop variable ko capture karna. Loop ke andar use naye variable me copy karo.", "Galti: do abstract methods wale interface ke liye lambda use karna (functional interface nahi hai).", "Galti: lambda parameter ka naam local variable ke naam jaisa ('already defined').", "Galti: x -> { x * 2; } likhna (statement chahiye). x -> x * 2 ya { return x * 2; } likho.", "Galti: aise interface ke lambda me checked exception jo use declare nahi karta. Catch karo ya wrap karo.", "Galti: this ka matlab lambda hone ki ummeed. Uska matlab enclosing object hai.", "Galti: Comparator.comparing(s -> s.getX()).reversed() ka compile na hona kyunki s ka type infer nahi hota. Method reference use karo ya type likho.", "Galti: bahut lambi lambda body. Use named method me le jao aur method reference use karo.", "Galti: executor.submit(() -> { ... }) me Runnable aur Callable ka ambiguity. Value return karne wali body Callable hai, jo na kare wo Runnable.", "Galti: hot loops me Function<Integer, Integer> se boxing. IntUnaryOperator aur saathi use karo.", "Galti: shared pool par chalne wale lambda (jaise parallel code wala) ke andar bhaari ya blocking kaam karna.", "Achhi aadat: lambdas ek se teen lines ke rakho, aur jo lamba ho use naam do (method ya variable).", "Achhi aadat: jab behtar padhe to method references prefer karo, aur apne interfaces ki jagah standard functional interfaces.", "Achhi aadat: jab ho sake lambdas ko side effects se mukt rakho, taaki test karna aasan aur threads me safe ho."]],
+   tip: ["Interview questions: (1) What is a lambda expression? An anonymous function written as (parameters) -> body, usable wherever a functional interface is expected. (2) What is a functional interface? An interface with exactly one abstract method, optionally marked @FunctionalInterface. (3) Lambda vs anonymous class? A lambda is shorter, has no state, and this means the enclosing object. (4) What does effectively final mean? A local variable that is never reassigned after its first assignment. (5) What are method references? A shorthand for a lambda that only calls an existing method (Class::method). (6) Name the four main functional interfaces. Predicate, Function, Consumer and Supplier.", "Interview questions: (1) Lambda expression kya hai? (parameters) -> body ki tarah likha anonymous function, jo wahan use ho sakta hai jahan functional interface chahiye. (2) Functional interface kya hai? Bilkul ek abstract method wala interface, jispar chahe to @FunctionalInterface lagta hai. (3) Lambda vs anonymous class? Lambda chhota hai, uski state nahi, aur this ka matlab enclosing object hai. (4) Effectively final ka matlab? Aisa local variable jo pehli assignment ke baad kabhi dobara assign nahi hua. (5) Method references kya hain? Aise lambda ka shorthand jo sirf maujooda method call karta hai (Class::method). (6) Chaar main functional interfaces ke naam batao. Predicate, Function, Consumer aur Supplier."]}
+ ]}
+});
+
+
+
+
+Object.assign(TOPICS, {
+55: {
+ def: ["The Stream API (java.util.stream, Java 8) lets you process a sequence of elements in a declarative way: you describe WHAT you want (keep these, change those, collect the result) as a pipeline of steps, instead of writing the loop that says HOW. A stream is not a data structure and it stores nothing. It is a one-time view over a source such as a list, an array or a file, and it runs as source, then intermediate operations, then one terminal operation.",
+       "Stream API (java.util.stream, Java 8) elements ke sequence ko declarative tareeke se process karne deti hai: tum steps ki pipeline me batate ho ki KYA chahiye (ye rakho, wo badlo, result jama karo), wo loop likhne ki jagah jo batata hai ki KAISE. Stream data structure nahi hai aur kuch store nahi karta. Ye list, array ya file jaise source par ek baar ka view hai, aur ye source, fir intermediate operations, fir ek terminal operation ki tarah chalta hai."],
+ secs: [
+  {h: ["The idea: from loops to pipelines", "Idea: loops se pipelines tak"],
+   p: ["A classic loop mixes three jobs in one place: walking through the items, testing them and collecting the answer, and you read the code line by line to find out what it does. A stream pipeline separates them, and each step reads like a sentence: from the students, keep those who passed, take their names, sort them, collect them into a list. The pipeline says WHAT. The library decides HOW (and may even run it in parallel). You do not need streams for every loop, but for 'filter, transform, collect' work they are shorter and clearer.",
+       "Classic loop teen kaam ek jagah milata hai: items par chalna, unhe test karna aur answer jama karna, aur tum code ko line by line padhkar samajhte ho ki wo kya karta hai. Stream pipeline unhe alag karti hai, aur har step ek vakya ki tarah padhta hai: students me se pass hue log rakho, unke naam lo, sort karo, list me jama karo. Pipeline KYA batati hai. KAISE ka faisla library karti hai (aur use parallel bhi chala sakti hai). Har loop ke liye streams ki zarurat nahi, par 'filter, badlo, jama karo' wale kaam me ye chhoti aur saaf hoti hain."],
+   code: `import java.util.*;
+import java.util.stream.*;
+
+public class LoopVsStream {
+    public static void main(String[] args) {
+        List<String> names = List.of("Himakshi", "Mohit", "Rahul", "Gurleen", "Shivam");
+
+        // The classic loop: names longer than 5 letters, in capitals, sorted
+        List<String> result1 = new ArrayList<>();
+        for (String n : names) {
+            if (n.length() > 5) {
+                result1.add(n.toUpperCase());
+            }
+        }
+        Collections.sort(result1);
+        System.out.println(result1);                 // [GURLEEN, HIMAKSHI, SHIVAM]
+
+        // The same job as a pipeline
+        List<String> result2 = names.stream()        // 1) the source
+                .filter(n -> n.length() > 5)         // 2) keep these
+                .map(String::toUpperCase)            // 3) transform them
+                .sorted()                            // 4) order them
+                .collect(Collectors.toList());       // 5) the terminal step: collect the result
+        System.out.println(result2);                 // [GURLEEN, HIMAKSHI, SHIVAM]
+
+        System.out.println(names);                   // the source list is NOT changed
+    }
+}`},
+  {h: ["The three parts of a pipeline, and laziness", "Pipeline ke teen hisse aur laziness"],
+   p: ["Every pipeline has exactly three kinds of parts. A SOURCE creates the stream (list.stream(), Stream.of, Arrays.stream, Files.lines). Zero or more INTERMEDIATE operations (filter, map, sorted, distinct, limit) each return a NEW stream, so you can chain them. Exactly one TERMINAL operation (collect, forEach, count, reduce, findFirst, sum) produces the final result or an effect and ends the pipeline. The key fact is laziness: intermediate operations do NOTHING when you write them. They only describe the plan. The work starts when the terminal operation is called, and then each element travels through the whole chain one at a time. Without a terminal operation, nothing runs at all.",
+       "Har pipeline me bilkul teen tarah ke hisse hote hain. SOURCE stream banata hai (list.stream(), Stream.of, Arrays.stream, Files.lines). Zero ya zyada INTERMEDIATE operations (filter, map, sorted, distinct, limit) har ek NAYA stream return karti hai, isliye unhe chain kar sakte ho. Bilkul ek TERMINAL operation (collect, forEach, count, reduce, findFirst, sum) final result ya asar deta hai aur pipeline ko khatam karta hai. Sabse zaroori baat laziness hai: intermediate operations likhte waqt KUCH NAHI karti. Ye sirf plan batati hain. Kaam tab shuru hota hai jab terminal operation call hota hai, aur tab har element poori chain me ek-ek karke guzarta hai. Terminal operation ke bina kuch bhi nahi chalta."],
+   code: `import java.util.stream.*;
+
+public class Laziness {
+    public static void main(String[] args) {
+        // No terminal operation: NOTHING is printed, because nothing runs
+        Stream.of("a", "bb", "ccc", "dddd")
+              .filter(s -> { System.out.println("filter " + s); return s.length() > 1; })
+              .map(s -> { System.out.println("map    " + s); return s.toUpperCase(); });
+
+        System.out.println("--- now with a terminal operation ---");
+
+        var first = Stream.of("a", "bb", "ccc", "dddd")
+              .filter(s -> { System.out.println("filter " + s); return s.length() > 1; })
+              .map(s -> { System.out.println("map    " + s); return s.toUpperCase(); })
+              .findFirst();                              // terminal: stops as soon as it has an answer
+        System.out.println(first);
+        // --- now with a terminal operation ---
+        // filter a
+        // filter bb
+        // map    bb
+        // Optional[BB]
+        //
+        // Each element goes through the WHOLE chain before the next one starts, and
+        // "ccc" and "dddd" were never even looked at (short-circuiting).
+    }
+}`,
+   pts: [["Source: where the elements come from. Intermediate: filter, map, flatMap, distinct, sorted, limit, skip, peek, takeWhile, dropWhile. Terminal: forEach, collect, toList, count, min, max, reduce, sum, anyMatch, allMatch, noneMatch, findFirst, findAny.", "Intermediate operations return a Stream, terminal operations return something else (a value, a collection, an Optional or nothing).", "Short-circuiting operations (limit, findFirst, anyMatch) can stop early, which also makes infinite streams usable.", "Stateful steps such as sorted() and distinct() must see the whole input before they can pass anything on. Stateless steps such as filter and map handle one element at a time."],
+         ["Source: elements kahan se aate hain. Intermediate: filter, map, flatMap, distinct, sorted, limit, skip, peek, takeWhile, dropWhile. Terminal: forEach, collect, toList, count, min, max, reduce, sum, anyMatch, allMatch, noneMatch, findFirst, findAny.", "Intermediate operations Stream return karti hain, terminal operations kuch aur return karti hain (value, collection, Optional ya kuch nahi).", "Short-circuiting operations (limit, findFirst, anyMatch) jaldi ruk sakti hain, jisse infinite streams bhi use ke layak ban jati hain.", "Stateful steps jaise sorted() aur distinct() kuch aage dene se pehle poora input dekhte hain. Stateless steps jaise filter aur map ek samay me ek element sambhalte hain."]]},
+  {h: ["Creating streams", "Streams banana"],
+   p: ["Collections give you a stream with stream(). An array uses Arrays.stream(array) or Stream.of(a, b, c). For ranges of numbers, IntStream.range(0, 5) (end excluded) and rangeClosed(1, 5) (end included) replace the counting for loop. Infinite streams come from Stream.iterate(seed, next) and Stream.generate(supplier), and you must cut them with limit() or a condition. A String gives its characters with chars(), and a file gives its lines with Files.lines(path), which must be closed with try-with-resources.",
+       "Collections stream() se stream deti hain. Array Arrays.stream(array) ya Stream.of(a, b, c) use karta hai. Numbers ki ranges ke liye IntStream.range(0, 5) (end shamil nahi) aur rangeClosed(1, 5) (end shamil) ginti wale for loop ki jagah lete hain. Infinite streams Stream.iterate(seed, next) aur Stream.generate(supplier) se aati hain, aur unhe limit() ya condition se kaatna padta hai. String chars() se apne characters deti hai, aur file Files.lines(path) se apni lines deti hai, jise try-with-resources se band karna padta hai."],
+   code: `import java.util.*;
+import java.util.stream.*;
+
+public class CreateStreams {
+    public static void main(String[] args) {
+        // From collections and arrays
+        List<String> list = List.of("x", "y", "z");
+        System.out.println(list.stream().count());                       // 3
+        Set<Integer> set = new TreeSet<>(List.of(3, 1, 2));
+        System.out.println(set.stream().toList());                       // [1, 2, 3]
+        Map<String, Integer> map = Map.of("a", 1);
+        System.out.println(map.entrySet().stream().count());             // 1  (a Map has no stream itself)
+
+        int[] array = {4, 8, 15};
+        System.out.println(Arrays.stream(array).sum());                  // 27  (an IntStream)
+        System.out.println(Stream.of("p", "q").toList());                // [p, q]
+
+        // Ranges of numbers
+        System.out.println(IntStream.range(0, 5).boxed().toList());      // [0, 1, 2, 3, 4]
+        System.out.println(IntStream.rangeClosed(1, 5).sum());           // 15
+
+        // Infinite streams must be cut
+        System.out.println(Stream.iterate(1, x -> x * 2).limit(8).toList());          // [1, 2, 4, 8, 16, 32, 64, 128]
+        System.out.println(Stream.iterate(1, x -> x < 100, x -> x * 3).toList());     // [1, 3, 9, 27, 81]  (Java 9+)
+        Random rnd = new Random(7);
+        System.out.println(Stream.generate(() -> rnd.nextInt(10)).limit(3).count());  // 3
+
+        // Characters of a String (chars() gives ints)
+        long esses = "Mississippi".chars().filter(c -> c == 's').count();
+        System.out.println(esses);                                                    // 4
+        String letters = "mississippi".chars().mapToObj(c -> String.valueOf((char) c))
+                                      .distinct().collect(Collectors.joining());
+        System.out.println(letters);                                                  // misp
+
+        // Empty and a builder
+        System.out.println(Stream.empty().count());                                   // 0
+        Stream.Builder<String> b = Stream.builder();
+        b.add("one").add("two");
+        System.out.println(b.build().toList());                                       // [one, two]
+
+        // Lines of a file (close it!)
+        // try (Stream<String> lines = java.nio.file.Files.lines(java.nio.file.Path.of("story.txt"))) {
+        //     System.out.println(lines.count());
+        // }
+    }
+}`},
+  {h: ["Intermediate operations: filter, map, sorted, distinct, limit, skip", "Intermediate operations: filter, map, sorted, distinct, limit, skip"],
+   p: ["These are the everyday steps. filter keeps the elements that pass a Predicate. map changes every element with a Function (a stream of Students becomes a stream of names). sorted orders the elements (the natural order, or a Comparator). distinct removes duplicates (using equals). limit(n) keeps the first n elements and skip(n) throws the first n away, which together give paging. peek lets you look at each element passing by, which is useful for debugging, but it should not change anything. mapToInt, mapToDouble and mapToLong switch to a primitive stream, and boxed() switches back.",
+       "Ye roz ke steps hain. filter wo elements rakhta hai jo Predicate pass karein. map har element ko Function se badalta hai (Students ki stream naamon ki stream ban jati hai). sorted elements ko order karta hai (natural order, ya Comparator). distinct duplicates hatata hai (equals se). limit(n) pehle n elements rakhta hai aur skip(n) pehle n ko fenk deta hai, jo milkar paging dete hain. peek har guzarte element ko dekhne deta hai, jo debugging me kaam aata hai, par use kuch badalna nahi chahiye. mapToInt, mapToDouble aur mapToLong primitive stream par le jate hain, aur boxed() wapas le aata hai."],
+   code: `import java.util.*;
+import java.util.stream.*;
+
+public class Intermediate {
+    record Student(String name, int marks, String city) { }      // a record (Java 16+): a short class with name(), marks(), city()
+
+    public static void main(String[] args) {
+        List<Integer> nums = List.of(5, 12, 7, 20, 3, 18, 12);
+
+        System.out.println(nums.stream().filter(n -> n % 2 == 0).toList());           // [12, 20, 18, 12]
+        System.out.println(nums.stream().map(n -> n * n).toList());                   // [25, 144, 49, 400, 9, 324, 144]
+        System.out.println(nums.stream().distinct().sorted().toList());               // [3, 5, 7, 12, 18, 20]
+        System.out.println(nums.stream().sorted(Comparator.reverseOrder()).toList()); // [20, 18, 12, 12, 7, 5, 3]
+        System.out.println(nums.stream().limit(3).toList());                          // [5, 12, 7]
+        System.out.println(nums.stream().skip(5).toList());                           // [18, 12]
+
+        // Paging: page 2 with 3 items per page (skip 3, take 3)
+        System.out.println(nums.stream().skip(3).limit(3).toList());                  // [20, 3, 18]
+
+        List<Student> students = List.of(
+            new Student("Rahul", 72, "Delhi"),
+            new Student("Gurleen", 91, "Pune"),
+            new Student("Himakshi", 88, "Delhi"),
+            new Student("Mohit", 55, "Pune"),
+            new Student("Shivam", 64, "Mumbai"));
+
+        // filter + sorted by a field + map to names
+        List<String> top = students.stream()
+                .filter(s -> s.marks() >= 70)
+                .sorted(Comparator.comparingInt(Student::marks).reversed())
+                .map(Student::name)
+                .toList();
+        System.out.println(top);                                                       // [Gurleen, Himakshi, Rahul]
+
+        // distinct cities, in alphabetical order
+        System.out.println(students.stream().map(Student::city).distinct().sorted().toList());   // [Delhi, Mumbai, Pune]
+
+        // peek: look without changing (debugging)
+        List<Integer> traced = Stream.of(1, 2, 3, 4)
+                .peek(n -> System.out.print("saw " + n + "; "))
+                .filter(n -> n % 2 == 0)
+                .toList();
+        System.out.println();
+        System.out.println(traced);          // saw 1; saw 2; saw 3; saw 4;   then   [2, 4]
+
+        // Switch to a primitive stream with mapToInt, and back with boxed
+        int total = students.stream().mapToInt(Student::marks).sum();
+        System.out.println(total);                                                     // 370
+    }
+}`,
+   pts: [["filter(Predicate) keeps. map(Function) transforms one to one. sorted() needs Comparable elements, or pass a Comparator. distinct() uses equals() and hashCode().", "limit and skip are the paging pair. The order of the steps matters: skip(3).limit(3) is page 2, while limit(3).skip(3) is always empty.", "Put filter as EARLY as possible, so that later steps (map, sorted) have fewer elements to handle.", "peek is for looking only. Do not rely on it for real work, because it may not run for elements that a short-circuit skips.", "A stream never changes its source: filter, map and sorted work on a flow of elements and your original list stays as it was."],
+         ["filter(Predicate) rakhta hai. map(Function) ek se ek badalta hai. sorted() ko Comparable elements chahiye, ya Comparator do. distinct() equals() aur hashCode() use karta hai.", "limit aur skip paging ki jodi hain. Steps ka order matter karta hai: skip(3).limit(3) page 2 hai, jabki limit(3).skip(3) hamesha khali hota hai.", "filter ko JITNA JALDI ho sake rakho, taaki baad ke steps (map, sorted) ko kam elements sambhalne padein.", "peek sirf dekhne ke liye hai. Asli kaam ke liye us par nirbhar mat raho, kyunki short-circuit jin elements ko skip kare unke liye wo shayad na chale.", "Stream apne source ko kabhi nahi badalti: filter, map aur sorted elements ke flow par kaam karte hain aur tumhari original list waisi hi rehti hai."]]},
+  {h: ["flatMap, takeWhile and dropWhile", "flatMap, takeWhile aur dropWhile"],
+   p: ["map gives one result for each element. When each element turns into SEVERAL elements (or none), you get a stream of streams or a list of lists, and flatMap flattens it into one stream. Typical jobs: all the words of many sentences, all the items of many orders, all the cells of a 2D array. takeWhile keeps elements while a condition is true and stops at the first failure, and dropWhile throws away elements while the condition is true and keeps everything after. Both are meant for ORDERED streams, and they differ from filter, which looks at every element.",
+       "map har element ke liye ek result deta hai. Jab har element KAI elements (ya koi nahi) me badalta hai, to streams ki stream ya lists ki list milti hai, aur flatMap use ek stream me chauda kar deta hai. Aam kaam: kai sentences ke saare words, kai orders ke saare items, 2D array ke saare cells. takeWhile condition true rehne tak elements rakhta hai aur pehli failure par ruk jata hai, aur dropWhile condition true rehne tak elements fenkta hai aur uske baad ka sab rakhta hai. Dono ORDERED streams ke liye hain, aur filter se alag hain jo har element dekhta hai."],
+   code: `import java.util.*;
+import java.util.stream.*;
+
+public class FlatMapDemo {
+    public static void main(String[] args) {
+        List<String> sentences = List.of("to be or", "not to be");
+
+        // map gives a stream of arrays: not what we want
+        List<String[]> nested = sentences.stream().map(s -> s.split(" ")).toList();
+        System.out.println(nested.size());                                    // 2  (two arrays)
+
+        // flatMap flattens them into ONE stream of words
+        List<String> words = sentences.stream()
+                .flatMap(s -> Arrays.stream(s.split(" ")))
+                .toList();
+        System.out.println(words);                                            // [to, be, or, not, to, be]
+        System.out.println(words.stream().distinct().toList());               // [to, be, or, not]
+
+        // A list of lists
+        List<List<Integer>> groups = List.of(List.of(1, 2), List.of(3), List.of(), List.of(4, 5));
+        System.out.println(groups.stream().flatMap(List::stream).toList());   // [1, 2, 3, 4, 5]
+
+        // A 2D array
+        int[][] grid = {{1, 2, 3}, {4, 5, 6}};
+        System.out.println(Arrays.stream(grid).flatMapToInt(Arrays::stream).sum());   // 21
+
+        // Every pair from two lists (a nested loop as a stream)
+        List<String> pairs = Stream.of("A", "B")
+                .flatMap(x -> Stream.of(1, 2).map(y -> x + y))
+                .toList();
+        System.out.println(pairs);                                            // [A1, A2, B1, B2]
+
+        // takeWhile and dropWhile
+        List<Integer> data = List.of(1, 2, 3, 10, 4, 5);
+        System.out.println(data.stream().takeWhile(x -> x < 5).toList());     // [1, 2, 3]       stops at 10
+        System.out.println(data.stream().dropWhile(x -> x < 5).toList());     // [10, 4, 5]      starts at 10
+        System.out.println(data.stream().filter(x -> x < 5).toList());        // [1, 2, 3, 4]    filter checks everything
+    }
+}`},
+  {h: ["Terminal operations: results and effects", "Terminal operations: results aur effects"],
+   p: ["A terminal operation starts the work and ends the stream. forEach does something with each element (use it for printing, not for building results). count, min, max, sum and average give a number. anyMatch, allMatch and noneMatch answer a yes or no question and stop as soon as the answer is known. findFirst and findAny return an Optional. toList() (Java 16) and collect(...) gather the elements, and toArray() makes an array. reduce folds all the elements into a single value with a function that combines two of them.",
+       "Terminal operation kaam shuru karti hai aur stream ko khatam karti hai. forEach har element ke saath kuch karta hai (printing ke liye use karo, results banane ke liye nahi). count, min, max, sum aur average ek number dete hain. anyMatch, allMatch aur noneMatch haan ya na ka sawal poochte hain aur answer pata chalte hi ruk jate hain. findFirst aur findAny Optional return karte hain. toList() (Java 16) aur collect(...) elements jama karte hain, aur toArray() array banata hai. reduce saare elements ko ek value me samet deta hai, ek function se jo do ko milata hai."],
+   code: `import java.util.*;
+import java.util.stream.*;
+
+public class Terminal {
+    public static void main(String[] args) {
+        List<Integer> nums = List.of(5, 12, 7, 20, 3, 18);
+
+        nums.stream().forEach(n -> System.out.print(n + " "));            // 5 12 7 20 3 18
+        System.out.println();
+
+        System.out.println(nums.stream().count());                        // 6
+        System.out.println(nums.stream().max(Integer::compare).get());    // 20
+        System.out.println(nums.stream().min(Comparator.naturalOrder()).get());   // 3
+
+        // Yes or no questions (they stop early)
+        System.out.println(nums.stream().anyMatch(n -> n > 19));          // true
+        System.out.println(nums.stream().allMatch(n -> n > 0));           // true
+        System.out.println(nums.stream().noneMatch(n -> n % 5 == 0 && n > 20));   // true
+        System.out.println(Stream.<Integer>empty().allMatch(n -> n > 0)); // true   (an empty stream: allMatch is true, anyMatch is false)
+
+        // Find
+        System.out.println(nums.stream().filter(n -> n > 10).findFirst());   // Optional[12]
+        System.out.println(nums.stream().filter(n -> n > 100).findFirst());  // Optional.empty
+
+        // Collect
+        List<Integer> evens = nums.stream().filter(n -> n % 2 == 0).toList();
+        Integer[] array = nums.stream().toArray(Integer[]::new);
+        System.out.println(evens + " " + array.length);                   // [12, 20, 18] 6
+
+        // reduce: fold everything into ONE value
+        int sum = nums.stream().reduce(0, Integer::sum);                  // identity 0, then a + b
+        System.out.println(sum);                                          // 65
+        System.out.println(nums.stream().reduce(Integer::max).get());     // 20 (no identity: the result is an Optional)
+        int product = Stream.of(1, 2, 3, 4).reduce(1, (a, b) -> a * b);
+        System.out.println(product);                                      // 24
+        String joined = Stream.of("a", "b", "c").reduce("", (a, b) -> a + b);
+        System.out.println(joined);                                       // abc
+
+        // Number terminals on primitive streams
+        System.out.println(nums.stream().mapToInt(Integer::intValue).sum());                    // 65
+        System.out.println(nums.stream().mapToInt(Integer::intValue).average().getAsDouble());  // 10.833333333333334
+    }
+}`,
+   pts: [["count, min, max, sum, average: a number. anyMatch, allMatch, noneMatch: a boolean. findFirst, findAny: an Optional.", "On an EMPTY stream: allMatch and noneMatch are true, anyMatch is false, and max, min, findFirst and average give an empty Optional.", "reduce(identity, accumulator): the identity is the starting value (0 for a sum, 1 for a product) and it is the result for an empty stream.", "The accumulator should be associative (the grouping does not change the result), which is what lets a stream run in parallel.", "forEach on a parallel stream does not keep the order. Use forEachOrdered when the order matters."],
+         ["count, min, max, sum, average: ek number. anyMatch, allMatch, noneMatch: boolean. findFirst, findAny: Optional.", "KHALI stream par: allMatch aur noneMatch true hain, anyMatch false hai, aur max, min, findFirst aur average khali Optional dete hain.", "reduce(identity, accumulator): identity shuruaati value hai (sum ke liye 0, product ke liye 1) aur khali stream ka result wahi hota hai.", "Accumulator associative hona chahiye (grouping se result nahi badalta), isi se stream parallel chal sakti hai.", "Parallel stream par forEach order nahi rakhta. Order matter kare to forEachOrdered use karo."]]},
+  {h: ["A stream can be used only once", "Stream sirf ek baar use ho sakti hai"],
+   p: ["After a terminal operation, the stream is used up. Calling anything on it again throws IllegalStateException: stream has already been operated upon or closed. A stream is like a one-way pipe, not a container. If you need to go over the data twice, create a new stream from the source, or keep the source (the list) and call stream() each time. A Supplier<Stream<T>> is a neat way to produce a fresh stream whenever you need one.",
+       "Terminal operation ke baad stream khatam ho jati hai. Us par dobara kuch bhi call karne par IllegalStateException aata hai: stream has already been operated upon or closed. Stream ek taraf ke pipe jaisi hai, container nahi. Data par do baar jana ho to source se nayi stream banao, ya source (list) ko rakho aur har baar stream() call karo. Supplier<Stream<T>> jab bhi zaroorat ho taazi stream banane ka achha tareeka hai."],
+   code: `import java.util.*;
+import java.util.function.Supplier;
+import java.util.stream.*;
+
+public class OneTime {
+    public static void main(String[] args) {
+        List<String> names = List.of("Rahul", "Gurleen", "Mohit");
+
+        Stream<String> s = names.stream();
+        System.out.println(s.count());                      // 3
+        try {
+            System.out.println(s.count());                  // second use of the SAME stream
+        } catch (IllegalStateException e) {
+            System.out.println(e.getMessage());             // stream has already been operated upon or closed
+        }
+
+        // Fix 1: ask the source for a new stream each time
+        System.out.println(names.stream().count() + " " + names.stream().filter(n -> n.length() > 4).count());   // 3 2
+
+        // Fix 2: a Supplier that creates a fresh stream on demand
+        Supplier<Stream<String>> fresh = () -> names.stream();
+        System.out.println(fresh.get().anyMatch(n -> n.startsWith("G")));   // true
+        System.out.println(fresh.get().map(String::length).toList());       // [5, 7, 5]
+
+        // A stream is NOT a collection: it has no size(), get(i) or add()
+        // s.size();    // compile ERROR
+    }
+}`},
+  {h: ["Optional: handling 'maybe no value'", "Optional: 'shayad value na ho' sambhalna"],
+   p: ["Methods such as findFirst, max and min cannot promise a result (the stream may be empty), so they return an Optional<T>: a small box that either holds a value or is empty. It replaces returning null and forces the caller to think about the empty case. get() is the one to avoid, because it throws NoSuchElementException on an empty box. Prefer orElse (a default), orElseGet (a default computed only when needed), orElseThrow (your own exception), ifPresent and ifPresentOrElse (do something), and map and filter (transform the content, like a stream of 0 or 1 elements). Use Optional as a return type for 'may not exist', but not for fields or parameters.",
+       "findFirst, max aur min jaise methods result ka vaada nahi kar sakte (stream khali ho sakti hai), isliye wo Optional<T> return karte hain: ek chhota dibba jisme ya to value hoti hai ya wo khali hota hai. Ye null return karne ki jagah leta hai aur caller ko khali case ke baare me sochne par majboor karta hai. get() se bachna chahiye, kyunki khali dibbe par wo NoSuchElementException deta hai. orElse (default), orElseGet (default jo zaroorat par hi calculate ho), orElseThrow (apna exception), ifPresent aur ifPresentOrElse (kuch karo), aur map aur filter (content badlo, 0 ya 1 elements ki stream ki tarah) prefer karo. Optional ko 'shayad na ho' wale return type ke liye use karo, fields ya parameters ke liye nahi."],
+   code: `import java.util.*;
+
+public class OptionalDemo {
+    static Optional<String> findCity(String name) {
+        Map<String, String> cities = Map.of("Rahul", "Delhi", "Gurleen", "Pune");
+        return Optional.ofNullable(cities.get(name));         // empty when the key is missing
+    }
+
+    public static void main(String[] args) {
+        Optional<String> found = findCity("Rahul");
+        Optional<String> missing = findCity("Nobody");
+
+        System.out.println(found);                             // Optional[Delhi]
+        System.out.println(missing);                           // Optional.empty
+        System.out.println(found.isPresent() + " " + missing.isEmpty());   // true true
+
+        // The safe ways to open the box
+        System.out.println(found.orElse("unknown"));                       // Delhi
+        System.out.println(missing.orElse("unknown"));                     // unknown
+        System.out.println(missing.orElseGet(() -> "computed default"));   // computed default  (the lambda runs ONLY if empty)
+        found.ifPresent(c -> System.out.println("lives in " + c));         // lives in Delhi
+        missing.ifPresentOrElse(c -> System.out.println(c), () -> System.out.println("no city"));   // no city
+
+        // Transform and filter without checking for null
+        System.out.println(found.map(String::toUpperCase).orElse("-"));    // DELHI
+        System.out.println(found.filter(c -> c.startsWith("P")).isPresent());   // false
+        System.out.println(findCity("Gurleen").map(String::length).orElse(0));  // 4
+
+        // Your own exception when a value is a must
+        try {
+            missing.orElseThrow(() -> new NoSuchElementException("city not found"));
+        } catch (NoSuchElementException e) {
+            System.out.println(e.getMessage());                              // city not found
+        }
+
+        // The one to avoid: get() on an empty box
+        // missing.get();                                                    // NoSuchElementException
+
+        Optional<String> a = Optional.of("x");        // of(null) throws NullPointerException
+        Optional<String> b = Optional.ofNullable(null);   // use ofNullable when null is possible
+        System.out.println(a.isPresent() + " " + b.isPresent());             // true false
+    }
+}`,
+   pts: [["Create: Optional.of(x) (x must not be null), Optional.ofNullable(x), Optional.empty().", "orElse(x) always evaluates x. orElseGet(supplier) evaluates it only when the Optional is empty, so use it when the default is expensive.", "Optional.get() without isPresent() is the same bug as a missing null check. Prefer the other methods.", "Do not use Optional for fields, method parameters or collections. An empty list is better than an Optional of a list.", "The primitive versions OptionalInt, OptionalDouble and OptionalLong have getAsInt(), getAsDouble() and getAsLong()."],
+         ["Banana: Optional.of(x) (x null nahi hona chahiye), Optional.ofNullable(x), Optional.empty().", "orElse(x) x ko hamesha evaluate karta hai. orElseGet(supplier) use tabhi evaluate karta hai jab Optional khali ho, isliye default mehnga ho to use karo.", "Bina isPresent() ke Optional.get() wahi bug hai jo null check chhoot jana hai. Baaki methods prefer karo.", "Optional ko fields, method parameters ya collections ke liye use mat karo. List ke Optional se khali list behtar hai.", "Primitive versions OptionalInt, OptionalDouble aur OptionalLong ke paas getAsInt(), getAsDouble() aur getAsLong() hain."]]},
+  {h: ["collect and Collectors: toList, toSet, toMap, joining", "collect aur Collectors: toList, toSet, toMap, joining"],
+   p: ["collect(...) is the most powerful terminal operation. It takes a Collector, a recipe for how to gather the elements into a result. The Collectors class has ready-made recipes: toList, toSet, toMap (with a function for the key and one for the value, and a third function that decides what to do when two elements give the SAME key, otherwise the duplicate key throws IllegalStateException), joining (turns Strings into one String with a separator, a prefix and a suffix), toCollection (your own collection type such as TreeSet) and others. Since Java 16, stream.toList() is the short form for a read-only list.",
+       "collect(...) sabse taqatwar terminal operation hai. Ye Collector leta hai, jo batata hai ki elements ko result me kaise jama karna hai. Collectors class me ready-made recipes hain: toList, toSet, toMap (key ke liye ek function aur value ke liye ek, aur teesra function jo tay karta hai ki do elements SAME key dein to kya karna hai, warna duplicate key IllegalStateException deti hai), joining (Strings ko ek String me badalta hai separator, prefix aur suffix ke saath), toCollection (apni collection type jaise TreeSet) aur aur. Java 16 se stream.toList() read-only list ka chhota rup hai."],
+   code: `import java.util.*;
+import java.util.stream.*;
+
+public class CollectorsBasic {
+    record Student(String name, int marks, String city) { }
+
+    public static void main(String[] args) {
+        List<Student> students = List.of(
+            new Student("Rahul", 72, "Delhi"), new Student("Gurleen", 91, "Pune"),
+            new Student("Himakshi", 88, "Delhi"), new Student("Mohit", 55, "Pune"),
+            new Student("Shivam", 64, "Mumbai"));
+
+        List<String> names = students.stream().map(Student::name).collect(Collectors.toList());   // a changeable list
+        Set<String> cities = students.stream().map(Student::city).collect(Collectors.toSet());    // no duplicates, no order
+        TreeSet<String> sortedCities = students.stream().map(Student::city)
+                .collect(Collectors.toCollection(TreeSet::new));                                  // your own collection type
+        System.out.println(names);                    // [Rahul, Gurleen, Himakshi, Mohit, Shivam]
+        System.out.println(cities.size());            // 3
+        System.out.println(sortedCities);             // [Delhi, Mumbai, Pune]
+
+        // toList(): read-only (Java 16+). Collectors.toList(): changeable.
+        List<String> readOnly = students.stream().map(Student::name).toList();
+        // readOnly.add("x");                                   // UnsupportedOperationException
+
+        // joining: Strings into one String
+        System.out.println(students.stream().map(Student::name).collect(Collectors.joining(", ")));          // Rahul, Gurleen, Himakshi, Mohit, Shivam
+        System.out.println(students.stream().map(Student::name).collect(Collectors.joining(", ", "[", "]"))); // [Rahul, Gurleen, Himakshi, Mohit, Shivam]
+
+        // toMap: key function, value function, and a TreeMap to get a sorted result
+        Map<String, Integer> marks = students.stream()
+                .collect(Collectors.toMap(Student::name, Student::marks, (a, b) -> a, TreeMap::new));
+        System.out.println(marks);                    // {Gurleen=91, Himakshi=88, Mohit=55, Rahul=72, Shivam=64}
+
+        // Two elements with the SAME key: without a merge function this throws IllegalStateException (Duplicate key)
+        try {
+            students.stream().collect(Collectors.toMap(Student::city, Student::name));
+        } catch (IllegalStateException e) {
+            System.out.println("duplicate key");
+        }
+        // With a merge function: join the names of the same city
+        Map<String, String> byCity = students.stream()
+                .collect(Collectors.toMap(Student::city, Student::name, (a, b) -> a + "+" + b, TreeMap::new));
+        System.out.println(byCity);                   // {Delhi=Rahul+Himakshi, Mumbai=Shivam, Pune=Gurleen+Mohit}
+    }
+}`},
+  {h: ["Collectors: groupingBy, partitioningBy and statistics", "Collectors: groupingBy, partitioningBy aur statistics"],
+   p: ["groupingBy(classifier) is the stream version of SQL's GROUP BY: it puts the elements into a Map whose keys come from the classifier function, and every key leads to a List of its elements. A second argument, called a downstream collector, decides what to do with each group: counting, summingInt, averagingInt, mapping (transform the elements, then collect), maxBy, minBy and so on. partitioningBy splits the elements into exactly two groups, true and false, using a Predicate. summarizingInt gives count, sum, minimum, average and maximum in one pass. Pass TreeMap::new as the map factory to get the groups in sorted order.",
+       "groupingBy(classifier) SQL ke GROUP BY ka stream version hai: ye elements ko aise Map me rakhta hai jiski keys classifier function se aati hain, aur har key apne elements ki List tak le jati hai. Doosra argument, jise downstream collector kehte hain, tay karta hai ki har group ka kya karna hai: counting, summingInt, averagingInt, mapping (elements badlo, fir jama karo), maxBy, minBy aur aise. partitioningBy Predicate se elements ko bilkul do groups, true aur false, me baantta hai. summarizingInt ek pass me count, sum, minimum, average aur maximum deta hai. Groups sorted order me chahiye to map factory ke taur par TreeMap::new do."],
+   code: `import java.util.*;
+import java.util.stream.*;
+
+public class CollectorsGrouping {
+    record Student(String name, int marks, String city) { }
+
+    public static void main(String[] args) {
+        List<Student> students = List.of(
+            new Student("Rahul", 72, "Delhi"), new Student("Gurleen", 91, "Pune"),
+            new Student("Himakshi", 88, "Delhi"), new Student("Mohit", 55, "Pune"),
+            new Student("Shivam", 64, "Mumbai"));
+
+        // Group the students by city (a TreeMap keeps the cities sorted)
+        Map<String, List<Student>> byCity = students.stream()
+                .collect(Collectors.groupingBy(Student::city, TreeMap::new, Collectors.toList()));
+        System.out.println(byCity.keySet());                    // [Delhi, Mumbai, Pune]
+        System.out.println(byCity.get("Pune").size());          // 2
+
+        // Downstream collectors decide what each group becomes
+        System.out.println(students.stream().collect(
+            Collectors.groupingBy(Student::city, TreeMap::new, Collectors.counting())));
+        // {Delhi=2, Mumbai=1, Pune=2}
+
+        System.out.println(students.stream().collect(
+            Collectors.groupingBy(Student::city, TreeMap::new, Collectors.averagingInt(Student::marks))));
+        // {Delhi=80.0, Mumbai=64.0, Pune=73.0}
+
+        System.out.println(students.stream().collect(
+            Collectors.groupingBy(Student::city, TreeMap::new,
+                Collectors.mapping(Student::name, Collectors.toList()))));
+        // {Delhi=[Rahul], Mumbai=[Shivam], Pune=[ Himakshi, Mohit]}
+
+        System.out.println(students.stream().collect(
+            Collectors.groupingBy(Student::city, TreeMap::new, Collectors.summingInt(Student::marks))));
+        // {Delhi=160, Mumbai=64, Pune=146}
+
+        // The best student of each city
+        Map<String, Optional<Student>> best = students.stream().collect(
+            Collectors.groupingBy(Student::city, TreeMap::new,
+                Collectors.maxBy(Comparator.comparingInt(Student::marks))));
+        best.forEach((city, s) -> System.out.println(city + ": " + s.get().name()));
+        // Delhi: Himakshi
+        // Mumbai: Shivam
+        // Pune: Gurleen
+
+        // partitioningBy: exactly two groups, false and true
+        System.out.println(students.stream().collect(
+            Collectors.partitioningBy(s -> s.marks() >= 60,
+                Collectors.mapping(Student::name, Collectors.toList()))));
+        // {false=[Mohit], true=[Rahul, Gurleen, Himakshi, Shivam]}
+
+        // Statistics in one pass
+        IntSummaryStatistics stats = students.stream().collect(Collectors.summarizingInt(Student::marks));
+        System.out.println(stats);
+        // IntSummaryStatistics{count=5, sum=370, min=55, average=74.000000, max=91}
+        System.out.println(stats.getMax() + " " + stats.getAverage());      // 91 74.0
+
+        // Group by a range: a custom classifier
+        System.out.println(students.stream().collect(
+            Collectors.groupingBy(s -> s.marks() >= 85 ? "A" : s.marks() >= 60 ? "B" : "C", TreeMap::new,
+                Collectors.mapping(Student::name, Collectors.joining("/")))));
+        // {A=Gurleen/Himakshi, B=Rahul/Shivam, C=Mohit}
+    }
+}`,
+   pts: [["groupingBy(f) returns Map<K, List<T>> by default. The second argument changes the 'List' part, and the three-argument form also lets you choose the map type.", "counting() returns a Long. summingInt, averagingInt (Double), minBy and maxBy (Optional) and mapping are the other common downstream collectors.", "partitioningBy always has BOTH keys, false and true, even when a group is empty.", "Collectors.toMap and groupingBy on a very large stream can use a lot of memory, because they keep all the groups.", "Java 12 adds Collectors.teeing(c1, c2, merger) to run two collectors in one pass."],
+         ["groupingBy(f) default me Map<K, List<T>> return karta hai. Doosra argument 'List' wala hissa badalta hai, aur teen-argument wala form map ka type bhi chunne deta hai.", "counting() Long return karta hai. summingInt, averagingInt (Double), minBy aur maxBy (Optional) aur mapping aur aam downstream collectors hain.", "partitioningBy me hamesha DONO keys, false aur true, hoti hain, chahe koi group khali ho.", "Bahut badi stream par Collectors.toMap aur groupingBy bahut memory le sakte hain, kyunki wo saare groups rakhte hain.", "Java 12 Collectors.teeing(c1, c2, merger) jodta hai jo ek pass me do collectors chalata hai."]]},
+  {h: ["Primitive streams: IntStream, LongStream, DoubleStream", "Primitive streams: IntStream, LongStream, DoubleStream"],
+   p: ["A Stream<Integer> boxes every number into an object, which costs memory and time. IntStream, LongStream and DoubleStream hold primitive values directly and add number-specific operations: sum, average, min, max, count and summaryStatistics. You make them with range and rangeClosed, IntStream.of, Arrays.stream(int[]) or by converting with mapToInt, mapToLong and mapToDouble. To go back to objects use boxed() (to Integer) or mapToObj (to anything). The average and min or max return an OptionalDouble or OptionalInt, because a stream may be empty.",
+       "Stream<Integer> har number ko object me box karti hai, jisme memory aur samay lagta hai. IntStream, LongStream aur DoubleStream primitive values seedhe rakhti hain aur number ke khaas operations jodti hain: sum, average, min, max, count aur summaryStatistics. Inhe range aur rangeClosed, IntStream.of, Arrays.stream(int[]) se ya mapToInt, mapToLong aur mapToDouble se convert karke banate ho. Wapas objects me jane ke liye boxed() (Integer me) ya mapToObj (kisi bhi me) use karo. average aur min ya max OptionalDouble ya OptionalInt return karte hain, kyunki stream khali ho sakti hai."],
+   code: `import java.util.*;
+import java.util.stream.*;
+
+public class PrimitiveStreams {
+    public static void main(String[] args) {
+        System.out.println(IntStream.rangeClosed(1, 10).sum());                        // 55
+        System.out.println(IntStream.rangeClosed(1, 4).average().getAsDouble());       // 2.5
+        System.out.println(IntStream.of(4, 9, 2).max().getAsInt());                    // 9
+        System.out.println(IntStream.empty().max().isPresent());                       // false
+
+        IntSummaryStatistics st = IntStream.of(10, 20, 30, 40).summaryStatistics();
+        System.out.println(st.getMin() + " " + st.getMax() + " " + st.getSum() + " " + st.getAverage());   // 10 40 100 25.0
+
+        // From objects to numbers and back
+        List<String> words = List.of("java", "is", "fun");
+        int totalLetters = words.stream().mapToInt(String::length).sum();
+        System.out.println(totalLetters);                                              // 9
+        System.out.println(IntStream.rangeClosed(1, 3).mapToObj(i -> "item" + i).toList());   // [item1, item2, item3]
+        System.out.println(IntStream.of(3, 1, 2).boxed().sorted(Comparator.reverseOrder()).toList());   // [3, 2, 1]
+
+        // The factorial of 10 with a LongStream (an int would overflow for larger numbers)
+        long fact = LongStream.rangeClosed(1, 10).reduce(1, (a, b) -> a * b);
+        System.out.println(fact);                                                      // 3628800
+
+        // DoubleStream
+        System.out.println(DoubleStream.of(1.5, 2.5, 3.0).sum());                      // 7.0
+        System.out.println(Stream.of("12.5", "7.5").mapToDouble(Double::parseDouble).sum());   // 20.0
+
+        // Dangers: IntStream.sum() is an int and can overflow
+        System.out.println(IntStream.rangeClosed(1, 100_000).sum());                   // 705082704  (overflowed, WRONG)
+        System.out.println(IntStream.rangeClosed(1, 100_000).asLongStream().sum());    // 5000050000 (correct)
+        System.out.println(IntStream.rangeClosed(1, 100_000).mapToLong(i -> i).sum()); // 5000050000
+
+        // Digits of a number, and a table of 7
+        System.out.println(String.valueOf(90210).chars().map(c -> c - '0').sum());     // 12
+        IntStream.rangeClosed(1, 3).forEach(i -> System.out.println("7 x " + i + " = " + 7 * i));
+    }
+}`},
+  {h: ["Parallel streams: use with care", "Parallel streams: dhyan se use karo"],
+   p: ["Adding .parallel() (or calling parallelStream()) splits the work over several CPU cores using the common ForkJoinPool. For heavy, independent calculations over a big amount of data it can give a real speed-up. But it is not magic and it is often slower. The splitting and joining have a cost, so small data or cheap steps get slower. The order is not kept by forEach. A step that uses shared mutable state (adding to an ordinary ArrayList, or changing a counter) causes a race condition, as you saw in the Synchronization lesson. A blocking step can freeze the shared pool that other parts of the program use. Measure before you decide, and prefer collect and reduce to side effects.",
+       ".parallel() (ya parallelStream()) lagane se kaam common ForkJoinPool ke through kai CPU cores me bant jata hai. Bahut data par bhaari, swatantra calculations ke liye isse asli speed-up mil sakta hai. Par ye jaadu nahi hai aur aksar slow hota hai. Baantne aur jodne ki keemat hoti hai, isliye chhota data ya sasta steps slow ho jate hain. forEach order nahi rakhta. Shared mutable state (aam ArrayList me jodna, ya counter badalna) wala step race condition karta hai, jaisa tumne Synchronization lesson me dekha. Blocking step us shared pool ko freeze kar sakta hai jise program ke dusre hisse use karte hain. Faisla karne se pehle naapo, aur side effects ki jagah collect aur reduce prefer karo."],
+   code: `import java.util.*;
+import java.util.stream.*;
+
+public class ParallelDemo {
+    public static void main(String[] args) {
+        // A big independent calculation: a parallel stream computes the same answer
+        long sequential = LongStream.rangeClosed(1, 1_000_000).sum();
+        long parallel   = LongStream.rangeClosed(1, 1_000_000).parallel().sum();
+        System.out.println(sequential + " " + parallel);       // 500000500000 500000500000
+
+        // The order is NOT kept by forEach on a parallel stream
+        IntStream.rangeClosed(1, 5).parallel().forEach(i -> System.out.print(i + " "));     // for example: 3 5 4 1 2
+        System.out.println();
+        IntStream.rangeClosed(1, 5).parallel().forEachOrdered(i -> System.out.print(i + " "));   // 1 2 3 4 5
+        System.out.println();
+        // collect and toList DO keep the encounter order of an ordered source
+        System.out.println(IntStream.rangeClosed(1, 5).parallel().boxed().toList());        // [1, 2, 3, 4, 5]
+
+        // WRONG: a shared ArrayList changed from many threads (a race condition)
+        List<Integer> bad = new ArrayList<>();
+        try {
+            IntStream.range(0, 10_000).parallel().forEach(bad::add);
+        } catch (RuntimeException e) {
+            System.out.println("it may even crash: " + e.getClass().getSimpleName());
+        }
+        System.out.println(bad.size() < 10_000 ? "items were lost" : "lucky run");           // usually: items were lost
+
+        // RIGHT: let the stream collect safely
+        List<Integer> good = IntStream.range(0, 10_000).parallel().boxed().collect(Collectors.toList());
+        System.out.println(good.size());                       // 10000, always
+
+        System.out.println(Runtime.getRuntime().availableProcessors());                      // how many cores can help
+    }
+}`,
+   pts: [["Good candidates: a large source (ten thousand elements or more), expensive independent work per element, a source that splits well (arrays, ArrayList, ranges) and operations without shared state.", "Bad candidates: small data, LinkedList, Stream.iterate sources, I/O or blocking calls, and anything that depends on order or shared variables.", "The functions you pass must be stateless and must not change the source while the stream runs.", "parallel() and sequential() only set a flag for the whole pipeline. The last one called wins.", "For control over the threads, run the pipeline inside your own ForkJoinPool, or use an ExecutorService (Multithreading lesson)."],
+         ["Achhe candidates: bada source (das hazaar ya zyada elements), har element par mehnga swatantra kaam, aisa source jo achhe se bantta hai (arrays, ArrayList, ranges) aur shared state ke bina operations.", "Bure candidates: chhota data, LinkedList, Stream.iterate sources, I/O ya blocking calls, aur jo bhi order ya shared variables par nirbhar ho.", "Jo functions tum do wo stateless hone chahiye aur stream chalte waqt source ko nahi badalna chahiye.", "parallel() aur sequential() poori pipeline ke liye sirf ek flag set karte hain. Aakhri call jeetta hai.", "Threads par control chahiye to pipeline ko apne ForkJoinPool me chalao, ya ExecutorService use karo (Multithreading lesson)."]]},
+  {h: ["Practical example: a marks report", "Practical example: marks report"],
+   p: ["This program answers six typical questions about a class with one pipeline each: the toppers, the class average, the pass rate, the students of each city, the grade list and the top two cities by average. Notice that no loop and no temporary list appears, and that each answer reads like the question. The word counter after it is the classic stream exercise, and it uses flatMap, groupingBy and a sort by value.",
+       "Ye program ek class ke baare me chhe aam sawalon ka jawab ek-ek pipeline se deta hai: toppers, class average, pass rate, har city ke students, grade list aur average ke hisaab se top do cities. Dhyan do ki koi loop aur koi temporary list nahi hai, aur har jawab sawal ki tarah padhta hai. Iske baad ka word counter classic stream exercise hai, aur ye flatMap, groupingBy aur value se sort use karta hai."],
+   code: `import java.util.*;
+import java.util.stream.*;
+
+public class MarksReport {
+    record Student(String name, int marks, String city) { }
+
+    public static void main(String[] args) {
+        List<Student> students = List.of(
+            new Student("Rahul", 72, "Delhi"), new Student("Gurleen", 91, "Pune"),
+            new Student("Himakshi", 88, "Delhi"), new Student("Mohit", 55, "Pune"),
+            new Student("Shivam", 64, "Mumbai"));
+
+        // 1) The top two students
+        System.out.println(students.stream()
+                .sorted(Comparator.comparingInt(Student::marks).reversed())
+                .limit(2).map(Student::name).toList());                      // [Gurleen, Himakshi]
+
+        // 2) The class average
+        System.out.println(students.stream().mapToInt(Student::marks).average().orElse(0));   // 74.0
+
+        // 3) The pass rate (pass mark 60), in percent
+        long passed = students.stream().filter(s -> s.marks() >= 60).count();
+        System.out.println(passed * 100.0 / students.size() + "%");          // 80.0%
+
+        // 4) Names of the students of each city, with the cities in order
+        students.stream()
+                .collect(Collectors.groupingBy(Student::city, TreeMap::new,
+                         Collectors.mapping(Student::name, Collectors.joining(", "))))
+                .forEach((city, names) -> System.out.println(city + ": " + names));
+        // Delhi: Rahul, Himakshi
+        // Mumbai: Shivam
+        // Pune: Gurleen, Mohit
+
+        // 5) A formatted grade list
+        students.stream()
+                .sorted(Comparator.comparing(Student::name))
+                .map(s -> String.format("%-9s %3d  %s", s.name(), s.marks(), s.marks() >= 85 ? "A" : s.marks() >= 60 ? "B" : "C"))
+                .forEach(System.out::println);
+        // Gurleen    91  A
+        // Himakshi   88  A
+        // Mohit      55  C
+        // Rahul      72  B
+        // Shivam     64  B
+
+        // 6) The two cities with the best average
+        System.out.println(students.stream()
+                .collect(Collectors.groupingBy(Student::city, Collectors.averagingInt(Student::marks)))
+                .entrySet().stream()
+                .sorted(Map.Entry.<String, Double>comparingByValue().reversed())
+                .limit(2).map(Map.Entry::getKey).toList());                  // [Delhi, Pune]
+
+        // A word counter: the most common words of a text
+        String text = "to be or not to be that is the question to be";
+        Map<String, Long> freq = Arrays.stream(text.split(" "))
+                .collect(Collectors.groupingBy(w -> w, TreeMap::new, Collectors.counting()));
+        System.out.println(freq);      // {be=3, is=1, not=1, or=1, question=1, that=1, the=1, to=3}
+        System.out.println(freq.entrySet().stream()
+                .sorted(Map.Entry.<String, Long>comparingByValue(Comparator.reverseOrder()))
+                .limit(2).map(e -> e.getKey() + "=" + e.getValue()).toList());   // [be=3, to=3]
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: forgetting the terminal operation. Without it, nothing runs and no error appears.", "Mistake: reusing a stream (IllegalStateException). Create a new one from the source.", "Mistake: changing the source while the stream is running (ConcurrentModificationException).", "Mistake: changing an outside variable inside map or forEach to build a result (list.add inside forEach). Use collect, which is safe even in parallel.", "Mistake: calling Optional.get() without checking. Use orElse, orElseThrow or ifPresent.", "Mistake: Collectors.toMap with a duplicate key (IllegalStateException). Give a merge function.", "Mistake: expecting sorted(), distinct() or limit() to change the source list. They only describe the flow.", "Mistake: Stream.iterate or generate without limit, which never ends.", "Mistake: using IntStream.sum() for big totals (int overflow). Use mapToLong or asLongStream.", "Mistake: toList() (Java 16) gives a read-only list. Use Collectors.toList() or new ArrayList<>(...) when you must change it.", "Mistake: a stream for everything. A plain for loop is better when you need an index, a break, or to change variables.", "Mistake: a long, unreadable one-line chain. Break it into lines, and give a name to a complex lambda (a method reference).", "Mistake: debugging with peek and trusting it for results. peek is for looking only.", "Good habit: filter early, map next, and sort late, so each step handles the fewest elements.", "Good habit: keep the lambdas small, pure (no side effects) and free of shared state.", "Good habit: prefer the primitive streams (mapToInt) for number work, to avoid boxing."],
+         ["Galti: terminal operation bhul jana. Iske bina kuch nahi chalta aur koi error bhi nahi aata.", "Galti: stream ko dobara use karna (IllegalStateException). Source se nayi banao.", "Galti: stream chalte waqt source ko badalna (ConcurrentModificationException).", "Galti: result banane ke liye map ya forEach ke andar bahar ka variable badalna (forEach ke andar list.add). collect use karo, jo parallel me bhi safe hai.", "Galti: bina check kiye Optional.get() call karna. orElse, orElseThrow ya ifPresent use karo.", "Galti: duplicate key ke saath Collectors.toMap (IllegalStateException). Merge function do.", "Galti: sorted(), distinct() ya limit() se source list badalne ki ummeed. Ye sirf flow batate hain.", "Galti: limit ke bina Stream.iterate ya generate, jo kabhi khatam nahi hota.", "Galti: bade totals ke liye IntStream.sum() (int overflow). mapToLong ya asLongStream use karo.", "Galti: toList() (Java 16) read-only list deta hai. Badalni ho to Collectors.toList() ya new ArrayList<>(...) use karo.", "Galti: har cheez ke liye stream. Index, break ya variables badalne ho to simple for loop behtar hai.", "Galti: lambi, na padhne layak ek-line chain. Use lines me todo, aur complex lambda ko naam do (method reference).", "Galti: peek se debugging karke use results ke liye maanna. peek sirf dekhne ke liye hai.", "Achhi aadat: pehle filter, fir map, aur sort der se, taaki har step kam elements sambhale.", "Achhi aadat: lambdas chhote, pure (side effects ke bina) aur shared state se mukt rakho.", "Achhi aadat: number ke kaam ke liye primitive streams (mapToInt) prefer karo, boxing bachane ke liye."]],
+   tip: ["Interview questions: (1) Stream vs Collection? A collection stores data, a stream is a one-time pipeline over a source and stores nothing. (2) Intermediate vs terminal? Intermediate steps are lazy and return a stream, the terminal step starts the work and ends the stream. (3) map vs flatMap? map changes one element into one element, flatMap changes one element into many and flattens the result. (4) Can a stream be reused? No (IllegalStateException). (5) What does lazy mean? Nothing runs until a terminal operation is called, and elements flow one by one through the chain. (6) findFirst vs findAny? findAny may return any element, which is faster on a parallel stream.", "Interview questions: (1) Stream vs Collection? Collection data store karti hai, stream source par ek baar ki pipeline hai aur kuch store nahi karti. (2) Intermediate vs terminal? Intermediate steps lazy hain aur stream return karte hain, terminal step kaam shuru karta hai aur stream khatam karta hai. (3) map vs flatMap? map ek element ko ek element me badalta hai, flatMap ek ko kai me badalta hai aur result ko chauda karta hai. (4) Kya stream dobara use ho sakti hai? Nahi (IllegalStateException). (5) Lazy ka matlab? Terminal operation call hone tak kuch nahi chalta, aur elements chain me ek-ek karke bahte hain. (6) findFirst vs findAny? findAny koi bhi element return kar sakta hai, jo parallel stream par tez hai."]}
+ ]},
+56: {
+ def: ["The Date and Time API (package java.time, Java 8) is Java's modern way to work with dates, times, time zones and amounts of time. Its main classes are LocalDate (a date without a time), LocalTime (a time without a date), LocalDateTime (both, still without a time zone), ZonedDateTime (with a time zone), Instant (a point on the timeline), Period (an amount in days, months and years) and Duration (an amount in hours, minutes and seconds). Every object is immutable and thread-safe, and the names say exactly what each one means.",
+       "Date and Time API (package java.time, Java 8) dates, times, time zones aur samay ki matra ke saath kaam karne ka Java ka modern tareeka hai. Iski main classes LocalDate (time ke bina date), LocalTime (date ke bina time), LocalDateTime (dono, phir bhi time zone ke bina), ZonedDateTime (time zone ke saath), Instant (timeline par ek point), Period (din, mahine aur saal me matra) aur Duration (ghante, minute aur second me matra) hain. Har object immutable aur thread-safe hai, aur naam bilkul batate hain ki har ek ka matlab kya hai."],
+ secs: [
+  {h: ["Why java.time? The problems of the old API", "java.time kyun? Purani API ki problems"],
+   p: ["Before Java 8 there was java.util.Date, Calendar and SimpleDateFormat, and they were so confusing that nearly every project used an outside library. Date counts the year from 1900 and the month from 0, so new Date(126, 10, 1) means 1 November 2026. A Date is really a point in time, but its name says 'date'. They are mutable, so one piece of code can change a date that another piece depends on. SimpleDateFormat is not thread-safe, and using it from two threads gives wrong results or crashes. The new classes fix all this: they are immutable (every 'change' returns a NEW object), months run from 1 to 12, and there is a separate type for each idea.",
+       "Java 8 se pehle java.util.Date, Calendar aur SimpleDateFormat the, aur wo itne uljhe hue the ki lagbhag har project bahar ki library use karta tha. Date saal ko 1900 se aur mahine ko 0 se ginta hai, isliye new Date(126, 10, 1) ka matlab 1 November 2026 hai. Date asal me samay ka ek point hai, par uska naam 'date' kehta hai. Wo mutable hain, isliye code ka ek hissa wo date badal sakta hai jis par dusra hissa nirbhar hai. SimpleDateFormat thread-safe nahi hai, aur do threads se use karne par galat results ya crash milta hai. Nayi classes ye sab theek karti hain: wo immutable hain (har 'badlav' NAYA object deta hai), mahine 1 se 12 chalte hain, aur har idea ka alag type hai."],
+   pts: [["Immutable: date.plusDays(1) returns a new LocalDate and leaves date unchanged. Always keep the result.", "Thread-safe: you can share java.time objects and DateTimeFormatter between threads freely.", "Clear types: LocalDate for a birthday, LocalTime for an opening time, LocalDateTime for an appointment, ZonedDateTime for a flight, Instant for a log timestamp, Period and Duration for amounts.", "Months are 1 to 12 (and there is a Month enum), and days of the week have the DayOfWeek enum.", "The old classes still exist for old code. You can convert with Date.from(instant) and date.toInstant()."],
+         ["Immutable: date.plusDays(1) nayi LocalDate return karta hai aur date ko waisa hi rakhta hai. Result hamesha rakho.", "Thread-safe: java.time objects aur DateTimeFormatter ko threads ke beech khule me share kar sakte ho.", "Saaf types: janmdin ke liye LocalDate, dukaan ke khulne ke samay ke liye LocalTime, appointment ke liye LocalDateTime, flight ke liye ZonedDateTime, log timestamp ke liye Instant, matra ke liye Period aur Duration.", "Mahine 1 se 12 hain (aur Month enum hai), aur hafte ke dino ke liye DayOfWeek enum hai.", "Purani classes purane code ke liye abhi bhi hain. Date.from(instant) aur date.toInstant() se convert kar sakte ho."]],
+   code: `import java.time.*;
+import java.util.Date;
+
+public class WhyNewApi {
+    public static void main(String[] args) {
+        // The old way: confusing
+        // Date old = new Date(126, 10, 1);      // year 126 = 2026, month 10 = November (!), deprecated
+        // Calendar c = Calendar.getInstance();
+        // c.set(2026, 10, 1);                   // month 10 = November again: a famous trap
+
+        // The new way: clear
+        LocalDate d = LocalDate.of(2026, 11, 1);                 // 1 November 2026, month 11 is November
+        LocalDate next = d.plusDays(30);
+        System.out.println(d);                                    // 2026-11-01  (unchanged: immutable)
+        System.out.println(next);                                 // 2026-12-01
+
+        // Forgetting to keep the result is the classic mistake
+        d.plusDays(5);                                            // the result is thrown away
+        System.out.println(d);                                    // 2026-11-01  (still the same)
+        d = d.plusDays(5);                                        // keep the new object
+        System.out.println(d);                                    // 2026-11-06
+
+        // Old and new can be converted
+        Date legacy = Date.from(Instant.parse("2026-11-01T13:15:00Z"));
+        System.out.println(legacy.toInstant());                   // 2026-11-01T13:15:00Z
+    }
+}`},
+  {h: ["LocalDate: a date without a time", "LocalDate: time ke bina date"],
+   p: ["LocalDate holds a year, a month and a day, for example a birthday or a holiday. You never use new. You create it with LocalDate.of(year, month, day), LocalDate.now() (today), or LocalDate.parse(\"2026-11-01\") (text in the ISO format yyyy-MM-dd). The getters are getYear, getMonthValue (1 to 12), getMonth (the Month enum), getDayOfMonth, getDayOfWeek (the DayOfWeek enum) and getDayOfYear. An impossible date such as 30 February or month 13 throws a DateTimeException at once, so a LocalDate object is always a valid date. The toString form is yyyy-MM-dd.",
+       "LocalDate me saal, mahina aur din hota hai, jaise janmdin ya chhutti. Ise new se kabhi nahi banate. LocalDate.of(year, month, day), LocalDate.now() (aaj) ya LocalDate.parse(\"2026-11-01\") (ISO format yyyy-MM-dd ka text) se banate ho. Getters getYear, getMonthValue (1 se 12), getMonth (Month enum), getDayOfMonth, getDayOfWeek (DayOfWeek enum) aur getDayOfYear hain. 30 February ya mahina 13 jaisi namumkin date turant DateTimeException deti hai, isliye LocalDate object hamesha valid date hota hai. toString ka rup yyyy-MM-dd hai."],
+   code: `import java.time.*;
+
+public class LocalDateBasics {
+    public static void main(String[] args) {
+        LocalDate d = LocalDate.of(2026, 11, 1);
+        LocalDate same = LocalDate.of(2026, Month.NOVEMBER, 1);      // the Month enum reads better
+        LocalDate parsed = LocalDate.parse("2026-11-01");            // ISO text
+        System.out.println(d.equals(same) && same.equals(parsed));   // true
+        LocalDate today = LocalDate.now();                           // the real date of your computer (it changes every day)
+
+        System.out.println(d.getYear());                             // 2026
+        System.out.println(d.getMonthValue());                       // 11
+        System.out.println(d.getMonth());                            // NOVEMBER
+        System.out.println(d.getDayOfMonth());                       // 1
+        System.out.println(d.getDayOfWeek());                        // SUNDAY
+        System.out.println(d.getDayOfYear());                        // 305
+        System.out.println(d.lengthOfMonth() + " " + d.lengthOfYear());   // 30 365
+        System.out.println(d.isLeapYear());                          // false
+        System.out.println(LocalDate.of(2024, 2, 10).isLeapYear());  // true
+        System.out.println(LocalDate.of(2024, 2, 10).lengthOfMonth());    // 29
+
+        // Impossible dates are refused at once
+        try {
+            LocalDate.of(2026, 2, 30);
+        } catch (DateTimeException e) {
+            System.out.println("refused: " + e.getMessage());        // refused: Invalid date 'FEBRUARY 30'
+        }
+        try {
+            LocalDate.of(2026, 13, 1);
+        } catch (DateTimeException e) {
+            System.out.println("refused month 13");
+        }
+
+        // Special days
+        System.out.println(LocalDate.of(2000, 1, 1).getDayOfWeek());      // SATURDAY
+        System.out.println(LocalDate.of(2026, 8, 15).getDayOfWeek());     // SATURDAY (Independence Day 2026)
+        System.out.println(LocalDate.EPOCH);                              // 1970-01-01  (Java 9+)
+    }
+}`},
+  {h: ["Changing dates: plus, minus and with", "Dates badalna: plus, minus aur with"],
+   p: ["Every change returns a new object. plusDays, plusWeeks, plusMonths and plusYears add, and the minus versions subtract. The generic plus(amount, unit) and plus(period) also work. withDayOfMonth, withMonth, withYear and withDayOfYear replace one field. When adding months or years lands on a day that does not exist (31 January plus one month), Java uses the LAST valid day of that month instead of failing. You can chain the calls, and you can compare dates with isBefore, isAfter, isEqual and equals (and compareTo for sorting).",
+       "Har badlav naya object deta hai. plusDays, plusWeeks, plusMonths aur plusYears jodte hain, aur minus versions ghatate hain. Generic plus(amount, unit) aur plus(period) bhi chalte hain. withDayOfMonth, withMonth, withYear aur withDayOfYear ek field badalte hain. Mahine ya saal jodne par aisa din aaye jo maujood nahi (31 January plus ek mahina), to Java fail hone ki jagah us mahine ka AAKHRI valid din use karta hai. Calls ko chain kar sakte ho, aur dates ko isBefore, isAfter, isEqual aur equals (aur sorting ke liye compareTo) se compare kar sakte ho."],
+   code: `import java.time.*;
+import java.time.temporal.ChronoUnit;
+import java.util.*;
+
+public class ChangingDates {
+    public static void main(String[] args) {
+        LocalDate d = LocalDate.of(2026, 11, 1);
+
+        System.out.println(d.plusDays(30));                    // 2026-12-01
+        System.out.println(d.plusWeeks(2));                    // 2026-11-15
+        System.out.println(d.plusMonths(3));                   // 2027-02-01
+        System.out.println(d.minusYears(1));                   // 2025-11-01
+        System.out.println(d.plus(10, ChronoUnit.DAYS));       // 2026-11-11
+        System.out.println(d.plus(Period.of(0, 1, 15)));       // 2026-12-16  (one month and 15 days)
+        System.out.println(d.withDayOfMonth(15));              // 2026-11-15
+        System.out.println(d.withMonth(2));                    // 2026-02-01
+        System.out.println(d.plusDays(30).plusMonths(1).minusWeeks(1));   // 2026-12-24 (chained)
+
+        // The last valid day is used when the day does not exist
+        System.out.println(LocalDate.of(2024, 1, 31).plusMonths(1));      // 2024-02-29  (leap year)
+        System.out.println(LocalDate.of(2023, 1, 31).plusMonths(1));      // 2023-02-28
+        System.out.println(LocalDate.of(2024, 2, 29).plusYears(1));       // 2025-02-28
+
+        // Comparing
+        LocalDate a = LocalDate.of(2026, 3, 15), b = LocalDate.of(2026, 11, 1);
+        System.out.println(a.isBefore(b));                     // true
+        System.out.println(a.isAfter(b));                      // false
+        System.out.println(a.isEqual(LocalDate.of(2026, 3, 15)));   // true
+        System.out.println(a.equals(b));                       // false
+        System.out.println(a.compareTo(b) < 0);                // true  (negative: a is earlier)
+
+        // Sorting and finding the earliest
+        List<LocalDate> dates = new ArrayList<>(List.of(b, a, LocalDate.of(2025, 12, 31)));
+        Collections.sort(dates);                               // dates are Comparable
+        System.out.println(dates);                             // [2025-12-31, 2026-03-15, 2026-11-01]
+        System.out.println(Collections.max(dates));            // 2026-11-01
+
+        // Is a date inside a range? (start and end included)
+        LocalDate start = LocalDate.of(2026, 10, 1), end = LocalDate.of(2026, 12, 31);
+        LocalDate check = LocalDate.of(2026, 11, 15);
+        System.out.println(!check.isBefore(start) && !check.isAfter(end));   // true
+    }
+}`,
+   pts: [["Never write d.plusDays(1); and ignore the result. Write d = d.plusDays(1);", "Month arithmetic is not the same as 30 days: plusMonths(1) keeps the day of the month where it can.", "isBefore and isAfter are strict: the same date is neither before nor after.", "equals compares the date. compareTo gives a negative, zero or positive number, so check only its sign.", "LocalDate works for years from -999999999 to 999999999, so the old trouble with years such as 2038 does not exist."],
+         ["d.plusDays(1); likhkar result ignore mat karo. d = d.plusDays(1); likho.", "Mahine ka hisab 30 din jaisa nahi hai: plusMonths(1) jahan ho sake din ko wahi rakhta hai.", "isBefore aur isAfter strict hain: wahi date na pehle hai na baad me.", "equals date compare karta hai. compareTo negative, zero ya positive number deta hai, isliye sirf uska sign dekho.", "LocalDate saal -999999999 se 999999999 tak chalta hai, isliye 2038 jaise saalon ki purani dikkat yahan nahi hai."]]},
+  {h: ["LocalTime and LocalDateTime", "LocalTime aur LocalDateTime"],
+   p: ["LocalTime holds hours, minutes, seconds and nanoseconds on a 24-hour clock, with no date and no zone (an opening time, an alarm). LocalDateTime joins a LocalDate and a LocalTime (an appointment, a meeting). The shape is the same as LocalDate: of, parse, now, getters, plus, minus and with. Time wraps around midnight: 23:30 plus two hours is 01:30, and for a LocalDateTime the date moves forward as well. toLocalDate and toLocalTime split a LocalDateTime, and atTime and atStartOfDay build one from a date. truncatedTo cuts the small units off.",
+       "LocalTime 24-ghante ki ghadi par ghante, minute, second aur nanosecond rakhta hai, date aur zone ke bina (khulne ka samay, alarm). LocalDateTime LocalDate aur LocalTime ko jodta hai (appointment, meeting). Shape LocalDate jaisi hi hai: of, parse, now, getters, plus, minus aur with. Time aadhi raat par ghoom jata hai: 23:30 plus do ghante 01:30 hai, aur LocalDateTime me date bhi aage badhti hai. toLocalDate aur toLocalTime LocalDateTime ko todte hain, aur atTime aur atStartOfDay date se ek banate hain. truncatedTo chhoti units kaat deta hai."],
+   code: `import java.time.*;
+import java.time.temporal.ChronoUnit;
+
+public class TimeBasics {
+    public static void main(String[] args) {
+        LocalTime t = LocalTime.of(14, 30);                      // 14:30
+        System.out.println(t);                                   // 14:30
+        System.out.println(LocalTime.of(9, 5, 7));               // 09:05:07
+        System.out.println(LocalTime.parse("18:45:30"));         // 18:45:30
+        System.out.println(t.getHour() + " " + t.getMinute());   // 14 30
+
+        System.out.println(t.plusMinutes(45));                   // 15:15
+        System.out.println(LocalTime.of(23, 30).plusHours(2));   // 01:30  (wraps around midnight)
+        System.out.println(t.minusHours(15));                    // 23:30
+        System.out.println(t.isBefore(LocalTime.NOON));          // false
+        System.out.println(LocalTime.MIDNIGHT + " " + LocalTime.NOON);   // 00:00 12:00
+        System.out.println(LocalTime.of(9, 5, 7, 123_000_000).truncatedTo(ChronoUnit.SECONDS));   // 09:05:07
+
+        // Date and time together
+        LocalDateTime dt = LocalDateTime.of(2026, 11, 1, 18, 45);
+        System.out.println(dt);                                  // 2026-11-01T18:45
+        System.out.println(LocalDateTime.parse("2026-11-01T18:45:30"));   // 2026-11-01T18:45:30
+        System.out.println(dt.toLocalDate() + " | " + dt.toLocalTime());  // 2026-11-01 | 18:45
+
+        System.out.println(dt.plusHours(7));                     // 2026-11-02T01:45  (the date moved on)
+        System.out.println(dt.plusDays(1).withHour(9).withMinute(0));      // 2026-11-02T09:00
+        System.out.println(dt.truncatedTo(ChronoUnit.DAYS));     // 2026-11-01T00:00
+
+        // Build one from a date and a time
+        LocalDate date = LocalDate.of(2026, 12, 25);
+        System.out.println(date.atStartOfDay());                 // 2026-12-25T00:00
+        System.out.println(date.atTime(9, 30));                  // 2026-12-25T09:30
+        System.out.println(LocalDateTime.of(date, LocalTime.of(20, 0)));   // 2026-12-25T20:00
+
+        // LocalDateTime.now() and LocalTime.now() read the clock of your computer
+        System.out.println(LocalDateTime.now().isAfter(dt.minusYears(100)));   // true
+    }
+}`},
+  {h: ["Period, Duration and ChronoUnit: amounts of time", "Period, Duration aur ChronoUnit: samay ki matra"],
+   p: ["Two classes measure an amount of time, and the difference is important. Period is date-based: years, months and days (P1Y2M3D). It works with LocalDate and cares about the calendar, so a month is as long as the month really is. Duration is time-based: hours, minutes, seconds and nanoseconds (PT8H30M). It works with LocalTime, LocalDateTime and Instant, and a day in a Duration is always exactly 24 hours. Period.between(a, b) and Duration.between(a, b) measure the gap. When you want just ONE unit (the total number of days, or hours), use ChronoUnit.DAYS.between(a, b), which counts whole units and gives a long.",
+       "Do classes samay ki matra naapti hain, aur fark zaroori hai. Period date-based hai: saal, mahine aur din (P1Y2M3D). Ye LocalDate ke saath chalta hai aur calendar ki parwah karta hai, isliye mahina utna lamba hota hai jitna mahina sach me hota hai. Duration time-based hai: ghante, minute, second aur nanosecond (PT8H30M). Ye LocalTime, LocalDateTime aur Instant ke saath chalta hai, aur Duration me ek din hamesha theek 24 ghante ka hota hai. Period.between(a, b) aur Duration.between(a, b) fark naapte hain. Sirf EK unit chahiye (kul din, ya ghante) to ChronoUnit.DAYS.between(a, b) use karo, jo poori units ginta hai aur long deta hai."],
+   code: `import java.time.*;
+import java.time.temporal.ChronoUnit;
+
+public class Amounts {
+    public static void main(String[] args) {
+        // Period: years, months, days
+        Period p = Period.between(LocalDate.of(2005, 3, 15), LocalDate.of(2026, 11, 1));
+        System.out.println(p);                                   // P21Y7M17D
+        System.out.println(p.getYears() + " " + p.getMonths() + " " + p.getDays());   // 21 7 17
+        System.out.println(Period.of(1, 2, 3) + " " + Period.ofDays(10) + " " + Period.ofMonths(18));   // P1Y2M3D P10D P18M
+        System.out.println(Period.ofMonths(18).normalized());    // P1Y6M
+        System.out.println(LocalDate.of(2026, 11, 1).plus(Period.ofWeeks(2)));        // 2026-11-15
+
+        // Duration: hours, minutes, seconds
+        Duration d = Duration.between(LocalTime.of(9, 0), LocalTime.of(17, 30));
+        System.out.println(d);                                   // PT8H30M
+        System.out.println(d.toMinutes() + " " + d.toHours());   // 510 8
+        System.out.println(d.toHoursPart() + "h " + d.toMinutesPart() + "m");         // 8h 30m  (Java 9+)
+        System.out.println(Duration.ofSeconds(3725));            // PT1H2M5S
+        System.out.println(Duration.ofMinutes(135).toHours());   // 2
+        System.out.println(Duration.ofHours(1).plusMinutes(20).getSeconds());         // 4800
+
+        // ChronoUnit: the TOTAL in one unit
+        LocalDate a = LocalDate.of(2026, 11, 1), b = LocalDate.of(2026, 12, 25);
+        System.out.println(ChronoUnit.DAYS.between(a, b));       // 54
+        System.out.println(ChronoUnit.WEEKS.between(a, b));      // 7
+        System.out.println(ChronoUnit.MONTHS.between(LocalDate.of(2026, 1, 15), a));  // 9  (only whole months count)
+        LocalDateTime x = LocalDateTime.of(2026, 11, 1, 8, 0), y = LocalDateTime.of(2026, 11, 2, 20, 30);
+        System.out.println(ChronoUnit.HOURS.between(x, y) + " " + ChronoUnit.MINUTES.between(x, y));   // 36 2190
+
+        // Period is NOT a total: 7 months and 17 days is not 7 months in days
+        System.out.println(p.toTotalMonths());                   // 259  (21 x 12 + 7)
+
+        // Wrong tool: a Duration needs a time, a LocalDate has none
+        try {
+            Duration.between(a, b);
+        } catch (Exception e) {
+            System.out.println(e.getClass().getSimpleName());    // UnsupportedTemporalTypeException
+        }
+    }
+}`,
+   pts: [["Period: for dates (years, months, days). Duration: for times (hours to nanoseconds). Do not mix them up.", "Period.between(a, b).getDays() is only the DAYS PART (17 above), not the total number of days. For the total use ChronoUnit.DAYS.between.", "A Duration of 24 hours and a Period of one day are different across a daylight saving change.", "Negative amounts are fine: Period.between of a later date to an earlier date is negative. Use .negated(), .abs() (Duration) or isNegative().", "getSeconds and toHours give totals (long). toHoursPart, toMinutesPart and toSecondsPart (Java 9+) give the part you would show on a clock."],
+         ["Period: dates ke liye (saal, mahine, din). Duration: time ke liye (ghante se nanosecond tak). Inhe mix mat karo.", "Period.between(a, b).getDays() sirf DIN WALA HISSA hai (upar 17), kul dino ki ginti nahi. Kul ke liye ChronoUnit.DAYS.between use karo.", "Daylight saving badalne par 24 ghante ka Duration aur ek din ka Period alag hote hain.", "Negative matra theek hai: baad ki date se pehle ki date ka Period.between negative hota hai. .negated(), .abs() (Duration) ya isNegative() use karo.", "getSeconds aur toHours totals (long) dete hain. toHoursPart, toMinutesPart aur toSecondsPart (Java 9+) wo hissa dete hain jo ghadi par dikhaoge."]]},
+  {h: ["Formatting and parsing with DateTimeFormatter", "DateTimeFormatter se format aur parse karna"],
+   p: ["toString gives the ISO text (2026-11-01). For any other look, use a DateTimeFormatter: DateTimeFormatter.ofPattern(\"dd/MM/yyyy\"). Call date.format(formatter) to turn a date into text and LocalDate.parse(text, formatter) to read text back. The pattern letters are case-sensitive: yyyy year, MM month number, MMM short month name, MMMM full month name, dd day of month, EEEE day name, HH hour (0 to 23), hh hour (1 to 12), mm minute, ss second, a AM or PM. MM is months but mm is minutes, and these two typing mistakes are very common. Month and day names depend on the Locale, so pass Locale.ENGLISH when you want English text on every computer. Text that does not match throws DateTimeParseException.",
+       "toString ISO text (2026-11-01) deta hai. Kisi aur look ke liye DateTimeFormatter use karo: DateTimeFormatter.ofPattern(\"dd/MM/yyyy\"). Date ko text banane ke liye date.format(formatter) aur text wapas padhne ke liye LocalDate.parse(text, formatter) call karo. Pattern ke letters case-sensitive hain: yyyy saal, MM mahine ka number, MMM chhota mahine ka naam, MMMM poora mahine ka naam, dd mahine ka din, EEEE din ka naam, HH ghanta (0 se 23), hh ghanta (1 se 12), mm minute, ss second, a AM ya PM. MM mahine hain par mm minute hain, aur ye do typing galtiyan bahut common hain. Mahine aur din ke naam Locale par nirbhar hain, isliye har computer par English text chahiye to Locale.ENGLISH do. Match na hone wala text DateTimeParseException deta hai."],
+   code: `import java.time.*;
+import java.time.format.*;
+import java.util.Locale;
+
+public class Formatting {
+    public static void main(String[] args) {
+        LocalDateTime dt = LocalDateTime.of(2026, 11, 1, 18, 45, 30);
+        LocalDate date = dt.toLocalDate();
+
+        System.out.println(date.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")));            // 01/11/2026
+        System.out.println(date.format(DateTimeFormatter.ofPattern("d MMMM yyyy", Locale.ENGLISH)));   // 1 November 2026
+        System.out.println(date.format(DateTimeFormatter.ofPattern("EEEE, dd MMM yyyy", Locale.ENGLISH)));   // Sunday, 01 Nov 2026
+        System.out.println(dt.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss")));     // 01-11-2026 18:45:30
+        System.out.println(dt.format(DateTimeFormatter.ofPattern("hh:mm a", Locale.ENGLISH))); // 06:45 PM
+        System.out.println(date.format(DateTimeFormatter.ofPattern("MMM d, yy", Locale.ENGLISH)));   // Nov 1, 26
+
+        // Ready-made formats
+        System.out.println(date.format(DateTimeFormatter.ISO_LOCAL_DATE));                     // 2026-11-01
+        System.out.println(date.format(DateTimeFormatter.BASIC_ISO_DATE));                     // 20261101
+        System.out.println(date.format(DateTimeFormatter.ofLocalizedDate(FormatStyle.LONG).withLocale(Locale.US)));   // November 1, 2026
+
+        // Parsing text back (the pattern must match the text exactly)
+        DateTimeFormatter indian = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate p1 = LocalDate.parse("15/08/2026", indian);
+        System.out.println(p1 + " " + p1.getDayOfWeek());                                      // 2026-08-15 SATURDAY
+        LocalDateTime p2 = LocalDateTime.parse("01-11-2026 18:45", DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+        System.out.println(p2);                                                                // 2026-11-01T18:45
+
+        // Bad text throws DateTimeParseException
+        try {
+            LocalDate.parse("1-11-2026", indian);                // "d" is not "dd": the pattern is strict about digits
+        } catch (DateTimeParseException e) {
+            System.out.println("cannot parse: " + e.getParsedString());                        // cannot parse: 1-11-2026
+        }
+        try {
+            LocalDate.parse("2026-02-30");
+        } catch (DateTimeParseException e) {
+            System.out.println("invalid date");
+        }
+
+        // The famous catch: the default "smart" mode quietly fixes 31 April. Strict mode refuses it.
+        DateTimeFormatter smart = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        DateTimeFormatter strict = DateTimeFormatter.ofPattern("dd/MM/uuuu").withResolverStyle(ResolverStyle.STRICT);
+        System.out.println(LocalDate.parse("31/04/2026", smart));                              // 2026-04-30  (silently changed!)
+        try {
+            LocalDate.parse("31/04/2026", strict);
+        } catch (DateTimeParseException e) {
+            System.out.println("strict mode refused 31/04/2026");
+        }
+    }
+}`,
+   pts: [["Letters: y year, M month, d day, H hour 0-23, h hour 1-12, m minute, s second, S fraction of a second, a AM or PM, E day name, n nano, z zone name, X or x offset.", "Count matters: M (1), MM (01), MMM (Nov), MMMM (November). d (1), dd (01). yy (26), yyyy (2026).", "Never use YYYY. It means the 'week-based year', and for dates at the end of December it gives next year's number.", "A DateTimeFormatter is immutable and thread-safe: create it once as a static final constant and reuse it.", "Parse user input inside try-catch, because DateTimeParseException is the normal outcome of a typing error.", "Use DateTimeFormatter.ofLocalizedDate and ofLocalizedDateTime when the text must follow the user's country style."],
+         ["Letters: y saal, M mahina, d din, H ghanta 0-23, h ghanta 1-12, m minute, s second, S second ka hissa, a AM ya PM, E din ka naam, n nano, z zone ka naam, X ya x offset.", "Ginti matter karti hai: M (1), MM (01), MMM (Nov), MMMM (November). d (1), dd (01). yy (26), yyyy (2026).", "YYYY kabhi use mat karo. Iska matlab 'week-based year' hai, aur December ke aakhir ki dates ke liye ye agle saal ka number deta hai.", "DateTimeFormatter immutable aur thread-safe hai: use ek baar static final constant ki tarah banao aur dobara use karo.", "User input ko try-catch me parse karo, kyunki DateTimeParseException typing error ka normal natija hai.", "Text ko user ke desh ke style me chahiye ho to DateTimeFormatter.ofLocalizedDate aur ofLocalizedDateTime use karo."]]},
+  {h: ["Time zones: ZonedDateTime, ZoneId and offsets", "Time zones: ZonedDateTime, ZoneId aur offsets"],
+   p: ["A LocalDateTime such as 18:45 on 1 November means nothing for two people in different countries, because it does not say where. A ZonedDateTime adds a ZoneId (such as Asia/Kolkata or America/New_York) and so fixes one exact moment in the world. The zone also knows its daylight saving rules. The standard way to show the same moment in another country is withZoneSameInstant, which keeps the instant and changes the clock reading. withZoneSameLocal does the opposite (keeps the clock and changes the moment), and it is rarely what you want. A ZoneOffset (+05:30) is a fixed difference from UTC without any rules, and OffsetDateTime holds one. Use zone IDs in the region/city form, because short names such as IST or EST are ambiguous.",
+       "18:45, 1 November jaisa LocalDateTime alag deshon ke do logon ke liye kuch matlab nahi rakhta, kyunki wo nahi batata ki kahan. ZonedDateTime ek ZoneId (jaise Asia/Kolkata ya America/New_York) jodta hai aur isliye duniya me ek bilkul sahi pal tay karta hai. Zone apne daylight saving rules bhi jaanta hai. Wahi pal dusre desh me dikhane ka standard tareeka withZoneSameInstant hai, jo pal rakhta hai aur ghadi ki reading badalta hai. withZoneSameLocal ulta karta hai (ghadi rakhta hai aur pal badalta hai), aur wo shayad hi kabhi tumhe chahiye. ZoneOffset (+05:30) UTC se fixed farak hai bina kisi rules ke, aur OffsetDateTime wahi rakhta hai. Zone IDs ko region/city form me use karo, kyunki IST ya EST jaise chhote naam ambiguous hain."],
+   code: `import java.time.*;
+
+public class Zones {
+    public static void main(String[] args) {
+        ZoneId india = ZoneId.of("Asia/Kolkata");
+        ZonedDateTime meeting = ZonedDateTime.of(2026, 11, 1, 18, 45, 0, 0, india);
+        System.out.println(meeting);                                    // 2026-11-01T18:45+05:30[Asia/Kolkata]
+
+        // The SAME moment on other clocks
+        System.out.println(meeting.withZoneSameInstant(ZoneId.of("UTC")));              // 2026-11-01T13:15Z[UTC]
+        System.out.println(meeting.withZoneSameInstant(ZoneId.of("Asia/Tokyo")));       // 2026-11-01T22:15+09:00[Asia/Tokyo]
+        System.out.println(meeting.withZoneSameInstant(ZoneId.of("America/New_York"))); // 2026-11-01T08:15-05:00[America/New_York]
+        System.out.println(meeting.toInstant());                        // 2026-11-01T13:15:00Z
+
+        // The other direction (rarely what you want): same clock, different moment
+        System.out.println(meeting.withZoneSameLocal(ZoneId.of("Asia/Tokyo")));         // 2026-11-01T18:45+09:00[Asia/Tokyo]
+
+        // From a LocalDateTime to a zoned one, and back
+        LocalDateTime local = LocalDateTime.of(2026, 11, 1, 18, 45);
+        ZonedDateTime z = local.atZone(india);
+        System.out.println(z.toLocalDateTime().equals(local));          // true
+        System.out.println(z.getOffset());                              // +05:30
+
+        // A fixed offset, without any rules
+        OffsetDateTime odt = OffsetDateTime.of(local, ZoneOffset.of("+05:30"));
+        System.out.println(odt);                                        // 2026-11-01T18:45+05:30
+
+        // Your computer's zone, and how many zones exist
+        System.out.println(ZoneId.systemDefault());                     // for example Asia/Kolkata
+        System.out.println(ZoneId.getAvailableZoneIds().contains("Europe/London"));     // true
+
+        // Daylight saving time (United States: clocks go forward on 8 March 2026 at 02:00)
+        ZoneId ny = ZoneId.of("America/New_York");
+        System.out.println(ZonedDateTime.of(LocalDateTime.of(2026, 3, 8, 2, 30), ny));   // 2026-03-08T03:30-04:00[America/New_York] (02:30 does not exist)
+
+        // And on 1 November 2026 the clocks go back at 02:00: 01:30 happens TWICE
+        ZonedDateTime first = ZonedDateTime.of(LocalDateTime.of(2026, 11, 1, 1, 30), ny);
+        System.out.println(first);                                      // 2026-11-01T01:30-04:00[America/New_York]
+        System.out.println(first.withLaterOffsetAtOverlap());           // 2026-11-01T01:30-05:00[America/New_York]
+
+        // plusDays follows the calendar, plusHours follows the clock
+        ZonedDateTime before = ZonedDateTime.of(2026, 3, 7, 12, 0, 0, 0, ny);
+        System.out.println(before.plusDays(1));                         // 2026-03-08T12:00-04:00[America/New_York]
+        System.out.println(before.plusHours(24));                       // 2026-03-08T13:00-04:00[America/New_York]
+    }
+}`,
+   pts: [["Use ZonedDateTime (or Instant) for anything that happens at one real moment for people in different places: flights, meetings, orders, payments.", "Use LocalDateTime for 'wall clock' things that are the same on every clock: a shop opens at 09:00, an alarm rings at 07:00.", "Zone rules change (a country can abolish daylight saving), and Java updates them in the tzdata of each release, so keep your JDK updated.", "Short names (IST, CST, PST) are ambiguous. Always use IDs like Asia/Kolkata.", "ZoneOffset has no rules: a fixed +05:30 does not know about daylight saving. A ZoneId does."],
+         ["Jo cheez alag jagah ke logon ke liye ek asli pal par hoti hai uske liye ZonedDateTime (ya Instant) use karo: flights, meetings, orders, payments.", "'Wall clock' wali cheezon ke liye LocalDateTime use karo jo har ghadi par same hain: dukaan 09:00 par khulti hai, alarm 07:00 par bajta hai.", "Zone ke rules badalte hain (koi desh daylight saving hata sakta hai), aur Java unhe har release ke tzdata me update karta hai, isliye apna JDK updated rakho.", "Chhote naam (IST, CST, PST) ambiguous hain. Hamesha Asia/Kolkata jaise IDs use karo.", "ZoneOffset ke koi rules nahi: fixed +05:30 daylight saving ke baare me nahi jaanta. ZoneId jaanta hai."]]},
+  {h: ["Instant: a point on the timeline", "Instant: timeline par ek point"],
+   p: ["An Instant is one exact moment, counted as seconds and nanoseconds since 1 January 1970 at 00:00 in UTC (the epoch). It has no zone, no month and no day of the week, so it is the best choice for machines: timestamps in logs and databases, 'created at' and 'updated at' fields, and measuring how long something took. To show an Instant to people, attach a zone with atZone. The toString form always ends in Z (UTC). Instant.now() reads the clock, and for a very precise short measurement, System.nanoTime() is better.",
+       "Instant ek bilkul sahi pal hai, jo 1 January 1970 ko 00:00 UTC (epoch) se seconds aur nanoseconds me ginta jata hai. Iska koi zone, mahina ya hafte ka din nahi hota, isliye ye machines ke liye sabse achha choice hai: logs aur databases me timestamps, 'created at' aur 'updated at' fields, aur ye naapna ki kisi kaam me kitna samay laga. Instant ko logon ko dikhane ke liye atZone se zone jodo. toString ka rup hamesha Z (UTC) par khatam hota hai. Instant.now() ghadi padhta hai, aur bahut sahi chhote naap ke liye System.nanoTime() behtar hai."],
+   code: `import java.time.*;
+import java.time.temporal.ChronoUnit;
+
+public class Instants {
+    public static void main(String[] args) throws InterruptedException {
+        Instant zero = Instant.ofEpochSecond(0);
+        System.out.println(zero);                                      // 1970-01-01T00:00:00Z
+        System.out.println(Instant.ofEpochSecond(1_000_000_000));      // 2001-09-09T01:46:40Z
+        Instant meeting = Instant.parse("2026-11-01T13:15:00Z");
+        System.out.println(meeting.getEpochSecond());                  // 1793538900  (seconds since 1970)
+        System.out.println(meeting.toEpochMilli());                    // 1793538900000
+
+        // Show it to people: attach a zone
+        System.out.println(meeting.atZone(ZoneId.of("Asia/Kolkata")));       // 2026-11-01T18:45+05:30[Asia/Kolkata]
+        System.out.println(meeting.atZone(ZoneId.of("Asia/Kolkata")).toLocalDate());   // 2026-11-01
+
+        // Arithmetic works in exact time units (not months or years: an Instant has no calendar)
+        System.out.println(meeting.plus(2, ChronoUnit.HOURS));         // 2026-11-01T15:15:00Z
+        System.out.println(meeting.plusSeconds(90));                   // 2026-11-01T13:16:30Z
+        System.out.println(meeting.isBefore(meeting.plusSeconds(1)));  // true
+        // meeting.plus(1, ChronoUnit.MONTHS);                         // UnsupportedTemporalTypeException
+
+        // Measuring how long something takes
+        Instant start = Instant.now();
+        Thread.sleep(250);
+        Duration took = Duration.between(start, Instant.now());
+        System.out.println(took.toMillis() >= 250);                    // true (about 250 to 260 ms)
+
+        long t0 = System.nanoTime();                                   // better for short, precise timing
+        long sum = 0;
+        for (int i = 0; i < 1_000_000; i++) sum += i;
+        long ns = System.nanoTime() - t0;
+        System.out.println(sum + " computed in " + ns / 1_000_000.0 + " ms");   // the time depends on your computer
+
+        // Conversion with the old Date class
+        java.util.Date legacy = java.util.Date.from(meeting);
+        System.out.println(legacy.toInstant().equals(meeting));        // true
+        System.out.println(legacy.toInstant().atZone(ZoneId.of("Asia/Kolkata")).toLocalDate());   // 2026-11-01
+    }
+}`},
+  {h: ["Month, DayOfWeek, YearMonth, Year, MonthDay and adjusters", "Month, DayOfWeek, YearMonth, Year, MonthDay aur adjusters"],
+   p: ["Month and DayOfWeek are enums, so you can compare them, switch on them and do arithmetic: DayOfWeek.MONDAY.plus(10) is THURSDAY and it wraps around. getDisplayName gives the name in any language. YearMonth is a month of a year (for a credit card expiry or a monthly report), Year is a whole year and MonthDay is a day of the year without the year (a birthday, a holiday). TemporalAdjusters finds dates such as 'the next Friday', 'the last day of the month' and 'the second Wednesday of the month' without any loop, and you apply one with date.with(adjuster). You can also write your own adjuster as a lambda.",
+       "Month aur DayOfWeek enums hain, isliye unhe compare kar sakte ho, unpar switch kar sakte ho aur hisab kar sakte ho: DayOfWeek.MONDAY.plus(10) THURSDAY hai aur ye ghoom jata hai. getDisplayName kisi bhi bhasha me naam deta hai. YearMonth kisi saal ka mahina hai (credit card expiry ya monthly report ke liye), Year poora saal hai aur MonthDay saal ke bina saal ka ek din hai (janmdin, chhutti). TemporalAdjusters 'agla Friday', 'mahine ka aakhri din' aur 'mahine ka doosra Wednesday' jaisi dates bina kisi loop ke dhundhta hai, aur ek ko date.with(adjuster) se lagate ho. Apna adjuster lambda ki tarah bhi likh sakte ho."],
+   code: `import java.time.*;
+import java.time.format.TextStyle;
+import java.time.temporal.TemporalAdjusters;
+import java.util.Locale;
+
+public class Calendars {
+    public static void main(String[] args) {
+        // Enums with arithmetic
+        System.out.println(Month.NOVEMBER.getValue() + " " + Month.of(12));          // 11 DECEMBER
+        System.out.println(Month.JANUARY.minus(1));                                   // DECEMBER  (wraps around)
+        System.out.println(DayOfWeek.MONDAY.plus(10));                                // THURSDAY
+        System.out.println(DayOfWeek.SUNDAY.getValue());                              // 7  (Monday is 1)
+        System.out.println(DayOfWeek.SUNDAY.getDisplayName(TextStyle.FULL, Locale.ENGLISH));    // Sunday
+        System.out.println(Month.MARCH.getDisplayName(TextStyle.SHORT, Locale.ENGLISH));        // Mar
+        System.out.println(Month.FEBRUARY.length(true) + " " + Month.FEBRUARY.length(false));   // 29 28
+
+        // YearMonth, Year, MonthDay
+        YearMonth ym = YearMonth.of(2026, 2);
+        System.out.println(ym + " " + ym.lengthOfMonth() + " " + ym.atEndOfMonth());   // 2026-02 28 2026-02-28
+        System.out.println(ym.plusMonths(10));                                         // 2026-12
+        System.out.println(Year.isLeap(2100) + " " + Year.of(2000).isLeap());          // false true
+        MonthDay birthday = MonthDay.of(2, 29);
+        System.out.println(birthday.isValidYear(2026));                                // false (no 29 February in 2026)
+        System.out.println(birthday.atYear(2026));                                     // 2026-02-28  (adjusted)
+
+        // Adjusters: find a date without a loop
+        LocalDate d = LocalDate.of(2026, 11, 1);                                       // a Sunday
+        System.out.println(d.with(TemporalAdjusters.next(DayOfWeek.FRIDAY)));          // 2026-11-06
+        System.out.println(d.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY)));    // 2026-11-01  (it already is a Sunday)
+        System.out.println(d.with(TemporalAdjusters.previous(DayOfWeek.MONDAY)));      // 2026-10-26
+        System.out.println(d.with(TemporalAdjusters.firstDayOfMonth()));               // 2026-11-01
+        System.out.println(d.with(TemporalAdjusters.lastDayOfMonth()));                // 2026-11-30
+        System.out.println(d.with(TemporalAdjusters.firstDayOfNextMonth()));           // 2026-12-01
+        System.out.println(d.with(TemporalAdjusters.firstInMonth(DayOfWeek.MONDAY)));  // 2026-11-02
+        System.out.println(d.with(TemporalAdjusters.lastInMonth(DayOfWeek.FRIDAY)));   // 2026-11-27
+        System.out.println(d.with(TemporalAdjusters.dayOfWeekInMonth(2, DayOfWeek.WEDNESDAY)));   // 2026-11-11
+
+        // Your own adjuster: the next working day (a lambda)
+        LocalDate friday = LocalDate.of(2026, 11, 6);
+        LocalDate nextWorking = friday.with(date -> {
+            LocalDate next = LocalDate.from(date).plusDays(1);
+            while (next.getDayOfWeek() == DayOfWeek.SATURDAY || next.getDayOfWeek() == DayOfWeek.SUNDAY) {
+                next = next.plusDays(1);
+            }
+            return next;
+        });
+        System.out.println(nextWorking);                                               // 2026-11-09  (Monday)
+    }
+}`},
+  {h: ["Ranges of dates and the Clock for testing", "Dates ki ranges aur testing ke liye Clock"],
+   p: ["datesUntil (Java 9) gives a Stream of every date from a start up to, but not including, an end, so you can use the Stream API on a calendar: count the weekdays, list every Friday, find the busiest month. A date inside a range is tested with isBefore and isAfter (remember that the end is usually excluded). Code that calls LocalDate.now() is hard to test, because its result changes every day. The cure is to give your class a Clock, an object that provides 'now'. In production you pass Clock.systemDefaultZone(), and in a test you pass Clock.fixed(...), so the result is the same every time. All the now() methods have a version that takes a Clock.",
+       "datesUntil (Java 9) start se end tak (end shamil nahi) har date ki Stream deta hai, isliye calendar par Stream API use kar sakte ho: weekdays ginna, har Friday list karna, sabse busy mahina dhundhna. Range ke andar ki date isBefore aur isAfter se test hoti hai (yaad rakho ki end aam taur par shamil nahi hota). Jo code LocalDate.now() call karta hai use test karna mushkil hai, kyunki uska result roz badalta hai. Ilaaj ye hai ki apni class ko Clock do, jo 'abhi' deta hai. Production me Clock.systemDefaultZone() dete ho, aur test me Clock.fixed(...), isliye result har baar wahi rehta hai. Saare now() methods ka ek version hai jo Clock leta hai."],
+   code: `import java.time.*;
+import java.time.temporal.ChronoUnit;
+import java.util.stream.*;
+
+public class Ranges {
+    // A class that asks a Clock for 'now' is easy to test
+    static class Library {
+        private final Clock clock;
+        Library(Clock clock) { this.clock = clock; }
+
+        boolean isOverdue(LocalDate dueDate) {
+            return LocalDate.now(clock).isAfter(dueDate);
+        }
+    }
+
+    public static void main(String[] args) {
+        LocalDate start = LocalDate.of(2026, 11, 2), endExclusive = LocalDate.of(2026, 11, 14);
+
+        // Every date in a range, as a stream (the end is NOT included)
+        System.out.println(start.datesUntil(endExclusive).count());                     // 12
+
+        long weekdays = start.datesUntil(endExclusive)
+                .filter(d -> d.getDayOfWeek() != DayOfWeek.SATURDAY && d.getDayOfWeek() != DayOfWeek.SUNDAY)
+                .count();
+        System.out.println(weekdays);                                                   // 10
+
+        // Every Friday of November 2026
+        System.out.println(LocalDate.of(2026, 11, 1).datesUntil(LocalDate.of(2026, 12, 1))
+                .filter(d -> d.getDayOfWeek() == DayOfWeek.FRIDAY)
+                .map(LocalDate::getDayOfMonth).collect(Collectors.toList()));           // [6, 13, 20, 27]
+
+        // Every 7th day from a start (a step)
+        System.out.println(LocalDate.of(2026, 11, 1).datesUntil(LocalDate.of(2026, 12, 1), Period.ofWeeks(1))
+                .map(LocalDate::toString).collect(Collectors.joining(", ")));
+        // 2026-11-01, 2026-11-08, 2026-11-15, 2026-11-22, 2026-11-29
+
+        // A fixed clock makes the 'current date' the same in every test
+        Clock fixed = Clock.fixed(Instant.parse("2026-11-01T00:00:00Z"), ZoneOffset.UTC);
+        System.out.println(LocalDate.now(fixed));                                       // 2026-11-01
+        Library lib = new Library(fixed);
+        System.out.println(lib.isOverdue(LocalDate.of(2026, 10, 25)));                  // true
+        System.out.println(lib.isOverdue(LocalDate.of(2026, 11, 5)));                   // false
+        Library real = new Library(Clock.systemDefaultZone());                          // what you use in production
+        System.out.println(real.isOverdue(LocalDate.of(1999, 1, 1)));                   // true (always, in any year after 1999)
+
+        // Offset clocks are handy too (pretend that 10 days have passed)
+        Clock later = Clock.offset(fixed, Duration.ofDays(10));
+        System.out.println(LocalDate.now(later));                                       // 2026-11-11
+    }
+}`},
+  {h: ["Practical example: age and next birthday", "Practical example: umar aur agla janmdin"],
+   p: ["An age is a Period in years between the birth date and today, and the days to the next birthday are a ChronoUnit.DAYS gap. The only tricky part is the next birthday: build this year's birthday with withYear, and if it is already over, use next year's. A person born on 29 February gets 28 February in a normal year, because withYear picks the last valid day. The methods take 'today' as a parameter, so the program prints the same result on every computer. In real code you pass LocalDate.now().",
+       "Umar janm ki date aur aaj ke beech saalon ka Period hai, aur agle janmdin tak ke din ChronoUnit.DAYS ka fark hain. Sirf agla janmdin tricky hai: is saal ka janmdin withYear se banao, aur wo nikal chuka ho to agle saal ka use karo. 29 February ko paida hua insaan normal saal me 28 February paata hai, kyunki withYear aakhri valid din chunta hai. Methods 'aaj' ko parameter ki tarah lete hain, isliye program har computer par wahi result print karta hai. Real code me LocalDate.now() do."],
+   code: `import java.time.*;
+import java.time.temporal.ChronoUnit;
+
+public class AgeCalculator {
+    static int ageInYears(LocalDate birth, LocalDate today) {
+        return Period.between(birth, today).getYears();
+    }
+
+    static LocalDate nextBirthday(LocalDate birth, LocalDate today) {
+        LocalDate thisYear = birth.withYear(today.getYear());          // 29 February becomes 28 February when needed
+        return thisYear.isBefore(today) ? thisYear.plusYears(1) : thisYear;   // a birthday TODAY counts as 'next'
+    }
+
+    static String describe(String name, LocalDate birth, LocalDate today) {
+        Period p = Period.between(birth, today);
+        LocalDate next = nextBirthday(birth, today);
+        long days = ChronoUnit.DAYS.between(today, next);
+        return name + " is " + p.getYears() + " years, " + p.getMonths() + " months and " + p.getDays() + " days old. "
+             + (days == 0 ? "Happy birthday!" : "Next birthday in " + days + " days (" + next.getDayOfWeek() + ").");
+    }
+
+    public static void main(String[] args) {
+        LocalDate today = LocalDate.of(2026, 11, 1);       // in real code: LocalDate.now()
+
+        System.out.println(describe("Gurleen", LocalDate.of(2005, 3, 15), today));
+        // Gurleen is 21 years, 7 months and 17 days old. Next birthday in 134 days (MONDAY).
+
+        System.out.println(describe("Mohit", LocalDate.of(2000, 11, 1), today));
+        // Mohit is 26 years, 0 months and 0 days old. Happy birthday!
+
+        System.out.println(describe("Shivam", LocalDate.of(2004, 2, 29), today));
+        // Shivam is 22 years, 8 months and 3 days old. Next birthday in 119 days (SUNDAY).
+        // (born on 29 February: in 2027 the birthday is celebrated on 28 February)
+
+        // Is somebody an adult (18 or older)?
+        LocalDate birth = LocalDate.of(2008, 12, 20);
+        System.out.println(ageInYears(birth, today) >= 18);       // false (17 years old)
+        System.out.println(birth.plusYears(18));                  // 2026-12-20  (the day the person turns 18)
+    }
+}`,
+   tip: ["Test the edge cases: a birthday today, a birthday on 29 February, a birthday on 1 January and a birth date in the future (the Period is negative). Good date code is code that survives its edge cases.", "Edge cases test karo: aaj ka janmdin, 29 February ka janmdin, 1 January ka janmdin aur bhavishya ki janm date (Period negative hota hai). Achha date code wo hai jo apne edge cases se bach jaye."]},
+  {h: ["Practical example: due dates, fines and working days", "Practical example: due dates, fines aur working days"],
+   p: ["The library project of Phase 3 needs a due date (14 days after borrowing) and a fine (Rs 5 for every day late). The same classes help with business days. To add N working days, step one day at a time and count only the days that are not Saturday or Sunday (a real system would also skip a list of holidays). To count the working days between two dates, stream the dates with datesUntil and filter.",
+       "Phase 3 ke library project ko due date (udhaar lene ke 14 din baad) aur fine (har late din ke Rs 5) chahiye. Wahi classes business days me bhi madad karti hain. N working days jodne ke liye ek-ek din aage badho aur sirf wo din ginte jao jo Saturday ya Sunday nahi hain (asli system holidays ki list bhi chhodta). Do dates ke beech working days ginne ke liye datesUntil se dates stream karo aur filter karo."],
+   code: `import java.time.*;
+import java.time.temporal.ChronoUnit;
+import java.util.Set;
+
+public class DueDates {
+    static final int LOAN_DAYS = 14;
+    static final int FINE_PER_DAY = 5;
+
+    static LocalDate dueDate(LocalDate borrowed) {
+        return borrowed.plusDays(LOAN_DAYS);
+    }
+
+    static long daysLate(LocalDate due, LocalDate returned) {
+        return Math.max(0, ChronoUnit.DAYS.between(due, returned));        // never negative
+    }
+
+    static long fine(LocalDate due, LocalDate returned) {
+        return daysLate(due, returned) * FINE_PER_DAY;
+    }
+
+    static boolean isWorkingDay(LocalDate d) {
+        return d.getDayOfWeek() != DayOfWeek.SATURDAY && d.getDayOfWeek() != DayOfWeek.SUNDAY;
+    }
+
+    static LocalDate addWorkingDays(LocalDate start, int count) {
+        LocalDate d = start;
+        int added = 0;
+        while (added < count) {
+            d = d.plusDays(1);
+            if (isWorkingDay(d)) added++;                                   // weekends are skipped, not counted
+        }
+        return d;
+    }
+
+    static long workingDaysBetween(LocalDate start, LocalDate endExclusive) {
+        return start.datesUntil(endExclusive).filter(DueDates::isWorkingDay).count();
+    }
+
+    public static void main(String[] args) {
+        LocalDate borrowed = LocalDate.of(2026, 10, 20);
+        LocalDate due = dueDate(borrowed);
+        System.out.println("Due on " + due + " (" + due.getDayOfWeek() + ")");        // Due on 2026-11-03 (TUESDAY)
+
+        LocalDate returned = LocalDate.of(2026, 11, 8);
+        System.out.println(daysLate(due, returned) + " days late, fine Rs " + fine(due, returned));   // 5 days late, fine Rs 25
+        System.out.println(fine(due, LocalDate.of(2026, 11, 1)));                  // 0  (returned before the due date)
+
+        LocalDate friday = LocalDate.of(2026, 11, 6);
+        System.out.println(addWorkingDays(friday, 3));                              // 2026-11-11  (Mon 9, Tue 10, Wed 11)
+        System.out.println(workingDaysBetween(LocalDate.of(2026, 11, 2), LocalDate.of(2026, 11, 14)));   // 10
+
+        // With a list of holidays
+        Set<LocalDate> holidays = Set.of(LocalDate.of(2026, 11, 10));
+        long businessDays = LocalDate.of(2026, 11, 2).datesUntil(LocalDate.of(2026, 11, 14))
+                .filter(DueDates::isWorkingDay)
+                .filter(d -> !holidays.contains(d))
+                .count();
+        System.out.println(businessDays);                                           // 9
+    }
+}`},
+  {h: ["Practical example: a month calendar and a countdown", "Practical example: month calendar aur countdown"],
+   p: ["Two small programs that use many ideas together. The calendar prints a month in rows of seven days: the number of empty cells before the 1st is getDayOfWeek().getValue() - 1 (Monday is 1), and a new line starts after each Sunday and after the last day. The countdown shows the time left until an event as days, hours and minutes, using a Duration and its Part methods (Java 9 and newer). Both take their 'now' as a parameter, so the output is always the same.",
+       "Do chhote programs jo kai ideas ek saath use karte hain. Calendar ek mahine ko saat dino ki rows me print karta hai: 1 tarikh se pehle ke khali cells getDayOfWeek().getValue() - 1 (Monday 1 hai) hain, aur har Sunday ke baad aur aakhri din ke baad nayi line shuru hoti hai. Countdown kisi event tak bacha samay din, ghante aur minute me dikhata hai, Duration aur uske Part methods (Java 9 aur naya) se. Dono 'abhi' ko parameter ki tarah lete hain, isliye output hamesha wahi rehta hai."],
+   code: `import java.time.*;
+import java.time.format.TextStyle;
+import java.util.Locale;
+
+public class CalendarAndCountdown {
+    static void printMonth(YearMonth ym) {
+        System.out.println(ym.getMonth().getDisplayName(TextStyle.FULL, Locale.ENGLISH) + " " + ym.getYear());
+        System.out.println("Mo Tu We Th Fr Sa Su");
+
+        int blanks = ym.atDay(1).getDayOfWeek().getValue() - 1;      // Monday = 1, so Sunday needs 6 blanks
+        for (int i = 0; i < blanks; i++) System.out.print("   ");
+
+        for (int day = 1; day <= ym.lengthOfMonth(); day++) {
+            System.out.printf("%2d ", day);
+            boolean sunday = ym.atDay(day).getDayOfWeek() == DayOfWeek.SUNDAY;
+            if (sunday || day == ym.lengthOfMonth()) System.out.println();   // end the row
+        }
+    }
+
+    static String countdown(LocalDateTime now, LocalDateTime event) {
+        Duration left = Duration.between(now, event);
+        if (left.isNegative()) return "The event has already happened.";
+        return left.toDays() + " days, " + left.toHoursPart() + " hours and " + left.toMinutesPart() + " minutes left";
+    }
+
+    public static void main(String[] args) {
+        printMonth(YearMonth.of(2026, 11));
+        // November 2026
+        // Mo Tu We Th Fr Sa Su
+        //                    1
+        //  2  3  4  5  6  7  8
+        //  9 10 11 12 13 14 15
+        // 16 17 18 19 20 21 22
+        // 23 24 25 26 27 28 29
+        // 30
+
+        LocalDateTime now = LocalDateTime.of(2026, 11, 1, 18, 45);      // in real code: LocalDateTime.now()
+        System.out.println(countdown(now, LocalDateTime.of(2026, 12, 25, 9, 0)));
+        // 53 days, 14 hours and 15 minutes left
+        System.out.println(countdown(now, LocalDateTime.of(2026, 10, 1, 9, 0)));
+        // The event has already happened.
+    }
+}`},
+  {h: ["Common mistakes and good habits", "Common mistakes aur achhi aadatein"],
+   pts: [["Mistake: ignoring the result of plusDays, minusMonths and with... The objects are immutable. Write date = date.plusDays(1);", "Mistake: using java.util.Date, Calendar and SimpleDateFormat in new code. Use java.time.", "Mistake: yyyy versus YYYY, and MM (month) versus mm (minute). Write dd/MM/yyyy HH:mm.", "Mistake: forgetting that Java months are 1 to 12 in java.time (but 0 to 11 in the old Calendar).", "Mistake: using LocalDateTime for a real-world moment shared by several countries. Use ZonedDateTime or Instant.", "Mistake: Duration.between on two LocalDate values (UnsupportedTemporalTypeException). Use Period or ChronoUnit.DAYS.between.", "Mistake: taking Period.getDays() as the total number of days. It is only the days part. Use ChronoUnit.DAYS.between.", "Mistake: parsing user text without try-catch. DateTimeParseException is a normal outcome.", "Mistake: the lenient 'smart' parsing quietly turning 31/04 into 30/04. Use uuuu with ResolverStyle.STRICT when you must refuse invalid dates.", "Mistake: comparing dates with == or subtracting. Use isBefore, isAfter, equals and ChronoUnit.", "Mistake: calling now() inside the logic, which makes tests unstable. Pass a Clock or the date as a parameter.", "Mistake: storing dates as Strings in a database or a file. Store ISO text (2026-11-01) or an Instant, and parse them back.", "Mistake: assuming a day always has 24 hours. Daylight saving days have 23 or 25. Use ZonedDateTime and plusDays for calendar days.", "Good habit: choose the type by meaning (LocalDate, LocalDateTime, ZonedDateTime, Instant) before you write any code.", "Good habit: keep formatters as static final constants, store times in UTC, and convert to the user's zone only when you display them.", "Good habit: test with the edge cases: 29 February, 31 December, midnight, daylight saving days and negative amounts."],
+         ["Galti: plusDays, minusMonths aur with... ka result ignore karna. Objects immutable hain. date = date.plusDays(1); likho.", "Galti: naye code me java.util.Date, Calendar aur SimpleDateFormat use karna. java.time use karo.", "Galti: yyyy versus YYYY, aur MM (mahina) versus mm (minute). dd/MM/yyyy HH:mm likho.", "Galti: ye bhul jana ki java.time me mahine 1 se 12 hain (par purane Calendar me 0 se 11).", "Galti: kai deshon ke beech ek asli pal ke liye LocalDateTime use karna. ZonedDateTime ya Instant use karo.", "Galti: do LocalDate values par Duration.between (UnsupportedTemporalTypeException). Period ya ChronoUnit.DAYS.between use karo.", "Galti: Period.getDays() ko kul dino ki ginti maan lena. Ye sirf din wala hissa hai. ChronoUnit.DAYS.between use karo.", "Galti: user text ko bina try-catch ke parse karna. DateTimeParseException normal natija hai.", "Galti: lenient 'smart' parsing ka chupchap 31/04 ko 30/04 bana dena. Invalid dates mana karni ho to uuuu aur ResolverStyle.STRICT use karo.", "Galti: dates ko == se compare karna ya subtract karna. isBefore, isAfter, equals aur ChronoUnit use karo.", "Galti: logic ke andar now() call karna, jisse tests unstable ho jate hain. Clock ya date ko parameter ki tarah pass karo.", "Galti: dates ko database ya file me Strings ki tarah store karna. ISO text (2026-11-01) ya Instant store karo aur wapas parse karo.", "Galti: ye maanna ki din hamesha 24 ghante ka hota hai. Daylight saving ke dino me 23 ya 25 hote hain. Calendar days ke liye ZonedDateTime aur plusDays use karo.", "Achhi aadat: koi code likhne se pehle type matlab ke hisaab se chuno (LocalDate, LocalDateTime, ZonedDateTime, Instant).", "Achhi aadat: formatters ko static final constants rakho, times UTC me store karo, aur user ke zone me tabhi badlo jab dikhana ho.", "Achhi aadat: edge cases ke saath test karo: 29 February, 31 December, aadhi raat, daylight saving ke din aur negative matra."]],
+   tip: ["Interview questions: (1) Why is java.time better than Date and Calendar? Immutable and thread-safe, months 1 to 12, clear types, a better API. (2) LocalDate vs LocalDateTime vs ZonedDateTime vs Instant? A date, a date and time, a date and time with a zone, and a machine timestamp. (3) Period vs Duration? Period is date-based (years, months, days), Duration is time-based (hours to nanoseconds). (4) How do you convert between time zones? zonedDateTime.withZoneSameInstant(otherZone). (5) Is SimpleDateFormat thread-safe? No, DateTimeFormatter is.", "Interview questions: (1) java.time Date aur Calendar se behtar kyun hai? Immutable aur thread-safe, mahine 1 se 12, saaf types, behtar API. (2) LocalDate vs LocalDateTime vs ZonedDateTime vs Instant? Date, date aur time, zone ke saath date aur time, aur machine timestamp. (3) Period vs Duration? Period date-based hai (saal, mahine, din), Duration time-based hai (ghante se nanosecond tak). (4) Time zones ke beech convert kaise karte hain? zonedDateTime.withZoneSameInstant(otherZone). (5) Kya SimpleDateFormat thread-safe hai? Nahi, DateTimeFormatter hai."]}
  ]}
 });
